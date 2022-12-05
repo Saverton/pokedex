@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import { Switch, Route } from 'react-router-dom';
 import { getTeams } from '../database-scripts/getTeams';
 
