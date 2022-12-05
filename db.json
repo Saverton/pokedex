@@ -1,0 +1,33 @@
+{
+  "teams": [
+    {
+      "id": 1,
+      "teamName": "Rimon",
+      "pokemon": [
+        {
+          "name": "Bulbasaur"
+        },
+        {
+          "name": "charizard",
+          "moves": [
+            {
+              "name": "ember",
+              "baseDamage": "40",
+              "damageType": "special",
+              "strongAgainst": [
+                "grass",
+                "bug",
+                "steel"
+              ],
+              "weakAgainst": [
+                "water",
+                "rock",
+                "ground"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
