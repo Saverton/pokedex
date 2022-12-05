@@ -6,15 +6,21 @@ function SearchForm({ searchTerm, setSearchTerm }) {
   }
 
   return (
-    <div>
-      <label htmlFor="search">Search : </label>
-      <input 
-        type="text" 
-        id="search"
-        value={searchTerm}
-        onChange={handleSearchChange}
-      />
-    </div>
+    <form>
+      <div className="form-group row">
+        <label htmlFor="search" className="col-sm-2 col-form-label">Search :</label>
+        <div className="col-sm-10">
+        <input 
+            type="text"
+            className="form-control"
+            id="search"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            placeholder="Seach for Pokemon by name here."
+          />
+        </div>
+      </div>
+    </form>
   );
 }
 
