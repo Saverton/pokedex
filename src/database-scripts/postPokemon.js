@@ -5,6 +5,7 @@ const api = "http://localhost:8000/teams";
  * @param {Number} teamID
  * @param {String array} currentTeam
  * @param {Object} pokemonObject
+ * @param {function} callbackFn
  */
 function postPokemon(teamID, currentTeam, pokemonObject, callbackFn) {
   fetch(`${api}/${teamID}`, {
@@ -16,7 +17,7 @@ function postPokemon(teamID, currentTeam, pokemonObject, callbackFn) {
   })
     .then((res) => res.json())
     .then((data) => {
-      if (callbackFn) callBackFn(data);
+      if (callbackFn) callbackFn(data);
     });
 }
 

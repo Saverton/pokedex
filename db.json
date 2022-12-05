@@ -8,21 +8,18 @@
           "name": "Bulbasaur"
         },
         {
-          "name": "charizard",
+          "name": "rayquaza",
           "moves": [
             {
-              "name": "ember",
-              "baseDamage": "40",
-              "damageType": "special",
+              "name": "dragon rush",
+              "baseDamage": "80",
+              "damageType": "physical",
               "strongAgainst": [
-                "grass",
-                "bug",
-                "steel"
+                "dragon"
               ],
               "weakAgainst": [
-                "water",
-                "rock",
-                "ground"
+                "ice",
+                "steel"
               ]
             }
           ]
