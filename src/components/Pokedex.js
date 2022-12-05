@@ -5,29 +5,31 @@ import SearchForm from './SearchForm';
 import TeamForm from './TeamForm';
 import PokemonCard from './PokemonCard';
 
-const API_URL = 'https://pokeapi.co/api/v2/pokemon/?limit=151' // gets original 151 pokemon
+// COMMAND TO START JSON-SERVER => json-server -wp 8000 db.json OR npm run server
+const API_URL = 'http://localhost:8000/pokemon' // gets original 151 pokemon
 
 function Pokedex() {
   const [ pokemon, setPokemon ] = useState([]);
+  const [ searchTerm, setSearchTerm ] = useState('');
 
   useEffect(() => {
     fetch(API_URL)
       .then(r => r.json())
       .then(data => {
         console.table(data);
-        setPokemon(data.results);
+        setPokemon(data);
       })
   }, []);
-
- //const pokemonUrl={pokemon.sprites}
+  
+  const filteredPokemon = pokemon.filter(
+    pkmn => pkmn.name.includes(searchTerm.toLowerCase())
+  );
 
   return (
     <main>
-      <SearchForm />
+      <SearchForm searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <TeamForm />
-      <PokemonList pokemon={pokemon} />
-      <PokemonCard pokemon={pokemon}/>
-      
+      <PokemonList pokemon={filteredPokemon} />
     </main>
   );
 }

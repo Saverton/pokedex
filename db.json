@@ -1,14 +1,13 @@
 {
   "teams": [
     {
-      "id": 1,
       "teamName": "Rimon",
       "pokemon": [
         {
           "name": "Bulbasaur"
         },
         {
-          "name": "charizard",
+          "name": "Charizard",
           "moves": [
             {
               "name": "ember",
@@ -26,8 +25,26 @@
               ]
             }
           ]
+        },
+        {
+          "name": "rayquaza",
+          "moves": [
+            {
+              "name": "dragon rush",
+              "baseDamage": "80",
+              "damageType": "physical",
+              "strongAgainst": [
+                "dragon"
+              ],
+              "weakAgainst": [
+                "ice",
+                "steel"
+              ]
+            }
+          ]
         }
-      ]
+      ],
+      "id": 2
     }
   ],
   "pokemon": [
