@@ -5,6 +5,7 @@ import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { postPokemon } from "./database-scripts/postPokemon";
+import { deletePokemon } from "./database-scripts/deletePokemon";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,11 +19,11 @@ root.render(
 //test code for team updating
 const mockTeam = [
   {
-    name: "Bulbasaur"
-  }
-]
+    name: "Bulbasaur",
+  },
+];
 const charizardTest = {
-  name: "charizard",
+  name: "Charizard",
   moves: [
     {
       name: "ember",
@@ -33,8 +34,24 @@ const charizardTest = {
     },
   ],
 };
-const teamID = 1;
 postPokemon(1, mockTeam, charizardTest);
+mockTeam.push(charizardTest);
+
+const rayquazaTest = {
+  name: "rayquaza",
+  moves: [
+    {
+      name: "dragon rush",
+      baseDamage: "80",
+      damageType: "physical",
+      strongAgainst: ["dragon"],
+      weakAgainst: ["ice", "steel"],
+    },
+  ],
+};
+postPokemon(1, mockTeam, rayquazaTest);
+mockTeam.push(rayquazaTest);
+deletePokemon(1, mockTeam, 1);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
