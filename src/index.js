@@ -53,9 +53,9 @@ const rayquazaTest = {
   ],
 };
 mockTeam.pokemon.push(rayquazaTest);
-postTeam(mockTeam);
-postTeam(mockTeam);
-deleteTeam(1);
+// postTeam(mockTeam);
+// postTeam(mockTeam);
+// deleteTeam(1);
 
 
 // If you want to start measuring performance in your app, pass a function

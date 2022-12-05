@@ -2,9 +2,9 @@ import React from 'react';
 
 import PokemonCard from './PokemonCard';
 
-function PokemonList({ pokemon }) {
+function PokemonList({ pokemon, onAddToTeam }) {
   const pokemonCards = pokemon.map(
-    eachPokemon => <PokemonCard key={`pokemon-${eachPokemon.id}`} pokemon={eachPokemon} />
+    eachPokemon => <PokemonCard key={`pokemon-${eachPokemon.id}`} pokemon={eachPokemon} onAddToTeam={onAddToTeam} />
   );
 
   return (

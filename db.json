@@ -1,47 +1,43 @@
 {
   "teams": [
     {
-      "teamName": "Rimon",
+      "name": "Bulbasaur Army",
       "pokemon": [
         {
-          "name": "Bulbasaur"
+          "name": "bulbasaur",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+          "id": 1
         },
         {
-          "name": "Charizard",
-          "moves": [
-            {
-              "name": "ember",
-              "baseDamage": "40",
-              "damageType": "special",
-              "strongAgainst": [
-                "grass",
-                "bug",
-                "steel"
-              ],
-              "weakAgainst": [
-                "water",
-                "rock",
-                "ground"
-              ]
-            }
-          ]
+          "name": "bulbasaur",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+          "id": 1
         },
         {
-          "name": "rayquaza",
-          "moves": [
-            {
-              "name": "dragon rush",
-              "baseDamage": "80",
-              "damageType": "physical",
-              "strongAgainst": [
-                "dragon"
-              ],
-              "weakAgainst": [
-                "ice",
-                "steel"
-              ]
-            }
-          ]
+          "name": "bulbasaur",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+          "id": 1
+        }
+      ],
+      "id": 1
+    },
+    {
+      "name": "Family Tree (Pun intended)",
+      "pokemon": [
+        {
+          "name": "bulbasaur",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+          "id": 1
+        },
+        {
+          "name": "ivysaur",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
+          "id": 2
+        },
+        {
+          "name": "venusaur",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
+          "id": 3
         }
       ],
       "id": 2
