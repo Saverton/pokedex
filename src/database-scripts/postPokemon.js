@@ -16,7 +16,7 @@ function postPokemon(teamID, currentTeam, pokemonObject, callbackFn) {
   })
     .then((res) => res.json())
     .then((data) => {
-      if (callbackFn) callBackFn(data);
+      if (callbackFn) callbackFn(data);
     });
 }
 

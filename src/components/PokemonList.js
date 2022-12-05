@@ -4,7 +4,7 @@ import PokemonCard from './PokemonCard';
 
 function PokemonList({ pokemon }) {
   const pokemonCards = pokemon.map(
-    (eachPokemon, idx) => <li key={`pokemon-${idx + 1}`}>{eachPokemon.name}</li>
+    eachPokemon => <PokemonCard key={`pokemon-${eachPokemon.id}`} pokemon={eachPokemon} />
   );
 
   return (
