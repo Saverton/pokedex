@@ -1,24 +1,22 @@
 import React from 'react';
+import SearchForm from './SearchForm';
 
 import PokemonCard from './PokemonCard';
 
-function PokemonList({ pokemon, onAddToTeam }) {
+function PokemonList({ pokemon, onAddToTeam, searchTerm, setSearchTerm }) {
+
   const pokemonCards = pokemon.map(
     eachPokemon => <PokemonCard key={`pokemon-${eachPokemon.id}`} pokemon={eachPokemon} onAddToTeam={onAddToTeam} />
   );
 
   return (
-    <div>
-      <h2>Pokemon List</h2>
+    <div className="d-flex flex-column">
+      <h2 className="align-self-center">Pokemon List</h2>
+      <SearchForm searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className="row">
         {pokemonCards}
       </div>
     </div>
   );
 }
-
-const filterPokemon = (pokemon) => {
-  const selectedData = Data.filter((newVal))
-}
-
 export default PokemonList;

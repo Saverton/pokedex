@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { postTeam } from '../database-scripts/postTeam';
+import React, { useState } from "react";
+import { postTeam } from "../database-scripts/postTeam";
 
 function TeamForm({ currentTeam, onRemove }) {
-  const [ teamName, setTeamName ] = useState("My Team");
+  const [teamName, setTeamName] = useState("My Team");
 
   function handleTeamNameChange(e) {
     setTeamName(e.target.value);
@@ -19,44 +19,58 @@ function TeamForm({ currentTeam, onRemove }) {
     }
     const teamObj = {
       name: teamName,
-      pokemon: currentTeam.map(
-        pokemon => ({
-          name: pokemon.name,
-          sprite: pokemon.sprites.front,
-          id: pokemon.id
-        })
-      )
+      pokemon: currentTeam.map((pokemon) => ({
+        name: pokemon.name,
+        sprite: pokemon.sprites.front,
+        id: pokemon.id,
+      })),
     };
 
-    postTeam(teamObj, () => alert("TEAM WAS SAVED (REPLACE ME WITH SOMETHING LESS JUNKY!)"));
+    postTeam(teamObj, () =>
+      alert("TEAM WAS SAVED (REPLACE ME WITH SOMETHING LESS JUNKY!)")
+    );
   }
 
-  const teamCards = currentTeam.map(
-    (pokemon, idx) => (
-      <li key={`${pokemon.name}-${idx}`}>
+  const teamCards = currentTeam.map((pokemon, idx) => (
+    <li
+      className="p-1 m-1 border border-secondary rounded d-flex flex-column align-items-center"
+      style={{ listStyle: "none" }}
+      key={`${pokemon.name}-${idx}`}
+    >
+      <div className="d-flex align-items-center">
+        <h3>{pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}</h3>
         <img src={pokemon.sprites.front} alt={pokemon.name} />
-        <button className="btn btn-success" onClick={() => handleRemoveClick(idx)}>Remove from Team!</button>
-      </li>
-    )
-  );
+      </div>
+      <button
+        style={{ backgroundColor: `#BFB9BA` }}
+        className="p-2 btn border-secondary"
+        onClick={() => handleRemoveClick(idx)}
+      >
+        Remove from Team!
+      </button>
+    </li>
+  ));
 
   return (
     <div>
       <h3>My Team : </h3>
       <label htmlFor="name">Team Name : </label>
-      <input 
-        type="text" 
-        name="name" 
-        id="name" 
-        placeholder="My Team" 
+      <input
+        type="text"
+        name="name"
+        id="name"
+        placeholder="My Team"
         onChange={handleTeamNameChange}
         value={teamName}
       />
-      <ul>
-        {/* populate with up to 6 pokemon! */}
-        {teamCards}
-      </ul>
-      <button className="btn btn-success" onClick={handleSave}>Save Team to Database!</button>
+      <ul className="d-flex">{teamCards}</ul>
+      <button
+        style={{ backgroundColor: `#BFB9BA`}}
+        className="btn border-secondary"
+        onClick={handleSave}
+      >
+        Save Team to Database!
+      </button>
     </div>
   );
 }
