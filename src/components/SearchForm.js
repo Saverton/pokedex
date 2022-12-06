@@ -1,4 +1,5 @@
 import React from 'react';
+import { SearchBar } from "../shared";
 
 function SearchForm({ searchFilters, setSearchFilters }) {
   function handleFilterChange(e) {
@@ -10,19 +11,19 @@ function SearchForm({ searchFilters, setSearchFilters }) {
   }
 
   return (
-    <form>
-      <div className="form-group row">
-        <label htmlFor="search" className="col-sm-2 col-form-label">Search :</label>
-        <div className="col-sm-10">
+    <SearchBar>
+      <div className="search text">
+        <label htmlFor="search">Search :</label>
         <input 
           type="text"
-          className="form-control"
           id="search"
           name="searchTerm"
           value={searchFilters.searchTerm}
           onChange={handleFilterChange}
-          placeholder="Seach for Pokemon by name here."
+          placeholder="Search for Pokemon by name here."
         />
+      </div>
+      <div className="search dropdown">
         <label htmlFor="type-filter">Filter by Pokemon type : </label>
         <select id="type-filter" name="typeFilter" value={searchFilters.typeFilter} onChange={handleFilterChange}>
           <option value="all">All</option>
@@ -30,9 +31,8 @@ function SearchForm({ searchFilters, setSearchFilters }) {
           <option value="water">Water</option>
           <option value="grass">Grass</option>
         </select>
-        </div>
       </div>
-    </form>
+    </SearchBar>
   );
 }
 
