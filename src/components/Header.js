@@ -3,7 +3,9 @@ import { NavLink } from 'react-router-dom';
 
 function Header() {
   return (
-    <header>
+    <header
+    style={{backgroundColor: `#fc465e`}}
+    >
       <h1>Pokedex</h1>
       <nav>
         <NavLink to="/">
