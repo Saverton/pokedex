@@ -27,7 +27,7 @@ function App() {
           <MyTeams myTeams={myTeams} />
         </Route>
         <Route path="/battle">
-          <BattlePage />
+          <BattlePage currentTeam={currentTeam} />
         </Route>
       </Switch>
     </>

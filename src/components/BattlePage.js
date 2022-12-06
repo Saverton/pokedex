@@ -1,35 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import BattleSim from '../battle-components/BattleSim';
+import { startNewSimulation } from '../simulator/GameObject';
 
-function BattlePage() {
+function BattlePage({ currentTeam }) {
   // generate game object, then launch BattleSim!
-  const testPokemon = {
-    sprites: {
-      front: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png",
-      back: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png"
-    },
-    maxHp: 50,
-    currentHp: 45,
-    name: "Ditto",
-    moveSet: [
-      {
-        move: "transform",
-        callback: () => console.log("transform!")
-      }
-    ]
-  }
+  const [ gameObj, setGameObj ] = useState({});
+
+  // const testPokemon = {
+  //   sprites: {
+  //     front: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png",
+  //     back: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png"
+  //   },
+  //   maxHp: 50,
+  //   currentHp: 45,
+  //   name: "Ditto",
+  //   moveSet: [
+  //     {
+  //       move: "transform",
+  //       callback: () => console.log("transform!")
+  //     }
+  //   ]
+  // }
   
-  const gameObjTemplate = {
-    yourPkmn: testPokemon,
-    opponentPkmn: testPokemon,
-    currentMessage: "A Wild Ditto Appears!",
-    currentOptions: testPokemon.moveSet
+  // const gameObjTemplate = {
+  //   yourPkmn: testPokemon,
+  //   opponentPkmn: testPokemon,
+  //   currentMessage: "A Wild Ditto Appears!",
+  //   menuOptions: testPokemon.moveSet
+  // }
+
+  async function onStartClick() {
+    setGameObj(await startNewSimulation(currentTeam, "Opponent"));
   }
 
   return (
     <>
       <h3>BattlePage</h3>
-      <BattleSim gameObj={gameObjTemplate} />
+      <button onClick={onStartClick}>Start Sim!</button>
+      <BattleSim gameObj={gameObj} />
     </>
   );
 }
