@@ -1,13 +1,19 @@
-import { getPokemonById } from '../database-scripts/getPokemon';
+import { getPokemonById } from "../database-scripts/getPokemon";
+import GameObject from "./GameObject";
 
 function getRandomPokemonTeam(size) {
   const team = [];
-  
+
   for (let i = 0; i < size; i++) {
     team.push(Math.floor(Math.random() * 151 + 1));
   }
 
   return team;
+}
+
+function checkWinner(game) {
+  if (!game.player.isAbleToBattle()) return "opponent";
+  else return "player";
 }
 
 async function getPokemonFromIds(ids) {
@@ -19,5 +25,4 @@ async function getPokemonFromIds(ids) {
 
   return pokemonTeam;
 }
-
 export { getRandomPokemonTeam, getPokemonFromIds };
