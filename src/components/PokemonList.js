@@ -1,38 +1,38 @@
-import React, { useState } from 'react';
-import styled from "styled-components";
-import PokemonCard from './PokemonCard';
-import SearchForm from './SearchForm';
+import React, { useState } from "react";
+import { CardList } from "../shared";
+import PokemonCard from "./PokemonCard";
+import SearchForm from "./SearchForm";
 
 function PokemonList({ pokemon, onAddToTeam }) {
-  const [ searchFilters, setSearchFilters ] = useState({
+  const [searchFilters, setSearchFilters] = useState({
     searchTerm: "",
-    typeFilter: "all"
+    typeFilter: "all",
   });
 
-  const CardList = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  `
+  const filteredPokemon = pokemon.filter((pkmn) => {
+    return (
+      pkmn.name.includes(searchFilters.searchTerm.toLowerCase()) &&
+      (searchFilters.typeFilter === "all" ||
+        pkmn.types.includes(searchFilters.typeFilter))
+    );
+  });
 
-  const filteredPokemon = pokemon.filter(
-    pkmn => {
-      return pkmn.name.includes(searchFilters.searchTerm.toLowerCase()) && 
-      (searchFilters.typeFilter === 'all' || pkmn.types.includes(searchFilters.typeFilter))
-    }
-  );
-
-  const pokemonCards = filteredPokemon.map(
-    eachPokemon => <PokemonCard key={`pokemon-${eachPokemon.id}`} pokemon={eachPokemon} onAddToTeam={onAddToTeam} />
-  );
+  const pokemonCards = filteredPokemon.map((eachPokemon) => (
+    <PokemonCard
+      key={`pokemon-${eachPokemon.id}`}
+      pokemon={eachPokemon}
+      onAddToTeam={onAddToTeam}
+    />
+  ));
 
   return (
     <div>
       <h2>Pokemon List</h2>
-      <SearchForm searchFilters={searchFilters} setSearchFilters={setSearchFilters} />
-      <CardList>
-        {pokemonCards}
-      </CardList>
+      <SearchForm
+        searchFilters={searchFilters}
+        setSearchFilters={setSearchFilters}
+      />
+      <CardList>{pokemonCards}</CardList>
     </div>
   );
 }
