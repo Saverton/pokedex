@@ -10,15 +10,15 @@ function Header() {
     >
       <h1 style={{backgroundColor: "#D2F6AE"}}className="rounded col-12">Pokedex</h1>
       <nav className="flex-row col-12">
-        <ul style={{ listStyle: "none" }} class="d-flex flex-row justify-content-around">
-          <li class="text-decoration-underline">
+        <ul style={{ listStyle: "none" }} className="d-flex flex-row justify-content-around">
+          <li className="text-decoration-underline">
             <h3>
               <NavLink className="link-secondary" exact to="/">
                 Pokedex
               </NavLink>
             </h3>
           </li>
-          <li class="text-decoration-underline">
+          <li className="text-decoration-underline">
             <h3>
               <NavLink className="link-secondary" to="/my-teams">
                 My Teams
