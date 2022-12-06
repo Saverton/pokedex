@@ -2,6 +2,7 @@ import React from 'react';
 import BattlePokemon from './BattlePokemon';
 import BattleTextbox from './BattleTextbox';
 import BattleControls from './BattleControls';
+import './BattleSim.css';
 
 function BattleSim({ gameObj }) {
   return (

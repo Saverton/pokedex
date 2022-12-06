@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.battle-sim {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  padding: 0.5em;
+  margin: 0 auto;
+  width: 800px;
+  height: 600px;
+}
+
+.battle-scene {
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  justify-content: space-between;
+}
+
+.pokemon {
+  display: flex;
+  justify-content: space-between;
+}
+
+.player {
+  flex-direction: row;
+}
+
+.opponent {
+  flex-direction: row-reverse;
+}
+
+.sprite {
+  width: 25%;
+}
+
+.battle-stats {
+  border: 2px black solid;
+  width: 50%;
+  height: 100px;
+  padding: 0.5em;
+}
+
+.battle-stats p {
+  margin: 0;
+}
+
+.hp-bar {
+  display: flex;
+}
+
+.hp-container {
+  border: 2px black solid;
+  width: 60%;
+  margin: 0 0.25em;
+}
+
+.hp-meter {
+  background-color: red;
+}
+
+.battle-ui {
+  display: flex;
+  flex-direction: row;
+}
+
+.textbox {
+  min-width: 60%;
+  height: 100%;
+  border: 2px solid black;
+  padding: 1em;
+  font-size: 1.25em;
+}
+
+.controls {
+  display: grid;
+  
+  width: 35%;
+  height: 100%;
+  border: 2px solid black;
+  padding: 1em;
+}
