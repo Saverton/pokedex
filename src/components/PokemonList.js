@@ -20,10 +20,10 @@ function PokemonList({ pokemon, onAddToTeam }) {
   );
 
   return (
-    <div className="d-flex flex-column">
-      <h2 className="align-self-center">Pokemon List</h2>
+    <div>
+      <h2>Pokemon List</h2>
       <SearchForm searchFilters={searchFilters} setSearchFilters={setSearchFilters} />
-      <div className="row">
+      <div>
         {pokemonCards}
       </div>
     </div>

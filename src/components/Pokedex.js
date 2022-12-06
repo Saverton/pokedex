@@ -30,7 +30,7 @@ function Pokedex({ currentTeam, setCurrentTeam }) {
   }
 
   return (
-    <main className="p-3" style={{ backgroundColor: `#fc465e` }}>
+    <main>
       <TeamForm currentTeam={currentTeam} onRemove={removePokemonFromTeam} />
       <PokemonList pokemon={pokemon} onAddToTeam={addPokemonToTeam} />
     </main>

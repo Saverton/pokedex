@@ -11,14 +11,10 @@ function PokemonCard({ pokemon, onAddToTeam }) {
   }
   return (
     <div
-    className="p-1 border border-danger rounded col-lg-2 col-md-3 d-flex flex-column align-items-center"
-    style={{backgroundColor: `#D2F6AE`}}
     >
-      <div className="col-12 d-flex justify-content-between p-2">
+      <div>
         <h2>#{pokemon.id}</h2>
         <button
-          className = "btn border-secondary"
-          style={{backgroundColor: `#BFB9BA`}}
           onClick={handleAddToTeamClick}
         >Add to Team</button>
       </div>
@@ -26,7 +22,6 @@ function PokemonCard({ pokemon, onAddToTeam }) {
       <p>{"Height: " + pokemon.height}</p>
       <p>{"Weight: " + pokemon.weight}</p>
       <img
-        className="img-thumbnail img-fluid"
         src={pokemon.sprites.front}
         alt={pokemon.name}
       />

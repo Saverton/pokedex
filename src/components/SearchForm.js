@@ -11,12 +11,11 @@ function SearchForm({ searchFilters, setSearchFilters }) {
 
   return (
     <form>
-      <div className="form-group row">
-        <label htmlFor="search" className="col-sm-2 col-form-label">Search :</label>
-        <div className="col-sm-10">
+      <div>
+        <label htmlFor="search">Search :</label>
+        <div>
         <input 
           type="text"
-          className="form-control"
           id="search"
           name="searchTerm"
           value={searchFilters.searchTerm}
