@@ -1,8 +1,10 @@
 import React from 'react';
 
-function BattleSprite({ sprite }) {
+function BattleSprite({ sprite, isPokemon }) {
   return (
-    <img src={sprite} alt="POKEMON SPRITE" className="sprite" />
+    <div className="sprite">
+      <img src={sprite} alt="POKEMON SPRITE" className={isPokemon ? "pokemon" : "pokeball"} />
+    </div>
   )
 }
 
