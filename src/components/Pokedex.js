@@ -47,7 +47,7 @@ function Pokedex({ currentTeam, setCurrentTeam }) {
       <PokemonList
         pokemon={filteredPokemon}
         onAddToTeam={addPokemonToTeam}
-        searchTerm={searchFilters.searchTerm}
+        searchTerm={searchFilters}
         setSearchTerm={setSearchFilters}
       />
     </main>

@@ -12,7 +12,7 @@ function PokemonList({ pokemon, onAddToTeam, searchTerm, setSearchTerm }) {
   return (
     <div className="d-flex flex-column">
       <h2 className="align-self-center">Pokemon List</h2>
-      <SearchForm searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <SearchForm searchFilters={searchTerm} setSearchFilters={setSearchTerm} />
       <div className="row">
         {pokemonCards}
       </div>
