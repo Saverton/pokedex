@@ -9,10 +9,10 @@ function PokemonList({ pokemon }) {
 
   return (
     <div>
-      <p>Pokemon List</p>
-      <ul>
+      <h2>Pokemon List</h2>
+      <div className="row">
         {pokemonCards}
-      </ul>
+      </div>
     </div>
   );
 }
