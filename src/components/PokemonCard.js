@@ -31,7 +31,7 @@ function PokemonCard({ pokemon, onAddToTeam }) {
         alt={pokemon.name}
       />
       <p>{types()}</p>
-      <p>{pokemon.hp || "x"}</p>
+      <p>{`${pokemon.maxHp} ❤️`}</p>
     </div>
   );
 }
