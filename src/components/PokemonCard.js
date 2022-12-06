@@ -1,7 +1,9 @@
 import React from "react";
-import { styles } from "../styles";
 
-function PokemonCard({ pokemon }) {
+function PokemonCard({ pokemon, onAddToTeam }) {
+  function handleAddToTeamClick() {
+    onAddToTeam(pokemon);
+  }
   function types() {
     return pokemon.types[1]
       ? pokemon.types[0] + " " + pokemon.types[1]
