@@ -1,12 +1,12 @@
-import React from 'react';
-import BattlePokemon from './BattlePokemon';
-import BattleTextbox from './BattleTextbox';
-import BattleControls from './BattleControls';
-import './BattleSim.css';
+import React from "react";
+import BattlePokemon from "./BattlePokemon";
+import BattleTextbox from "./BattleTextbox";
+import BattleControls from "./BattleControls";
+import "./BattleSim.css";
 
 function BattleSim({ gameObj }) {
   if (Object.keys(gameObj).length === 0) {
-    return <h3>Click Start!</h3>
+    return <h3>Click Start!</h3>;
   } else {
     return (
       <div className="battle-sim">

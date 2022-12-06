@@ -8,6 +8,10 @@ class Pokemon {
     this.sprites = {...pokemonObj.sprites};
     console.log(this);
   }
+
+  isFainted() {
+    return this.currentHp === 0;
+  }
 }
 
 export default Pokemon;

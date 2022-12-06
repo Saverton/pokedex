@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './components/App';
+import App from './components/App.js';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { postPokemon } from "./database-scripts/postPokemon";
-import { deletePokemon } from "./database-scripts/deletePokemon";
-import { postTeam } from "./database-scripts/postTeam";
-import { deleteTeam } from "./database-scripts/deleteTeam";
+import { postPokemon } from "./database-scripts/postPokemon.js";
+import { deletePokemon } from "./database-scripts/deletePokemon.js";
+import { postTeam } from "./database-scripts/postTeam.js";
+import { deleteTeam } from "./database-scripts/deleteTeam.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

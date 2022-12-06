@@ -1,5 +1,5 @@
-import Trainer from './Trainer';
-import { getPokemonFromIds, getRandomPokemonTeam } from './GameFunctions';
+import Trainer from './Trainer.js';
+import { getPokemonFromIds, getRandomPokemonTeam } from './GameFunctions.js';
 
 class GameObject {
   constructor(player, opponent) {
