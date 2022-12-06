@@ -11,7 +11,7 @@ import BattlePage from './BattlePage';
 function App() {
   const [ currentTeam, setCurrentTeam ] = useState([]);
   const [ myTeams, setMyTeams ] = useState([]);
-
+console.log(currentTeam)
   useEffect(() => {
     getTeams(setMyTeams);
   }, []);

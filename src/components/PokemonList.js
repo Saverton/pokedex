@@ -17,8 +17,4 @@ function PokemonList({ pokemon, onAddToTeam }) {
   );
 }
 
-const filterPokemon = (pokemon) => {
-  const selectedData = Data.filter((newVal))
-}
-
 export default PokemonList;
