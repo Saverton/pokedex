@@ -41,6 +41,22 @@
         }
       ],
       "id": 2
+    },
+    {
+      "name": "My Team",
+      "pokemon": [
+        {
+          "name": "ivysaur",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
+          "id": 2
+        },
+        {
+          "name": "venusaur",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
+          "id": 3
+        }
+      ],
+      "id": 3
     }
   ],
   "pokemon": [
