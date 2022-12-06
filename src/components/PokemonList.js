@@ -1,6 +1,4 @@
 import React from 'react';
-import SearchForm from './SearchForm';
-
 import PokemonCard from './PokemonCard';
 
 function PokemonList({ pokemon, onAddToTeam, searchTerm, setSearchTerm }) {
@@ -12,7 +10,6 @@ function PokemonList({ pokemon, onAddToTeam, searchTerm, setSearchTerm }) {
   return (
     <div className="d-flex flex-column">
       <h2 className="align-self-center">Pokemon List</h2>
-      <SearchForm searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className="row">
         {pokemonCards}
       </div>
