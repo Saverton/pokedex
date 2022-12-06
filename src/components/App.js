@@ -6,6 +6,7 @@ import { getTeams } from '../database-scripts/getTeams';
 import Pokedex from './Pokedex';
 import MyTeams from './MyTeams';
 import Header from './Header';
+import BattlePage from './BattlePage';
 
 function App() {
   const [ currentTeam, setCurrentTeam ] = useState([]);
@@ -24,6 +25,9 @@ function App() {
         </Route>
         <Route path="/my-teams">
           <MyTeams myTeams={myTeams} />
+        </Route>
+        <Route path="/battle">
+          <BattlePage currentTeam={currentTeam} />
         </Route>
       </Switch>
     </>

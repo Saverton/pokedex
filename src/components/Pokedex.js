@@ -8,8 +8,11 @@ import PokemonCard from "./PokemonCard";
 const API_URL = "http://localhost:8000/pokemon"; // gets original 151 pokemon
 
 function Pokedex({ currentTeam, setCurrentTeam }) {
-  const [pokemon, setPokemon] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [ pokemon, setPokemon ] = useState([]);
+  const [ searchFilters, setSearchFilters ] = useState({
+    searchTerm: "",
+    typeFilter: "all"
+  });
 
   useEffect(() => {
     fetch(API_URL)
@@ -32,7 +35,10 @@ function Pokedex({ currentTeam, setCurrentTeam }) {
   }
 
   const filteredPokemon = pokemon.filter(
-    pkmn => pkmn.name.includes(searchTerm.toLowerCase())
+    pkmn => {
+      return pkmn.name.includes(searchFilters.searchTerm.toLowerCase()) && 
+      (searchFilters.typeFilter === 'all' || pkmn.types.includes(searchFilters.typeFilter))
+    }
   );
 
   return (
