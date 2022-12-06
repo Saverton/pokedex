@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import BattleSim from "../battle-components/BattleSim";
-import { startNewSimulation } from "../simulator/GameObject";
+import { startNewSimulation } from "../simulator/GameFunctions";
 import BattleMusic from "../battle-components/BattleMusic";
 import sound from "../pokemon-battle.mp3";
 
 function BattlePage({ currentTeam }) {
   // generate game object, then launch BattleSim!
-  const [gameObj, setGameObj] = useState({});
+  const [ gameObj, setGameObj ] = useState({});
 
   async function onStartClick() {
-    setGameObj(await startNewSimulation(currentTeam, "Opponent"));
+    if (currentTeam.length === 0) {
+      alert('YOU MUST SELECT A TEAM BEFORE BATTLING!');
+    } else {
+      setGameObj(await startNewSimulation(currentTeam, "Opponent", setGameObj));
+    }
   }
 
   return (
@@ -17,7 +21,7 @@ function BattlePage({ currentTeam }) {
       <BattleMusic url={sound} />
       <h3>BattlePage</h3>
       <button onClick={onStartClick}>Start Sim!</button>
-      <BattleSim gameObj={gameObj} />
+      <BattleSim gameObj={gameObj} setGameObj={setGameObj} />
     </>
   );
 }
