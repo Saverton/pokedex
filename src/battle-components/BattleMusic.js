@@ -13,10 +13,10 @@ const useAudio = url => {
   );
 
   useEffect(() => {
-    audio.addEventListener('ended', () => setPlaying(false));
-    return () => {
-      audio.removeEventListener('ended', () => setPlaying(false));
-    };
+    audio.addEventListener('ended', () => {
+      audio.currentTime = 0;
+      audio.play();
+    });
   }, []);
 
   return [playing, toggle];
