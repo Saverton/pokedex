@@ -1,4 +1,5 @@
 import React from "react";
+import { CardContent, CardHeader, Sprite, Button } from "../shared";
 
 function PokemonCard({ pokemon, onAddToTeam }) {
   function handleAddToTeamClick() {
@@ -9,25 +10,20 @@ function PokemonCard({ pokemon, onAddToTeam }) {
       ? pokemon.types[0] + " " + pokemon.types[1]
       : pokemon.types[0];
   }
+
   return (
-    <div
-    >
-      <div>
+    <CardContent>
+      <CardHeader>
         <h2>#{pokemon.id}</h2>
-        <button
-          onClick={handleAddToTeamClick}
-        >Add to Team</button>
-      </div>
+        <Button onClick={handleAddToTeamClick}>Add to Team</Button>
+      </CardHeader>
       <h2>{pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}</h2>
       <p>{"Height: " + pokemon.height}</p>
       <p>{"Weight: " + pokemon.weight}</p>
-      <img
-        src={pokemon.sprites.front}
-        alt={pokemon.name}
-      />
+      <Sprite src={pokemon.sprites.front} alt={pokemon.name} />
       <p>{types()}</p>
       <p>{`${pokemon.maxHp} ❤️`}</p>
-    </div>
+    </CardContent>
   );
 }
 

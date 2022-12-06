@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from "styled-components";
 import PokemonCard from './PokemonCard';
 import SearchForm from './SearchForm';
 
@@ -7,6 +8,12 @@ function PokemonList({ pokemon, onAddToTeam }) {
     searchTerm: "",
     typeFilter: "all"
   });
+
+  const CardList = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  `
 
   const filteredPokemon = pokemon.filter(
     pkmn => {
@@ -23,9 +30,9 @@ function PokemonList({ pokemon, onAddToTeam }) {
     <div>
       <h2>Pokemon List</h2>
       <SearchForm searchFilters={searchFilters} setSearchFilters={setSearchFilters} />
-      <div>
+      <CardList>
         {pokemonCards}
-      </div>
+      </CardList>
     </div>
   );
 }
