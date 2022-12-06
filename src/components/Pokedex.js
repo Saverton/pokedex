@@ -42,13 +42,14 @@ function Pokedex({ currentTeam, setCurrentTeam }) {
   );
 
   return (
-    <main
-    className="p-3"
-    style={{backgroundColor: `#fc465e`}}
-    >
+    <main className="p-3" style={{ backgroundColor: `#fc465e` }}>
       <TeamForm currentTeam={currentTeam} onRemove={removePokemonFromTeam} />
-      <SearchForm searchFilters={searchFilters} setSearchFilters={setSearchFilters} />
-      <PokemonList pokemon={filteredPokemon} onAddToTeam={addPokemonToTeam} />
+      <PokemonList
+        pokemon={filteredPokemon}
+        onAddToTeam={addPokemonToTeam}
+        searchTerm={searchFilters}
+        setSearchTerm={setSearchFilters}
+      />
     </main>
   );
 }
