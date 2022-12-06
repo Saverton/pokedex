@@ -33,3 +33,4 @@ const BattleMusic = ({ url }) => {
 };
 
 export default BattleMusic;
+export { useAudio };
