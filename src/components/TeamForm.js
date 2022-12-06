@@ -35,7 +35,7 @@ function TeamForm({ currentTeam, onRemove }) {
     (pokemon, idx) => (
       <li key={`${pokemon.name}-${idx}`}>
         <img src={pokemon.sprites.front} alt={pokemon.name} />
-        <button onClick={() => handleRemoveClick(idx)}>Remove from Team!</button>
+        <button className="btn btn-success" onClick={() => handleRemoveClick(idx)}>Remove from Team!</button>
       </li>
     )
   );
@@ -56,7 +56,7 @@ function TeamForm({ currentTeam, onRemove }) {
         {/* populate with up to 6 pokemon! */}
         {teamCards}
       </ul>
-      <button onClick={handleSave}>Save Team to Database!</button>
+      <button className="btn btn-success" onClick={handleSave}>Save Team to Database!</button>
     </div>
   );
 }
