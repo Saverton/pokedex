@@ -8,7 +8,7 @@ function PokemonCard({ pokemon }) {
       : pokemon.types[0];
   }
   return (
-    <div className="m-1 col-lg-3 col-md-4 border border-primary pokemon-card d-flex flex-column align-items-center">
+    <div className="m-1 col-lg-2 col-md-3 border border-primary pokemon-card d-flex flex-column align-items-center">
       <div className="col-12 d-flex justify-content-between p-2">
         <h2>{pokemon.name}</h2>
         <button className = "btn btn-success">Add to Team</button>
