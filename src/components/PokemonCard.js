@@ -17,7 +17,7 @@ function PokemonCard({ pokemon, onAddToTeam }) {
       <div className="col-12 d-flex justify-content-between p-2">
         <h2>#{pokemon.id}</h2>
         <button
-          className = "btn"
+          className = "btn border-secondary"
           style={{backgroundColor: `#BFB9BA`}}
           onClick={handleAddToTeamClick}
         >Add to Team</button>

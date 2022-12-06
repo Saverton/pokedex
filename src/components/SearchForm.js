@@ -16,7 +16,7 @@ function SearchForm({ searchTerm, setSearchTerm }) {
             id="search"
             value={searchTerm}
             onChange={handleSearchChange}
-            placeholder="Seach for Pokemon by name here."
+            placeholder="Search for Pokemon by name here."
           />
         </div>
       </div>
