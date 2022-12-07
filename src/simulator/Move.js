@@ -1,13 +1,13 @@
 class Move {
   constructor(moveObj) {
-    this.name = moveObj.name;
-    this.type = moveObj.type;
-    this.category = moveObj.stats.category;
-    this.power = moveObj.stats.power;
-    this.accuracy = moveObj.stats.accuracy;
-    this.pp = moveObj.stats.pp;
-    this.currentPP = moveObj.stats.pp;
-    this.effect = moveObj.stats.effect;
+    this._name = moveObj.name;
+    this._type = moveObj.type;
+    this._category = moveObj.stats.category;
+    this._power = moveObj.stats.power;
+    this._accuracy = moveObj.stats.accuracy;
+    this._pp = moveObj.stats.pp;
+    this._currentPP = moveObj.stats.pp;
+    this._effect = moveObj.stats.effect;
   }
 
   strongAgainst() {
@@ -62,7 +62,7 @@ class Move {
   }
 
   isAttack() {
-    return !this.category === "status";
+    return !(this.category === "status");
   }
 
   target() {
@@ -85,9 +85,10 @@ class Move {
     if (this.isAttack())
       baseDamage = Math.floor(
         Math.floor(
-          Math.floor((level * 2) / 5) +
-            (2 * this.power * attackStat) / opponentDefenseStat
-        ) / 50
+          ((Math.floor((level * 2) / 5) + 2) * (this.power * attackStat)) /
+            opponentDefenseStat /
+            50
+        )
       );
     if (baseDamage > 997) baseDamage = 997;
     baseDamage += 2;
@@ -95,9 +96,12 @@ class Move {
     return baseDamage;
   }
 
-  modifiedDamage(baseDamage, userType, defenderTypes) {
+  modifiedDamage(baseDamage, userTypes, defenderTypes) {
     let modifiedDamage = baseDamage;
-    if (userType === this.type) modifiedDamage += Math.floor(baseDamage / 2);
+
+    userTypes.forEach((type) => {
+      if (type === this.type) modifiedDamage += Math.floor(baseDamage / 2);
+    });
 
     defenderTypes.forEach((type) => {
       if (this.completelyIneffectiveAgainst().includes(type)) return 0;
@@ -115,8 +119,35 @@ class Move {
   randomFactor(modifiedDamage) {
     if (modifiedDamage === 1) return 1;
     else {
-      return modifiedDamage * Math.floor(Math.random() * (255 - 217)) + 217;
+      return Math.floor((modifiedDamage * (Math.floor(Math.random() * (255 - 217)) + 217)) / 255);
     }
+  }
+
+  finalDamage(
+    userLevel,
+    userAttackStat,
+    opponentDefenseStat,
+    userTypes,
+    opponentTypes
+  ) {
+    const base = this.baseDamage(
+      userLevel,
+      userAttackStat,
+      opponentDefenseStat
+    );
+    const modified = this.modifiedDamage(base, userTypes, opponentTypes);
+
+    const effective = () => {
+      if (Math.floor((base * 10) / 10) === modified) return "normal";
+      else if (Math.floor((base * 10) / 10) > modified)
+        return "not very effective";
+      else return "super effective";
+    };
+
+    return {
+      damage: this.randomFactor(modified),
+      effectiveness: effective(),
+    };
   }
 
   moveLength() {
@@ -136,31 +167,31 @@ class Move {
   useMove() {}
 
   get name() {
-    return this.name;
+    return this._name;
   }
 
   get type() {
-    return this.type;
+    return this._type;
   }
 
   get category() {
-    return this.category;
+    return this._category;
   }
 
   get power() {
-    return this.power;
+    return this._power;
   }
 
   get accuracy() {
-    return this.accuracy;
+    return this._accuracy;
   }
 
   get pp() {
-    return this.pp;
+    return this._pp;
   }
 
   get effect() {
-    return this.effect;
+    return this._effect;
   }
 }
 
