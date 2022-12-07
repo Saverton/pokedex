@@ -2,7 +2,7 @@ import React from 'react';
 
 function BattleControls({ options, setGameObj, gameObj }) {
   const controlButtons = options.map(
-    option => <button key={option.name} onClick={() => handleClick(option.callback)}>{option.name}</button>
+    (option, idx) => <button key={`${option.name}-${idx}`} onClick={() => handleClick(option.callback)} disabled={option.disabled}>{option.name}</button>
   );
 
   function handleClick(callback) {

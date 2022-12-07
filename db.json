@@ -114,6 +114,42 @@
         }
       ],
       "id": 5
+    },
+    {
+      "name": "My Team",
+      "pokemon": [
+        {
+          "name": "tangela",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/114.png",
+          "id": 114
+        },
+        {
+          "name": "ponyta",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/77.png",
+          "id": 77
+        },
+        {
+          "name": "golbat",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/42.png",
+          "id": 42
+        },
+        {
+          "name": "dragonair",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/148.png",
+          "id": 148
+        },
+        {
+          "name": "oddish",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/43.png",
+          "id": 43
+        },
+        {
+          "name": "seaking",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/119.png",
+          "id": 119
+        }
+      ],
+      "id": 6
     }
   ],
   "pokemon": [
