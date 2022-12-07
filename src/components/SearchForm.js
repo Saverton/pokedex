@@ -1,4 +1,10 @@
 import React from 'react';
+import { SearchBar } from "../shared";
+import { capitalizeEach } from '../helper/string_formatting';
+
+const POKEMON_TYPES = [
+  'bug', 'dragon', 'electric', 'fighting', 'fire', 'flying', 'ghost', 'grass', 'ground', 'ice', 'normal', 'poison', 'psychic', 'rock', 'water'
+];
 
 function SearchForm({ searchFilters, setSearchFilters }) {
   function handleFilterChange(e) {
@@ -9,30 +15,31 @@ function SearchForm({ searchFilters, setSearchFilters }) {
     });
   }
 
+  const typeFilterOptions = POKEMON_TYPES.map(
+    type => <option key={type} value={type}>{capitalizeEach(type)}</option>
+  );
+
   return (
-    <form>
-      <div className="form-group row">
-        <label htmlFor="search" className="col-sm-2 col-form-label">Search :</label>
-        <div className="col-sm-10">
+    <SearchBar>
+      <div className="search text">
+        <label htmlFor="search">Search :</label>
         <input 
           type="text"
-          className="form-control"
           id="search"
           name="searchTerm"
           value={searchFilters.searchTerm}
           onChange={handleFilterChange}
-          placeholder="Seach for Pokemon by name here."
+          placeholder="Search for Pokemon by name here."
         />
+      </div>
+      <div className="search dropdown">
         <label htmlFor="type-filter">Filter by Pokemon type : </label>
         <select id="type-filter" name="typeFilter" value={searchFilters.typeFilter} onChange={handleFilterChange}>
           <option value="all">All</option>
-          <option value="fire">Fire</option>
-          <option value="water">Water</option>
-          <option value="grass">Grass</option>
+          {typeFilterOptions}
         </select>
-        </div>
       </div>
-    </form>
+    </SearchBar>
   );
 }
 

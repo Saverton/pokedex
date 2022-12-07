@@ -1,12 +1,48 @@
 
+import { ThemeConsumer } from 'styled-components';
+import { getMoves } from './GameFunctions';
+
 class Pokemon {
   constructor(pokemonObj) {
     this.name = pokemonObj.name;
-    this.maxHp = pokemonObj.maxHp || 50;
-    this.currentHp = this.maxHp;
-    this.moveSet = !!pokemonObj.moves ? [...pokemonObj.moves] : [];
-    this.sprites = {...pokemonObj.sprites};
-    console.log(this);
+    this._maxHp = pokemonObj.maxHp;
+    this._currentHp = this.maxHp;
+    this.moveSet = []
+    this.sprites = { ...pokemonObj.sprites };
+    this.stats = pokemonObj.stats;
+    getMoves(this);
+  }
+
+  isFainted() {
+    return this._currentHp === 0;
+  }
+
+  pokemonUseMove(moveObj, enemyPkmn) {
+    // let moveQueue = [];
+
+    // for(let i = 0; i < moveObj.moveLength(); i++) {
+    //   moveQueue.push(null);
+    // }
+
+    // if(moveObj.target() === "opponent") moveQueue.push({moveObj.})
+  }
+
+  set currentHp(hp) {
+    if (hp < 0) {
+      this._currentHp = 0;
+    } else if (hp > this.maxHp) {
+      this._currentHp = this._maxHp;
+    } else {
+      this._currentHp = hp;
+    }
+  }
+
+  get currentHp() {
+    return this._currentHp;
+  }
+
+  get maxHp() {
+    return this._maxHp;
   }
 }
 

@@ -1,5 +1,5 @@
-import Trainer from './Trainer';
-import { getPokemonFromIds, getRandomPokemonTeam } from './GameFunctions';
+import Trainer from './Trainer.js';
+import { getPokemonFromIds, getRandomPokemonTeam } from './GameFunctions.js';
 
 class GameObject {
   constructor(player, opponent) {
@@ -10,51 +10,31 @@ class GameObject {
     this._playerControl = false;
   }
 
+  get menuOptions() {
+    return this._menuOptions;
+  }
+
+  get playerControl() {
+    return this._playerControl;
+  }
+
   /**
    * @param {Array} newMenuOptions
    */
   set menuOptions(newMenuOptions) {
-    this.menuOptions = newMenuOptions;
-    this.playerControl = true;
+    this._menuOptions = newMenuOptions;
+    this._playerControl = true;
   }
 
   /**
    * @param {boolean} canPlayerControl
    */
   set playerControl(canPlayerControl) {
-    this.playerControl = canPlayerControl;
+    this._playerControl = canPlayerControl;
     if (!this.playerControl) {
-      this.menuOptions = [];
+      this._menuOptions = [];
     }
   }
 }
 
-async function startNewSimulation(playerTeam, opponentName) {
-  console.log(playerTeam);
-  // create player trainer
-  const player = {
-    name: "Player",
-    pokemon: [
-      ...playerTeam
-    ]
-  };
-  console.log(player);
-
-  const opponentPokemon = await getPokemonFromIds(getRandomPokemonTeam(player.pokemon.length));
-  // create opponent trainer
-  const opponent = {
-    name: opponentName,
-    pokemon: opponentPokemon
-  };
-  console.log(opponent);
-
-  // construct game object
-  const gameObj = new GameObject(player, opponent);
-  console.log(gameObj);
-  
-  // return game object
-  return gameObj;
-}
-
 export default GameObject;
-export { startNewSimulation };

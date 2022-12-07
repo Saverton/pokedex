@@ -46,6 +46,11 @@
       "name": "My Team",
       "pokemon": [
         {
+          "name": "bulbasaur",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+          "id": 1
+        },
+        {
           "name": "ivysaur",
           "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
           "id": 2
@@ -232,7 +237,15 @@
       "types": [
         "grass",
         "poison"
-      ]
+      ],
+      "maxHp": 45,
+      "stats": {
+        "attack": 49,
+        "defense": 49,
+        "spAttack": 65,
+        "spDefense": 65,
+        "speed": 45
+      }
     },
     {
       "id": 2,
@@ -246,7 +259,15 @@
       "types": [
         "grass",
         "poison"
-      ]
+      ],
+      "maxHp": 60,
+      "stats": {
+        "attack": 62,
+        "defense": 63,
+        "spAttack": 80,
+        "spDefense": 80,
+        "speed": 60
+      }
     },
     {
       "id": 3,
@@ -260,7 +281,15 @@
       "types": [
         "grass",
         "poison"
-      ]
+      ],
+      "maxHp": 80,
+      "stats": {
+        "attack": 82,
+        "defense": 83,
+        "spAttack": 100,
+        "spDefense": 100,
+        "speed": 80
+      }
     },
     {
       "id": 4,
@@ -273,7 +302,15 @@
       },
       "types": [
         "fire"
-      ]
+      ],
+      "maxHp": 39,
+      "stats": {
+        "attack": 52,
+        "defense": 43,
+        "spAttack": 60,
+        "spDefense": 50,
+        "speed": 65
+      }
     },
     {
       "id": 5,
@@ -286,7 +323,15 @@
       },
       "types": [
         "fire"
-      ]
+      ],
+      "maxHp": 58,
+      "stats": {
+        "attack": 64,
+        "defense": 58,
+        "spAttack": 80,
+        "spDefense": 65,
+        "speed": 80
+      }
     },
     {
       "id": 6,
@@ -300,7 +345,15 @@
       "types": [
         "fire",
         "flying"
-      ]
+      ],
+      "maxHp": 78,
+      "stats": {
+        "attack": 84,
+        "defense": 78,
+        "spAttack": 109,
+        "spDefense": 85,
+        "speed": 100
+      }
     },
     {
       "id": 7,
@@ -313,7 +366,15 @@
       },
       "types": [
         "water"
-      ]
+      ],
+      "maxHp": 44,
+      "stats": {
+        "attack": 48,
+        "defense": 65,
+        "spAttack": 50,
+        "spDefense": 64,
+        "speed": 43
+      }
     },
     {
       "id": 8,
@@ -326,7 +387,15 @@
       },
       "types": [
         "water"
-      ]
+      ],
+      "maxHp": 59,
+      "stats": {
+        "attack": 63,
+        "defense": 80,
+        "spAttack": 65,
+        "spDefense": 80,
+        "speed": 58
+      }
     },
     {
       "id": 9,
@@ -339,7 +408,15 @@
       },
       "types": [
         "water"
-      ]
+      ],
+      "maxHp": 79,
+      "stats": {
+        "attack": 83,
+        "defense": 100,
+        "spAttack": 85,
+        "spDefense": 105,
+        "speed": 78
+      }
     },
     {
       "id": 10,
@@ -352,7 +429,15 @@
       },
       "types": [
         "bug"
-      ]
+      ],
+      "maxHp": 45,
+      "stats": {
+        "attack": 30,
+        "defense": 35,
+        "spAttack": 20,
+        "spDefense": 20,
+        "speed": 45
+      }
     },
     {
       "id": 11,
@@ -365,7 +450,15 @@
       },
       "types": [
         "bug"
-      ]
+      ],
+      "maxHp": 50,
+      "stats": {
+        "attack": 20,
+        "defense": 55,
+        "spAttack": 25,
+        "spDefense": 25,
+        "speed": 30
+      }
     },
     {
       "id": 12,
@@ -379,7 +472,15 @@
       "types": [
         "bug",
         "flying"
-      ]
+      ],
+      "maxHp": 60,
+      "stats": {
+        "attack": 45,
+        "defense": 50,
+        "spAttack": 90,
+        "spDefense": 80,
+        "speed": 70
+      }
     },
     {
       "id": 13,
@@ -393,7 +494,15 @@
       "types": [
         "bug",
         "poison"
-      ]
+      ],
+      "maxHp": 40,
+      "stats": {
+        "attack": 35,
+        "defense": 30,
+        "spAttack": 20,
+        "spDefense": 20,
+        "speed": 50
+      }
     },
     {
       "id": 14,
@@ -407,7 +516,15 @@
       "types": [
         "bug",
         "poison"
-      ]
+      ],
+      "maxHp": 45,
+      "stats": {
+        "attack": 25,
+        "defense": 50,
+        "spAttack": 25,
+        "spDefense": 25,
+        "speed": 35
+      }
     },
     {
       "id": 15,
@@ -421,7 +538,15 @@
       "types": [
         "bug",
         "poison"
-      ]
+      ],
+      "maxHp": 65,
+      "stats": {
+        "attack": 90,
+        "defense": 40,
+        "spAttack": 45,
+        "spDefense": 80,
+        "speed": 75
+      }
     },
     {
       "id": 16,
@@ -435,7 +560,15 @@
       "types": [
         "normal",
         "flying"
-      ]
+      ],
+      "maxHp": 40,
+      "stats": {
+        "attack": 45,
+        "defense": 40,
+        "spAttack": 35,
+        "spDefense": 35,
+        "speed": 56
+      }
     },
     {
       "id": 17,
@@ -449,7 +582,15 @@
       "types": [
         "normal",
         "flying"
-      ]
+      ],
+      "maxHp": 63,
+      "stats": {
+        "attack": 60,
+        "defense": 55,
+        "spAttack": 50,
+        "spDefense": 50,
+        "speed": 71
+      }
     },
     {
       "id": 18,
@@ -463,7 +604,15 @@
       "types": [
         "normal",
         "flying"
-      ]
+      ],
+      "maxHp": 83,
+      "stats": {
+        "attack": 80,
+        "defense": 75,
+        "spAttack": 70,
+        "spDefense": 70,
+        "speed": 101
+      }
     },
     {
       "id": 19,
@@ -476,7 +625,15 @@
       },
       "types": [
         "normal"
-      ]
+      ],
+      "maxHp": 30,
+      "stats": {
+        "attack": 56,
+        "defense": 35,
+        "spAttack": 25,
+        "spDefense": 35,
+        "speed": 72
+      }
     },
     {
       "id": 20,
@@ -489,7 +646,15 @@
       },
       "types": [
         "normal"
-      ]
+      ],
+      "maxHp": 55,
+      "stats": {
+        "attack": 81,
+        "defense": 60,
+        "spAttack": 50,
+        "spDefense": 70,
+        "speed": 97
+      }
     },
     {
       "id": 21,
@@ -503,7 +668,15 @@
       "types": [
         "normal",
         "flying"
-      ]
+      ],
+      "maxHp": 40,
+      "stats": {
+        "attack": 60,
+        "defense": 30,
+        "spAttack": 31,
+        "spDefense": 31,
+        "speed": 70
+      }
     },
     {
       "id": 22,
@@ -517,7 +690,15 @@
       "types": [
         "normal",
         "flying"
-      ]
+      ],
+      "maxHp": 65,
+      "stats": {
+        "attack": 90,
+        "defense": 65,
+        "spAttack": 61,
+        "spDefense": 61,
+        "speed": 100
+      }
     },
     {
       "id": 23,
@@ -530,7 +711,15 @@
       },
       "types": [
         "poison"
-      ]
+      ],
+      "maxHp": 35,
+      "stats": {
+        "attack": 60,
+        "defense": 44,
+        "spAttack": 40,
+        "spDefense": 54,
+        "speed": 55
+      }
     },
     {
       "id": 24,
@@ -543,7 +732,15 @@
       },
       "types": [
         "poison"
-      ]
+      ],
+      "maxHp": 60,
+      "stats": {
+        "attack": 95,
+        "defense": 69,
+        "spAttack": 65,
+        "spDefense": 79,
+        "speed": 80
+      }
     },
     {
       "id": 25,
@@ -556,7 +753,15 @@
       },
       "types": [
         "electric"
-      ]
+      ],
+      "maxHp": 35,
+      "stats": {
+        "attack": 55,
+        "defense": 40,
+        "spAttack": 50,
+        "spDefense": 50,
+        "speed": 90
+      }
     },
     {
       "id": 26,
@@ -569,7 +774,15 @@
       },
       "types": [
         "electric"
-      ]
+      ],
+      "maxHp": 60,
+      "stats": {
+        "attack": 90,
+        "defense": 55,
+        "spAttack": 90,
+        "spDefense": 80,
+        "speed": 110
+      }
     },
     {
       "id": 27,
@@ -582,7 +795,15 @@
       },
       "types": [
         "ground"
-      ]
+      ],
+      "maxHp": 50,
+      "stats": {
+        "attack": 75,
+        "defense": 85,
+        "spAttack": 20,
+        "spDefense": 30,
+        "speed": 40
+      }
     },
     {
       "id": 28,
@@ -595,7 +816,15 @@
       },
       "types": [
         "ground"
-      ]
+      ],
+      "maxHp": 75,
+      "stats": {
+        "attack": 100,
+        "defense": 110,
+        "spAttack": 45,
+        "spDefense": 55,
+        "speed": 65
+      }
     },
     {
       "id": 29,
@@ -608,7 +837,15 @@
       },
       "types": [
         "poison"
-      ]
+      ],
+      "maxHp": 55,
+      "stats": {
+        "attack": 47,
+        "defense": 52,
+        "spAttack": 40,
+        "spDefense": 40,
+        "speed": 41
+      }
     },
     {
       "id": 30,
@@ -621,7 +858,15 @@
       },
       "types": [
         "poison"
-      ]
+      ],
+      "maxHp": 70,
+      "stats": {
+        "attack": 62,
+        "defense": 67,
+        "spAttack": 55,
+        "spDefense": 55,
+        "speed": 56
+      }
     },
     {
       "id": 31,
@@ -635,7 +880,15 @@
       "types": [
         "poison",
         "ground"
-      ]
+      ],
+      "maxHp": 90,
+      "stats": {
+        "attack": 92,
+        "defense": 87,
+        "spAttack": 75,
+        "spDefense": 85,
+        "speed": 76
+      }
     },
     {
       "id": 32,
@@ -648,7 +901,15 @@
       },
       "types": [
         "poison"
-      ]
+      ],
+      "maxHp": 46,
+      "stats": {
+        "attack": 57,
+        "defense": 40,
+        "spAttack": 40,
+        "spDefense": 40,
+        "speed": 50
+      }
     },
     {
       "id": 33,
@@ -661,7 +922,15 @@
       },
       "types": [
         "poison"
-      ]
+      ],
+      "maxHp": 61,
+      "stats": {
+        "attack": 72,
+        "defense": 57,
+        "spAttack": 55,
+        "spDefense": 55,
+        "speed": 65
+      }
     },
     {
       "id": 34,
@@ -675,7 +944,15 @@
       "types": [
         "poison",
         "ground"
-      ]
+      ],
+      "maxHp": 81,
+      "stats": {
+        "attack": 102,
+        "defense": 77,
+        "spAttack": 85,
+        "spDefense": 75,
+        "speed": 85
+      }
     },
     {
       "id": 35,
@@ -688,7 +965,15 @@
       },
       "types": [
         "fairy"
-      ]
+      ],
+      "maxHp": 70,
+      "stats": {
+        "attack": 45,
+        "defense": 48,
+        "spAttack": 60,
+        "spDefense": 65,
+        "speed": 35
+      }
     },
     {
       "id": 36,
@@ -701,7 +986,15 @@
       },
       "types": [
         "fairy"
-      ]
+      ],
+      "maxHp": 95,
+      "stats": {
+        "attack": 70,
+        "defense": 73,
+        "spAttack": 95,
+        "spDefense": 90,
+        "speed": 60
+      }
     },
     {
       "id": 37,
@@ -714,7 +1007,15 @@
       },
       "types": [
         "fire"
-      ]
+      ],
+      "maxHp": 38,
+      "stats": {
+        "attack": 41,
+        "defense": 40,
+        "spAttack": 50,
+        "spDefense": 65,
+        "speed": 65
+      }
     },
     {
       "id": 38,
@@ -727,7 +1028,15 @@
       },
       "types": [
         "fire"
-      ]
+      ],
+      "maxHp": 73,
+      "stats": {
+        "attack": 76,
+        "defense": 75,
+        "spAttack": 81,
+        "spDefense": 100,
+        "speed": 100
+      }
     },
     {
       "id": 39,
@@ -741,7 +1050,15 @@
       "types": [
         "normal",
         "fairy"
-      ]
+      ],
+      "maxHp": 115,
+      "stats": {
+        "attack": 45,
+        "defense": 20,
+        "spAttack": 45,
+        "spDefense": 25,
+        "speed": 20
+      }
     },
     {
       "id": 40,
@@ -755,7 +1072,15 @@
       "types": [
         "normal",
         "fairy"
-      ]
+      ],
+      "maxHp": 140,
+      "stats": {
+        "attack": 70,
+        "defense": 45,
+        "spAttack": 85,
+        "spDefense": 50,
+        "speed": 45
+      }
     },
     {
       "id": 41,
@@ -769,7 +1094,15 @@
       "types": [
         "poison",
         "flying"
-      ]
+      ],
+      "maxHp": 40,
+      "stats": {
+        "attack": 45,
+        "defense": 35,
+        "spAttack": 30,
+        "spDefense": 40,
+        "speed": 55
+      }
     },
     {
       "id": 42,
@@ -783,7 +1116,15 @@
       "types": [
         "poison",
         "flying"
-      ]
+      ],
+      "maxHp": 75,
+      "stats": {
+        "attack": 80,
+        "defense": 70,
+        "spAttack": 65,
+        "spDefense": 75,
+        "speed": 90
+      }
     },
     {
       "id": 43,
@@ -797,7 +1138,15 @@
       "types": [
         "grass",
         "poison"
-      ]
+      ],
+      "maxHp": 45,
+      "stats": {
+        "attack": 50,
+        "defense": 55,
+        "spAttack": 75,
+        "spDefense": 65,
+        "speed": 30
+      }
     },
     {
       "id": 44,
@@ -811,7 +1160,15 @@
       "types": [
         "grass",
         "poison"
-      ]
+      ],
+      "maxHp": 60,
+      "stats": {
+        "attack": 65,
+        "defense": 70,
+        "spAttack": 85,
+        "spDefense": 75,
+        "speed": 40
+      }
     },
     {
       "id": 45,
@@ -825,7 +1182,15 @@
       "types": [
         "grass",
         "poison"
-      ]
+      ],
+      "maxHp": 75,
+      "stats": {
+        "attack": 80,
+        "defense": 85,
+        "spAttack": 110,
+        "spDefense": 90,
+        "speed": 50
+      }
     },
     {
       "id": 46,
@@ -839,7 +1204,15 @@
       "types": [
         "bug",
         "grass"
-      ]
+      ],
+      "maxHp": 35,
+      "stats": {
+        "attack": 70,
+        "defense": 55,
+        "spAttack": 45,
+        "spDefense": 55,
+        "speed": 25
+      }
     },
     {
       "id": 47,
@@ -853,7 +1226,15 @@
       "types": [
         "bug",
         "grass"
-      ]
+      ],
+      "maxHp": 60,
+      "stats": {
+        "attack": 95,
+        "defense": 80,
+        "spAttack": 60,
+        "spDefense": 80,
+        "speed": 30
+      }
     },
     {
       "id": 48,
@@ -867,7 +1248,15 @@
       "types": [
         "bug",
         "poison"
-      ]
+      ],
+      "maxHp": 60,
+      "stats": {
+        "attack": 55,
+        "defense": 50,
+        "spAttack": 40,
+        "spDefense": 55,
+        "speed": 45
+      }
     },
     {
       "id": 49,
@@ -881,7 +1270,15 @@
       "types": [
         "bug",
         "poison"
-      ]
+      ],
+      "maxHp": 70,
+      "stats": {
+        "attack": 65,
+        "defense": 60,
+        "spAttack": 90,
+        "spDefense": 75,
+        "speed": 90
+      }
     },
     {
       "id": 50,
@@ -894,7 +1291,15 @@
       },
       "types": [
         "ground"
-      ]
+      ],
+      "maxHp": 10,
+      "stats": {
+        "attack": 55,
+        "defense": 25,
+        "spAttack": 35,
+        "spDefense": 45,
+        "speed": 95
+      }
     },
     {
       "id": 51,
@@ -907,7 +1312,15 @@
       },
       "types": [
         "ground"
-      ]
+      ],
+      "maxHp": 35,
+      "stats": {
+        "attack": 100,
+        "defense": 50,
+        "spAttack": 50,
+        "spDefense": 70,
+        "speed": 120
+      }
     },
     {
       "id": 52,
@@ -920,7 +1333,15 @@
       },
       "types": [
         "normal"
-      ]
+      ],
+      "maxHp": 40,
+      "stats": {
+        "attack": 45,
+        "defense": 35,
+        "spAttack": 40,
+        "spDefense": 40,
+        "speed": 90
+      }
     },
     {
       "id": 53,
@@ -933,7 +1354,15 @@
       },
       "types": [
         "normal"
-      ]
+      ],
+      "maxHp": 65,
+      "stats": {
+        "attack": 70,
+        "defense": 60,
+        "spAttack": 65,
+        "spDefense": 65,
+        "speed": 115
+      }
     },
     {
       "id": 54,
@@ -946,7 +1375,15 @@
       },
       "types": [
         "water"
-      ]
+      ],
+      "maxHp": 50,
+      "stats": {
+        "attack": 52,
+        "defense": 48,
+        "spAttack": 65,
+        "spDefense": 50,
+        "speed": 55
+      }
     },
     {
       "id": 55,
@@ -959,7 +1396,15 @@
       },
       "types": [
         "water"
-      ]
+      ],
+      "maxHp": 80,
+      "stats": {
+        "attack": 82,
+        "defense": 78,
+        "spAttack": 95,
+        "spDefense": 80,
+        "speed": 85
+      }
     },
     {
       "id": 56,
@@ -972,7 +1417,15 @@
       },
       "types": [
         "fighting"
-      ]
+      ],
+      "maxHp": 40,
+      "stats": {
+        "attack": 80,
+        "defense": 35,
+        "spAttack": 35,
+        "spDefense": 45,
+        "speed": 70
+      }
     },
     {
       "id": 57,
@@ -985,7 +1438,15 @@
       },
       "types": [
         "fighting"
-      ]
+      ],
+      "maxHp": 65,
+      "stats": {
+        "attack": 105,
+        "defense": 60,
+        "spAttack": 60,
+        "spDefense": 70,
+        "speed": 95
+      }
     },
     {
       "id": 58,
@@ -998,7 +1459,15 @@
       },
       "types": [
         "fire"
-      ]
+      ],
+      "maxHp": 55,
+      "stats": {
+        "attack": 70,
+        "defense": 45,
+        "spAttack": 70,
+        "spDefense": 50,
+        "speed": 60
+      }
     },
     {
       "id": 59,
@@ -1011,7 +1480,15 @@
       },
       "types": [
         "fire"
-      ]
+      ],
+      "maxHp": 90,
+      "stats": {
+        "attack": 110,
+        "defense": 80,
+        "spAttack": 100,
+        "spDefense": 80,
+        "speed": 95
+      }
     },
     {
       "id": 60,
@@ -1024,7 +1501,15 @@
       },
       "types": [
         "water"
-      ]
+      ],
+      "maxHp": 40,
+      "stats": {
+        "attack": 50,
+        "defense": 40,
+        "spAttack": 40,
+        "spDefense": 40,
+        "speed": 90
+      }
     },
     {
       "id": 61,
@@ -1037,7 +1522,15 @@
       },
       "types": [
         "water"
-      ]
+      ],
+      "maxHp": 65,
+      "stats": {
+        "attack": 65,
+        "defense": 65,
+        "spAttack": 50,
+        "spDefense": 50,
+        "speed": 90
+      }
     },
     {
       "id": 62,
@@ -1051,7 +1544,15 @@
       "types": [
         "water",
         "fighting"
-      ]
+      ],
+      "maxHp": 90,
+      "stats": {
+        "attack": 95,
+        "defense": 95,
+        "spAttack": 70,
+        "spDefense": 90,
+        "speed": 70
+      }
     },
     {
       "id": 63,
@@ -1064,7 +1565,15 @@
       },
       "types": [
         "psychic"
-      ]
+      ],
+      "maxHp": 25,
+      "stats": {
+        "attack": 20,
+        "defense": 15,
+        "spAttack": 105,
+        "spDefense": 55,
+        "speed": 90
+      }
     },
     {
       "id": 64,
@@ -1077,7 +1586,15 @@
       },
       "types": [
         "psychic"
-      ]
+      ],
+      "maxHp": 40,
+      "stats": {
+        "attack": 35,
+        "defense": 30,
+        "spAttack": 120,
+        "spDefense": 70,
+        "speed": 105
+      }
     },
     {
       "id": 65,
@@ -1090,7 +1607,15 @@
       },
       "types": [
         "psychic"
-      ]
+      ],
+      "maxHp": 55,
+      "stats": {
+        "attack": 50,
+        "defense": 45,
+        "spAttack": 135,
+        "spDefense": 95,
+        "speed": 120
+      }
     },
     {
       "id": 66,
@@ -1103,7 +1628,15 @@
       },
       "types": [
         "fighting"
-      ]
+      ],
+      "maxHp": 70,
+      "stats": {
+        "attack": 80,
+        "defense": 50,
+        "spAttack": 35,
+        "spDefense": 35,
+        "speed": 35
+      }
     },
     {
       "id": 67,
@@ -1116,7 +1649,15 @@
       },
       "types": [
         "fighting"
-      ]
+      ],
+      "maxHp": 80,
+      "stats": {
+        "attack": 100,
+        "defense": 70,
+        "spAttack": 50,
+        "spDefense": 60,
+        "speed": 45
+      }
     },
     {
       "id": 68,
@@ -1129,7 +1670,15 @@
       },
       "types": [
         "fighting"
-      ]
+      ],
+      "maxHp": 90,
+      "stats": {
+        "attack": 130,
+        "defense": 80,
+        "spAttack": 65,
+        "spDefense": 85,
+        "speed": 55
+      }
     },
     {
       "id": 69,
@@ -1143,7 +1692,15 @@
       "types": [
         "grass",
         "poison"
-      ]
+      ],
+      "maxHp": 50,
+      "stats": {
+        "attack": 75,
+        "defense": 35,
+        "spAttack": 70,
+        "spDefense": 30,
+        "speed": 40
+      }
     },
     {
       "id": 70,
@@ -1157,7 +1714,15 @@
       "types": [
         "grass",
         "poison"
-      ]
+      ],
+      "maxHp": 65,
+      "stats": {
+        "attack": 90,
+        "defense": 50,
+        "spAttack": 85,
+        "spDefense": 45,
+        "speed": 55
+      }
     },
     {
       "id": 71,
@@ -1171,7 +1736,15 @@
       "types": [
         "grass",
         "poison"
-      ]
+      ],
+      "maxHp": 80,
+      "stats": {
+        "attack": 105,
+        "defense": 65,
+        "spAttack": 100,
+        "spDefense": 70,
+        "speed": 70
+      }
     },
     {
       "id": 72,
@@ -1185,7 +1758,15 @@
       "types": [
         "water",
         "poison"
-      ]
+      ],
+      "maxHp": 40,
+      "stats": {
+        "attack": 40,
+        "defense": 35,
+        "spAttack": 50,
+        "spDefense": 100,
+        "speed": 70
+      }
     },
     {
       "id": 73,
@@ -1199,7 +1780,15 @@
       "types": [
         "water",
         "poison"
-      ]
+      ],
+      "maxHp": 80,
+      "stats": {
+        "attack": 70,
+        "defense": 65,
+        "spAttack": 80,
+        "spDefense": 120,
+        "speed": 100
+      }
     },
     {
       "id": 74,
@@ -1213,7 +1802,15 @@
       "types": [
         "rock",
         "ground"
-      ]
+      ],
+      "maxHp": 40,
+      "stats": {
+        "attack": 80,
+        "defense": 100,
+        "spAttack": 30,
+        "spDefense": 30,
+        "speed": 20
+      }
     },
     {
       "id": 75,
@@ -1227,7 +1824,15 @@
       "types": [
         "rock",
         "ground"
-      ]
+      ],
+      "maxHp": 55,
+      "stats": {
+        "attack": 95,
+        "defense": 115,
+        "spAttack": 45,
+        "spDefense": 45,
+        "speed": 35
+      }
     },
     {
       "id": 76,
@@ -1241,7 +1846,15 @@
       "types": [
         "rock",
         "ground"
-      ]
+      ],
+      "maxHp": 80,
+      "stats": {
+        "attack": 120,
+        "defense": 130,
+        "spAttack": 55,
+        "spDefense": 65,
+        "speed": 45
+      }
     },
     {
       "id": 77,
@@ -1254,7 +1867,15 @@
       },
       "types": [
         "fire"
-      ]
+      ],
+      "maxHp": 50,
+      "stats": {
+        "attack": 85,
+        "defense": 55,
+        "spAttack": 65,
+        "spDefense": 65,
+        "speed": 90
+      }
     },
     {
       "id": 78,
@@ -1267,7 +1888,15 @@
       },
       "types": [
         "fire"
-      ]
+      ],
+      "maxHp": 65,
+      "stats": {
+        "attack": 100,
+        "defense": 70,
+        "spAttack": 80,
+        "spDefense": 80,
+        "speed": 105
+      }
     },
     {
       "id": 79,
@@ -1281,7 +1910,15 @@
       "types": [
         "water",
         "psychic"
-      ]
+      ],
+      "maxHp": 90,
+      "stats": {
+        "attack": 65,
+        "defense": 65,
+        "spAttack": 40,
+        "spDefense": 40,
+        "speed": 15
+      }
     },
     {
       "id": 80,
@@ -1295,7 +1932,15 @@
       "types": [
         "water",
         "psychic"
-      ]
+      ],
+      "maxHp": 95,
+      "stats": {
+        "attack": 75,
+        "defense": 110,
+        "spAttack": 100,
+        "spDefense": 80,
+        "speed": 30
+      }
     },
     {
       "id": 81,
@@ -1309,7 +1954,15 @@
       "types": [
         "electric",
         "steel"
-      ]
+      ],
+      "maxHp": 25,
+      "stats": {
+        "attack": 35,
+        "defense": 70,
+        "spAttack": 95,
+        "spDefense": 55,
+        "speed": 45
+      }
     },
     {
       "id": 82,
@@ -1323,7 +1976,15 @@
       "types": [
         "electric",
         "steel"
-      ]
+      ],
+      "maxHp": 50,
+      "stats": {
+        "attack": 60,
+        "defense": 95,
+        "spAttack": 120,
+        "spDefense": 70,
+        "speed": 70
+      }
     },
     {
       "id": 83,
@@ -1337,7 +1998,15 @@
       "types": [
         "normal",
         "flying"
-      ]
+      ],
+      "maxHp": 52,
+      "stats": {
+        "attack": 90,
+        "defense": 55,
+        "spAttack": 58,
+        "spDefense": 62,
+        "speed": 60
+      }
     },
     {
       "id": 84,
@@ -1351,7 +2020,15 @@
       "types": [
         "normal",
         "flying"
-      ]
+      ],
+      "maxHp": 35,
+      "stats": {
+        "attack": 85,
+        "defense": 45,
+        "spAttack": 35,
+        "spDefense": 35,
+        "speed": 75
+      }
     },
     {
       "id": 85,
@@ -1365,7 +2042,15 @@
       "types": [
         "normal",
         "flying"
-      ]
+      ],
+      "maxHp": 60,
+      "stats": {
+        "attack": 110,
+        "defense": 70,
+        "spAttack": 60,
+        "spDefense": 60,
+        "speed": 110
+      }
     },
     {
       "id": 86,
@@ -1378,7 +2063,15 @@
       },
       "types": [
         "water"
-      ]
+      ],
+      "maxHp": 65,
+      "stats": {
+        "attack": 45,
+        "defense": 55,
+        "spAttack": 45,
+        "spDefense": 70,
+        "speed": 45
+      }
     },
     {
       "id": 87,
@@ -1392,7 +2085,15 @@
       "types": [
         "water",
         "ice"
-      ]
+      ],
+      "maxHp": 90,
+      "stats": {
+        "attack": 70,
+        "defense": 80,
+        "spAttack": 70,
+        "spDefense": 95,
+        "speed": 70
+      }
     },
     {
       "id": 88,
@@ -1405,7 +2106,15 @@
       },
       "types": [
         "poison"
-      ]
+      ],
+      "maxHp": 80,
+      "stats": {
+        "attack": 80,
+        "defense": 50,
+        "spAttack": 40,
+        "spDefense": 50,
+        "speed": 25
+      }
     },
     {
       "id": 89,
@@ -1418,7 +2127,15 @@
       },
       "types": [
         "poison"
-      ]
+      ],
+      "maxHp": 105,
+      "stats": {
+        "attack": 105,
+        "defense": 75,
+        "spAttack": 65,
+        "spDefense": 100,
+        "speed": 50
+      }
     },
     {
       "id": 90,
@@ -1431,7 +2148,15 @@
       },
       "types": [
         "water"
-      ]
+      ],
+      "maxHp": 30,
+      "stats": {
+        "attack": 65,
+        "defense": 100,
+        "spAttack": 45,
+        "spDefense": 25,
+        "speed": 40
+      }
     },
     {
       "id": 91,
@@ -1445,7 +2170,15 @@
       "types": [
         "water",
         "ice"
-      ]
+      ],
+      "maxHp": 50,
+      "stats": {
+        "attack": 95,
+        "defense": 180,
+        "spAttack": 85,
+        "spDefense": 45,
+        "speed": 70
+      }
     },
     {
       "id": 92,
@@ -1459,7 +2192,15 @@
       "types": [
         "ghost",
         "poison"
-      ]
+      ],
+      "maxHp": 30,
+      "stats": {
+        "attack": 35,
+        "defense": 30,
+        "spAttack": 100,
+        "spDefense": 35,
+        "speed": 80
+      }
     },
     {
       "id": 93,
@@ -1473,7 +2214,15 @@
       "types": [
         "ghost",
         "poison"
-      ]
+      ],
+      "maxHp": 45,
+      "stats": {
+        "attack": 50,
+        "defense": 45,
+        "spAttack": 115,
+        "spDefense": 55,
+        "speed": 95
+      }
     },
     {
       "id": 94,
@@ -1487,7 +2236,15 @@
       "types": [
         "ghost",
         "poison"
-      ]
+      ],
+      "maxHp": 60,
+      "stats": {
+        "attack": 65,
+        "defense": 60,
+        "spAttack": 130,
+        "spDefense": 75,
+        "speed": 110
+      }
     },
     {
       "id": 95,
@@ -1501,7 +2258,15 @@
       "types": [
         "rock",
         "ground"
-      ]
+      ],
+      "maxHp": 35,
+      "stats": {
+        "attack": 45,
+        "defense": 160,
+        "spAttack": 30,
+        "spDefense": 45,
+        "speed": 70
+      }
     },
     {
       "id": 96,
@@ -1514,7 +2279,15 @@
       },
       "types": [
         "psychic"
-      ]
+      ],
+      "maxHp": 60,
+      "stats": {
+        "attack": 48,
+        "defense": 45,
+        "spAttack": 43,
+        "spDefense": 90,
+        "speed": 42
+      }
     },
     {
       "id": 97,
@@ -1527,7 +2300,15 @@
       },
       "types": [
         "psychic"
-      ]
+      ],
+      "maxHp": 85,
+      "stats": {
+        "attack": 73,
+        "defense": 70,
+        "spAttack": 73,
+        "spDefense": 115,
+        "speed": 67
+      }
     },
     {
       "id": 98,
@@ -1540,7 +2321,15 @@
       },
       "types": [
         "water"
-      ]
+      ],
+      "maxHp": 30,
+      "stats": {
+        "attack": 105,
+        "defense": 90,
+        "spAttack": 25,
+        "spDefense": 25,
+        "speed": 50
+      }
     },
     {
       "id": 99,
@@ -1553,7 +2342,15 @@
       },
       "types": [
         "water"
-      ]
+      ],
+      "maxHp": 55,
+      "stats": {
+        "attack": 130,
+        "defense": 115,
+        "spAttack": 50,
+        "spDefense": 50,
+        "speed": 75
+      }
     },
     {
       "id": 100,
@@ -1566,7 +2363,15 @@
       },
       "types": [
         "electric"
-      ]
+      ],
+      "maxHp": 40,
+      "stats": {
+        "attack": 30,
+        "defense": 50,
+        "spAttack": 55,
+        "spDefense": 55,
+        "speed": 100
+      }
     },
     {
       "id": 101,
@@ -1579,7 +2384,15 @@
       },
       "types": [
         "electric"
-      ]
+      ],
+      "maxHp": 60,
+      "stats": {
+        "attack": 50,
+        "defense": 70,
+        "spAttack": 80,
+        "spDefense": 80,
+        "speed": 150
+      }
     },
     {
       "id": 102,
@@ -1593,7 +2406,15 @@
       "types": [
         "grass",
         "psychic"
-      ]
+      ],
+      "maxHp": 60,
+      "stats": {
+        "attack": 40,
+        "defense": 80,
+        "spAttack": 60,
+        "spDefense": 45,
+        "speed": 40
+      }
     },
     {
       "id": 103,
@@ -1607,7 +2428,15 @@
       "types": [
         "grass",
         "psychic"
-      ]
+      ],
+      "maxHp": 95,
+      "stats": {
+        "attack": 95,
+        "defense": 85,
+        "spAttack": 125,
+        "spDefense": 75,
+        "speed": 55
+      }
     },
     {
       "id": 104,
@@ -1620,7 +2449,15 @@
       },
       "types": [
         "ground"
-      ]
+      ],
+      "maxHp": 50,
+      "stats": {
+        "attack": 50,
+        "defense": 95,
+        "spAttack": 40,
+        "spDefense": 50,
+        "speed": 35
+      }
     },
     {
       "id": 105,
@@ -1633,7 +2470,15 @@
       },
       "types": [
         "ground"
-      ]
+      ],
+      "maxHp": 60,
+      "stats": {
+        "attack": 80,
+        "defense": 110,
+        "spAttack": 50,
+        "spDefense": 80,
+        "speed": 45
+      }
     },
     {
       "id": 106,
@@ -1646,7 +2491,15 @@
       },
       "types": [
         "fighting"
-      ]
+      ],
+      "maxHp": 50,
+      "stats": {
+        "attack": 120,
+        "defense": 53,
+        "spAttack": 35,
+        "spDefense": 110,
+        "speed": 87
+      }
     },
     {
       "id": 107,
@@ -1659,7 +2512,15 @@
       },
       "types": [
         "fighting"
-      ]
+      ],
+      "maxHp": 50,
+      "stats": {
+        "attack": 105,
+        "defense": 79,
+        "spAttack": 35,
+        "spDefense": 110,
+        "speed": 76
+      }
     },
     {
       "id": 108,
@@ -1672,7 +2533,15 @@
       },
       "types": [
         "normal"
-      ]
+      ],
+      "maxHp": 90,
+      "stats": {
+        "attack": 55,
+        "defense": 75,
+        "spAttack": 60,
+        "spDefense": 75,
+        "speed": 30
+      }
     },
     {
       "id": 109,
@@ -1685,7 +2554,15 @@
       },
       "types": [
         "poison"
-      ]
+      ],
+      "maxHp": 40,
+      "stats": {
+        "attack": 65,
+        "defense": 95,
+        "spAttack": 60,
+        "spDefense": 45,
+        "speed": 35
+      }
     },
     {
       "id": 110,
@@ -1698,7 +2575,15 @@
       },
       "types": [
         "poison"
-      ]
+      ],
+      "maxHp": 65,
+      "stats": {
+        "attack": 90,
+        "defense": 120,
+        "spAttack": 85,
+        "spDefense": 70,
+        "speed": 60
+      }
     },
     {
       "id": 111,
@@ -1712,7 +2597,15 @@
       "types": [
         "ground",
         "rock"
-      ]
+      ],
+      "maxHp": 80,
+      "stats": {
+        "attack": 85,
+        "defense": 95,
+        "spAttack": 30,
+        "spDefense": 30,
+        "speed": 25
+      }
     },
     {
       "id": 112,
@@ -1726,7 +2619,15 @@
       "types": [
         "ground",
         "rock"
-      ]
+      ],
+      "maxHp": 105,
+      "stats": {
+        "attack": 130,
+        "defense": 120,
+        "spAttack": 45,
+        "spDefense": 45,
+        "speed": 40
+      }
     },
     {
       "id": 113,
@@ -1739,7 +2640,15 @@
       },
       "types": [
         "normal"
-      ]
+      ],
+      "maxHp": 250,
+      "stats": {
+        "attack": 5,
+        "defense": 5,
+        "spAttack": 35,
+        "spDefense": 105,
+        "speed": 50
+      }
     },
     {
       "id": 114,
@@ -1752,7 +2661,15 @@
       },
       "types": [
         "grass"
-      ]
+      ],
+      "maxHp": 65,
+      "stats": {
+        "attack": 55,
+        "defense": 115,
+        "spAttack": 100,
+        "spDefense": 40,
+        "speed": 60
+      }
     },
     {
       "id": 115,
@@ -1765,7 +2682,15 @@
       },
       "types": [
         "normal"
-      ]
+      ],
+      "maxHp": 105,
+      "stats": {
+        "attack": 95,
+        "defense": 80,
+        "spAttack": 40,
+        "spDefense": 80,
+        "speed": 90
+      }
     },
     {
       "id": 116,
@@ -1778,7 +2703,15 @@
       },
       "types": [
         "water"
-      ]
+      ],
+      "maxHp": 30,
+      "stats": {
+        "attack": 40,
+        "defense": 70,
+        "spAttack": 70,
+        "spDefense": 25,
+        "speed": 60
+      }
     },
     {
       "id": 117,
@@ -1791,7 +2724,15 @@
       },
       "types": [
         "water"
-      ]
+      ],
+      "maxHp": 55,
+      "stats": {
+        "attack": 65,
+        "defense": 95,
+        "spAttack": 95,
+        "spDefense": 45,
+        "speed": 85
+      }
     },
     {
       "id": 118,
@@ -1804,7 +2745,15 @@
       },
       "types": [
         "water"
-      ]
+      ],
+      "maxHp": 45,
+      "stats": {
+        "attack": 67,
+        "defense": 60,
+        "spAttack": 35,
+        "spDefense": 50,
+        "speed": 63
+      }
     },
     {
       "id": 119,
@@ -1817,7 +2766,15 @@
       },
       "types": [
         "water"
-      ]
+      ],
+      "maxHp": 80,
+      "stats": {
+        "attack": 92,
+        "defense": 65,
+        "spAttack": 65,
+        "spDefense": 80,
+        "speed": 68
+      }
     },
     {
       "id": 120,
@@ -1830,7 +2787,15 @@
       },
       "types": [
         "water"
-      ]
+      ],
+      "maxHp": 30,
+      "stats": {
+        "attack": 45,
+        "defense": 55,
+        "spAttack": 70,
+        "spDefense": 55,
+        "speed": 85
+      }
     },
     {
       "id": 121,
@@ -1844,7 +2809,15 @@
       "types": [
         "water",
         "psychic"
-      ]
+      ],
+      "maxHp": 60,
+      "stats": {
+        "attack": 75,
+        "defense": 85,
+        "spAttack": 100,
+        "spDefense": 85,
+        "speed": 115
+      }
     },
     {
       "id": 122,
@@ -1858,7 +2831,15 @@
       "types": [
         "psychic",
         "fairy"
-      ]
+      ],
+      "maxHp": 40,
+      "stats": {
+        "attack": 45,
+        "defense": 65,
+        "spAttack": 100,
+        "spDefense": 120,
+        "speed": 90
+      }
     },
     {
       "id": 123,
@@ -1872,7 +2853,15 @@
       "types": [
         "bug",
         "flying"
-      ]
+      ],
+      "maxHp": 70,
+      "stats": {
+        "attack": 110,
+        "defense": 80,
+        "spAttack": 55,
+        "spDefense": 80,
+        "speed": 105
+      }
     },
     {
       "id": 124,
@@ -1886,7 +2875,15 @@
       "types": [
         "ice",
         "psychic"
-      ]
+      ],
+      "maxHp": 65,
+      "stats": {
+        "attack": 50,
+        "defense": 35,
+        "spAttack": 115,
+        "spDefense": 95,
+        "speed": 95
+      }
     },
     {
       "id": 125,
@@ -1899,7 +2896,15 @@
       },
       "types": [
         "electric"
-      ]
+      ],
+      "maxHp": 65,
+      "stats": {
+        "attack": 83,
+        "defense": 57,
+        "spAttack": 95,
+        "spDefense": 85,
+        "speed": 105
+      }
     },
     {
       "id": 126,
@@ -1912,7 +2917,15 @@
       },
       "types": [
         "fire"
-      ]
+      ],
+      "maxHp": 65,
+      "stats": {
+        "attack": 95,
+        "defense": 57,
+        "spAttack": 100,
+        "spDefense": 85,
+        "speed": 93
+      }
     },
     {
       "id": 127,
@@ -1925,7 +2938,15 @@
       },
       "types": [
         "bug"
-      ]
+      ],
+      "maxHp": 65,
+      "stats": {
+        "attack": 125,
+        "defense": 100,
+        "spAttack": 55,
+        "spDefense": 70,
+        "speed": 85
+      }
     },
     {
       "id": 128,
@@ -1938,7 +2959,15 @@
       },
       "types": [
         "normal"
-      ]
+      ],
+      "maxHp": 75,
+      "stats": {
+        "attack": 100,
+        "defense": 95,
+        "spAttack": 40,
+        "spDefense": 70,
+        "speed": 110
+      }
     },
     {
       "id": 129,
@@ -1951,7 +2980,15 @@
       },
       "types": [
         "water"
-      ]
+      ],
+      "maxHp": 20,
+      "stats": {
+        "attack": 10,
+        "defense": 55,
+        "spAttack": 15,
+        "spDefense": 20,
+        "speed": 80
+      }
     },
     {
       "id": 130,
@@ -1965,7 +3002,15 @@
       "types": [
         "water",
         "flying"
-      ]
+      ],
+      "maxHp": 95,
+      "stats": {
+        "attack": 125,
+        "defense": 79,
+        "spAttack": 60,
+        "spDefense": 100,
+        "speed": 81
+      }
     },
     {
       "id": 131,
@@ -1979,7 +3024,15 @@
       "types": [
         "water",
         "ice"
-      ]
+      ],
+      "maxHp": 130,
+      "stats": {
+        "attack": 85,
+        "defense": 80,
+        "spAttack": 85,
+        "spDefense": 95,
+        "speed": 60
+      }
     },
     {
       "id": 132,
@@ -1992,7 +3045,15 @@
       },
       "types": [
         "normal"
-      ]
+      ],
+      "maxHp": 48,
+      "stats": {
+        "attack": 48,
+        "defense": 48,
+        "spAttack": 48,
+        "spDefense": 48,
+        "speed": 48
+      }
     },
     {
       "id": 133,
@@ -2005,7 +3066,15 @@
       },
       "types": [
         "normal"
-      ]
+      ],
+      "maxHp": 55,
+      "stats": {
+        "attack": 55,
+        "defense": 50,
+        "spAttack": 45,
+        "spDefense": 65,
+        "speed": 55
+      }
     },
     {
       "id": 134,
@@ -2018,7 +3087,15 @@
       },
       "types": [
         "water"
-      ]
+      ],
+      "maxHp": 130,
+      "stats": {
+        "attack": 65,
+        "defense": 60,
+        "spAttack": 110,
+        "spDefense": 95,
+        "speed": 65
+      }
     },
     {
       "id": 135,
@@ -2031,7 +3108,15 @@
       },
       "types": [
         "electric"
-      ]
+      ],
+      "maxHp": 65,
+      "stats": {
+        "attack": 65,
+        "defense": 60,
+        "spAttack": 110,
+        "spDefense": 95,
+        "speed": 130
+      }
     },
     {
       "id": 136,
@@ -2044,7 +3129,15 @@
       },
       "types": [
         "fire"
-      ]
+      ],
+      "maxHp": 65,
+      "stats": {
+        "attack": 130,
+        "defense": 60,
+        "spAttack": 95,
+        "spDefense": 110,
+        "speed": 65
+      }
     },
     {
       "id": 137,
@@ -2057,7 +3150,15 @@
       },
       "types": [
         "normal"
-      ]
+      ],
+      "maxHp": 65,
+      "stats": {
+        "attack": 60,
+        "defense": 70,
+        "spAttack": 85,
+        "spDefense": 75,
+        "speed": 40
+      }
     },
     {
       "id": 138,
@@ -2071,7 +3172,15 @@
       "types": [
         "rock",
         "water"
-      ]
+      ],
+      "maxHp": 35,
+      "stats": {
+        "attack": 40,
+        "defense": 100,
+        "spAttack": 90,
+        "spDefense": 55,
+        "speed": 35
+      }
     },
     {
       "id": 139,
@@ -2085,7 +3194,15 @@
       "types": [
         "rock",
         "water"
-      ]
+      ],
+      "maxHp": 70,
+      "stats": {
+        "attack": 60,
+        "defense": 125,
+        "spAttack": 115,
+        "spDefense": 70,
+        "speed": 55
+      }
     },
     {
       "id": 140,
@@ -2099,7 +3216,15 @@
       "types": [
         "rock",
         "water"
-      ]
+      ],
+      "maxHp": 30,
+      "stats": {
+        "attack": 80,
+        "defense": 90,
+        "spAttack": 55,
+        "spDefense": 45,
+        "speed": 55
+      }
     },
     {
       "id": 141,
@@ -2113,7 +3238,15 @@
       "types": [
         "rock",
         "water"
-      ]
+      ],
+      "maxHp": 60,
+      "stats": {
+        "attack": 115,
+        "defense": 105,
+        "spAttack": 65,
+        "spDefense": 70,
+        "speed": 80
+      }
     },
     {
       "id": 142,
@@ -2127,7 +3260,15 @@
       "types": [
         "rock",
         "flying"
-      ]
+      ],
+      "maxHp": 80,
+      "stats": {
+        "attack": 105,
+        "defense": 65,
+        "spAttack": 60,
+        "spDefense": 75,
+        "speed": 130
+      }
     },
     {
       "id": 143,
@@ -2140,7 +3281,15 @@
       },
       "types": [
         "normal"
-      ]
+      ],
+      "maxHp": 160,
+      "stats": {
+        "attack": 110,
+        "defense": 65,
+        "spAttack": 65,
+        "spDefense": 110,
+        "speed": 30
+      }
     },
     {
       "id": 144,
@@ -2154,7 +3303,15 @@
       "types": [
         "ice",
         "flying"
-      ]
+      ],
+      "maxHp": 90,
+      "stats": {
+        "attack": 85,
+        "defense": 100,
+        "spAttack": 95,
+        "spDefense": 125,
+        "speed": 85
+      }
     },
     {
       "id": 145,
@@ -2168,7 +3325,15 @@
       "types": [
         "electric",
         "flying"
-      ]
+      ],
+      "maxHp": 90,
+      "stats": {
+        "attack": 90,
+        "defense": 85,
+        "spAttack": 125,
+        "spDefense": 90,
+        "speed": 100
+      }
     },
     {
       "id": 146,
@@ -2182,7 +3347,15 @@
       "types": [
         "fire",
         "flying"
-      ]
+      ],
+      "maxHp": 90,
+      "stats": {
+        "attack": 100,
+        "defense": 90,
+        "spAttack": 125,
+        "spDefense": 85,
+        "speed": 90
+      }
     },
     {
       "id": 147,
@@ -2195,7 +3368,15 @@
       },
       "types": [
         "dragon"
-      ]
+      ],
+      "maxHp": 41,
+      "stats": {
+        "attack": 64,
+        "defense": 45,
+        "spAttack": 50,
+        "spDefense": 50,
+        "speed": 50
+      }
     },
     {
       "id": 148,
@@ -2208,7 +3389,15 @@
       },
       "types": [
         "dragon"
-      ]
+      ],
+      "maxHp": 61,
+      "stats": {
+        "attack": 84,
+        "defense": 65,
+        "spAttack": 70,
+        "spDefense": 70,
+        "speed": 70
+      }
     },
     {
       "id": 149,
@@ -2222,7 +3411,15 @@
       "types": [
         "dragon",
         "flying"
-      ]
+      ],
+      "maxHp": 91,
+      "stats": {
+        "attack": 134,
+        "defense": 95,
+        "spAttack": 100,
+        "spDefense": 100,
+        "speed": 80
+      }
     },
     {
       "id": 150,
@@ -2235,7 +3432,15 @@
       },
       "types": [
         "psychic"
-      ]
+      ],
+      "maxHp": 106,
+      "stats": {
+        "attack": 110,
+        "defense": 90,
+        "spAttack": 154,
+        "spDefense": 90,
+        "speed": 130
+      }
     },
     {
       "id": 151,
@@ -2248,7 +3453,1997 @@
       },
       "types": [
         "psychic"
-      ]
+      ],
+      "maxHp": 100,
+      "stats": {
+        "attack": 100,
+        "defense": 100,
+        "spAttack": 100,
+        "spDefense": 100,
+        "speed": 100
+      }
+    }
+  ],
+  "moves": [
+    {
+      "id": 1,
+      "name": "Absorb",
+      "type": "grass",
+      "stats": {
+        "category": "special",
+        "power": 20,
+        "accuracy": 100,
+        "pp": 25,
+        "effect": "Use recovers half the HP inflicted on opponent."
+      }
+    },
+    {
+      "name": "Acid",
+      "type": "Poison",
+      "stats": {
+        "category": "special",
+        "power": "40",
+        "accuracy": "100",
+        "pp": "30",
+        "effect": "May lower opponent's Special Defense."
+      },
+      "id": 2
+    },
+    {
+      "name": "Acid Armor",
+      "type": "Poison",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "30",
+        "effect": "Sharply raises user's Defense."
+      },
+      "id": 3
+    },
+    {
+      "name": "Agility",
+      "type": "Psychic",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "30",
+        "effect": "Sharply raises user's Speed."
+      },
+      "id": 4
+    },
+    {
+      "name": "Amnesia",
+      "type": "Psychic",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "20",
+        "effect": "Sharply raises user's Special Defense."
+      },
+      "id": 5
+    },
+    {
+      "name": "Aurora Beam",
+      "type": "ice",
+      "stats": {
+        "category": "special",
+        "power": "65",
+        "accuracy": "100",
+        "pp": "20",
+        "effect": "May lower opponent's Attack."
+      },
+      "id": 6
+    },
+    {
+      "name": "Barrage",
+      "type": "norman",
+      "stats": {
+        "category": "physical",
+        "power": "15",
+        "accuracy": "85",
+        "pp": "20",
+        "effect": "Hits 2-5 times in one turn."
+      },
+      "id": 7
+    },
+    {
+      "name": "Barrier",
+      "type": "psychic",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "20",
+        "effect": "Sharply raises user's Defense."
+      },
+      "id": 8
+    },
+    {
+      "name": "Bide",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "",
+        "accuracy": "",
+        "pp": "10",
+        "effect": "User takes damage for two turns then strikes back double."
+      },
+      "id": 9
+    },
+    {
+      "name": "Bind",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "15",
+        "accuracy": "85",
+        "pp": "20",
+        "effect": "Traps opponent, damaging them for 4-5 turns."
+      },
+      "id": 10
+    },
+    {
+      "name": "Bite",
+      "type": "dark",
+      "stats": {
+        "category": "physical",
+        "power": "60",
+        "accuracy": "100",
+        "pp": "25",
+        "effect": "May cause flinching."
+      },
+      "id": 11
+    },
+    {
+      "name": "Blizzard",
+      "type": "ice",
+      "stats": {
+        "category": "special",
+        "power": "110",
+        "accuracy": "70",
+        "pp": "5",
+        "effect": "May freeze opponent."
+      },
+      "id": 12
+    },
+    {
+      "name": "Body Slam",
+      "type": "norman",
+      "stats": {
+        "category": "physical",
+        "power": "85",
+        "accuracy": "100",
+        "pp": "15",
+        "effect": "May paralyze opponent."
+      },
+      "id": 13
+    },
+    {
+      "name": "Bone Club",
+      "type": "ground",
+      "stats": {
+        "category": "physical",
+        "power": "65",
+        "accuracy": "85",
+        "pp": "20",
+        "effect": "May cause flinching."
+      },
+      "id": 14
+    },
+    {
+      "name": "Bonemerang",
+      "type": "ground",
+      "stats": {
+        "category": "physical",
+        "power": "50",
+        "accuracy": "90",
+        "pp": "10",
+        "effect": "Hits twice in one turn."
+      },
+      "id": 15
+    },
+    {
+      "name": "Bubble",
+      "type": "water",
+      "stats": {
+        "category": "special",
+        "power": "40",
+        "accuracy": "100",
+        "pp": "30",
+        "effect": "May lower opponent's Speed."
+      },
+      "id": 16
+    },
+    {
+      "name": "Bubble Beam",
+      "type": "water",
+      "stats": {
+        "category": "special",
+        "power": "65",
+        "accuracy": "100",
+        "pp": "20",
+        "effect": "May lower opponent's Speed."
+      },
+      "id": 17
+    },
+    {
+      "name": "Clamp",
+      "type": "water",
+      "stats": {
+        "category": "physical",
+        "power": "35",
+        "accuracy": "85",
+        "pp": "15",
+        "effect": "Traps opponent, damaging them for 4-5 turns."
+      },
+      "id": 18
+    },
+    {
+      "name": "Comet Punch",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "18",
+        "accuracy": "85",
+        "pp": "15",
+        "effect": "Hits 2-5 times in one turn."
+      },
+      "id": 19
+    },
+    {
+      "name": "Confuse Ray",
+      "type": "ghost",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "100",
+        "pp": "10",
+        "effect": "Confuses opponent."
+      },
+      "id": 20
+    },
+    {
+      "name": "Confusion",
+      "type": "physic",
+      "stats": {
+        "category": "special",
+        "power": "50",
+        "accuracy": "100",
+        "pp": "25",
+        "effect": "May confuse opponent."
+      },
+      "id": 21
+    },
+    {
+      "name": "Constrict",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "10",
+        "accuracy": "100",
+        "pp": "35",
+        "effect": "May lower opponent's Speed by one stage."
+      },
+      "id": 22
+    },
+    {
+      "name": "Conversion",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "30",
+        "effect": "Changes user's type to that of its first move."
+      },
+      "id": 23
+    },
+    {
+      "name": "Counter",
+      "type": "fighting",
+      "stats": {
+        "category": "physical",
+        "power": "",
+        "accuracy": "100",
+        "pp": "20",
+        "effect": "When hit by a Physical Attack, user strikes back with 2x power."
+      },
+      "id": 24
+    },
+    {
+      "name": "Crabhammer",
+      "type": "water",
+      "stats": {
+        "category": "physical",
+        "power": "100",
+        "accuracy": "90",
+        "pp": "10",
+        "effect": "High critical hit ratio."
+      },
+      "id": 25
+    },
+    {
+      "name": "Cut",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "50",
+        "accuracy": "95",
+        "pp": "30",
+        "effect": ""
+      },
+      "id": 26
+    },
+    {
+      "name": "Defense Curl",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "40",
+        "effect": "Raises user's Defense."
+      },
+      "id": 27
+    },
+    {
+      "name": "Dig",
+      "type": "ground",
+      "stats": {
+        "category": "physical",
+        "power": "80",
+        "accuracy": "100",
+        "pp": "10",
+        "effect": "\tDigs underground on first turn, attacks on second. Can also escape from caves."
+      },
+      "id": 28
+    },
+    {
+      "name": "Disable",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "100",
+        "pp": "20",
+        "effect": "Opponent can't use its last attack for a few turns."
+      },
+      "id": 29
+    },
+    {
+      "name": "Dizzy Punch",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "70",
+        "accuracy": "100",
+        "pp": "10",
+        "effect": "May confuse opponent."
+      },
+      "id": 30
+    },
+    {
+      "name": "Double Kick",
+      "type": "fighting",
+      "stats": {
+        "category": "physical",
+        "power": "30",
+        "accuracy": "100",
+        "pp": "30",
+        "effect": "Hits twice in one turn."
+      },
+      "id": 31
+    },
+    {
+      "name": "Double Slap",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "15",
+        "accuracy": "85",
+        "pp": "10",
+        "effect": "Hits 2-5 times in one turn."
+      },
+      "id": 32
+    },
+    {
+      "name": "Double Team",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "15",
+        "effect": "Raises user's Evasiveness."
+      },
+      "id": 33
+    },
+    {
+      "name": "Double-Edge",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "120",
+        "accuracy": "100",
+        "pp": "15",
+        "effect": "User receives recoil damage."
+      },
+      "id": 34
+    },
+    {
+      "name": "Dragon Rage",
+      "type": "dragon",
+      "stats": {
+        "category": "special",
+        "power": "",
+        "accuracy": "100",
+        "pp": "10",
+        "effect": "Always inflicts 40 HP."
+      },
+      "id": 35
+    },
+    {
+      "name": "Dream Eater",
+      "type": "psychic",
+      "stats": {
+        "category": "special",
+        "power": "100",
+        "accuracy": "100",
+        "pp": "15",
+        "effect": "User recovers half the HP inflicted on a sleeping opponent."
+      },
+      "id": 36
+    },
+    {
+      "name": "Drill Peck",
+      "type": "flying",
+      "stats": {
+        "category": "physical",
+        "power": "80",
+        "accuracy": "100",
+        "pp": "20",
+        "effect": ""
+      },
+      "id": 37
+    },
+    {
+      "name": "Earthquake",
+      "type": "ground",
+      "stats": {
+        "category": "physical",
+        "power": "100",
+        "accuracy": "100",
+        "pp": "10",
+        "effect": "Power is doubled if opponent is underground from using Dig."
+      },
+      "id": 38
+    },
+    {
+      "name": "Egg Bomb",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "100",
+        "accuracy": "75",
+        "pp": "10",
+        "effect": ""
+      },
+      "id": 39
+    },
+    {
+      "name": "Ember",
+      "type": "fire",
+      "stats": {
+        "category": "special",
+        "power": "40",
+        "accuracy": "100",
+        "pp": "25",
+        "effect": "May burn opponent."
+      },
+      "id": 40
+    },
+    {
+      "name": "Explosion",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "250",
+        "accuracy": "100",
+        "pp": "5",
+        "effect": "User faints."
+      },
+      "id": 41
+    },
+    {
+      "name": "Fire Blast",
+      "type": "fire",
+      "stats": {
+        "category": "special",
+        "power": "110",
+        "accuracy": "85",
+        "pp": "5",
+        "effect": "May burn opponent."
+      },
+      "id": 42
+    },
+    {
+      "name": "Fire Punch",
+      "type": "fire",
+      "stats": {
+        "category": "physical",
+        "power": "75",
+        "accuracy": "100",
+        "pp": "15",
+        "effect": "May burn opponent."
+      },
+      "id": 43
+    },
+    {
+      "name": "Fire Spin",
+      "type": "fire",
+      "stats": {
+        "category": "physical",
+        "power": "35",
+        "accuracy": "85",
+        "pp": "15",
+        "effect": "Traps opponent, damaging them for 4-5 turns."
+      },
+      "id": 44
+    },
+    {
+      "name": "Fissure",
+      "type": "ground",
+      "stats": {
+        "category": "physical",
+        "power": "",
+        "accuracy": "30",
+        "pp": "5",
+        "effect": "One-Hit-KO, if it hits."
+      },
+      "id": 45
+    },
+    {
+      "name": "Flamethrower",
+      "type": "fire",
+      "stats": {
+        "category": "special",
+        "power": "90",
+        "accuracy": "100",
+        "pp": "15",
+        "effect": "May burn opponent."
+      },
+      "id": 46
+    },
+    {
+      "name": "Flash",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "100",
+        "pp": "20",
+        "effect": "Lowers opponent's Accuracy."
+      },
+      "id": 47
+    },
+    {
+      "name": "Fly",
+      "type": "flying",
+      "stats": {
+        "category": "physical",
+        "power": "90",
+        "accuracy": "95",
+        "pp": "15",
+        "effect": "Flies up on first turn, attacks on second turn."
+      },
+      "id": 48
+    },
+    {
+      "name": "Focus Energy",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "30",
+        "effect": "Increases critical hit ratio."
+      },
+      "id": 49
+    },
+    {
+      "name": "Fury Attack",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "15",
+        "accuracy": "85",
+        "pp": "20",
+        "effect": "Hits 2-5 times in one turn."
+      },
+      "id": 50
+    },
+    {
+      "name": "Fury Swipes",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "18",
+        "accuracy": "80",
+        "pp": "15",
+        "effect": "Hits 2-5 times in one turn."
+      },
+      "id": 51
+    },
+    {
+      "name": "Glare",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "100",
+        "pp": "30",
+        "effect": "Paralyzes opponent."
+      },
+      "id": 52
+    },
+    {
+      "name": "Growl",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "100",
+        "pp": "40",
+        "effect": "Lowers opponent's Attack."
+      },
+      "id": 53
+    },
+    {
+      "name": "Growth",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "20",
+        "effect": "Raises user's Attack and Special Attack."
+      },
+      "id": 54
+    },
+    {
+      "name": "Guillotine",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "",
+        "accuracy": "30",
+        "pp": "5",
+        "effect": "One-Hit-KO, if it hits."
+      },
+      "id": 55
+    },
+    {
+      "name": "Gust",
+      "type": "flying",
+      "stats": {
+        "category": "special",
+        "power": "40",
+        "accuracy": "100",
+        "pp": "35",
+        "effect": "Hits Pokémon using Fly/Bounce with double power."
+      },
+      "id": 56
+    },
+    {
+      "name": "Harden",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "30",
+        "effect": "Raises user's Defense."
+      },
+      "id": 57
+    },
+    {
+      "name": "Haze",
+      "type": "ice",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "30",
+        "effect": "Resets all stat changes."
+      },
+      "id": 58
+    },
+    {
+      "name": "Headbutt",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "70",
+        "accuracy": "100",
+        "pp": "15",
+        "effect": "May cause flinching."
+      },
+      "id": 59
+    },
+    {
+      "name": "High Jump Kick",
+      "type": "fighting",
+      "stats": {
+        "category": "physical",
+        "power": "130",
+        "accuracy": "90",
+        "pp": "10",
+        "effect": "If it misses, the user loses half their HP."
+      },
+      "id": 60
+    },
+    {
+      "name": "Horn Attack",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "65",
+        "accuracy": "100",
+        "pp": "25",
+        "effect": ""
+      },
+      "id": 61
+    },
+    {
+      "name": "Horn Drill",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "",
+        "accuracy": "30",
+        "pp": "5",
+        "effect": "One-Hit-KO, if it hits."
+      },
+      "id": 62
+    },
+    {
+      "name": "Hydro Pump",
+      "type": "water",
+      "stats": {
+        "category": "special",
+        "power": "110",
+        "accuracy": "80",
+        "pp": "5",
+        "effect": ""
+      },
+      "id": 63
+    },
+    {
+      "name": "Hyper Beam",
+      "type": "normal",
+      "stats": {
+        "category": "special",
+        "power": "150",
+        "accuracy": "90",
+        "pp": "5",
+        "effect": "User must recharge next turn."
+      },
+      "id": 64
+    },
+    {
+      "name": "Hyper Fang",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "80",
+        "accuracy": "90",
+        "pp": "15",
+        "effect": "May cause flinching."
+      },
+      "id": 65
+    },
+    {
+      "name": "Hypnosis",
+      "type": "physic",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "60",
+        "pp": "20",
+        "effect": "Puts opponent to sleep."
+      },
+      "id": 66
+    },
+    {
+      "name": "Ice Beam",
+      "type": "ice",
+      "stats": {
+        "category": "special",
+        "power": "90",
+        "accuracy": "100",
+        "pp": "10",
+        "effect": "May freeze opponent."
+      },
+      "id": 67
+    },
+    {
+      "name": "Ice Punch",
+      "type": "ice",
+      "stats": {
+        "category": "physical",
+        "power": "75",
+        "accuracy": "100",
+        "pp": "15",
+        "effect": "May freeze opponent."
+      },
+      "id": 68
+    },
+    {
+      "name": "Jump Kick",
+      "type": "fighting",
+      "stats": {
+        "category": "physical",
+        "power": "100",
+        "accuracy": "95",
+        "pp": "10",
+        "effect": "\tIf it misses, the user loses half their HP."
+      },
+      "id": 69
+    },
+    {
+      "name": "Karate Chop",
+      "type": "fighting",
+      "stats": {
+        "category": "physical",
+        "power": "50",
+        "accuracy": "100",
+        "pp": "25",
+        "effect": "High critical hit ratio."
+      },
+      "id": 70
+    },
+    {
+      "name": "Kinesis",
+      "type": "physic",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "80",
+        "pp": "15",
+        "effect": "Lowers opponent's Accuracy."
+      },
+      "id": 71
+    },
+    {
+      "name": "Leech Life",
+      "type": "bug",
+      "stats": {
+        "category": "physical",
+        "power": "80",
+        "accuracy": "100",
+        "pp": "10",
+        "effect": "User recovers half the HP inflicted on opponent."
+      },
+      "id": 72
+    },
+    {
+      "name": "Leech Seed",
+      "type": "grass",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "90",
+        "pp": "10",
+        "effect": "Drains HP from opponent each turn."
+      },
+      "id": 73
+    },
+    {
+      "name": "Leer",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "100",
+        "pp": "30",
+        "effect": "Lowers opponent's Defense."
+      },
+      "id": 74
+    },
+    {
+      "name": "Lick",
+      "type": "ghost",
+      "stats": {
+        "category": "physical",
+        "power": "30",
+        "accuracy": "100",
+        "pp": "30",
+        "effect": "May paralyze opponent."
+      },
+      "id": 75
+    },
+    {
+      "name": "Light Screen",
+      "type": "physic",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "30",
+        "effect": "Halves damage from Special attacks for 5 turns."
+      },
+      "id": 76
+    },
+    {
+      "name": "Lovely Kiss",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "75",
+        "pp": "10",
+        "effect": "Puts opponent to sleep."
+      },
+      "id": 77
+    },
+    {
+      "name": "Low Kick",
+      "type": "fighting",
+      "stats": {
+        "category": "physical",
+        "power": "",
+        "accuracy": "100",
+        "pp": "20",
+        "effect": "The heavier the opponent, the stronger the attack."
+      },
+      "id": 78
+    },
+    {
+      "name": "Meditate",
+      "type": "psychic",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "40",
+        "effect": "Raises user's Attack."
+      },
+      "id": 79
+    },
+    {
+      "name": "Mega Drain",
+      "type": "grass",
+      "stats": {
+        "category": "special",
+        "power": "40",
+        "accuracy": "10.",
+        "pp": "15",
+        "effect": "\tUser recovers half the HP inflicted on opponent."
+      },
+      "id": 80
+    },
+    {
+      "name": "Mega Kick",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "120",
+        "accuracy": "75",
+        "pp": "5",
+        "effect": ""
+      },
+      "id": 81
+    },
+    {
+      "name": "Mega Punch",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "80",
+        "accuracy": "85",
+        "pp": "20",
+        "effect": ""
+      },
+      "id": 82
+    },
+    {
+      "name": "Metronome",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "10",
+        "effect": "User performs almost any move in the game at random."
+      },
+      "id": 83
+    },
+    {
+      "name": "Mimic",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "10",
+        "effect": "Copies the opponent's last move."
+      },
+      "id": 84
+    },
+    {
+      "name": "Minimize",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "10",
+        "effect": "Sharply raises user's Evasiveness."
+      },
+      "id": 85
+    },
+    {
+      "name": "Mirror Move",
+      "type": "flying",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "20",
+        "effect": "User performs the opponent's last move."
+      },
+      "id": 86
+    },
+    {
+      "name": "Mist",
+      "type": "ice",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "30",
+        "effect": "User's stats cannot be changed for a period of time."
+      },
+      "id": 87
+    },
+    {
+      "name": "Night Shade",
+      "type": "ghost",
+      "stats": {
+        "category": "special",
+        "power": "",
+        "accuracy": "100",
+        "pp": "15",
+        "effect": "Inflicts damage equal to user's level."
+      },
+      "id": 88
+    },
+    {
+      "name": "Pay Day",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "40",
+        "accuracy": "100",
+        "pp": "20",
+        "effect": "Money is earned after the battle."
+      },
+      "id": 89
+    },
+    {
+      "name": "Peck",
+      "type": "flying",
+      "stats": {
+        "category": "physical",
+        "power": "35",
+        "accuracy": "100",
+        "pp": "35",
+        "effect": ""
+      },
+      "id": 90
+    },
+    {
+      "name": "Petal Dance",
+      "type": "grass",
+      "stats": {
+        "category": "special",
+        "power": "120",
+        "accuracy": "100",
+        "pp": "10",
+        "effect": "User attacks for 2-3 turns but then becomes confused."
+      },
+      "id": 91
+    },
+    {
+      "name": "Pin Missile",
+      "type": "bug",
+      "stats": {
+        "category": "physical",
+        "power": "25",
+        "accuracy": "95",
+        "pp": "20",
+        "effect": "Hits 2-5 times in one turn."
+      },
+      "id": 92
+    },
+    {
+      "name": "Poison Gas",
+      "type": "poison",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "90",
+        "pp": "40",
+        "effect": "Poisons opponent."
+      },
+      "id": 93
+    },
+    {
+      "name": "Poison Powder",
+      "type": "poison",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "75",
+        "pp": "35",
+        "effect": "Poisons opponent."
+      },
+      "id": 94
+    },
+    {
+      "name": "Poison Sting",
+      "type": "poison",
+      "stats": {
+        "category": "physical",
+        "power": "15",
+        "accuracy": "100",
+        "pp": "35",
+        "effect": "May poison the opponent."
+      },
+      "id": 95
+    },
+    {
+      "name": "Pound",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "40",
+        "accuracy": "100",
+        "pp": "35",
+        "effect": ""
+      },
+      "id": 96
+    },
+    {
+      "name": "Psybeam",
+      "type": "psychic",
+      "stats": {
+        "category": "special",
+        "power": "65",
+        "accuracy": "100",
+        "pp": "20",
+        "effect": "May confuse opponent."
+      },
+      "id": 97
+    },
+    {
+      "name": "Psychic",
+      "type": "psychic",
+      "stats": {
+        "category": "special",
+        "power": "90",
+        "accuracy": "100",
+        "pp": "10",
+        "effect": "May lower opponent's Special Defense."
+      },
+      "id": 98
+    },
+    {
+      "name": "Psywave",
+      "type": "psychic",
+      "stats": {
+        "category": "special",
+        "power": "",
+        "accuracy": "100",
+        "pp": "15",
+        "effect": "Inflicts damage 50-150% of user's level."
+      },
+      "id": 99
+    },
+    {
+      "name": "Quick Attack",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "40",
+        "accuracy": "100",
+        "pp": "30",
+        "effect": "User attacks first."
+      },
+      "id": 100
+    },
+    {
+      "name": "Rage",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "20",
+        "accuracy": "100",
+        "pp": "20",
+        "effect": "Raises user's Attack when hit."
+      },
+      "id": 101
+    },
+    {
+      "name": "Razor Leaf",
+      "type": "grass",
+      "stats": {
+        "category": "physical",
+        "power": "55",
+        "accuracy": "95",
+        "pp": "25",
+        "effect": "High critical hit ratio."
+      },
+      "id": 102
+    },
+    {
+      "name": "Razor Wind",
+      "type": "normal",
+      "stats": {
+        "category": "special",
+        "power": "80",
+        "accuracy": "100",
+        "pp": "10",
+        "effect": "Charges on first turn, attacks on second. High critical hit ratio."
+      },
+      "id": 103
+    },
+    {
+      "name": "Recover",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "5",
+        "effect": "User recovers half its max HP."
+      },
+      "id": 104
+    },
+    {
+      "name": "Reflect",
+      "type": "psychic",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "20",
+        "effect": "Halves damage from Physical attacks for 5 turns."
+      },
+      "id": 105
+    },
+    {
+      "name": "Rest",
+      "type": "psychic",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "5",
+        "effect": "User sleeps for 2 turns, but user is fully healed."
+      },
+      "id": 106
+    },
+    {
+      "name": "Roar",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "20",
+        "effect": "In battles, the opponent switches. In the wild, the Pokémon runs."
+      },
+      "id": 107
+    },
+    {
+      "name": "Rock Slide",
+      "type": "rock",
+      "stats": {
+        "category": "physical",
+        "power": "75",
+        "accuracy": "90",
+        "pp": "10",
+        "effect": "May cause flinching."
+      },
+      "id": 108
+    },
+    {
+      "name": "Rock Throw",
+      "type": "rock",
+      "stats": {
+        "category": "physical",
+        "power": "50",
+        "accuracy": "90",
+        "pp": "15",
+        "effect": ""
+      },
+      "id": 109
+    },
+    {
+      "name": "Rolling Kick",
+      "type": "fighting",
+      "stats": {
+        "category": "physical",
+        "power": "60",
+        "accuracy": "85",
+        "pp": "15",
+        "effect": "May cause flinching."
+      },
+      "id": 110
+    },
+    {
+      "name": "Sand Attack",
+      "type": "ground",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "100",
+        "pp": "15",
+        "effect": "Lowers opponent's Accuracy."
+      },
+      "id": 111
+    },
+    {
+      "name": "Scratch",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "40",
+        "accuracy": "100",
+        "pp": "35",
+        "effect": ""
+      },
+      "id": 112
+    },
+    {
+      "name": "Screech",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "85",
+        "pp": "40",
+        "effect": "Sharply lowers opponent's Defense."
+      },
+      "id": 113
+    },
+    {
+      "name": "Seismic Toss",
+      "type": "fighting",
+      "stats": {
+        "category": "physical",
+        "power": "",
+        "accuracy": "100",
+        "pp": "20",
+        "effect": "Inflicts damage equal to user's level."
+      },
+      "id": 114
+    },
+    {
+      "name": "Self-Destruct",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "200",
+        "accuracy": "100",
+        "pp": "5",
+        "effect": "User faints."
+      },
+      "id": 115
+    },
+    {
+      "name": "Sharpen",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "30",
+        "effect": "Raises user's Attack."
+      },
+      "id": 116
+    },
+    {
+      "name": "Sing",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "55",
+        "pp": "15",
+        "effect": "Puts opponent to sleep."
+      },
+      "id": 117
+    },
+    {
+      "name": "Skull Bash",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "130",
+        "accuracy": "100",
+        "pp": "10",
+        "effect": "Raises Defense on first turn, attacks on second."
+      },
+      "id": 118
+    },
+    {
+      "name": "Sky Attack",
+      "type": "flying",
+      "stats": {
+        "category": "physical",
+        "power": "140",
+        "accuracy": "90",
+        "pp": "5",
+        "effect": "Charges on first turn, attacks on second. May cause flinching. High critical hit ratio."
+      },
+      "id": 119
+    },
+    {
+      "name": "Slam",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "80",
+        "accuracy": "75",
+        "pp": "20",
+        "effect": ""
+      },
+      "id": 120
+    },
+    {
+      "name": "Slash",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "70",
+        "accuracy": "100",
+        "pp": "20",
+        "effect": "High critical hit ratio."
+      },
+      "id": 121
+    },
+    {
+      "name": "Sleep Powder",
+      "type": "grass",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "75",
+        "pp": "15",
+        "effect": "Puts opponent to sleep."
+      },
+      "id": 122
+    },
+    {
+      "name": "Sludge",
+      "type": "poison",
+      "stats": {
+        "category": "special",
+        "power": "65",
+        "accuracy": "100",
+        "pp": "20",
+        "effect": "May poison opponent."
+      },
+      "id": 123
+    },
+    {
+      "name": "Smog",
+      "type": "poison",
+      "stats": {
+        "category": "special",
+        "power": "30",
+        "accuracy": "70",
+        "pp": "20",
+        "effect": "May poison opponent."
+      },
+      "id": 124
+    },
+    {
+      "name": "Smokescreen",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "100",
+        "pp": "20",
+        "effect": "Lowers opponent's Accuracy."
+      },
+      "id": 125
+    },
+    {
+      "name": "Soft-Boiled",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "5",
+        "effect": "User recovers half its max HP."
+      },
+      "id": 126
+    },
+    {
+      "name": "Solar Beam",
+      "type": "grass",
+      "stats": {
+        "category": "special",
+        "power": "120",
+        "accuracy": "100",
+        "pp": "10",
+        "effect": "Charges on first turn, attacks on second."
+      },
+      "id": 127
+    },
+    {
+      "name": "Sonic Boom",
+      "type": "normal",
+      "stats": {
+        "category": "special",
+        "power": "",
+        "accuracy": "90",
+        "pp": "20",
+        "effect": "Always inflicts 20 HP."
+      },
+      "id": 128
+    },
+    {
+      "name": "Spike Cannon",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "20",
+        "accuracy": "100",
+        "pp": "15",
+        "effect": "Hits 2-5 times in one turn."
+      },
+      "id": 129
+    },
+    {
+      "name": "Splash",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "40",
+        "effect": "Doesn't do ANYTHING."
+      },
+      "id": 130
+    },
+    {
+      "name": "Spore",
+      "type": "grass",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "100",
+        "pp": "15",
+        "effect": "Puts opponent to sleep."
+      },
+      "id": 131
+    },
+    {
+      "name": "Stomp",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "65",
+        "accuracy": "100",
+        "pp": "20",
+        "effect": "May cause flinching."
+      },
+      "id": 132
+    },
+    {
+      "name": "Strength",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "80",
+        "accuracy": "100",
+        "pp": "15",
+        "effect": ""
+      },
+      "id": 133
+    },
+    {
+      "name": "String Shot",
+      "type": "bug",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "95",
+        "pp": "40",
+        "effect": "Sharply lowers opponent's Speed."
+      },
+      "id": 134
+    },
+    {
+      "name": "Struggle",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "50",
+        "accuracy": "",
+        "pp": "",
+        "effect": "Only usable when all PP are gone. Hurts the user."
+      },
+      "id": 135
+    },
+    {
+      "name": "Stun Spore",
+      "type": "grass",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "75",
+        "pp": "30",
+        "effect": "Paralyzes opponent."
+      },
+      "id": 136
+    },
+    {
+      "name": "Submission",
+      "type": "fighting",
+      "stats": {
+        "category": "physical",
+        "power": "80",
+        "accuracy": "80",
+        "pp": "20",
+        "effect": "User receives recoil damage."
+      },
+      "id": 137
+    },
+    {
+      "name": "Substitute",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "10",
+        "effect": "Uses HP to creates a decoy that takes hits."
+      },
+      "id": 138
+    },
+    {
+      "name": "Super Fang",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "",
+        "accuracy": "90",
+        "pp": "10",
+        "effect": "Always takes off half of the opponent's HP."
+      },
+      "id": 139
+    },
+    {
+      "name": "Supersonic",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "55",
+        "pp": "20",
+        "effect": "Confuses opponent."
+      },
+      "id": 140
+    },
+    {
+      "name": "Surf",
+      "type": "water",
+      "stats": {
+        "category": "special",
+        "power": "90",
+        "accuracy": "100",
+        "pp": "15",
+        "effect": "Hits all adjacent Pokémon."
+      },
+      "id": 141
+    },
+    {
+      "name": "Swift",
+      "type": "normal",
+      "stats": {
+        "category": "special",
+        "power": "60",
+        "accuracy": "infinity",
+        "pp": "20",
+        "effect": "Ignores Accuracy and Evasiveness."
+      },
+      "id": 142
+    },
+    {
+      "name": "Swords Dance",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "20",
+        "effect": "Sharply raises user's Attack."
+      },
+      "id": 143
+    },
+    {
+      "name": "Tackle",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "40",
+        "accuracy": "100",
+        "pp": "35",
+        "effect": ""
+      },
+      "id": 144
+    },
+    {
+      "name": "Tail Whip",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "100",
+        "pp": "30",
+        "effect": "Lowers opponent's Defense."
+      },
+      "id": 145
+    },
+    {
+      "name": "Take Down",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "90",
+        "accuracy": "85",
+        "pp": "20",
+        "effect": "User receives recoil damage."
+      },
+      "id": 146
+    },
+    {
+      "name": "Teleport",
+      "type": "psychic",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "20",
+        "effect": "Allows user to flee wild battles; also warps player to last PokéCenter."
+      },
+      "id": 147
+    },
+    {
+      "name": "Thrash",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "120",
+        "accuracy": "100",
+        "pp": "10",
+        "effect": "User attacks for 2-3 turns but then becomes confused."
+      },
+      "id": 148
+    },
+    {
+      "name": "Thunder",
+      "type": "electric",
+      "stats": {
+        "category": "special",
+        "power": "110",
+        "accuracy": "70",
+        "pp": "10",
+        "effect": "May paralyze opponent."
+      },
+      "id": 149
+    },
+    {
+      "name": "Thunder Punch",
+      "type": "electric",
+      "stats": {
+        "category": "physical",
+        "power": "75",
+        "accuracy": "100",
+        "pp": "15",
+        "effect": "May paralyze opponent."
+      },
+      "id": 150
+    },
+    {
+      "name": "Thunder Shock",
+      "type": "electric",
+      "stats": {
+        "category": "special",
+        "power": "40",
+        "accuracy": "100",
+        "pp": "30",
+        "effect": "May paralyze opponent."
+      },
+      "id": 151
+    },
+    {
+      "name": "Thunder Wave",
+      "type": "electric",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "90",
+        "pp": "20",
+        "effect": "Paralyzes opponent."
+      },
+      "id": 152
+    },
+    {
+      "name": "Thunderbolt",
+      "type": "electric",
+      "stats": {
+        "category": "special",
+        "power": "90",
+        "accuracy": "100",
+        "pp": "15",
+        "effect": "May paralyze opponent."
+      },
+      "id": 153
+    },
+    {
+      "name": "Toxic",
+      "type": "poison",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "90",
+        "pp": "10",
+        "effect": "Badly poisons opponent."
+      },
+      "id": 154
+    },
+    {
+      "name": "Transform",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "10",
+        "effect": "User takes on the form and attacks of the opponent."
+      },
+      "id": 155
+    },
+    {
+      "name": "Tri Attack",
+      "type": "normal",
+      "stats": {
+        "category": "special",
+        "power": "80",
+        "accuracy": "100",
+        "pp": "10",
+        "effect": "May paralyze, burn or freeze opponent."
+      },
+      "id": 156
+    },
+    {
+      "name": "Twineedle",
+      "type": "bug",
+      "stats": {
+        "category": "physical",
+        "power": "25",
+        "accuracy": "100",
+        "pp": "20",
+        "effect": "\tHits twice in one turn. May poison opponent."
+      },
+      "id": 157
+    },
+    {
+      "name": "Vine Whip",
+      "type": "grass",
+      "stats": {
+        "category": "physical",
+        "power": "45",
+        "accuracy": "100",
+        "pp": "25",
+        "effect": ""
+      },
+      "id": 158
+    },
+    {
+      "name": "Vise Grip",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "55",
+        "accuracy": "100",
+        "pp": "30",
+        "effect": ""
+      },
+      "id": 159
+    },
+    {
+      "name": "Water Gun",
+      "type": "water",
+      "stats": {
+        "category": "special",
+        "power": "40",
+        "accuracy": "100",
+        "pp": "25",
+        "effect": ""
+      },
+      "id": 160
+    },
+    {
+      "name": "Waterfall",
+      "type": "water",
+      "stats": {
+        "category": "physical",
+        "power": "80",
+        "accuracy": "100",
+        "pp": "15",
+        "effect": "May cause flinching."
+      },
+      "id": 161
+    },
+    {
+      "name": "Whirlwind",
+      "type": "normal",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "20",
+        "effect": "In battles, the opponent switches. In the wild, the Pokémon runs."
+      },
+      "id": 162
+    },
+    {
+      "name": "Wing Attack",
+      "type": "flying",
+      "stats": {
+        "category": "physical",
+        "power": "60",
+        "accuracy": "100",
+        "pp": "35",
+        "effect": ""
+      },
+      "id": 163
+    },
+    {
+      "name": "Withdraw",
+      "type": "water",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "40",
+        "effect": "Raises user's Defense."
+      },
+      "id": 164
+    },
+    {
+      "name": "Wrap",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "15",
+        "accuracy": "90",
+        "pp": "20",
+        "effect": "Traps opponent, damaging them for 4-5 turns."
+      },
+      "id": 165
     }
   ]
 }

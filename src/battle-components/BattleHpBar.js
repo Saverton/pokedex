@@ -7,9 +7,11 @@ function BattleHpBar({ maxHp, currentHp }) {
       <div className="hp-container">
         <div 
           className="hp-meter"
-          style={{ width: `${Math.floor(currentHp / maxHp * 100)}%`}}  
+          style={{ 
+            width: `${Math.floor(currentHp / maxHp * 100)}%`,
+            height: '100%'
+          }}  
         >
-          HP ITSELF {/* style will be applied according to hp */}
         </div>
       </div>
     </div>

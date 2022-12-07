@@ -1,4 +1,5 @@
 import React from "react";
+import { CardContent, CardHeader, Sprite, Button } from "../shared";
 
 function PokemonCard({ pokemon, onAddToTeam }) {
   function handleAddToTeamClick() {
@@ -9,30 +10,20 @@ function PokemonCard({ pokemon, onAddToTeam }) {
       ? pokemon.types[0] + " " + pokemon.types[1]
       : pokemon.types[0];
   }
+
   return (
-    <div
-    className="p-1 border border-danger rounded col-lg-2 col-md-3 d-flex flex-column align-items-center"
-    style={{backgroundColor: `#D2F6AE`}}
-    >
-      <div className="col-12 d-flex justify-content-between p-2">
+    <CardContent>
+      <CardHeader>
         <h2>#{pokemon.id}</h2>
-        <button
-          className = "btn"
-          style={{backgroundColor: `#BFB9BA`}}
-          onClick={handleAddToTeamClick}
-        >Add to Team</button>
-      </div>
+        <Button onClick={handleAddToTeamClick}>Add to Team</Button>
+      </CardHeader>
       <h2>{pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}</h2>
       <p>{"Height: " + pokemon.height}</p>
       <p>{"Weight: " + pokemon.weight}</p>
-      <img
-        className="img-thumbnail img-fluid"
-        src={pokemon.sprites.front}
-        alt={pokemon.name}
-      />
+      <Sprite src={pokemon.sprites.front} alt={pokemon.name} />
       <p>{types()}</p>
-      <p>{pokemon.hp || "x"}</p>
-    </div>
+      <p>{`${pokemon.maxHp} ❤️`}</p>
+    </CardContent>
   );
 }
 
