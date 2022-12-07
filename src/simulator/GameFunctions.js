@@ -1,5 +1,6 @@
 import { getPokemonById } from "../database-scripts/getPokemon";
 import GameObject from "./GameObject";
+import Move from "./Move";
 
 function getRandomPokemonTeam(size) {
   const team = [];
