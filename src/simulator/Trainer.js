@@ -8,6 +8,7 @@ class Trainer {
       return new Pokemon(pokemon);
     });
     this._currentPokemon = undefined;
+    this._actionQueue = [];
   }
 
   isAbleToBattle() {
@@ -28,9 +29,31 @@ class Trainer {
     return this._currentPokemon;
   }
 
+  set actionQueue(actionQueue) {
+    this._actionQueue = actionQueue;
+  }
+
+  get actionQueue() {
+    return this._actionQueue;
+  }
+
   sendOutPokemon(index) {
     this.currentPokemon = index;
     return `${this.name}: Go ${this.currentPokemon.name}!`
+  }
+
+  recallPokemon() {
+    const pokemonName = this.currentPokemon.name;
+    this.currentPokemon = undefined;
+    return `${this.name}: Return, ${pokemonName}!`;
+  }
+
+  useTurn(gameObj, setGameObj) {
+    const action = this.actionQueue.shift();
+    // perform the current action!
+    gameObj.currentMessage = action.message;
+    action.script(gameObj);
+    setGameObj({...gameObj});
   }
 }
 

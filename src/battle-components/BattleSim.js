@@ -6,6 +6,9 @@ import "./BattleSim.css";
 
 function BattleSim({ gameObj, setGameObj }) {
   const { player, opponent } = gameObj;
+  // const menuOptions = Object.keys(gameObj.menuOptions).map(
+
+  // )
 
   if (Object.keys(gameObj).length === 0) {
     return <h3>Click Start!</h3>;
@@ -22,7 +25,7 @@ function BattleSim({ gameObj, setGameObj }) {
         </div>
         <div className="battle-ui">
           <BattleTextbox text={gameObj.currentMessage} />
-          <BattleControls options={gameObj.menuOptions || []} />
+          <BattleControls options={gameObj._menuOptions} setGameObj={setGameObj} gameObj={gameObj} />
         </div>
       </div>
     );
