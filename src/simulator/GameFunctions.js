@@ -82,6 +82,8 @@ function runBattleIntro(gameObj, setGameObj) {
 }
 
 function runBattleLoop(gameObj, setGameObj) {
+  const { player, opponent } = gameObj;
+  // if ()
   // opponent choose action
   if (gameObj.opponent.actionQueue.length === 0) {
     const opponentMove = gameObj.opponent.currentPokemon.moveSet[Math.floor(Math.random() * 4)];
