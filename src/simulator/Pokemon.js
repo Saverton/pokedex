@@ -1,3 +1,5 @@
+import Move from "./Move";
+
 class Pokemon {
   constructor(pokemonObj) {
     this.name = pokemonObj.name;
@@ -10,6 +12,16 @@ class Pokemon {
 
   isFainted() {
     return this._currentHp === 0;
+  }
+
+  pokemonUseMove(moveObj, enemyPkmn) {
+    // let moveQueue = [];
+
+    // for(let i = 0; i < moveObj.moveLength(); i++) {
+    //   moveQueue.push(null);
+    // }
+
+    // if(moveObj.target() === "opponent") moveQueue.push({moveObj.})
   }
 
   set currentHp(hp) {
