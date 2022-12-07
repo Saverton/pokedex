@@ -84,8 +84,7 @@ function runBattleIntro(gameObj, setGameObj) {
 function runBattleLoop(gameObj, setGameObj) {
   // opponent choose action
   if (gameObj.opponent.actionQueue.length === 0) {
-    const opponentMoveObj = gameObj.opponent.currentPokemon.moveSet[Math.floor(Math.random() * 4)];
-    const opponentMove = new Move(opponentMoveObj);
+    const opponentMove = gameObj.opponent.currentPokemon.moveSet[Math.floor(Math.random() * 4)];
     gameObj.opponent.actionQueue = [generateActionObj(gameObj.opponent.currentPokemon, opponentMove.name, () => executeMove(opponentMove, gameObj.opponent.currentPokemon, gameObj.player.currentPokemon))]
   }
 
@@ -123,7 +122,7 @@ function playerFight(gameObj) {
     move => ({
       name: move.name,
       callback: (setGameObj) => {
-        player.actionQueue = [generateActionObj(gameObj.player.currentPokemon, move.name, () => executeMove(new Move(move), gameObj.player.currentPokemon, gameObj.opponent.currentPokemon))];
+        player.actionQueue = [generateActionObj(gameObj.player.currentPokemon, move.name, () => executeMove(move, gameObj.player.currentPokemon, gameObj.opponent.currentPokemon))];
         runTrainerActions(gameObj, setGameObj);
         return gameObj;
       }
@@ -293,16 +292,7 @@ async function getMoves(pokemonObj) {
  * @param {Object} defender defending pokemon
  */
 function executeMove(move, attacker, defender) {
-  // console.log({ attacker, defender, move });
-  // const l = 50;
-  // const a = attacker.stats.attack;
-  // const d = defender.stats.defense;
-  // const p = move.stats.power;
-
-  const damageDone = move.finalDamage(attacker, defender).damage;
-  
-  // Math.min(Math.floor(Math.floor(((Math.floor((l * 2) / 5) + 2) * p * a) / d) / 50), 997) + 2;
-  // console.log({damageDone});
+  const { damage, effective } = move.finalDamage(attacker, defender);
 
   defender.currentHp = defender.currentHp - damage;
 
