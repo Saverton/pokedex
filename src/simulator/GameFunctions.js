@@ -96,8 +96,8 @@ function runBattleLoop(gameObj, setGameObj) {
   setGameObj({...gameObj});
 }
 
-function runBattleConclusion(gameObj, setGameObj) {
-  gameObj.currentMessage = 'The battle is over!';
+function runBattleConclusion(gameObj, setGameObj, winner) {
+  gameObj.currentMessage = `The battle is over! ${winner}, wins!`;
   setGameObj({...gameObj});
 }
 
@@ -242,7 +242,7 @@ function generateActionObj(pokemon, moveName, callback) {
  * @param {Object} gameObj game object
  * @param {function} setGameObj function, updates react state
  */
-function runTrainerActions(gameObj, setGameObj) {
+async function runTrainerActions(gameObj, setGameObj) {
   // stop input
   gameObj.playerControl = false;
   setGameObj({...gameObj});
@@ -251,24 +251,23 @@ function runTrainerActions(gameObj, setGameObj) {
   const turnOrder = ['player', 'opponent'];
   
   // perform the actions in order
-  turnOrder.forEach(
-    // for each action (see Trainer.useTurn()): 
-      // change the current message to the action's message
-      // run the action's script
-    (trainer, idx) => {
-      setTimeout(() => {
-        gameObj[trainer].useTurn(gameObj, setGameObj);
-      }, 1000 + idx * 1000);
+  for (let i = 0; i < 2; i++) {
+    gameObj[turnOrder[i]].useTurn(gameObj, setGameObj);
+    const breakFromTurn = await checkFainted(gameObj, setGameObj)
+    if (breakFromTurn) {
+      break;
     }
-  );
+    await new Promise((resolve) => {
+      setTimeout(() => resolve(1), 1000);
+    });
+  }
 
-  setTimeout(() => {
-    if (checkWinner(gameObj) !== 0) { // check if battle is over
-      runBattleConclusion(gameObj, setGameObj);
-    } else {
-      runBattleLoop(gameObj, setGameObj);
-    }
-  }, 3000);
+  const winState = checkWinner(gameObj);
+  if (winState !== 0) { // check if battle is over
+    runBattleConclusion(gameObj, setGameObj, (winState === 1) ? "player" : "opponent");
+  } else {
+    runBattleLoop(gameObj, setGameObj);
+  }
 }
 
 /**
@@ -303,6 +302,46 @@ function executeMove(move, attacker, defender) {
   console.log({damageDone});
 
   defender.currentHp = defender.currentHp - damageDone;
+}
+
+/**
+ * Checks if either the player or the opponent's pokemon has fainted, if so, runs the faining script and returns true.
+ * @param {Object} gameObj the game object
+ * @param {function} setGameObj function to update state
+ * @return {boolean} true if pokemon faints, false otherwise
+ */
+async function checkFainted(gameObj, setGameObj) {
+  let hasFainted = false;
+  const playerPkmn = gameObj.player.currentPokemon;
+  const opponentPkmn = gameObj.opponent.currentPokemon;
+
+  if (playerPkmn.isFainted()) {
+    hasFainted = true;
+    runFainting(gameObj, gameObj.player);
+    setGameObj({...gameObj});
+    await new Promise((resolve) => {
+      setTimeout(() => resolve(1), 2000);
+    });
+  }
+  if (opponentPkmn.isFainted()) {
+    hasFainted = true;
+    runFainting(gameObj, gameObj.opponent);
+    setGameObj({...gameObj});
+    await new Promise((resolve) => {
+      setTimeout(() => resolve(1), 2000);
+    });
+  }
+
+  return hasFainted
+}
+
+/**
+ * Run fainting script, displays fainting message, removes fainted pokemon from battle
+ * @param {Object} gameObj game object
+ */
+function runFainting(gameObj, trainer) {
+  gameObj.currentMessage = `${trainer.currentPokemon.name} has fainted!`;
+  trainer.currentPokemon = undefined;
 }
 
 export { startNewSimulation, getMoves };
