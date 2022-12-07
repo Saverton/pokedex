@@ -2,12 +2,21 @@ import Trainer from './Trainer.js';
 import { getPokemonFromIds, getRandomPokemonTeam } from './GameFunctions.js';
 
 class GameObject {
-  constructor(player, opponent) {
+  constructor(player, opponent, setGameObj) {
     this.player = new Trainer(player);
     this.opponent = new Trainer(opponent);
     this.currentMessage = `${this.opponent.name} would like to battle!`;
     this._menuOptions = [];
     this._playerControl = false;
+    this.setGameObject = setGameObj;
+  }
+
+  get menuOptions() {
+    return this._menuOptions;
+  }
+
+  get playerControl() {
+    return this._playerControl;
   }
 
   /**
@@ -29,32 +38,4 @@ class GameObject {
   }
 }
 
-async function startNewSimulation(playerTeam, opponentName) {
-  console.log(playerTeam);
-  // create player trainer
-  const player = {
-    name: "Player",
-    pokemon: [
-      ...playerTeam
-    ]
-  };
-  console.log(player);
-
-  const opponentPokemon = await getPokemonFromIds(getRandomPokemonTeam(player.pokemon.length));
-  // create opponent trainer
-  const opponent = {
-    name: opponentName,
-    pokemon: opponentPokemon
-  };
-  console.log(opponent);
-
-  // construct game object
-  const gameObj = new GameObject(player, opponent);
-  console.log(gameObj);
-  
-  // return game object
-  return gameObj;
-}
-
 export default GameObject;
-export { startNewSimulation };

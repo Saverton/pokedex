@@ -4,7 +4,9 @@ import BattleTextbox from "./BattleTextbox";
 import BattleControls from "./BattleControls";
 import "./BattleSim.css";
 
-function BattleSim({ gameObj }) {
+function BattleSim({ gameObj, setGameObj }) {
+  const { player, opponent } = gameObj;
+
   if (Object.keys(gameObj).length === 0) {
     return <h3>Click Start!</h3>;
   } else {
@@ -12,10 +14,10 @@ function BattleSim({ gameObj }) {
       <div className="battle-sim">
         <div className="battle-scene">
           <div className="opponent pokemon">
-            <BattlePokemon pokemon={gameObj.opponent.pokemon[0]} side="front" />
+            <BattlePokemon pokemon={opponent.currentPokemon} side="front" />
           </div>
           <div className="player pokemon">
-            <BattlePokemon pokemon={gameObj.player.pokemon[0]} side="back" />
+            <BattlePokemon pokemon={player.currentPokemon} side="back" />
           </div>
         </div>
         <div className="battle-ui">
