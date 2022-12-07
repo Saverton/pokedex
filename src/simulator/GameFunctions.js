@@ -292,11 +292,7 @@ async function getMoves(pokemonObj) {
  * @param {Object} defender defending pokemon
  */
 function executeMove(move, attacker, defender) {
-  const lvl = attacker.level;
-  const atk = attacker.stats.attack;
-  const def = defender.stats.defense;
-
-  const { damage, effective } = move.finalDamage(lvl, atk, def, attacker.types, defender.types);
+  const { damage, effective } = move.finalDamage(attacker, defender);
 
   defender.currentHp = defender.currentHp - damage;
 
