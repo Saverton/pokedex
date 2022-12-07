@@ -6,7 +6,7 @@ function BattleControls({ options, setGameObj, gameObj }) {
   );
 
   function handleClick(callback) {
-    setGameObj({...callback()});
+    setGameObj({...callback(setGameObj)});
   }
 
   return (

@@ -80,7 +80,15 @@ function runBattleIntro(gameObj, setGameObj) {
 }
 
 function runBattleLoop(gameObj, setGameObj) {
-  playerActionMenu(gameObj);
+  // opponent choose action
+  if (gameObj.opponent.actionQueue.length === 0)
+    gameObj.opponent.actionQueue = [generateActionObj('opponent move1', () => console.log('opponent move1'))]
+
+  if (gameObj.player.actionQueue.length > 0) {
+    runTrainerActions(gameObj, setGameObj);
+  } else {
+    playerActionMenu(gameObj);
+  }
   setGameObj({...gameObj});
 }
 
@@ -109,29 +117,33 @@ function playerFight(gameObj) {
   const options = [
     {
       name: `move1`,
-      callback: () => { 
-        player.actionQueue = [() => console.log('move1')];
+      callback: (setGameObj) => { 
+        player.actionQueue = [generateActionObj('move1', () => console.log('move1'))];
+        runTrainerActions(gameObj, setGameObj);
         return gameObj;
       }
     },
     {
       name: `move2`,
-      callback: () => { 
-        player.actionQueue = [() => console.log('move2')];
+      callback: (setGameObj) => { 
+        player.actionQueue = [generateActionObj('move2', () => console.log('move2'))];
+        runTrainerActions(gameObj, setGameObj);
         return gameObj;
       }
     },
     {
       name: `move3`,
-      callback: () => { 
-        player.actionQueue = [() => console.log('move3')];
+      callback: (setGameObj) => { 
+        player.actionQueue = [generateActionObj('move3', () => console.log('move3'))];
+        runTrainerActions(gameObj, setGameObj);
         return gameObj;
       }
     },
     {
       name: `move4`,
-      callback: () => { 
-        player.actionQueue = [() => console.log('move4')];
+      callback: (setGameObj) => { 
+        player.actionQueue = [generateActionObj('move4', () => console.log('move4'))];
+        runTrainerActions(gameObj, setGameObj);
         return gameObj;
       }
     },
@@ -237,16 +249,53 @@ function playerActionMenu(gameObj) {
  * Create a callback function for executing a pokemon's move on a target pokemon. The return function will run as a script, managing primary and secondary effects of the move.
  * @param {Object} gameObj game object
  */
-function generatePokemonMoveFunction(pokemon, target, moveName) {
-  const move = pokemon.moveSet[moveName];
-  // display move text in message
+
+/**
+ * Create an action object for a trainer's selected action. The action object has a message and a script that will run.
+ * @param {string} actionName name of the action
+ * @param {function} callback action script
+ */
+function generateActionObj(actionName, callback) {
+  return {
+    message: `${actionName} was used!`,
+    script: callback,
+  };
+}
+
+/**
+ * Run the opponent and player moves as a script.
+ * @param {Object} gameObj game object
+ * @param {function} setGameObj function, updates react state
+ */
+function runTrainerActions(gameObj, setGameObj) {
+  // stop input
+  gameObj.playerControl = false;
+  setGameObj({...gameObj});
+
+  // get move order array, i.e. ['player', 'opponent']
+  const turnOrder = ['player', 'opponent'];
   
-  // execute primary functions
+  // perform the actions in order
+  turnOrder.forEach(
+    // for each action (see Trainer.useTurn()): 
+      // change the current message to the action's message
+      // run the action's script
+    (trainer, idx) => {
+      setTimeout(() => {
+        gameObj[trainer].useTurn(gameObj, setGameObj);
+      }, 1000 + idx * 1000);
+    }
+  );
 
-  // if has secondary effects
-    // display secondary message
-
-    // execute them
+  setTimeout(() => {
+    const randomNum = Math.random();
+    console.log({ randomNum })
+    if (randomNum > 0.8) { // check if battle is over
+      runBattleConclusion(gameObj, setGameObj);
+    } else {
+      runBattleLoop(gameObj, setGameObj);
+    }
+  }, 3000);
 }
 
 export { startNewSimulation };

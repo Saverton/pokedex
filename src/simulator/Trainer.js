@@ -48,9 +48,12 @@ class Trainer {
     return `${this.name}: Return, ${pokemonName}!`;
   }
 
-  useTurn() {
+  useTurn(gameObj, setGameObj) {
     const action = this.actionQueue.shift();
     // perform the current action!
+    gameObj.currentMessage = action.message;
+    action.script(gameObj);
+    setGameObj({...gameObj});
   }
 }
 
