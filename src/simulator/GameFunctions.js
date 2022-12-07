@@ -279,7 +279,7 @@ async function getMoves(pokemonObj) {
 
   for (let i = 0; i < 4; i++) {
     const moveId = Math.floor(Math.random() * 165 + 1);
-    await getMoveById(moveId, (move) => moves.push(move));
+    await getMoveById(moveId, (move) => moves.push(new Move(move)));
   }
 
   pokemonObj.moveSet = moves;
@@ -292,16 +292,23 @@ async function getMoves(pokemonObj) {
  * @param {Object} defender defending pokemon
  */
 function executeMove(move, attacker, defender) {
-  // console.log({ attacker, defender, move });
-  const l = 50;
-  const a = attacker.stats.attack;
-  const d = defender.stats.defense;
-  const p = move.stats.power;
+  const lvl = attacker.level;
+  const atk = attacker.stats.attack;
+  const def = defender.stats.defense;
 
-  const damageDone = Math.min(Math.floor(Math.floor(((Math.floor((l * 2) / 5) + 2) * p * a) / d) / 50), 997) + 2;
-  console.log({damageDone});
+  const { damage, effective } = move.finalDamage(lvl, atk, def, attacker.types, defender.types);
 
-  defender.currentHp = defender.currentHp - damageDone;
+  defender.currentHp = defender.currentHp - damage;
+
+  let msg = '';
+  if (effective.includes('super effective')) {
+    msg = ' It was super effective!';
+  } else if (effective.includes('not very effective')) {
+    msg = ' I was not very effective...';
+  } else if (effective.includes('immune')) {
+    msg = ' The attack missed!';
+  }
+  return msg;
 }
 
 /**

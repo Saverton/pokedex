@@ -5,11 +5,13 @@ import { getMoves } from './GameFunctions';
 class Pokemon {
   constructor(pokemonObj) {
     this.name = pokemonObj.name;
+    this.level = 50;
     this._maxHp = pokemonObj.maxHp;
     this._currentHp = this.maxHp;
     this.moveSet = []
     this.sprites = { ...pokemonObj.sprites };
     this.stats = pokemonObj.stats;
+    this.types = pokemonObj.types;
     getMoves(this);
   }
 

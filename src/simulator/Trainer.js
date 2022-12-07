@@ -52,9 +52,9 @@ class Trainer {
 
   useTurn(gameObj, setGameObj) {
     const action = this.actionQueue.shift();
-    // perform the current action!
-    gameObj.currentMessage = action.message;
-    action.script(gameObj);
+    let msg = action.message;
+    msg += action.script(gameObj);
+    gameObj.currentMessage = msg;
     setGameObj({...gameObj});
   }
 }
