@@ -3303,5 +3303,127 @@
         "speed": 100
       }
     }
+  ],
+  "moves": [
+    {
+      "id": 1,
+      "name": "Absorb",
+      "type": "grass",
+      "stats": {
+        "category": "special",
+        "power": 20,
+        "accuracy": 100,
+        "pp": 25,
+        "effect": "Use recovers half the HP inflicted on opponent."
+      }
+    },
+    {
+      "name": "Acid",
+      "type": "Poison",
+      "stats": {
+        "category": "special",
+        "power": "40",
+        "accuracy": "100",
+        "pp": "30",
+        "effect": "May lower opponent's Special Defense."
+      },
+      "id": 2
+    },
+    {
+      "name": "Acid Armor",
+      "type": "Poison",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "30",
+        "effect": "Sharply raises user's Defense."
+      },
+      "id": 3
+    },
+    {
+      "name": "Agility",
+      "type": "Psychic",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "30",
+        "effect": "Sharply raises user's Speed."
+      },
+      "id": 4
+    },
+    {
+      "name": "Amnesia",
+      "type": "Psychic",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "20",
+        "effect": "Sharply raises user's Special Defense."
+      },
+      "id": 5
+    },
+    {
+      "name": "Aurora Beam",
+      "type": "ice",
+      "stats": {
+        "category": "special",
+        "power": "65",
+        "accuracy": "100",
+        "pp": "20",
+        "effect": "May lower opponent's Attack."
+      },
+      "id": 6
+    },
+    {
+      "name": "Barrage",
+      "type": "norman",
+      "stats": {
+        "category": "physical",
+        "power": "15",
+        "accuracy": "85",
+        "pp": "20",
+        "effect": "Hits 2-5 times in one turn."
+      },
+      "id": 7
+    },
+    {
+      "name": "Barrier",
+      "type": "psychic",
+      "stats": {
+        "category": "status",
+        "power": "",
+        "accuracy": "",
+        "pp": "20",
+        "effect": "Sharply raises user's Defense."
+      },
+      "id": 8
+    },
+    {
+      "name": "Bide",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "",
+        "accuracy": "",
+        "pp": "10",
+        "effect": "User takes damage for two turns then strikes back double."
+      },
+      "id": 9
+    },
+    {
+      "name": "Bind",
+      "type": "normal",
+      "stats": {
+        "category": "physical",
+        "power": "15",
+        "accuracy": "85",
+        "pp": "20",
+        "effect": "Traps opponent, damaging them for 4-5 turns."
+      },
+      "id": 10
+    }
   ]
 }
