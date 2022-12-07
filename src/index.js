@@ -9,6 +9,7 @@ import { deletePokemon } from "./database-scripts/deletePokemon.js";
 import { postTeam } from "./database-scripts/postTeam.js";
 import { deleteTeam } from "./database-scripts/deleteTeam.js";
 
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
