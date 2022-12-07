@@ -105,13 +105,24 @@ class Move {
   }
 
   completelyIneffectiveAgainst() {
-    switch(this.type) {
-      case "normal": return ["ghost"]; break;
-      case "fighting": return ["ghost"]; break;
-      case "ground": return ["flying"]; break;
-      case "ghost": return ["normal", "psychic"]; break;
-      case "electric": return ["ground"]; break;
-      default: return [];
+    switch (this.type) {
+      case "normal":
+        return ["ghost"];
+        break;
+      case "fighting":
+        return ["ghost"];
+        break;
+      case "ground":
+        return ["flying"];
+        break;
+      case "ghost":
+        return ["normal", "psychic"];
+        break;
+      case "electric":
+        return ["ground"];
+        break;
+      default:
+        return [];
     }
   }
 
@@ -185,7 +196,10 @@ class Move {
     });
 
     if (damageObj.effective.length === 0) damageObj.effective.push("normal");
-    if (damageObj.effective.includes("super effective") && damageObj.effective.includes("super effective")) {
+    if (
+      damageObj.effective.includes("super effective") &&
+      damageObj.effective.includes("super effective")
+    ) {
       damageObj.effective = ["normal"];
     }
     return damageObj;
@@ -205,19 +219,27 @@ class Move {
     }
   }
 
-  finalDamage(
-    userLevel,
-    userAttackStat,
-    opponentDefenseStat,
-    userTypes,
-    opponentTypes
-  ) {
-    const base = this.baseDamage(
-      userLevel,
-      userAttackStat,
-      opponentDefenseStat
+  finalDamage(userPkmn, opponentPkmn) {
+    let base;
+
+    if (this._category === "physical") {
+      base = this.baseDamage(
+        userPkmn.level,
+        userPkmn.stats.attack,
+        opponentPkmn.stats.defense
+      );
+    } else {
+      base = this.baseDamage(
+        userPkmn.level,
+        userPkmn.stats.spAttack,
+        opponentPkmn.stats.spDefense
+      );
+    }
+    const modified = this.modifiedDamage(
+      base,
+      userPkmn.types,
+      opponentPkmn.types
     );
-    const modified = this.modifiedDamage(base, userTypes, opponentTypes);
 
     return this.randomFactor(modified);
   }
