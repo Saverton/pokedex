@@ -1,5 +1,6 @@
 import { toBePartiallyChecked } from "@testing-library/jest-dom/dist/matchers";
 import { getPokemonById } from "../database-scripts/getPokemon";
+import { getMoveById } from "../database-scripts/getMove";
 import GameObject from "./GameObject";
 import Trainer from "./Trainer";
 import Move from "./Move";
@@ -82,8 +83,10 @@ function runBattleIntro(gameObj, setGameObj) {
 
 function runBattleLoop(gameObj, setGameObj) {
   // opponent choose action
-  if (gameObj.opponent.actionQueue.length === 0)
-    gameObj.opponent.actionQueue = [generateActionObj('opponent move1', () => console.log('opponent move1'))]
+  if (gameObj.opponent.actionQueue.length === 0) {
+    const opponentMove = gameObj.opponent.currentPokemon.moveSet[Math.floor(Math.random() * 4)];
+    gameObj.opponent.actionQueue = [generateActionObj(gameObj.opponent.currentPokemon, opponentMove.name, () => executeMove(opponentMove, gameObj.opponent.currentPokemon, gameObj.player.currentPokemon))]
+  }
 
   if (gameObj.player.actionQueue.length > 0) {
     runTrainerActions(gameObj, setGameObj);
@@ -115,40 +118,16 @@ function playerFight(gameObj) {
   // console.log("FIGHT CHOSEN")
   const player = gameObj.player;
 
-  const options = [
-    {
-      name: `move1`,
-      callback: (setGameObj) => { 
-        player.actionQueue = [generateActionObj('move1', () => console.log('move1'))];
+  const options = player.currentPokemon.moveSet.map(
+    move => ({
+      name: move.name,
+      callback: (setGameObj) => {
+        player.actionQueue = [generateActionObj(gameObj.player.currentPokemon, move.name, () => executeMove(move, gameObj.player.currentPokemon, gameObj.opponent.currentPokemon))];
         runTrainerActions(gameObj, setGameObj);
         return gameObj;
       }
-    },
-    {
-      name: `move2`,
-      callback: (setGameObj) => { 
-        player.actionQueue = [generateActionObj('move2', () => console.log('move2'))];
-        runTrainerActions(gameObj, setGameObj);
-        return gameObj;
-      }
-    },
-    {
-      name: `move3`,
-      callback: (setGameObj) => { 
-        player.actionQueue = [generateActionObj('move3', () => console.log('move3'))];
-        runTrainerActions(gameObj, setGameObj);
-        return gameObj;
-      }
-    },
-    {
-      name: `move4`,
-      callback: (setGameObj) => { 
-        player.actionQueue = [generateActionObj('move4', () => console.log('move4'))];
-        runTrainerActions(gameObj, setGameObj);
-        return gameObj;
-      }
-    },
-  ];
+    })
+  )
 
   options.push({
     name: "back",
@@ -247,18 +226,13 @@ function playerActionMenu(gameObj) {
 }
 
 /**
- * Create a callback function for executing a pokemon's move on a target pokemon. The return function will run as a script, managing primary and secondary effects of the move.
- * @param {Object} gameObj game object
- */
-
-/**
  * Create an action object for a trainer's selected action. The action object has a message and a script that will run.
  * @param {string} actionName name of the action
  * @param {function} callback action script
  */
-function generateActionObj(actionName, callback) {
+function generateActionObj(pokemon, moveName, callback) {
   return {
-    message: `${actionName} was used!`,
+    message: `${pokemon.name} used ${moveName}!`,
     script: callback,
   };
 }
@@ -289,9 +263,7 @@ function runTrainerActions(gameObj, setGameObj) {
   );
 
   setTimeout(() => {
-    const randomNum = Math.random();
-    console.log({ randomNum })
-    if (randomNum > 0.8) { // check if battle is over
+    if (checkWinner(gameObj) !== 0) { // check if battle is over
       runBattleConclusion(gameObj, setGameObj);
     } else {
       runBattleLoop(gameObj, setGameObj);
@@ -299,4 +271,38 @@ function runTrainerActions(gameObj, setGameObj) {
   }, 3000);
 }
 
-export { startNewSimulation };
+/**
+ * Return an array of 4 move objects, chosen at random from the moves db.
+ * @return {Array} Array of move objects
+ */
+async function getMoves(pokemonObj) {
+  const moves = [];
+
+  for (let i = 0; i < 4; i++) {
+    const moveId = Math.floor(Math.random() * 165 + 1);
+    await getMoveById(moveId, (move) => moves.push(move));
+  }
+
+  pokemonObj.moveSet = moves;
+}
+
+/**
+ * Execute a basic attack, taking pokemon base attack, attack power, and defending pokemon's defense into account for calculation.
+ * @param {Object} move move to attack with
+ * @param {Object} attacker attacking pokemon
+ * @param {Object} defender defending pokemon
+ */
+function executeMove(move, attacker, defender) {
+  // console.log({ attacker, defender, move });
+  const l = 50;
+  const a = attacker.stats.attack;
+  const d = defender.stats.defense;
+  const p = move.stats.power;
+
+  const damageDone = Math.min(Math.floor(Math.floor(((Math.floor((l * 2) / 5) + 2) * p * a) / d) / 50), 997) + 2;
+  console.log({damageDone});
+
+  defender.currentHp = defender.currentHp - damageDone;
+}
+
+export { startNewSimulation, getMoves };
