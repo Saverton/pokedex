@@ -50,12 +50,16 @@ class Trainer {
     return `${this.name}: Return, ${pokemonName}!`;
   }
 
-  useTurn(gameObj, setGameObj) {
+  async useTurn(gameObj, setGameObj) {
     const action = this.actionQueue.shift();
     let msg = action.message;
     msg += action.script(gameObj);
     gameObj.currentMessage = msg;
     setGameObj({...gameObj});
+    // 1 second delay before continuing
+    await new Promise(resolve => {
+      setTimeout(() => resolve(1), 1000);
+    })
   }
 
   getFirstUnfaintedPokemon() {
