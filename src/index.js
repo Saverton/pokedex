@@ -31,7 +31,7 @@ const modifiedDamage = move.modifiedDamage(baseDamage, ["normal", "fighting"], [
 
 console.log()
 console.log(move.finalDamage(100, 50, 20, ["normal", "fighting"], ["dragon"]));
-console.log(move.finalDamage(100, 50, 20, ["normal", "fighting"], ["normal"]));
+console.log(move.finalDamage(100, 50, 20, ["normal", "fighting"], ["normal", "psychic"]));
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

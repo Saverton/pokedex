@@ -185,6 +185,9 @@ class Move {
     });
 
     if (damageObj.effective.length === 0) damageObj.effective.push("normal");
+    if (damageObj.effective.includes("super effective") && damageObj.effective.includes("super effective")) {
+      damageObj.effective = ["normal"];
+    }
     return damageObj;
   }
 
