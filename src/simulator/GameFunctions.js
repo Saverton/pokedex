@@ -64,17 +64,9 @@ async function startNewSimulation(playerTeam, opponentName, setGameObj) {
   return gameObj;
 }
 
-function runBattleIntro(gameObj, setGameObj) {
-  setTimeout(() => {
-    // console.log('battle begins!');
-    sendOutFirstOpponentPokemon(gameObj);
-    setGameObj({...gameObj});
-  }, 1000);
-
-  setTimeout(() => {
-    sendOutFirstPlayerPokemon(gameObj);
-    setGameObj({...gameObj});
-  }, 1000);
+async function runBattleIntro(gameObj, setGameObj) {
+  sendOutPokemon(gameObj, 'opponent', 0, setGameObj);
+  sendOutPokemon(gameObj, 'player', 0, setGameObj);
 
   setTimeout(() => {
     runBattleLoop(gameObj, setGameObj);
@@ -83,7 +75,10 @@ function runBattleIntro(gameObj, setGameObj) {
 
 function runBattleLoop(gameObj, setGameObj) {
   const { player, opponent } = gameObj;
-  // if ()
+  if (player.currentPokemon === undefined || opponent.currentPokemon === undefined) {
+    sendOutPokemon(gameObj, 'opponent', opponent.getFirstUnfaintedPokemon(), setGameObj);
+    sendOutPokemon(gameObj, 'player', player.getFirstUnfaintedPokemon(), setGameObj);
+  }
   // opponent choose action
   if (gameObj.opponent.actionQueue.length === 0) {
     const opponentMove = gameObj.opponent.currentPokemon.moveSet[Math.floor(Math.random() * 4)];
@@ -103,12 +98,14 @@ function runBattleConclusion(gameObj, setGameObj, winner) {
   setGameObj({...gameObj});
 }
 
-function sendOutFirstOpponentPokemon(gameObj) {
-  gameObj.currentMessage = gameObj.opponent.sendOutPokemon(0);
-}
-
-function sendOutFirstPlayerPokemon(gameObj) {
-  gameObj.currentMessage = gameObj.player.sendOutPokemon(0);
+async function sendOutPokemon(gameObj, trainer, index, setGameObj) {
+  if (gameObj[trainer].currentPokemon === undefined || gameObj[trainer].currentPokemon !== gameObj[trainer].pokemon[index]) {
+    gameObj.currentMessage = gameObj[trainer].sendOutPokemon(index);
+    setGameObj({...gameObj});
+    await new Promise(resolve => {
+      setTimeout(() => resolve(1), 2000);
+    })
+  }
 }
 
 /**

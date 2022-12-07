@@ -57,6 +57,15 @@ class Trainer {
     gameObj.currentMessage = msg;
     setGameObj({...gameObj});
   }
+
+  getFirstUnfaintedPokemon() {
+    for (let i = 0; i < this.pokemon.length; i++) {
+      if (!this.pokemon[i].isFainted()) {
+        return i;
+      }
+    }
+    return -1;
+  }
 }
 
 export default Trainer;
