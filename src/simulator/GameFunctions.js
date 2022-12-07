@@ -2,6 +2,7 @@ import { toBePartiallyChecked } from "@testing-library/jest-dom/dist/matchers";
 import { getPokemonById } from "../database-scripts/getPokemon";
 import GameObject from "./GameObject";
 import Trainer from "./Trainer";
+import Move from "./Move";
 
 function getRandomPokemonTeam(size) {
   const team = [];

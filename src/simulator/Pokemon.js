@@ -1,11 +1,10 @@
-
 class Pokemon {
   constructor(pokemonObj) {
     this.name = pokemonObj.name;
     this._maxHp = pokemonObj.maxHp || 50;
     this._currentHp = this.maxHp;
     this.moveSet = !!pokemonObj.moves ? [...pokemonObj.moves] : []; // need to convert to array
-    this.sprites = {...pokemonObj.sprites};
+    this.sprites = { ...pokemonObj.sprites };
     // console.log(this);
   }
 
@@ -17,7 +16,7 @@ class Pokemon {
     if (hp < 0) {
       this._currentHp = 0;
     } else if (hp > this.maxHp) {
-      this._currentHp = this._maxHp
+      this._currentHp = this._maxHp;
     } else {
       this._currentHp = hp;
     }
