@@ -11,50 +11,108 @@ class Move {
   }
 
   strongAgainst() {
-    if (this.type === "normal") return [];
-    if (this.type === "fighting") return ["normal", "rock", "ice"];
-    if (this.type === "flying") return ["fighting", "bug", "grass"];
-    if (this.type === "poison") return ["bug", "grass"];
-    if (this.type === "ground") return ["poison", "rock", "fire", "electric"];
-    if (this.type === "rock") return ["flying", "bug", "fire", "ice"];
-    if (this.type === "bug") return ["poison", "grass", "psychic"];
-    if (this.type === "ghost") return ["ghost"];
-    if (this.type === "fire") return ["bug", "grass", "ice"];
-    if (this.type === "water") return ["ground", "rock", "fire"];
-    if (this.type === "grass") return ["ground", "rock", "water"];
-    if (this.type === "electric") return ["flying", "water"];
-    if (this.type === "psychic") return ["fighting", "poison"];
-    if (this.type === "ice") return ["flying", "ground", "grass", "dragon"];
-    if (this.type === "dragon") return ["dragon"];
+    switch (this.type) {
+      case "fighting":
+        return ["normal", "rock", "ice"];
+        break;
+      case "flying":
+        return ["fighting", "bug", "grass"];
+        break;
+      case "poison":
+        return ["bug", "grass"];
+        break;
+      case "ground":
+        return ["poison", "rock", "fire", "electric"];
+        break;
+      case "rock":
+        return ["flying", "bug", "fire", "ice"];
+        break;
+      case "bug":
+        return ["poison", "grass", "psychic"];
+        break;
+      case "ghost":
+        return ["ghost"];
+        break;
+      case "fire":
+        return ["bug", "grass", "ice"];
+        break;
+      case "water":
+        return ["ground", "rock", "fire"];
+        break;
+      case "grass":
+        return ["ground", "rock", "water"];
+        break;
+      case "electric":
+        return ["flying", "water"];
+        break;
+      case "psychic":
+        return ["fighting", "poison"];
+        break;
+      case "ice":
+        return ["flying", "ground", "grass", "dragon"];
+        break;
+      case "dragon":
+        return ["dragon"];
+        break;
+      default:
+        return [];
+    }
   }
 
   weakAgainst() {
-    if (this.type === "normal") return ["rock"];
-    if (this.type === "fighting") return ["flying", "poison", "bug", "psychic"];
-    if (this.type === "flying") return ["rock", "electric"];
-    if (this.type === "poison") return ["poison", "ground", "rock", "ghost"];
-    if (this.type === "ground") return ["bug", "grass"];
-    if (this.type === "rock") return ["fighting", "ground"];
-    if (this.type === "bug") return ["fighting", "flying", "ghost", "fire"];
-    if (this.type === "ghost") return [];
-    if (this.type === "fire") return ["rock", "fire", "water", "dragon"];
-    if (this.type === "water") return ["water", "grass", "dragon"];
-    if (this.type === "grass")
-      return ["flying", "poison", "bug", "fire", "grass", "dragon"];
-    if (this.type === "electric") return ["grass", "electric", "dragon"];
-    if (this.type === "psychic") return ["psychic"];
-    if (this.type === "ice") return ["water", "ice"];
-    if (this.type === "dragon") return [];
+    switch (this.type) {
+      case "normal":
+        return ["rock"];
+        break;
+      case "fighting":
+        return ["flying", "poison", "bug", "psychic"];
+        break;
+      case "flying":
+        return ["rock", "electric"];
+        break;
+      case "poison":
+        return ["poison", "ground", "rock", "ghost"];
+        break;
+      case "ground":
+        return ["bug", "grass"];
+        break;
+      case "rock":
+        return ["fighting", "ground"];
+        break;
+      case "bug":
+        return ["fighting", "flying", "ghost", "fire"];
+        break;
+      case "fire":
+        return ["rock", "fire", "water", "dragon"];
+      case "water":
+        return ["water", "grass", "dragon"];
+        break;
+      case "grass":
+        return ["flying", "poison", "bug", "fire", "grass", "dragon"];
+        break;
+      case "electric":
+        return ["grass", "electric", "dragon"];
+        break;
+      case "psychic":
+        return ["psychic"];
+        break;
+      case "ice":
+        return ["water", "ice"];
+        break;
+      default:
+        return [];
+    }
   }
 
   completelyIneffectiveAgainst() {
-    if (this.type === "normal") return ["ghost"];
-    if (this.type === "fighting") return ["ghost"];
-    if (this.type === "ground") return ["flying"];
-    if (this.type === "ghost") return ["normal", "psychic"];
-    if (this.type === "electric") return ["ground"];
-
-    return [];
+    switch(this.type) {
+      case "normal": return ["ghost"]; break;
+      case "fighting": return ["ghost"]; break;
+      case "ground": return ["flying"]; break;
+      case "ghost": return ["normal", "psychic"]; break;
+      case "electric": return ["ground"]; break;
+      default: return [];
+    }
   }
 
   decrementPP() {
@@ -99,27 +157,51 @@ class Move {
   modifiedDamage(baseDamage, userTypes, defenderTypes) {
     let modifiedDamage = baseDamage;
 
+    const damageObj = {
+      damage: modifiedDamage,
+      effective: [],
+    };
+
     userTypes.forEach((type) => {
-      if (type === this.type) modifiedDamage += Math.floor(baseDamage / 2);
+      if (type === this.type) damageObj.damage += Math.floor(baseDamage / 2);
     });
 
     defenderTypes.forEach((type) => {
-      if (this.completelyIneffectiveAgainst().includes(type)) return 0;
+      if (this.completelyIneffectiveAgainst().includes(type))
+        return {
+          damage: 0,
+          effective: ["immune"],
+        };
 
-      if (this.strongAgainst().includes(type))
-        modifiedDamage = Math.floor((modifiedDamage * 20) / 10);
-      else if (this.weakAgainst().includes(type))
-        modifiedDamage = Math.floor((modifiedDamage * 5) / 10);
-      else modifiedDamage = Math.floor((modifiedDamage * 10) / 10);
+      if (this.strongAgainst().includes(type)) {
+        damageObj.damage = Math.floor((damageObj.damage * 20) / 10);
+        damageObj.effective.push("super effective");
+      } else if (this.weakAgainst().includes(type)) {
+        damageObj.damage = Math.floor((damageObj.damage * 5) / 10);
+        damageObj.effective.push("not very effective");
+      } else {
+        damageObj.damage = Math.floor((damageObj.damage * 10) / 10);
+      }
     });
 
-    return modifiedDamage;
+    if (damageObj.effective.length === 0) damageObj.effective.push("normal");
+    if (damageObj.effective.includes("super effective") && damageObj.effective.includes("super effective")) {
+      damageObj.effective = ["normal"];
+    }
+    return damageObj;
   }
 
   randomFactor(modifiedDamage) {
-    if (modifiedDamage === 1) return 1;
+    if (modifiedDamage.damage === 1) return 1;
     else {
-      return Math.floor((modifiedDamage * (Math.floor(Math.random() * (255 - 217)) + 217)) / 255);
+      return {
+        damage: Math.floor(
+          (modifiedDamage.damage *
+            (Math.floor(Math.random() * (255 - 217)) + 217)) /
+            255
+        ),
+        effective: modifiedDamage.effective,
+      };
     }
   }
 
@@ -137,17 +219,7 @@ class Move {
     );
     const modified = this.modifiedDamage(base, userTypes, opponentTypes);
 
-    const effective = () => {
-      if (Math.floor((base * 10) / 10) === modified) return "normal";
-      else if (Math.floor((base * 10) / 10) > modified)
-        return "not very effective";
-      else return "super effective";
-    };
-
-    return {
-      damage: this.randomFactor(modified),
-      effectiveness: effective(),
-    };
+    return this.randomFactor(modified);
   }
 
   moveLength() {
