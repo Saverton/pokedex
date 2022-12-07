@@ -23,6 +23,8 @@ class Trainer {
   set currentPokemon(pokemonIndex) {
     if (pokemonIndex >= 0 && pokemonIndex < this.pokemon.length && !this.pokemon[pokemonIndex].isFainted())
       this._currentPokemon = this.pokemon[pokemonIndex];
+    else 
+      this._currentPokemon = undefined;
   }
 
   get currentPokemon() {

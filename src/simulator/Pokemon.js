@@ -1,13 +1,16 @@
-import Move from "./Move";
+
+import { ThemeConsumer } from 'styled-components';
+import { getMoves } from './GameFunctions';
 
 class Pokemon {
   constructor(pokemonObj) {
     this.name = pokemonObj.name;
-    this._maxHp = pokemonObj.maxHp || 50;
+    this._maxHp = pokemonObj.maxHp;
     this._currentHp = this.maxHp;
-    this.moveSet = !!pokemonObj.moves ? [...pokemonObj.moves] : []; // need to convert to array
+    this.moveSet = []
     this.sprites = { ...pokemonObj.sprites };
-    // console.log(this);
+    this.stats = pokemonObj.stats;
+    getMoves(this);
   }
 
   isFainted() {
