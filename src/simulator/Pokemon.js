@@ -4,7 +4,7 @@ class Pokemon {
     this.name = pokemonObj.name;
     this._maxHp = pokemonObj.maxHp || 50;
     this._currentHp = this.maxHp;
-    this.moveSet = !!pokemonObj.moves ? [...pokemonObj.moves] : [];
+    this.moveSet = !!pokemonObj.moves ? [...pokemonObj.moves] : []; // need to convert to array
     this.sprites = {...pokemonObj.sprites};
     // console.log(this);
   }
