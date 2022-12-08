@@ -1,32 +1,6 @@
 import { ThemeConsumer } from "styled-components";
 import { getMoves } from "./GameFunctions";
 
-//  9,
-//         13,
-//         26,
-//         34,
-//         33,
-//         53,
-//         54,
-//         73,
-//         80,
-//         84,
-//         94,
-//         101,
-//         102,
-//         105,
-//         106,
-//         122,
-//         127,
-//         138,
-//         143,
-//         144,
-//         146,
-//         154,
-//         158
-
-
-
 class Pokemon {
   constructor(pokemonObj) {
     this.name = pokemonObj.name;
