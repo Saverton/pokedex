@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 body {
   margin: 0;
+  
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -11,3 +14,192 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+header{
+  font-family: "Quicksand";
+  font-size: larger;
+  color: #e17165;
+  
+  text-align: center;
+  padding: 15px;
+  display: grid;
+  align-items:flex-end;
+  max-width: 40rem;
+  margin: auto;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+#navlinks {
+  padding-left: 0;
+}
+.links a {
+  color: rgb(255, 255, 255);
+  font-size: large;
+  font-weight: 610;
+  margin-right: 16px;
+  padding: 6px;
+  text-decoration: none;
+}
+body {
+  background-image:
+  url("https://www.wallpaperflare.com/static/905/635/699/pok%C3%A9mon-video-games-retro-games-pokemon-wallpaper.jpg");
+}
+.pokeball {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background: #fff;
+  border: 10px solid #000;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: inset -10px 10px 0 10px #ccc;
+  animation: fall .25s ease-in-out,
+             shake 1.25s cubic-bezier(.36,.07,.19,.97) 3;
+}
+.pokeball::before,
+.pokeball::after {
+  content:"";
+  position: absolute;
+}
+.pokeball::before {
+  background: red;
+  width: 100%;
+  height: 50%;
+}
+.pokeball::after {
+  top: calc(50% - 10px);
+  width: 100%;
+  height: 20px;
+  background: #000;
+}
+.pokeball__button {
+  position: absolute;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  width: 60px;
+  height: 60px;
+  background: red;
+  border: 10px solid #fff;
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 0 0 10px black;
+  animation: blink .5s alternate 7;
+}
+  .pokeball__button {
+    color: rgb(194, 201, 201);
+    transition: color 0.4s;
+    text-decoration: none;
+  }
+  
+  .pokeball__button:hover::after{
+    color: transparent;
+  }
+  
+/* Animation */
+
+@keyframes blink {
+  from { background: #eee;}
+  to { background: #e0301c; }
+}
+@keyframes shake {
+  0 { transform: translate(0, 0) rotate(0); }
+  20% { transform: translate(-10px, 0) rotate(-20deg); }
+  30% { transform: translate(10px, 0) rotate(20deg); }
+  50% { transform: translate(-10px, 0) rotate(-10deg); }
+  60% { transform: translate(10px, 0) rotate(10deg); }
+  100% { transform: translate(0, 0) rotate(0); }
+}
+@keyframes fall {
+  0% { top: -200px }
+  60% { top: 0 }
+  80% { top: -20px }
+  100% { top: 0 }
+}
+
+ul{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #d2cd46;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+h3 {
+  text-align: center;
+  font-size: large;
+  color: #e2dc3a;
+}
+
+/* .addToTeamBtn{
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: #fff;
+  border: 5px solid #000;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: inset -10px 10px 0 10px #ccc;
+  animation: shake 1.25s cubic-bezier(.36,.07,.19,.97) infinite;
+  animation-play-state: paused;
+} */
+
+/* .addToTeamBtn {
+  overflow: visible | hidden | scroll | auto | inherit
+}
+
+.addToTeamBtn:hover{
+  animation-play-state: running;
+  }
+   */
+  /* @keyframes shake {
+  0 { transform: translate(0, 0) rotate(0); }
+  20% { transform: translate(-10px, 0) rotate(-20deg); }
+  30% { transform: translate(10px, 0) rotate(20deg); }
+  50% { transform: translate(-10px, 0) rotate(-10deg); }
+  60% { transform: translate(10px, 0) rotate(10deg); }
+  100% { transform: translate(0, 0) rotate(0); }
+  } */
+
+/* .addToTeamBtn::before,
+.pokeball::after {
+content:"";
+position: absolute;
+} */
+
+/* .addToTeamBtn::before {
+background: red;
+width: 100%;
+height: 50%;
+}
+
+.addToTeamBtn::after {
+top: calc(50% - 5px);
+width: 100%;
+height: 10px;
+background: #000;
+}
+
+.addToTeamBtn {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 4px solid #7f8c8d;
+  border-radius: 50%;
+  top: calc(50% - 15px);
+  left: calc(50% - 15px);
+  box-shadow: 0 0 0 7px black;
+  background: #fff;
+  z-index: 10;
+  animation: blink .5s alternate infinite;
+  animation-play-state: paused;
+  }
+  
+  .addToTeamBtn:hover .addToTeamBtn{
+  animation-play-state: running;
+  }
+  
+  @keyframes blink {
+  from { background: #eee;}
+  to { background: #e74c3c; }
+  } */

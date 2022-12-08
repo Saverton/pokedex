@@ -25,12 +25,38 @@ function Pokedex({ currentTeam, setCurrentTeam }) {
     }
   }
 
+function generateRandomTeam() {
+  let count = 0;
+  let newArray = []
+  while(count <6){
+    count++
+    let randNum = Math.floor(Math.random() * 151) + 1
+    let findPokemon = pokemon.find((poke)=> poke.id === randNum)
+    newArray.push(findPokemon)
+  }
+  setCurrentTeam(newArray)
+}
+
+// function getPokemonFromIds () {
+//   let newArray = 
+// }
+
   function removePokemonFromTeam(pokemonTeamIndex) {
     setCurrentTeam(currentTeam.filter((_, idx) => idx !== pokemonTeamIndex));
   }
 
   return (
-    <main>
+    <main
+    className="p-3"
+    style={{backgroundColor: `#1F121184`}}
+    >
+      <div class="center-on-page">
+  
+  <div class="pokeball">
+      <button className='pokeball__button' onClick={generateRandomTeam}>🔀</button>
+  </div>
+  
+</div>
       <TeamForm currentTeam={currentTeam} onRemove={removePokemonFromTeam} />
       <PokemonList pokemon={pokemon} onAddToTeam={addPokemonToTeam} />
     </main>

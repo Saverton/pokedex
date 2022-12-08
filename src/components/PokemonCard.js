@@ -15,7 +15,7 @@ function PokemonCard({ pokemon, onAddToTeam }) {
     <CardContent>
       <CardHeader>
         <h2>#{pokemon.id}</h2>
-        <Button onClick={handleAddToTeamClick}>Add to Team</Button>
+        <Button className="addToTeamBtn" onClick={handleAddToTeamClick}>Add to Team</Button>
       </CardHeader>
       <h2>{pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}</h2>
       <p>{"Height: " + pokemon.height}</p>
