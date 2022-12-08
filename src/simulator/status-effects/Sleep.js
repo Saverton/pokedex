@@ -5,6 +5,10 @@ class Sleep extends StatusEffect {
     super(type, pkmn);
     this._duration = Math.floor(Math.random * (7 - 1)) + 1;
   }
+
+  runStatChanges() {
+    this.pkmn.canAttack = false;
+  }
 }
 
 export default Sleep;

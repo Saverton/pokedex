@@ -6,7 +6,7 @@ class Paralyze extends StatusEffect {
     this._duration = Number.MAX_VALUE;
   }
 
-  runSideEffect() {
+  runStatChanges() {
     let pkmnStats = {...this._pkmn.stats};
     pkmnStats.speed = Math.floor(pkmnStats.attack * .25);
     this._pkmn.stats = pkmnStats;
@@ -21,7 +21,9 @@ class Paralyze extends StatusEffect {
       default:
         this._pkmn.canAttack = true;
     }
+  }
 
+  runSideEffect() {
     this._turn++;
   }
 }

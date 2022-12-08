@@ -6,11 +6,13 @@ class Burn extends StatusEffect {
     this._duration = Number.MAX_VALUE;
   }
 
-  runSideEffect() {
+  runStatChanges() {
     let pkmnStats = {...this._pkmn.stats};
     pkmnStats.attack = pkmnStats.attack / 2;
     this._pkmn.stats = pkmnStats;
+  }
 
+  runSideEffect() {
     let newHp = this._pkmn.currentHp;
     newHp -= Math.floor(newHp / 16);
     this._pkmn.currentHp = newHp;

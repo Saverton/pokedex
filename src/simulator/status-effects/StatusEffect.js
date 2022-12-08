@@ -4,15 +4,17 @@ class StatusEffect {
   constructor(type, pkmn) {
     this._name = type;
     this._pkmn = pkmn;
-    this._turn = 0;
+    this._turn = 1;
   }
 
   incrementTurn() {
     this._turn++;
   }
 
+  runStatChanges() {}
+
   runSideEffect() {
-    return "default status effect does nothing";
+    this._turn++;
   }
 }
 
