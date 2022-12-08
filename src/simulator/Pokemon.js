@@ -1,6 +1,32 @@
 import { ThemeConsumer } from "styled-components";
 import { getMoves } from "./GameFunctions";
 
+//  9,
+//         13,
+//         26,
+//         34,
+//         33,
+//         53,
+//         54,
+//         73,
+//         80,
+//         84,
+//         94,
+//         101,
+//         102,
+//         105,
+//         106,
+//         122,
+//         127,
+//         138,
+//         143,
+//         144,
+//         146,
+//         154,
+//         158
+
+
+
 class Pokemon {
   constructor(pokemonObj) {
     this.name = pokemonObj.name;
@@ -18,6 +44,8 @@ class Pokemon {
       spAttack: 0,
       spDefense: 0,
       speed: 0,
+      accuracy: 0,
+      evasiveness: 0
     };
     this._baseStats = pokemonObj.stats;
     this._stats = this.calculateCurrentStats();
@@ -113,6 +141,21 @@ class Pokemon {
     this._adjustedStats.spAttack += spAttack;
     this._adjustedStats.spDefense += spDefense;
     this._adjustedStats.speed += speed;
+  }
+
+  /**
+   * Sets a specific adjusted stat, prevents stat from passing max/min val and returns boolean on success.
+   * @param {string} name 
+   * @param {number} value 
+   * @returns boolean (success?)
+   */
+  setAdjustedStat(name, value) {
+    if (Math.abs(this._adjustedStats[name]) === 6) {
+      return false;
+    } else {
+      this._adjustedStats[name] = value;
+      return true;
+    }
   }
 
   getSpeed(action) {
