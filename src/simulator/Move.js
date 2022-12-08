@@ -101,30 +101,40 @@ class Move {
   }
 
   isAttack() {
-    return !(this.category === "status");
+    return !(this._category === "status");
   }
 
   target() {
-    if (this.accuracy === "") return "opponent";
+    if (this._accuracy === "") return "opponent";
     else return "self";
   }
 
   priority() {
-    if (this.name === "Quick Attack") {
+    if (this._name === "Quick Attack") {
       return 1;
-    } else if (this.name === "Counter") {
+    } else if (this._name === "Counter") {
       return -1;
     }
 
     return 0;
   }
 
+  hasFixedDamage() {
+    if (this._power === "") return true;
+
+    return false;
+  }
+
   baseDamage(level, attackStat, opponentDefenseStat) {
     if (!this.isAttack()) return 0;
 
+    if (this._name === "Dragon Rage") return 40;
+    if (this._name === "Night Shade" || this._name === "Seismic Toss")
+      return this._level;
+
     let baseDamage = Math.floor(
       Math.floor(
-        ((Math.floor((level * 2) / 5) + 2) * (this.power * attackStat)) /
+        ((Math.floor((level * 2) / 5) + 2) * (this._power * attackStat)) /
           opponentDefenseStat /
           50
       )
@@ -138,7 +148,7 @@ class Move {
   modifiedDamage(baseDamage, userTypes, defenderTypes) {
     if (!this.isAttack()) {
       return {
-        damage: 0,
+        damage: baseDamage,
         effective: "status move",
       };
     }
@@ -151,7 +161,8 @@ class Move {
     };
 
     userTypes.forEach((type) => {
-      if (type === this.type) damageObj.damage += Math.floor(baseDamage / 2);
+      if (type === this._type && !this.hasFixedDamage())
+        damageObj.damage += Math.floor(baseDamage / 2);
     });
 
     defenderTypes.forEach((type) => {
@@ -161,14 +172,16 @@ class Move {
           effective: ["immune"],
         };
 
-      if (this.strongAgainst().includes(type)) {
-        damageObj.damage = Math.floor((damageObj.damage * 20) / 10);
-        damageObj.effective.push("super effective");
-      } else if (this.weakAgainst().includes(type)) {
-        damageObj.damage = Math.floor((damageObj.damage * 5) / 10);
-        damageObj.effective.push("not very effective");
-      } else {
-        damageObj.damage = Math.floor((damageObj.damage * 10) / 10);
+      if (!this.hasFixedDamage()) {
+        if (this.strongAgainst().includes(type)) {
+          damageObj.damage = Math.floor((damageObj.damage * 20) / 10);
+          damageObj.effective.push("super effective");
+        } else if (this.weakAgainst().includes(type)) {
+          damageObj.damage = Math.floor((damageObj.damage * 5) / 10);
+          damageObj.effective.push("not very effective");
+        } else {
+          damageObj.damage = Math.floor((damageObj.damage * 10) / 10);
+        }
       }
     });
 
@@ -183,46 +196,23 @@ class Move {
   }
 
   randomFactor(modifiedDamage) {
-    if (!this.isAttack()) {
-      return {
-        damage: 0,
-        effective: "status move",
-      };
+    if (!this.isAttack() || !this.hasFixedDamage()) {
+      if (modifiedDamage.damage === 1) return 1;
+      else {
+        return {
+          damage: Math.floor(
+            (modifiedDamage.damage *
+              (Math.floor(Math.random() * (255 - 217)) + 217)) /
+              255
+          ),
+          effective: modifiedDamage.effective,
+        };
+      }
     }
-
-    if (modifiedDamage.damage === 1) return 1;
-    else {
-      return {
-        damage: Math.floor(
-          (modifiedDamage.damage *
-            (Math.floor(Math.random() * (255 - 217)) + 217)) /
-            255
-        ),
-        effective: modifiedDamage.effective,
-      };
-    }
+    return modifiedDamage;
   }
 
   finalDamage(userPkmn, opponentPkmn) {
-    if (!this.isAttack()) {
-      return {
-        damage: 0,
-        effective: "status move",
-      };
-    }
-    if (this._name === "Night Shade") {
-      return {
-        damage: parseInt(userPkmn.level),
-        effective: "normal",
-      };
-    }
-    if (this._name === "Dragon Rage") {
-      return {
-        damage: 40,
-        effective: "normal",
-      };
-    }
-
     let base;
 
     // use physical attack/defense if physical move, else use special attack/defense
@@ -249,14 +239,14 @@ class Move {
   }
 
   moveLength() {
-    if (this.name === "Bide") return 3;
+    if (this._name === "Bide") return 3;
     else if (
-      this.name === "Fly" ||
-      this.name === "Dig" ||
-      this.name === "Skull Bash" ||
-      this.name === "Sky Attack" ||
-      this.name === "Solar Beam" ||
-      this.name === "Counter"
+      this._name === "Fly" ||
+      this._name === "Dig" ||
+      this._name === "Skull Bash" ||
+      this._name === "Sky Attack" ||
+      this._name === "Solar Beam" ||
+      this._name === "Counter"
     )
       return 2;
     else return 1;
