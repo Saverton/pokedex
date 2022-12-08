@@ -56,6 +56,16 @@ class Pokemon {
     this._adjustedStats.speed += speed;
   }
 
+  getSpeed(action) {
+    const priorityActions = ['switch', 'item']
+    if (priorityActions.includes(action.type) || action.name === 'Quick Attack') {
+      return 1000;
+    }
+    else {
+      return this.stats.speed;
+    }
+  }
+
   set currentHp(hp) {
     if (hp < 0) {
       this._currentHp = 0;
