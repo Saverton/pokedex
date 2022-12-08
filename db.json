@@ -175,29 +175,7 @@
         "speed": 45
       },
       "possibleMoves": [
-        9,
-        13,
-        26,
-        34,
-        33,
-        53,
-        54,
-        73,
-        80,
-        84,
-        94,
-        101,
-        102,
-        105,
-        106,
-        122,
-        127,
-        138,
-        143,
-        144,
-        146,
-        154,
-        158
+        2
       ]
     },
     {
@@ -7653,7 +7631,7 @@
         "power": 20,
         "accuracy": 100,
         "pp": 25,
-        "effect": "Use recovers half the HP inflicted on opponent."
+        "effect": "User recovers half the HP inflicted on opponent."
       }
     },
     {
@@ -7666,7 +7644,14 @@
         "pp": "30",
         "effect": "May lower opponent's Special Defense."
       },
-      "id": 2
+      "id": 2,
+      "sideEffects": [
+        {
+          "chance": 1,
+          "effect": "other-stat-spDefense",
+          "value": -1
+        }
+      ]
     },
     {
       "name": "Acid Armor",

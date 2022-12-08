@@ -3,7 +3,7 @@ import { getPokemonById } from "../database-scripts/getPokemon";
 import { getMoveById } from "../database-scripts/getMove";
 import GameObject from "./GameObject";
 import Trainer from "./Trainer";
-import Action from './Action';
+import Action, { getActionFromPokemonSwitch } from './Action';
 import Move from "./Move";
 
 function getRandomPokemonTeam(size) {
@@ -104,23 +104,13 @@ async function runBattleLoop(gameObj, setGameObj) {
       });
     }
     await sendOutPokemon(gameObj, "opponent", opponentNext, setGameObj);
-    // await sendOutPokemon(gameObj, 'player', player.getFirstUnfaintedPokemon(), setGameObj);
   }
   // opponent choose action
   if (gameObj.opponent.actionQueue.length === 0) {
     const opponentMove =
       gameObj.opponent.currentPokemon.moveSet[Math.floor(Math.random() * 4)];
     gameObj.opponent.actionQueue = [
-      generateActionObjFromMove(
-        gameObj.opponent.currentPokemon,
-        opponentMove.name,
-        () =>
-          executeMove(
-            opponentMove,
-            gameObj.opponent.currentPokemon,
-            gameObj.player.currentPokemon
-          )
-      ),
+      ...opponentMove.getMoveActions(gameObj.opponent.currentPokemon, gameObj.player.currentPokemon)
     ];
   }
 
@@ -138,6 +128,7 @@ function runBattleConclusion(gameObj, setGameObj, winner) {
 }
 
 async function sendOutPokemon(gameObj, trainer, index, setGameObj) {
+  console.log('sending out pokemon!');
   if (
     gameObj[trainer].currentPokemon &&
     gameObj[trainer].currentPokemon !== gameObj[trainer].pokemon[index]
@@ -153,7 +144,7 @@ async function sendOutPokemon(gameObj, trainer, index, setGameObj) {
     gameObj.playerControl = false;
     setGameObj({ ...gameObj });
     await new Promise((resolve) => {
-      setTimeout(() => resolve(1), 2000);
+      setTimeout(() => resolve(1), 1500);
     });
   }
 }
@@ -185,13 +176,7 @@ function playerFight(gameObj, setGameObj) {
     name: <>{move.name} <br/> {"PP: " + move.currentPP} <br/>  {move.type}</>,
     callback: (setGameObj) => {
       player.actionQueue = [
-        // ...generateActionObjFromMove(gameObj.player.currentPokemon, move.name, () =>
-        //   executeMove(
-        //     move,
-        //     gameObj.player.currentPokemon,
-        //     gameObj.opponent.currentPokemon
-        //   )
-        // ),
+        ...move.getMoveActions(player.currentPokemon, gameObj.opponent.currentPokemon)
       ];
       runTrainerActions(gameObj, setGameObj);
       return gameObj;
@@ -227,12 +212,17 @@ function playerPokemon(gameObj, setGameObj, showBackOption = true) {
   const options = gameObj.player.pokemon.map((pkmn, idx) => ({
     name: pkmn.name,
     callback: () => {
-      gameObj.player.actionQueue.push(generateActionObjFromPokemonSwitch(() => sendOutPokemon(gameObj, "player", idx, setGameObj)));
+      gameObj.player.actionQueue.push(getActionFromPokemonSwitch(
+        async () => {
+          await sendOutPokemon(gameObj, "player", idx, setGameObj);
+        },
+        gameObj, setGameObj, idx
+      )); 
       runTrainerActions(gameObj, setGameObj);
       gameObj.playerControl = false;
       return gameObj;
     }, // add the pokemon switch method to the trainer's action queue
-    disabled: pkmn.isFainted(),
+    disabled: pkmn.isFainted() || pkmn === gameObj.player.currentPokemon,
   }));
 
   if (showBackOption) {
@@ -496,4 +486,16 @@ function getTurnOrder(player, opponent) {
   }
 }
 
-export { startNewSimulation, getMoves };
+/**
+ * Returns true if any of the current pokemon are fainted, ignores pokemon if none are out at the time.
+ * @param {gameObj}
+ * @return {boolean} true if any are fainted
+ */
+function checkForFaintedPokemon(gameObj) {
+  return (
+    (gameObj.player.currentPokemon && gameObj.player.currentPokemon.isFainted()) ||
+    (gameObj.opponent.currentPokemon && gameObj.opponent.currentPokemon.isFainted())
+  );
+}
+
+export { startNewSimulation, getMoves, checkForFaintedPokemon };

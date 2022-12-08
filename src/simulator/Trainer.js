@@ -1,3 +1,4 @@
+import { checkForFaintedPokemon } from "./GameFunctions";
 import Pokemon from "./Pokemon";
 
 class Trainer {
@@ -53,14 +54,12 @@ class Trainer {
 
   async useTurn(gameObj, setGameObj) {
     const action = this.actionQueue.shift();
-    let msg = action.message;
-    msg += await action.script(gameObj) || "";
-    gameObj.currentMessage = msg;
-    setGameObj({...gameObj});
-    // 1 second delay before continuing
-    await new Promise(resolve => {
-      setTimeout(() => resolve(1), 1000);
-    })
+    while (action.steps.length > 0) {
+      await action.executeStep(gameObj, setGameObj);
+      if (checkForFaintedPokemon(gameObj)) {
+        break;
+      }
+    }
   }
 
   getFirstUnfaintedPokemon() {

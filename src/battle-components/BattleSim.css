@@ -85,6 +85,7 @@ img.pokeball {
 
 .hp-meter {
   background-color: red;
+  transition: 0.5;
 }
 
 .battle-ui {

@@ -1,10 +1,36 @@
 import { ThemeConsumer } from "styled-components";
 import { getMoves } from "./GameFunctions";
 
+//  9,
+//         13,
+//         26,
+//         34,
+//         33,
+//         53,
+//         54,
+//         73,
+//         80,
+//         84,
+//         94,
+//         101,
+//         102,
+//         105,
+//         106,
+//         122,
+//         127,
+//         138,
+//         143,
+//         144,
+//         146,
+//         154,
+//         158
+
+
+
 class Pokemon {
   constructor(pokemonObj) {
     this.name = pokemonObj.name;
-    this._level = 50;
+    this._level = 100;
     this._types = pokemonObj.types;
     this._baseHp = pokemonObj.maxHp;
     // HP formula is ((2 times baseHP times level) divide by 100) plus level plus 10
@@ -23,6 +49,7 @@ class Pokemon {
     };
     this._baseStats = pokemonObj.stats;
     this._stats = this.calculateCurrentStats();
+    this._statusEffect = "";
     getMoves(this, pokemonObj);
   }
 
@@ -36,14 +63,71 @@ class Pokemon {
 
   /**
    * 
-   * @returns the pokemon's current stats as the sum of base and adjusted stats
+   * @returns an object of the correct stat multiplier values based on this._adjustedStats
+   */
+  calculateStatMultipliers() {
+    const multipliers = {};
+    Object.keys(this._adjustedStats).forEach((key) => {
+      switch (this._adjustedStats[key]) {
+        case -6:
+          multipliers[key] = 0.25;
+          break;
+        case -5:
+          multipliers[key] = 0.28;
+          break;
+        case -4:
+          multipliers[key] = 0.33;
+          break;
+        case -3:
+          multipliers[key] = 0.4;
+          break;
+        case -2:
+          multipliers[key] = 0.5;
+          break;
+        case -1:
+          multipliers[key] = 0.66;
+          break;
+        case 0:
+          multipliers[key] = 1;
+          break;
+        case 1:
+          multipliers[key] = 1.5;
+          break;
+        case 2:
+          multipliers[key] = 2;
+          break;
+        case 3:
+          multipliers[key] = 2.5;
+          break;
+        case 4:
+          multipliers[key] = 3;
+          break;
+        case 5:
+          multipliers[key] = 3.5;
+          break;
+        case 5:
+          multipliers[key] = 4;
+          break;
+      }
+    });
+    return multipliers;
+  }
+
+  /**
+   *
+   * @returns the pokemon's current stats as the sum of base and adjusted stats, plus level adjustments
    */
   calculateCurrentStats() {
+    const multipliers = this.calculateStatMultipliers();
+
     let currentStats = {};
+
     Object.keys(this._baseStats).forEach((key) => {
-      currentStats[key] = this._baseStats[key] + this._adjustedStats[key];
+      currentStats[key] = this._baseStats[key] * multipliers[key];
+      currentStats[key] += (currentStats[key] * this._level) / 50;
     });
 
+    console.log(this.name, currentStats);
     return currentStats;
   }
 
@@ -56,6 +140,21 @@ class Pokemon {
     this._adjustedStats.spAttack += spAttack;
     this._adjustedStats.spDefense += spDefense;
     this._adjustedStats.speed += speed;
+  }
+
+  /**
+   * Sets a specific adjusted stat, prevents stat from passing max/min val and returns boolean on success.
+   * @param {string} name 
+   * @param {number} value 
+   * @returns boolean (success?)
+   */
+  setAdjustedStat(name, value) {
+    if (Math.abs(this._adjustedStats[name]) === 6) {
+      return false;
+    } else {
+      this._adjustedStats[name] = value;
+      return true;
+    }
   }
 
   getSpeed(action) {
@@ -96,6 +195,14 @@ class Pokemon {
 
   get types() {
     return this._types;
+  }
+
+  get statusEffect() {
+    return this._statusEffect;
+  }
+
+  set statusEffect(status) {
+    this._statusEffect = status;
   }
 }
 
