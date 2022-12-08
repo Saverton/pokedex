@@ -347,14 +347,21 @@ async function runTrainerActions(gameObj, setGameObj) {
 
 /**
  * Return an array of 4 move objects, chosen at random from the moves db.
+ * @param {Object} pokemonObj the pokemon
+ * @param {Object} dbObj the db pokemon object with moveIds
  * @return {Array} Array of move objects
  */
-async function getMoves(pokemonObj) {
+async function getMoves(pokemonObj, dbObj) {
   const moves = [];
+  const movePool = [...dbObj.possibleMoves];
 
   for (let i = 0; i < 4; i++) {
-    const moveId = Math.floor(Math.random() * 165 + 1);
+    const moveIndex = Math.floor(Math.random() * movePool.length);
+    const [ moveId ] = movePool.splice(moveIndex, 1);
     await getMoveById(moveId, (move) => moves.push(new Move(move)));
+    if (movePool.length === 0) {
+      break;
+    }
   }
 
   pokemonObj.moveSet = moves;
