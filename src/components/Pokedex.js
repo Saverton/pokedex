@@ -37,6 +37,10 @@ function generateRandomTeam() {
   setCurrentTeam(newArray)
 }
 
+// function getPokemonFromIds () {
+//   let newArray = 
+// }
+
   function removePokemonFromTeam(pokemonTeamIndex) {
     setCurrentTeam(currentTeam.filter((_, idx) => idx !== pokemonTeamIndex));
   }
@@ -44,9 +48,15 @@ function generateRandomTeam() {
   return (
     <main
     className="p-3"
-    style={{backgroundColor: `#fc465e`}}
+    style={{backgroundColor: `#1F121184`}}
     >
-      <button id= "randTeamBtn" onClick={generateRandomTeam}>generate random team</button>
+      <div class="center-on-page">
+  
+  <div class="pokeball">
+      <button className='pokeball__button' onClick={generateRandomTeam}>🔀</button>
+  </div>
+  
+</div>
       <TeamForm currentTeam={currentTeam} onRemove={removePokemonFromTeam} />
       <PokemonList pokemon={pokemon} onAddToTeam={addPokemonToTeam} />
     </main>

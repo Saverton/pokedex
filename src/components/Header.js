@@ -5,31 +5,36 @@ function Header() {
   return (
     <header
     >
-      <h1>Pokedex</h1>
+      <h1 className="headerImg">Pokedex</h1>
       <nav>
-        <ul>
-          <li>
-            <h3>
-              <NavLink exact to="/">
+        {/* <ul> */}
+          <div className="links">
+             <NavLink exact to="/">
                 Pokedex
               </NavLink>
-            </h3>
-          </li>
-          <li>
+
+              <NavLink to="/my-teams">
+                My Teams
+              </NavLink>
+              
+              <NavLink to="/battle">Battle </NavLink>
+          
+          </div>
+          {/* <div>
             <h3>
               <NavLink to="/my-teams">
                 My Teams
               </NavLink>
-            </h3>
-          </li>
-          <li>
+            </h3> */}
+          {/* </div>
+          <div>
             <h3>
               <NavLink to="/battle">
                 Battle!
               </NavLink>
-            </h3>
-          </li>
-        </ul>
+            </h3> */}
+          {/* </div> */}
+        {/* </ul> */}
       </nav>
     </header>
   );

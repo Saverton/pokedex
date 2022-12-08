@@ -10,11 +10,11 @@ import BattlePage from './BattlePage';
 
 const GlobalStyle = createGlobalStyle`
 :root {
-  --pokedex-red: #ff0026;
-  --bulbasaur-green: #4DB258;
-  --black: #000000;
-  --white: #ffffff;
-  --background-complement: #DBFF7B;
+  --pokedex-red: #989898FE;
+  --bulbasaur-green: #0F3036;
+  --black: #A5A5A5;
+  --white: #FDFCFCF6;
+  --background-complement: #FFFFFFE9;
   --background: var(--pokedex-red);
 }
 
@@ -23,7 +23,6 @@ body {
   padding: 10px;
 }
 `
-
 function App() {
   const [ currentTeam, setCurrentTeam ] = useState([]);
   const [ myTeams, setMyTeams ] = useState([]);
