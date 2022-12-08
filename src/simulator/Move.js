@@ -100,18 +100,18 @@ class Move {
   }
 
   isAttack() {
-    return !(this.category === "status");
+    return !(this._category === "status");
   }
 
   target() {
-    if (this.accuracy === "") return "opponent";
+    if (this._accuracy === "") return "opponent";
     else return "self";
   }
 
   priority() {
-    if (this.name === "Quick Attack") {
+    if (this._name === "Quick Attack") {
       return 1;
-    } else if (this.name === "Counter") {
+    } else if (this._name === "Counter") {
       return -1;
     }
 
@@ -133,7 +133,7 @@ class Move {
 
     let baseDamage = Math.floor(
       Math.floor(
-        ((Math.floor((level * 2) / 5) + 2) * (this.power * attackStat)) /
+        ((Math.floor((level * 2) / 5) + 2) * (this._power * attackStat)) /
           opponentDefenseStat /
           50
       )
@@ -160,7 +160,7 @@ class Move {
     };
 
     userTypes.forEach((type) => {
-      if (type === this.type && !this.hasFixedDamage())
+      if (type === this._type && !this.hasFixedDamage())
         damageObj.damage += Math.floor(baseDamage / 2);
     });
 
@@ -238,14 +238,14 @@ class Move {
   }
 
   moveLength() {
-    if (this.name === "Bide") return 3;
+    if (this._name === "Bide") return 3;
     else if (
-      this.name === "Fly" ||
-      this.name === "Dig" ||
-      this.name === "Skull Bash" ||
-      this.name === "Sky Attack" ||
-      this.name === "Solar Beam" ||
-      this.name === "Counter"
+      this._name === "Fly" ||
+      this._name === "Dig" ||
+      this._name === "Skull Bash" ||
+      this._name === "Sky Attack" ||
+      this._name === "Solar Beam" ||
+      this._name === "Counter"
     )
       return 2;
     else return 1;

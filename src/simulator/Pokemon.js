@@ -4,7 +4,7 @@ import { getMoves } from "./GameFunctions";
 class Pokemon {
   constructor(pokemonObj) {
     this.name = pokemonObj.name;
-    this._level = 50;
+    this._level = 100;
     this._types = pokemonObj.types;
     this._baseHp = pokemonObj.maxHp;
     // HP formula is ((2 times baseHP times level) divide by 100) plus level plus 10
@@ -32,16 +32,69 @@ class Pokemon {
     return (2 * this._baseHp * this._level) / 100 + this._level + 10;
   }
 
+  calculateStatMultipliers() {
+    const multipliers = {};
+    Object.keys(this._adjustedStats).forEach((key) => {
+      switch (this._adjustedStats[key]) {
+        case -6:
+          multipliers[key] = 0.25;
+          break;
+        case -5:
+          multipliers[key] = 0.28;
+          break;
+        case -4:
+          multipliers[key] = 0.33;
+          break;
+        case -3:
+          multipliers[key] = 0.4;
+          break;
+        case -2:
+          multipliers[key] = 0.5;
+          break;
+        case -1:
+          multipliers[key] = 0.66;
+          break;
+        case 0:
+          multipliers[key] = 1;
+          break;
+        case 1:
+          multipliers[key] = 1.5;
+          break;
+        case 2:
+          multipliers[key] = 2;
+          break;
+        case 3:
+          multipliers[key] = 2.5;
+          break;
+        case 4:
+          multipliers[key] = 3;
+          break;
+        case 5:
+          multipliers[key] = 3.5;
+          break;
+        case 5:
+          multipliers[key] = 4;
+          break;
+      }
+    });
+    return multipliers;
+  }
+
   /**
-   * 
-   * @returns the pokemon's current stats as the sum of base and adjusted stats
+   *
+   * @returns the pokemon's current stats as the sum of base and adjusted stats, plus level adjustments
    */
   calculateCurrentStats() {
+    const multipliers = this.calculateStatMultipliers();
+
     let currentStats = {};
+
     Object.keys(this._baseStats).forEach((key) => {
-      currentStats[key] = this._baseStats[key] + this._adjustedStats[key];
+      currentStats[key] = this._baseStats[key] * multipliers[key];
+      currentStats[key] += (currentStats[key] * this._level) / 50;
     });
 
+    console.log(this.name, currentStats);
     return currentStats;
   }
 
