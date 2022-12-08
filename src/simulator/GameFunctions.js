@@ -93,7 +93,7 @@ async function runBattleLoop(gameObj, setGameObj) {
       await showYesOrNoPrompt(
         gameObj,
         setGameObj,
-        `${opponent.name} is about to send out ${opponentNext.name}, would you like to switch?`
+        `${opponent.name} is about to send out ${opponent.pokemon[opponentNext].name}, would you like to switch?`
       ).then(async (res) => {
         if (res === "yes") {
           await playerSwitchToNewPokemon(gameObj, setGameObj).then((idx) =>
@@ -226,7 +226,9 @@ function playerPokemon(gameObj, setGameObj, showBackOption = true) {
   const options = gameObj.player.pokemon.map((pkmn, idx) => ({
     name: pkmn.name,
     callback: () => {
-      sendOutPokemon(gameObj, "player", idx, setGameObj);
+      gameObj.player.actionQueue.push(generateActionObjFromPokemonSwitch(() => sendOutPokemon(gameObj, "player", idx, setGameObj)));
+      runTrainerActions(gameObj, setGameObj);
+      gameObj.playerControl = false;
       return gameObj;
     }, // add the pokemon switch method to the trainer's action queue
     disabled: pkmn.isFainted(),
@@ -299,9 +301,11 @@ function playerActionMenu(gameObj, setGameObj) {
 }
 
 /**
- * Create an action object for a trainer's selected action. The action object has a message and a script that will run.
- * @param {string} actionName name of the action
+ * Create an action object for a pokemon's move. The action object has a message and a script that will run.
+ * @param {Object} pokemon The pokemon executing the move
+ * @param {string} moveName name of the move
  * @param {function} callback action script
+ * @return {Object} action object
  */
 function generateActionObjFromMove(pokemon, moveName, callback) {
   return {
@@ -309,6 +313,15 @@ function generateActionObjFromMove(pokemon, moveName, callback) {
     type: 'move',
     message: `${pokemon.name} used ${moveName}!`,
     script: callback,
+  };
+}
+
+function generateActionObjFromPokemonSwitch(callback) {
+  return {
+    name: 'Switch Pokemon',
+    type: 'switch',
+    message: 'Player switched out their Pokemon.',
+    script: callback
   };
 }
 

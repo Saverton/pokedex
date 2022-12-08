@@ -1,5 +1,6 @@
 class Move {
   constructor(moveObj) {
+    console.log(moveObj);
     this._name = moveObj.name;
     this._type = moveObj.type;
     this._category = moveObj.stats.category;

@@ -50,9 +50,9 @@ function generateRandomTeam() {
     className="p-3"
     style={{backgroundColor: `#1F121184`}}
     >
-      <div class="center-on-page">
+      <div className="center-on-page">
   
-  <div class="pokeball">
+  <div className="pokeball">
       <button className='pokeball__button' onClick={generateRandomTeam}>🔀</button>
   </div>
   
