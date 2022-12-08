@@ -20,6 +20,7 @@ function Header() {
               <NavLink to="/battle">Battle </NavLink>
           
           </div>
+          
           {/* <div>
             <h3>
               <NavLink to="/my-teams">

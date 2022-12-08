@@ -120,16 +120,32 @@ ul{
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: #d2cd46;
   text-align: center;
-  display: flex;
-  flex-direction: row;
+  /* display: flex; */
+  flex-direction: column;
   justify-content: space-evenly;
-}
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 250 px;
+  height: 100%;
+  background-color: transparent;
+  }
+
+
+
+
+  
+
+
 
 h3 {
   text-align: center;
   font-size: large;
   color: #e2dc3a;
 }
+
+
 
 /* .addToTeamBtn{
   position: relative;
