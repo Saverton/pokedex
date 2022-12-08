@@ -19,6 +19,10 @@ class StatusEffect {
   onAfterTurn() {
     this._turn++;
   }
+
+  onEffectExpiration() {
+    
+  }
 }
 
 export default StatusEffect;

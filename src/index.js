@@ -10,6 +10,7 @@ import { postTeam } from "./database-scripts/postTeam.js";
 import { deleteTeam } from "./database-scripts/deleteTeam.js";
 import Pokemon from "./simulator/Pokemon";
 import { createStatusEffect } from "./simulator/status-effects/StatusEffectFactory";
+import DamageQueue from "./simulator/DamageQueue";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
