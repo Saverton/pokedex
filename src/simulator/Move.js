@@ -1,6 +1,5 @@
 class Move {
   constructor(moveObj) {
-    console.log(moveObj);
     this._name = moveObj.name;
     this._type = moveObj.type;
     this._category = moveObj.stats.category;
@@ -8,7 +7,7 @@ class Move {
     this._accuracy = parseInt(moveObj.stats.accuracy);
     this._pp = parseInt(moveObj.stats.pp);
     this._currentPP = parseInt(moveObj.stats.pp);
-    this._effect = parseInt(moveObj.stats.effect);
+    this._effect = moveObj.stats.effect;
   }
 
   strongAgainst() {
@@ -127,10 +126,10 @@ class Move {
 
   baseDamage(level, attackStat, opponentDefenseStat) {
     if (!this.isAttack()) return 0;
-
     if (this._name === "Dragon Rage") return 40;
     if (this._name === "Night Shade" || this._name === "Seismic Toss")
-      return this._level;
+      return level;
+    if(this._name === "Horn Drill" || this._name === "Fissure" || this._name === "Guillotine") return Number.MAX_VALUE;
 
     let baseDamage = Math.floor(
       Math.floor(
@@ -197,7 +196,11 @@ class Move {
 
   randomFactor(modifiedDamage) {
     if (!this.isAttack() || !this.hasFixedDamage()) {
-      if (modifiedDamage.damage === 1) return 1;
+      if (modifiedDamage.damage === 1)
+        return {
+          damage: 1,
+          effective: modifiedDamage.effective,
+        };
       else {
         return {
           damage: Math.floor(
