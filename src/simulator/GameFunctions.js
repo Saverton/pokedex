@@ -181,7 +181,7 @@ function playerFight(gameObj, setGameObj) {
   const player = gameObj.player;
 
   const options = player.currentPokemon.moveSet.map((move) => ({
-    name: move.name,
+    name: <>{move.name} <br/> {"PP: " + move.currentPP} <br/>  {move.type}</>,
     callback: (setGameObj) => {
       player.actionQueue = [
         generateActionObj(gameObj.player.currentPokemon, move.name, () =>
