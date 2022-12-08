@@ -12,23 +12,6 @@ import Pokemon from "./simulator/Pokemon";
 import { createStatusEffect } from "./simulator/status-effects/StatusEffectFactory";
 import DamageQueue from "./simulator/DamageQueue";
 
-const damage = new DamageQueue();
-
-console.log(damage.damage);
-damage.enqueue(5);
-console.log(damage.damage);
-damage.enqueue(5);
-console.log(damage.damage);
-damage.enqueue(5);
-console.log(damage.damage);
-damage.enqueue(5);
-console.log(damage.damage);
-damage.enqueue(5);
-console.log(damage.damage);
-
-damage.enqueue(10);
-console.log(damage.damage);
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
