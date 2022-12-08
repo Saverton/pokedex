@@ -24,6 +24,10 @@ class Paralyze extends StatusEffect {
         this._pkmn.canAttack = true;
     }
   }
+
+  onEffectExpiration() {
+    this._pkmn.stats = this._pkmn.calculateCurrentStats();
+  }
 }
 
 export default Paralyze;

@@ -19,6 +19,10 @@ class Burn extends StatusEffect {
 
     this._turn++;
   }
+
+  onEffectExpiration() {
+    this._pkmn.stats = this._pkmn.calculateCurrentStats();
+  }
 }
 
 export default Burn;
