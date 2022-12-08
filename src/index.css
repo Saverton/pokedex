@@ -127,22 +127,20 @@ ul{
   position: fixed;
   top: 0;
   right: 0;
-  width: 250 px;
+  width: 100 px;
   height: 100%;
   background-color: transparent;
+
   }
-
-
-
-
-  
-
-
 
 h3 {
   text-align: center;
   font-size: large;
   color: #e2dc3a;
+}
+
+.battle-sim {
+  color: #000;
 }
 
 
