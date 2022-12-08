@@ -110,7 +110,7 @@ async function runBattleLoop(gameObj, setGameObj) {
     const opponentMove =
       gameObj.opponent.currentPokemon.moveSet[Math.floor(Math.random() * 4)];
     gameObj.opponent.actionQueue = [
-      generateActionObj(
+      generateActionObjFromMove(
         gameObj.opponent.currentPokemon,
         opponentMove.name,
         () =>
@@ -184,7 +184,7 @@ function playerFight(gameObj, setGameObj) {
     name: <>{move.name} <br/> {"PP: " + move.currentPP} <br/>  {move.type}</>,
     callback: (setGameObj) => {
       player.actionQueue = [
-        generateActionObj(gameObj.player.currentPokemon, move.name, () =>
+        generateActionObjFromMove(gameObj.player.currentPokemon, move.name, () =>
           executeMove(
             move,
             gameObj.player.currentPokemon,
@@ -303,8 +303,10 @@ function playerActionMenu(gameObj, setGameObj) {
  * @param {string} actionName name of the action
  * @param {function} callback action script
  */
-function generateActionObj(pokemon, moveName, callback) {
+function generateActionObjFromMove(pokemon, moveName, callback) {
   return {
+    name: moveName,
+    type: 'move',
     message: `${pokemon.name} used ${moveName}!`,
     script: callback,
   };
@@ -321,7 +323,7 @@ async function runTrainerActions(gameObj, setGameObj) {
   setGameObj({ ...gameObj });
 
   // get move order array, i.e. ['player', 'opponent']
-  const turnOrder = ["player", "opponent"];
+  const turnOrder = getTurnOrder(gameObj.player, gameObj.opponent);
 
   // perform the actions in order
   for (let i = 0; i < 2; i++) {
@@ -484,6 +486,23 @@ async function playerSwitchToNewPokemon(gameObj, setGameObj) {
 
     setGameObj({ ...gameObj });
   });
+}
+
+/**
+ * Given the player and opponent objects, return an array with the turn order. i.e. ['player', 'opponent']
+ * @param {Object} player player object
+ * @param {Object} opponent opponent object
+ * @return {Array} turn order array
+ */
+function getTurnOrder(player, opponent) {
+  const playerSpeed = player.currentPokemon.getSpeed(player.actionQueue[0]);
+  const opponentSpeed = opponent.currentPokemon.getSpeed(opponent.actionQueue[0]);
+
+  if (playerSpeed >= opponentSpeed) {
+    return ['player', 'opponent'];
+  } else {
+    return ['opponent', 'player'];
+  }
 }
 
 export { startNewSimulation, getMoves };
