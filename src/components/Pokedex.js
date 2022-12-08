@@ -48,7 +48,7 @@ function generateRandomTeam() {
   return (
     <main
     className="p-3"
-    style={{backgroundColor: `#fc465e`}}
+    style={{backgroundColor: `#1F121184`}}
     >
       <div class="center-on-page">
   
