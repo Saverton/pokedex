@@ -21,7 +21,7 @@ class Pokemon {
     };
     this._baseStats = pokemonObj.stats;
     this._stats = this.calculateCurrentStats();
-    getMoves(this);
+    getMoves(this, pokemonObj);
   }
 
   isFainted() {
