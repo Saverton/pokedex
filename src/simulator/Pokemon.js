@@ -1,5 +1,6 @@
 import { ThemeConsumer } from "styled-components";
 import { getMoves } from "./GameFunctions";
+import DamageQueue from "./DamageQueue";
 
 class Pokemon {
   constructor(pokemonObj) {
@@ -19,12 +20,13 @@ class Pokemon {
       spDefense: 0,
       speed: 0,
       accuracy: 0,
-      evasiveness: 0
+      evasiveness: 0,
     };
     this._baseStats = pokemonObj.stats;
     this._stats = this.calculateCurrentStats();
     this._statusEffect = {};
     this._canAttack = true;
+    this._recentDamage = new DamageQueue();
     getMoves(this, pokemonObj);
   }
 
@@ -119,8 +121,8 @@ class Pokemon {
 
   /**
    * Sets a specific adjusted stat, prevents stat from passing max/min val and returns boolean on success.
-   * @param {string} name 
-   * @param {number} value 
+   * @param {string} name
+   * @param {number} value
    * @returns boolean (success?)
    */
   setAdjustedStat(name, value) {
@@ -192,6 +194,10 @@ class Pokemon {
 
   set canAttack(value) {
     this._canAttack = value;
+  }
+
+  get recentDamage() {
+    return this._recentDamage;
   }
 }
 
