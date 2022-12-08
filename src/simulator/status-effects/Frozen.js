@@ -6,7 +6,7 @@ class Frozen extends StatusEffect {
     this._duration = Number.MAX_VALUE;
   }
 
-  runStatChanges() {
+  onEffectApplication() {
     this.pkmn.canAttack = false;
   }
 }

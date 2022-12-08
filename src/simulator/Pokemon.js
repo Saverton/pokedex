@@ -21,7 +21,7 @@ class Pokemon {
     };
     this._baseStats = pokemonObj.stats;
     this._stats = this.calculateCurrentStats();
-    this._statusEffect = "";
+    this._statusEffect = {};
     this._canAttack = true;
     getMoves(this, pokemonObj);
   }

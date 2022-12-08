@@ -6,11 +6,13 @@ class Paralyze extends StatusEffect {
     this._duration = Number.MAX_VALUE;
   }
 
-  runStatChanges() {
+  onEffectApplication() {
     let pkmnStats = {...this._pkmn.stats};
     pkmnStats.speed = Math.floor(pkmnStats.attack * .25);
     this._pkmn.stats = pkmnStats;
+  }
 
+  onBeforeTurn() {
     let chanceToHit = Math.floor(Math.random() * 4 + 1);
     console.log(chanceToHit);
 
@@ -21,10 +23,6 @@ class Paralyze extends StatusEffect {
       default:
         this._pkmn.canAttack = true;
     }
-  }
-
-  runSideEffect() {
-    this._turn++;
   }
 }
 

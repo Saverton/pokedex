@@ -4,16 +4,19 @@ class StatusEffect {
   constructor(type, pkmn) {
     this._name = type;
     this._pkmn = pkmn;
+    this._pkmn.statusEffect = this;
     this._turn = 1;
   }
 
-  incrementTurn() {
-    this._turn++;
+  onEffectApplication() {
+    //METHOD STUB: IMPLEMENTED IN SUB-CLASSES
   }
 
-  runStatChanges() {}
+  onBeforeTurn() {
+    //METHOD STUB: IMPLEMENTED IN SUB-CLASSES
+  }
 
-  runSideEffect() {
+  onAfterTurn() {
     this._turn++;
   }
 }

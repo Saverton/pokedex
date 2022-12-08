@@ -6,7 +6,7 @@ class Sleep extends StatusEffect {
     this._duration = Math.floor(Math.random * (7 - 1)) + 1;
   }
 
-  runStatChanges() {
+  onEffectApplication() {
     this.pkmn.canAttack = false;
   }
 }

@@ -6,7 +6,7 @@ class Poison extends StatusEffect {
     this._duration = Number.MAX_VALUE;
   }
 
-  runSideEffect() {
+  onAfterTurn() {
     let newHp = this._pkmn.currentHp;
     newHp -= Math.floor(newHp / 16);
     this._pkmn.currentHp = newHp;
