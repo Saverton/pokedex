@@ -12,7 +12,15 @@ class Pokemon {
     this._currentHp = this.maxHp;
     this.moveSet = [];
     this.sprites = { ...pokemonObj.sprites };
-    this._stats = pokemonObj.stats;
+    this._adjustedStats = {
+      attack: 0,
+      defense: 0,
+      spAttack: 0,
+      spDefense: 0,
+      speed: 0,
+    };
+    this._baseStats = pokemonObj.stats;
+    this._stats = this.calculateCurrentStats();
     getMoves(this);
   }
 
@@ -22,6 +30,30 @@ class Pokemon {
 
   calculateHp() {
     return (2 * this._baseHp * this._level) / 100 + this._level + 10;
+  }
+
+  /**
+   * 
+   * @returns the pokemon's current stats as the sum of base and adjusted stats
+   */
+  calculateCurrentStats() {
+    let currentStats = {};
+    Object.keys(this._baseStats).forEach((key) => {
+      currentStats[key] = this._baseStats[key] + this._adjustedStats[key];
+    });
+
+    return currentStats;
+  }
+
+  /**
+   * allows setting the pokemon's adjusted stats, theoretically by status moves, but keeps base stats private
+   */
+  set adjustedStats({ attack, defense, spAttack, spDefense, speed }) {
+    this._adjustedStats.attack += attack;
+    this._adjustedStats.defense += defense;
+    this._adjustedStats.spAttack += spAttack;
+    this._adjustedStats.spDefense += spDefense;
+    this._adjustedStats.speed += speed;
   }
 
   set currentHp(hp) {
