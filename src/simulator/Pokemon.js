@@ -7,6 +7,7 @@ class Pokemon {
     this._level = 50;
     this._types = pokemonObj.types;
     this._baseHp = pokemonObj.maxHp;
+    // HP formula is ((2 times baseHP times level) divide by 100) plus level plus 10
     this._maxHp = this.calculateHp();
     this._currentHp = this.maxHp;
     this.moveSet = [];
@@ -21,14 +22,6 @@ class Pokemon {
 
   calculateHp() {
     return (2 * this._baseHp * this._level) / 100 + this._level + 10;
-  }
-
-  pokemonUseMove(moveObj, enemyPkmn) {
-    // let moveQueue = [];
-    // for(let i = 0; i < moveObj.moveLength(); i++) {
-    //   moveQueue.push(null);
-    // }
-    // if(moveObj.target() === "opponent") moveQueue.push({moveObj.})
   }
 
   set currentHp(hp) {
