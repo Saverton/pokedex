@@ -11,7 +11,7 @@ class Pokemon {
     this.moveSet = [];
     this.sprites = { ...pokemonObj.sprites };
     this._stats = pokemonObj.stats;
-    getMoves(this);
+    getMoves(this, pokemonObj);
   }
 
   isFainted() {
