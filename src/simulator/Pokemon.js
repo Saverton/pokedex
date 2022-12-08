@@ -4,7 +4,7 @@ import { getMoves } from "./GameFunctions";
 class Pokemon {
   constructor(pokemonObj) {
     this.name = pokemonObj.name;
-    this._level = 100;
+    this._level = 50;
     this._types = pokemonObj.types;
     this._baseHp = pokemonObj.maxHp;
     // HP formula is ((2 times baseHP times level) divide by 100) plus level plus 10
@@ -21,7 +21,8 @@ class Pokemon {
     };
     this._baseStats = pokemonObj.stats;
     this._stats = this.calculateCurrentStats();
-    this._statusEffect = "";
+    this._statusEffect = {};
+    this._canAttack = true;
     getMoves(this, pokemonObj);
   }
 
@@ -34,7 +35,7 @@ class Pokemon {
   }
 
   /**
-   * 
+   *
    * @returns an object of the correct stat multiplier values based on this._adjustedStats
    */
   calculateStatMultipliers() {
@@ -115,11 +116,13 @@ class Pokemon {
   }
 
   getSpeed(action) {
-    const priorityActions = ['switch', 'item']
-    if (priorityActions.includes(action.type) || action.name === 'Quick Attack') {
+    const priorityActions = ["switch", "item"];
+    if (
+      priorityActions.includes(action.type) ||
+      action.name === "Quick Attack"
+    ) {
       return 1000;
-    }
-    else {
+    } else {
       return this.stats.speed;
     }
   }
@@ -150,6 +153,10 @@ class Pokemon {
     return this._stats;
   }
 
+  set stats(newStats) {
+    this._stats = newStats;
+  }
+
   get types() {
     return this._types;
   }
@@ -160,6 +167,14 @@ class Pokemon {
 
   set statusEffect(status) {
     this._statusEffect = status;
+  }
+
+  get canAttack() {
+    return this._canAttack;
+  }
+
+  set canAttack(value) {
+    this._canAttack = value;
   }
 }
 

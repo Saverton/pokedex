@@ -7976,7 +7976,7 @@
         "power": "80",
         "accuracy": "100",
         "pp": "10",
-        "effect": "\tDigs underground on first turn, attacks on second. Can also escape from caves."
+        "effect": "Digs underground on first turn, attacks on second. Can also escape from caves."
       },
       "id": 28
     },
