@@ -3,57 +3,43 @@ class Move {
     this._name = moveObj.name;
     this._type = moveObj.type;
     this._category = moveObj.stats.category;
-    this._power = moveObj.stats.power;
-    this._accuracy = moveObj.stats.accuracy;
-    this._pp = moveObj.stats.pp;
-    this._currentPP = moveObj.stats.pp;
-    this._effect = moveObj.stats.effect;
+    this._power = parseInt(moveObj.stats.power);
+    this._accuracy = parseInt(moveObj.stats.accuracy);
+    this._pp = parseInt(moveObj.stats.pp);
+    this._currentPP = parseInt(moveObj.stats.pp);
+    this._effect = parseInt(moveObj.stats.effect);
   }
 
   strongAgainst() {
     switch (this.type) {
       case "fighting":
         return ["normal", "rock", "ice"];
-        break;
       case "flying":
         return ["fighting", "bug", "grass"];
-        break;
       case "poison":
         return ["bug", "grass"];
-        break;
       case "ground":
         return ["poison", "rock", "fire", "electric"];
-        break;
       case "rock":
         return ["flying", "bug", "fire", "ice"];
-        break;
       case "bug":
         return ["poison", "grass", "psychic"];
-        break;
       case "ghost":
         return ["ghost"];
-        break;
       case "fire":
         return ["bug", "grass", "ice"];
-        break;
       case "water":
         return ["ground", "rock", "fire"];
-        break;
       case "grass":
         return ["ground", "rock", "water"];
-        break;
       case "electric":
         return ["flying", "water"];
-        break;
       case "psychic":
         return ["fighting", "poison"];
-        break;
       case "ice":
         return ["flying", "ground", "grass", "dragon"];
-        break;
       case "dragon":
         return ["dragon"];
-        break;
       default:
         return [];
     }
@@ -63,60 +49,54 @@ class Move {
     switch (this.type) {
       case "normal":
         return ["rock"];
-        break;
       case "fighting":
         return ["flying", "poison", "bug", "psychic"];
-        break;
       case "flying":
         return ["rock", "electric"];
-        break;
       case "poison":
         return ["poison", "ground", "rock", "ghost"];
-        break;
       case "ground":
         return ["bug", "grass"];
-        break;
       case "rock":
         return ["fighting", "ground"];
-        break;
       case "bug":
         return ["fighting", "flying", "ghost", "fire"];
-        break;
       case "fire":
         return ["rock", "fire", "water", "dragon"];
       case "water":
         return ["water", "grass", "dragon"];
-        break;
       case "grass":
         return ["flying", "poison", "bug", "fire", "grass", "dragon"];
-        break;
       case "electric":
         return ["grass", "electric", "dragon"];
-        break;
       case "psychic":
         return ["psychic"];
-        break;
       case "ice":
         return ["water", "ice"];
-        break;
       default:
         return [];
     }
   }
 
   completelyIneffectiveAgainst() {
-    switch(this.type) {
-      case "normal": return ["ghost"]; break;
-      case "fighting": return ["ghost"]; break;
-      case "ground": return ["flying"]; break;
-      case "ghost": return ["normal", "psychic"]; break;
-      case "electric": return ["ground"]; break;
-      default: return [];
+    switch (this.type) {
+      case "normal":
+        return ["ghost"];
+      case "fighting":
+        return ["ghost"];
+      case "ground":
+        return ["flying"];
+      case "ghost":
+        return ["normal", "psychic"];
+      case "electric":
+        return ["ground"];
+      default:
+        return [];
     }
   }
 
   decrementPP() {
-    this.currentPP--;
+    this._currentPP--;
   }
 
   isAttack() {
@@ -139,15 +119,15 @@ class Move {
   }
 
   baseDamage(level, attackStat, opponentDefenseStat) {
-    let baseDamage = 0;
-    if (this.isAttack())
-      baseDamage = Math.floor(
-        Math.floor(
-          ((Math.floor((level * 2) / 5) + 2) * (this.power * attackStat)) /
-            opponentDefenseStat /
-            50
-        )
-      );
+    if (!this.isAttack()) return 0;
+
+    let baseDamage = Math.floor(
+      Math.floor(
+        ((Math.floor((level * 2) / 5) + 2) * (this.power * attackStat)) /
+          opponentDefenseStat /
+          50
+      )
+    );
     if (baseDamage > 997) baseDamage = 997;
     baseDamage += 2;
 
@@ -155,6 +135,13 @@ class Move {
   }
 
   modifiedDamage(baseDamage, userTypes, defenderTypes) {
+    if (!this.isAttack()) {
+      return {
+        damage: 0,
+        effective: "status move",
+      };
+    }
+
     let modifiedDamage = baseDamage;
 
     const damageObj = {
@@ -185,13 +172,23 @@ class Move {
     });
 
     if (damageObj.effective.length === 0) damageObj.effective.push("normal");
-    if (damageObj.effective.includes("super effective") && damageObj.effective.includes("super effective")) {
+    if (
+      damageObj.effective.includes("super effective") &&
+      damageObj.effective.includes("not very effective")
+    ) {
       damageObj.effective = ["normal"];
     }
     return damageObj;
   }
 
   randomFactor(modifiedDamage) {
+    if (!this.isAttack()) {
+      return {
+        damage: 0,
+        effective: "status move",
+      };
+    }
+
     if (modifiedDamage.damage === 1) return 1;
     else {
       return {
@@ -205,19 +202,47 @@ class Move {
     }
   }
 
-  finalDamage(
-    userLevel,
-    userAttackStat,
-    opponentDefenseStat,
-    userTypes,
-    opponentTypes
-  ) {
-    const base = this.baseDamage(
-      userLevel,
-      userAttackStat,
-      opponentDefenseStat
+  finalDamage(userPkmn, opponentPkmn) {
+    if (!this.isAttack()) {
+      return {
+        damage: 0,
+        effective: "status move",
+      };
+    }
+    if (this._name === "Night Shade") {
+      return {
+        damage: parseInt(userPkmn.level),
+        effective: "normal",
+      };
+    }
+    if (this._name === "Dragon Rage") {
+      return {
+        damage: 40,
+        effective: "normal",
+      };
+    }
+
+    let base;
+
+    // use physical attack/defense if physical move, else use special attack/defense
+    if (this._category === "physical") {
+      base = this.baseDamage(
+        userPkmn.level,
+        userPkmn.stats.attack,
+        opponentPkmn.stats.defense
+      );
+    } else {
+      base = this.baseDamage(
+        userPkmn.level,
+        userPkmn.stats.spAttack,
+        opponentPkmn.stats.spDefense
+      );
+    }
+    const modified = this.modifiedDamage(
+      base,
+      userPkmn.types,
+      opponentPkmn.types
     );
-    const modified = this.modifiedDamage(base, userTypes, opponentTypes);
 
     return this.randomFactor(modified);
   }
@@ -240,6 +265,10 @@ class Move {
 
   get name() {
     return this._name;
+  }
+
+  get currentPP() {
+    return this._currentPP;
   }
 
   get type() {

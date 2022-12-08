@@ -1,36 +1,65 @@
-
-import { ThemeConsumer } from 'styled-components';
-import { getMoves } from './GameFunctions';
+import { ThemeConsumer } from "styled-components";
+import { getMoves } from "./GameFunctions";
 
 class Pokemon {
   constructor(pokemonObj) {
     this.name = pokemonObj.name;
-    this._maxHp = pokemonObj.maxHp;
+    this._level = 50;
+    this._types = pokemonObj.types;
+    this._baseHp = pokemonObj.maxHp;
+    // HP formula is ((2 times baseHP times level) divide by 100) plus level plus 10
+    this._maxHp = this.calculateHp();
     this._currentHp = this.maxHp;
-    this.moveSet = []
+    this.moveSet = [];
     this.sprites = { ...pokemonObj.sprites };
-    this.stats = pokemonObj.stats;
-    getMoves(this);
+    this._adjustedStats = {
+      attack: 0,
+      defense: 0,
+      spAttack: 0,
+      spDefense: 0,
+      speed: 0,
+    };
+    this._baseStats = pokemonObj.stats;
+    this._stats = this.calculateCurrentStats();
+    getMoves(this, pokemonObj);
   }
 
   isFainted() {
     return this._currentHp === 0;
   }
 
-  pokemonUseMove(moveObj, enemyPkmn) {
-    // let moveQueue = [];
+  calculateHp() {
+    return (2 * this._baseHp * this._level) / 100 + this._level + 10;
+  }
 
-    // for(let i = 0; i < moveObj.moveLength(); i++) {
-    //   moveQueue.push(null);
-    // }
+  /**
+   * 
+   * @returns the pokemon's current stats as the sum of base and adjusted stats
+   */
+  calculateCurrentStats() {
+    let currentStats = {};
+    Object.keys(this._baseStats).forEach((key) => {
+      currentStats[key] = this._baseStats[key] + this._adjustedStats[key];
+    });
 
-    // if(moveObj.target() === "opponent") moveQueue.push({moveObj.})
+    return currentStats;
+  }
+
+  /**
+   * allows setting the pokemon's adjusted stats, theoretically by status moves, but keeps base stats private
+   */
+  set adjustedStats({ attack, defense, spAttack, spDefense, speed }) {
+    this._adjustedStats.attack += attack;
+    this._adjustedStats.defense += defense;
+    this._adjustedStats.spAttack += spAttack;
+    this._adjustedStats.spDefense += spDefense;
+    this._adjustedStats.speed += speed;
   }
 
   set currentHp(hp) {
     if (hp < 0) {
       this._currentHp = 0;
-    } else if (hp > this.maxHp) {
+    } else if (hp > this._maxHp) {
       this._currentHp = this._maxHp;
     } else {
       this._currentHp = hp;
@@ -43,6 +72,18 @@ class Pokemon {
 
   get maxHp() {
     return this._maxHp;
+  }
+
+  get level() {
+    return this._level;
+  }
+
+  get stats() {
+    return this._stats;
+  }
+
+  get types() {
+    return this._types;
   }
 }
 

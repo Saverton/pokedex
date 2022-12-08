@@ -50,12 +50,25 @@ class Trainer {
     return `${this.name}: Return, ${pokemonName}!`;
   }
 
-  useTurn(gameObj, setGameObj) {
+  async useTurn(gameObj, setGameObj) {
     const action = this.actionQueue.shift();
-    // perform the current action!
-    gameObj.currentMessage = action.message;
-    action.script(gameObj);
+    let msg = action.message;
+    msg += action.script(gameObj);
+    gameObj.currentMessage = msg;
     setGameObj({...gameObj});
+    // 1 second delay before continuing
+    await new Promise(resolve => {
+      setTimeout(() => resolve(1), 1000);
+    })
+  }
+
+  getFirstUnfaintedPokemon() {
+    for (let i = 0; i < this.pokemon.length; i++) {
+      if (!this.pokemon[i].isFainted()) {
+        return i;
+      }
+    }
+    return -1;
   }
 }
 
