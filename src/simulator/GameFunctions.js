@@ -17,19 +17,19 @@ function getRandomPokemonTeam(size) {
 
 /**
  * Checks the player and opponent to see if they still have Pokemon to battle
- * @param {Object} game 
+ * @param {Object} game
  * @returns -1 if opponent wins, 1 if player wins and 0 if no one wins
  */
 function checkWinner(game) {
   if (!game.player.isAbleToBattle()) return -1;
   if (!game.opponent.isAbleToBattle()) return 1;
-  
+
   return 0;
 }
 
 /**
  * Given an array of pokemon ids, returns an array of pokemon objects.
- * @param {Array} ids 
+ * @param {Array} ids
  * @returns {Array}
  */
 async function getPokemonFromIds(ids) {
@@ -46,15 +46,15 @@ export { getRandomPokemonTeam, getPokemonFromIds };
 async function startNewSimulation(playerTeam, opponentName, setGameObj) {
   const player = {
     name: "Player",
-    pokemon: [
-      ...playerTeam
-    ]
+    pokemon: [...playerTeam],
   };
 
-  const opponentPokemon = await getPokemonFromIds(getRandomPokemonTeam(player.pokemon.length));
+  const opponentPokemon = await getPokemonFromIds(
+    getRandomPokemonTeam(player.pokemon.length)
+  );
   const opponent = {
     name: opponentName,
-    pokemon: opponentPokemon
+    pokemon: opponentPokemon,
   };
 
   const gameObj = new GameObject(player, opponent);
@@ -65,42 +65,62 @@ async function startNewSimulation(playerTeam, opponentName, setGameObj) {
 }
 
 async function runBattleIntro(gameObj, setGameObj) {
-  sendOutPokemon(gameObj, 'opponent', 0, setGameObj); // await these to get timed animations
-  sendOutPokemon(gameObj, 'player', 0, setGameObj);
+  sendOutPokemon(gameObj, "opponent", 0, setGameObj); // await these to get timed animations
+  sendOutPokemon(gameObj, "player", 0, setGameObj);
 
   setTimeout(() => {
     runBattleLoop(gameObj, setGameObj);
-  }, 1000)
+  }, 1000);
 }
 
 async function runBattleLoop(gameObj, setGameObj) {
   const { player, opponent } = gameObj;
-  if (player.currentPokemon === undefined || opponent.currentPokemon === undefined) {
+  if (
+    player.currentPokemon === undefined ||
+    opponent.currentPokemon === undefined
+  ) {
     const opponentNext = opponent.getFirstUnfaintedPokemon();
     if (player.currentPokemon === undefined) {
       // force choose new
-      gameObj.currentMessage = 'Which Pokemon should you send out next?';
-      setGameObj({...gameObj});
-      await playerSwitchToNewPokemon(gameObj, setGameObj)
-        .then(idx => sendOutPokemon(gameObj, 'player', idx, setGameObj));
-      console.log('passed promise');
-    } else {  
+      gameObj.currentMessage = "Which Pokemon should you send out next?";
+      setGameObj({ ...gameObj });
+      await playerSwitchToNewPokemon(gameObj, setGameObj).then((idx) =>
+        sendOutPokemon(gameObj, "player", idx, setGameObj)
+      );
+      console.log("passed promise");
+    } else {
       // ask if want to switch
-      await showYesOrNoPrompt(gameObj, setGameObj, `${opponent.name} is about to send out ${opponentNext.name}, would you like to switch?`)
-        .then(async res => {
-          if (res === 'yes') {
-            await playerSwitchToNewPokemon(gameObj, setGameObj)
-            .then(idx => sendOutPokemon(gameObj, 'player', idx, setGameObj));
-          }
-        });
+      await showYesOrNoPrompt(
+        gameObj,
+        setGameObj,
+        `${opponent.name} is about to send out ${opponentNext.name}, would you like to switch?`
+      ).then(async (res) => {
+        if (res === "yes") {
+          await playerSwitchToNewPokemon(gameObj, setGameObj).then((idx) =>
+            sendOutPokemon(gameObj, "player", idx, setGameObj)
+          );
+        }
+      });
     }
-    await sendOutPokemon(gameObj, 'opponent', opponentNext, setGameObj);
+    await sendOutPokemon(gameObj, "opponent", opponentNext, setGameObj);
     // await sendOutPokemon(gameObj, 'player', player.getFirstUnfaintedPokemon(), setGameObj);
   }
   // opponent choose action
   if (gameObj.opponent.actionQueue.length === 0) {
-    const opponentMove = gameObj.opponent.currentPokemon.moveSet[Math.floor(Math.random() * 4)];
-    gameObj.opponent.actionQueue = [generateActionObj(gameObj.opponent.currentPokemon, opponentMove.name, () => executeMove(opponentMove, gameObj.opponent.currentPokemon, gameObj.player.currentPokemon))]
+    const opponentMove =
+      gameObj.opponent.currentPokemon.moveSet[Math.floor(Math.random() * 4)];
+    gameObj.opponent.actionQueue = [
+      generateActionObj(
+        gameObj.opponent.currentPokemon,
+        opponentMove.name,
+        () =>
+          executeMove(
+            opponentMove,
+            gameObj.opponent.currentPokemon,
+            gameObj.player.currentPokemon
+          )
+      ),
+    ];
   }
 
   if (gameObj.player.actionQueue.length > 0) {
@@ -108,39 +128,45 @@ async function runBattleLoop(gameObj, setGameObj) {
   } else {
     playerActionMenu(gameObj, setGameObj);
   }
-  setGameObj({...gameObj});
+  setGameObj({ ...gameObj });
 }
 
 function runBattleConclusion(gameObj, setGameObj, winner) {
   gameObj.currentMessage = `The battle is over! ${winner}, wins!`;
-  setGameObj({...gameObj});
+  setGameObj({ ...gameObj });
 }
 
 async function sendOutPokemon(gameObj, trainer, index, setGameObj) {
-  if (gameObj[trainer].currentPokemon && gameObj[trainer].currentPokemon !== gameObj[trainer].pokemon[index]) {
+  if (
+    gameObj[trainer].currentPokemon &&
+    gameObj[trainer].currentPokemon !== gameObj[trainer].pokemon[index]
+  ) {
     // recall current Pokemon
     await recallPokemon(gameObj, trainer, setGameObj);
   }
-  if (gameObj[trainer].currentPokemon === undefined || gameObj[trainer].currentPokemon !== gameObj[trainer].pokemon[index]) {
+  if (
+    gameObj[trainer].currentPokemon === undefined ||
+    gameObj[trainer].currentPokemon !== gameObj[trainer].pokemon[index]
+  ) {
     gameObj.currentMessage = gameObj[trainer].sendOutPokemon(index);
     gameObj.playerControl = false;
-    setGameObj({...gameObj});
-    await new Promise(resolve => {
+    setGameObj({ ...gameObj });
+    await new Promise((resolve) => {
       setTimeout(() => resolve(1), 2000);
-    })
+    });
   }
 }
 
 /**
  * Recalls the current pokemon that is out, displaying a message and returning the currentPokemon to undefined.
- * @param {Object} gameObj 
- * @param {string} trainer 
- * @param {function} setGameObj 
+ * @param {Object} gameObj
+ * @param {string} trainer
+ * @param {function} setGameObj
  */
 async function recallPokemon(gameObj, trainer, setGameObj) {
   gameObj.currentMessage = gameObj[trainer].recallPokemon();
-  setGameObj({...gameObj});
-  await new Promise(resolve => {
+  setGameObj({ ...gameObj });
+  await new Promise((resolve) => {
     setTimeout(() => resolve(1), 1500);
   });
 }
@@ -154,20 +180,26 @@ function playerFight(gameObj, setGameObj) {
   // console.log("FIGHT CHOSEN")
   const player = gameObj.player;
 
-  const options = player.currentPokemon.moveSet.map(
-    move => ({
-      name: move.name,
-      callback: (setGameObj) => {
-        player.actionQueue = [generateActionObj(gameObj.player.currentPokemon, move.name, () => executeMove(move, gameObj.player.currentPokemon, gameObj.opponent.currentPokemon))];
-        runTrainerActions(gameObj, setGameObj);
-        return gameObj;
-      }
-    })
-  )
+  const options = player.currentPokemon.moveSet.map((move) => ({
+    name: <>{move.name} <br/> {"PP: " + move.currentPP} <br/>  {move.type}</>,
+    callback: (setGameObj) => {
+      player.actionQueue = [
+        generateActionObj(gameObj.player.currentPokemon, move.name, () =>
+          executeMove(
+            move,
+            gameObj.player.currentPokemon,
+            gameObj.opponent.currentPokemon
+          )
+        ),
+      ];
+      runTrainerActions(gameObj, setGameObj);
+      return gameObj;
+    },
+  }));
 
   options.push({
     name: "back",
-    callback: () => playerActionMenu(gameObj, setGameObj)
+    callback: () => playerActionMenu(gameObj, setGameObj),
   });
 
   gameObj.menuOptions = options;
@@ -190,27 +222,25 @@ function playerItem(gameObj) {
  * @param {Object} gameObj game object
  * @return {string} message : "which Pokemon would you like to send out?"
  */
-function playerPokemon(gameObj, setGameObj, showBackOption=true) {
-  const options = gameObj.player.pokemon.map(
-    (pkmn, idx) => ({
-      name: pkmn.name,
-      callback: () => {
-        sendOutPokemon(gameObj, 'player', idx, setGameObj)
-        return gameObj;
-      }, // add the pokemon switch method to the trainer's action queue 
-      disabled: pkmn.isFainted(),
-    })
-  );
+function playerPokemon(gameObj, setGameObj, showBackOption = true) {
+  const options = gameObj.player.pokemon.map((pkmn, idx) => ({
+    name: pkmn.name,
+    callback: () => {
+      sendOutPokemon(gameObj, "player", idx, setGameObj);
+      return gameObj;
+    }, // add the pokemon switch method to the trainer's action queue
+    disabled: pkmn.isFainted(),
+  }));
 
   if (showBackOption) {
     options.push({
       name: "back",
-      callback: () => playerActionMenu(gameObj, setGameObj)
+      callback: () => playerActionMenu(gameObj, setGameObj),
     });
   }
 
   gameObj.menuOptions = options;
-  gameObj.currentMessage = 'Which Pokemon would you like to send out?';
+  gameObj.currentMessage = "Which Pokemon would you like to send out?";
   return gameObj;
 }
 
@@ -220,10 +250,12 @@ function playerPokemon(gameObj, setGameObj, showBackOption=true) {
  * @param {function} setGameObj callback to set State
  */
 function playerRun(gameObj, setGameObj) {
-  gameObj.menuOptions = [{
-    name: 'OK',
-    callback: () => playerActionMenu(gameObj, setGameObj),
-  }];
+  gameObj.menuOptions = [
+    {
+      name: "OK",
+      callback: () => playerActionMenu(gameObj, setGameObj),
+    },
+  ];
   gameObj.currentMessage = "You cannot run from a trainer battle!";
   return gameObj;
 }
@@ -239,26 +271,26 @@ function playerActionMenu(gameObj, setGameObj) {
       callback: () => {
         // console.log('FIGHT');
         return playerFight(gameObj, setGameObj);
-      }
+      },
     },
     {
       name: "ITEM",
       callback: () => {
         return playerItem(gameObj);
-      }
+      },
     },
     {
       name: "POKEMON",
       callback: () => {
         return playerPokemon(gameObj, setGameObj);
-      }
+      },
     },
     {
       name: "RUN",
       callback: () => {
         return playerRun(gameObj, setGameObj);
-      }
-    }
+      },
+    },
   ];
 
   gameObj.menuOptions = options;
@@ -286,23 +318,28 @@ function generateActionObj(pokemon, moveName, callback) {
 async function runTrainerActions(gameObj, setGameObj) {
   // stop input
   gameObj.playerControl = false;
-  setGameObj({...gameObj});
+  setGameObj({ ...gameObj });
 
   // get move order array, i.e. ['player', 'opponent']
-  const turnOrder = ['player', 'opponent'];
-  
+  const turnOrder = ["player", "opponent"];
+
   // perform the actions in order
   for (let i = 0; i < 2; i++) {
     await gameObj[turnOrder[i]].useTurn(gameObj, setGameObj);
-    const breakFromTurn = await checkFainted(gameObj, setGameObj)
+    const breakFromTurn = await checkFainted(gameObj, setGameObj);
     if (breakFromTurn) {
       break;
     }
   }
 
   const winState = checkWinner(gameObj);
-  if (winState !== 0) { // check if battle is over
-    runBattleConclusion(gameObj, setGameObj, (winState === 1) ? "player" : "opponent");
+  if (winState !== 0) {
+    // check if battle is over
+    runBattleConclusion(
+      gameObj,
+      setGameObj,
+      winState === 1 ? "player" : "opponent"
+    );
   } else {
     runBattleLoop(gameObj, setGameObj);
   }
@@ -333,19 +370,20 @@ function executeMove(move, attacker, defender) {
   const { damage, effective } = move.finalDamage(attacker, defender);
 
   defender.currentHp = defender.currentHp - damage;
+  move.decrementPP();
 
-  console.log({
-    damage, effective
-  })
+  console.log(damage, effective, move.currentPP);
 
-  let msg = '';
-  if (effective.includes('super effective')) {
-    msg = ' It was super effective!';
-  } else if (effective.includes('not very effective')) {
-    msg = ' I was not very effective...';
-  } else if (effective.includes('immune')) {
-    msg = ' The attack missed!';
-  }
+  let msg = "";
+  if (effective) {
+    if (effective.includes("super effective")) {
+      msg = " It was super effective!";
+    } else if (effective.includes("not very effective")) {
+      msg = " I was not very effective...";
+    } else if (effective.includes("immune")) {
+      msg = " The attack missed!";
+    }
+  } 
   return msg;
 }
 
@@ -363,7 +401,7 @@ async function checkFainted(gameObj, setGameObj) {
   if (playerPkmn.isFainted()) {
     hasFainted = true;
     runFainting(gameObj, gameObj.player);
-    setGameObj({...gameObj});
+    setGameObj({ ...gameObj });
     await new Promise((resolve) => {
       setTimeout(() => resolve(1), 2000);
     });
@@ -371,13 +409,13 @@ async function checkFainted(gameObj, setGameObj) {
   if (opponentPkmn.isFainted()) {
     hasFainted = true;
     runFainting(gameObj, gameObj.opponent);
-    setGameObj({...gameObj});
+    setGameObj({ ...gameObj });
     await new Promise((resolve) => {
       setTimeout(() => resolve(1), 2000);
     });
   }
 
-  return hasFainted
+  return hasFainted;
 }
 
 /**
@@ -398,25 +436,25 @@ function runFainting(gameObj, trainer) {
  */
 async function showYesOrNoPrompt(gameObj, setGameObj, prompt) {
   return new Promise((resolve) => {
-      gameObj.menuOptions = [
-        {
-          name: 'yes',
-          callback: () => {
-            resolve('yes');
-          }
+    gameObj.menuOptions = [
+      {
+        name: "yes",
+        callback: () => {
+          resolve("yes");
         },
-        {
-          name: 'no',
-          callback: () => {
-            resolve('no');
-          }
-        }
-      ];
-    
-      gameObj.currentMessage = prompt;
-    
-      setGameObj({...gameObj});
-  })
+      },
+      {
+        name: "no",
+        callback: () => {
+          resolve("no");
+        },
+      },
+    ];
+
+    gameObj.currentMessage = prompt;
+
+    setGameObj({ ...gameObj });
+  });
 }
 
 /**
@@ -425,21 +463,19 @@ async function showYesOrNoPrompt(gameObj, setGameObj, prompt) {
  * @param {function} setGameObj function to update state
  */
 async function playerSwitchToNewPokemon(gameObj, setGameObj) {
-  return new Promise(resolve => {
-    const options = gameObj.player.pokemon.map(
-      (pkmn, idx) => ({
-        name: pkmn.name,
-        callback: async () => {
-          resolve(idx);
-        },
-        disabled: pkmn.isFainted(),
-      })
-    );
-  
-    gameObj.menuOptions = options;
-    gameObj.currentMessage = 'Which Pokemon would you like to send out?';
+  return new Promise((resolve) => {
+    const options = gameObj.player.pokemon.map((pkmn, idx) => ({
+      name: pkmn.name,
+      callback: async () => {
+        resolve(idx);
+      },
+      disabled: pkmn.isFainted(),
+    }));
 
-    setGameObj({...gameObj});
+    gameObj.menuOptions = options;
+    gameObj.currentMessage = "Which Pokemon would you like to send out?";
+
+    setGameObj({ ...gameObj });
   });
 }
 
