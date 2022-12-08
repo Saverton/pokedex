@@ -9,6 +9,8 @@ class Move {
     this._pp = parseInt(moveObj.stats.pp);
     this._currentPP = parseInt(moveObj.stats.pp);
     this._effect = parseInt(moveObj.stats.effect);
+    this._sideEffects = moveObj.sideEffects;
+    this._hits = moveObj.hits || [1, 1];
   }
 
   strongAgainst() {
@@ -294,6 +296,78 @@ class Move {
 
   get effect() {
     return this._effect;
+  }
+
+  get sideEffects() {
+    return this._sideEffects;
+  }
+
+  get hits() {
+    return Math.floor(Math.random() * (this._hits[1] - this._hits[0])) + 1;
+  }
+
+  getMoveActions(attacker, defender) {
+    const moveLength = this.moveLength();
+    const actions = [];
+
+    if (moveLength === 1) {
+      return [
+        new Action(this.getMoveSteps(attacker, defender), this.name, 'move')
+      ];
+    }
+
+    // OTHERWISE, NEED TO RUN CUSTOM CALLBACK
+    return [];
+  }
+
+  getMoveSteps(attacker, defender) {
+    const steps = [];
+    const hits = this.hits;
+
+    for (let i = 1; i <= hits; i++) {
+      steps.push({
+        msg: (i === 1) ? `${attacker.name} used ${this.name}!` : `${attacker.name} hits again!`,
+        callback: () => this.runMove(attacker, defender)
+      })
+    }
+
+    if (this.sideEffects) /* has side effects */ {
+      this.sideEffects.forEach(
+        sideEffect => {
+          const sideEffectStep = {
+            msg: "SIDE EFFECT!",
+            callback: () => {
+              console.log("SIDE EFFECT CALLBACK!");
+            },
+          } // genSideEffectObject(sideEffect); // <=== WHERE WE WILL PARSE THE SIDE EFFECT STRING
+          steps.push(sideEffectStep);
+        }
+      )
+    }
+
+    return steps;
+  }
+
+  runMove(attacker, defender) {
+    const { damage, effective } = this.finalDamage(attacker, defender);
+    defender.currentHp = defender.currentHp - damage;
+    this.decrementPP();
+
+    if (effective) {
+      if (effective.includes("super effective")) {
+        return {
+          msg: "It was super effective!", 
+        };
+      } else if (effective.includes("not very effective")) {
+        return {
+          msg: "It was not very effective..."
+        };
+      } else if (effective.includes("immune")) {
+        return {
+          msg: "The attack missed!"
+        };
+      }
+    }
   }
 }
 

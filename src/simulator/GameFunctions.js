@@ -3,6 +3,7 @@ import { getPokemonById } from "../database-scripts/getPokemon";
 import { getMoveById } from "../database-scripts/getMove";
 import GameObject from "./GameObject";
 import Trainer from "./Trainer";
+import Action from './Action';
 import Move from "./Move";
 
 function getRandomPokemonTeam(size) {
@@ -184,13 +185,13 @@ function playerFight(gameObj, setGameObj) {
     name: <>{move.name} <br/> {"PP: " + move.currentPP} <br/>  {move.type}</>,
     callback: (setGameObj) => {
       player.actionQueue = [
-        generateActionObjFromMove(gameObj.player.currentPokemon, move.name, () =>
-          executeMove(
-            move,
-            gameObj.player.currentPokemon,
-            gameObj.opponent.currentPokemon
-          )
-        ),
+        // ...generateActionObjFromMove(gameObj.player.currentPokemon, move.name, () =>
+        //   executeMove(
+        //     move,
+        //     gameObj.player.currentPokemon,
+        //     gameObj.opponent.currentPokemon
+        //   )
+        // ),
       ];
       runTrainerActions(gameObj, setGameObj);
       return gameObj;
@@ -300,30 +301,7 @@ function playerActionMenu(gameObj, setGameObj) {
   return gameObj;
 }
 
-/**
- * Create an action object for a pokemon's move. The action object has a message and a script that will run.
- * @param {Object} pokemon The pokemon executing the move
- * @param {string} moveName name of the move
- * @param {function} callback action script
- * @return {Object} action object
- */
-function generateActionObjFromMove(pokemon, moveName, callback) {
-  return {
-    name: moveName,
-    type: 'move',
-    message: `${pokemon.name} used ${moveName}!`,
-    script: callback,
-  };
-}
 
-function generateActionObjFromPokemonSwitch(callback) {
-  return {
-    name: 'Switch Pokemon',
-    type: 'switch',
-    message: 'Player switched out their Pokemon.',
-    script: callback
-  };
-}
 
 /**
  * Run the opponent and player moves as a script.

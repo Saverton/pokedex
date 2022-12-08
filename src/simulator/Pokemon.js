@@ -18,6 +18,8 @@ class Pokemon {
       spAttack: 0,
       spDefense: 0,
       speed: 0,
+      accuracy: 0,
+      evasiveness: 0
     };
     this._baseStats = pokemonObj.stats;
     this._stats = this.calculateCurrentStats();
