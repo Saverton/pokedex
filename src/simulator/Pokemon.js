@@ -4,7 +4,7 @@ import { getMoves } from "./GameFunctions";
 class Pokemon {
   constructor(pokemonObj) {
     this.name = pokemonObj.name;
-    this._level = 100;
+    this._level = 50;
     this._types = pokemonObj.types;
     this._baseHp = pokemonObj.maxHp;
     // HP formula is ((2 times baseHP times level) divide by 100) plus level plus 10

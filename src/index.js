@@ -36,14 +36,17 @@ const pkmn = new Pokemon({
   ],
 });
 const burn = createStatusEffect("burn", pkmn);
-pkmn.statusEffect = burn;
-burn.runSideEffect();
-console.log(pkmn);
-// console.log(burn);
-// const para = createStatusEffect("paralyze", pkmn);
+// pkmn.statusEffect = burn;
+// burn.runSideEffect();
+// console.log(pkmn);
+const para = createStatusEffect("paralyze", pkmn);
+pkmn.statusEffect = para;
+para.runSideEffect();
 // console.log(para);
 // const pois = createStatusEffect("poison", pkmn);
 // console.log(pois);
+
+console.log(pkmn);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
