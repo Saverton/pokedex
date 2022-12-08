@@ -45,6 +45,7 @@ class Trainer {
   }
 
   recallPokemon() {
+    console.log('recalling pokemon')
     const pokemonName = this.currentPokemon.name;
     this.currentPokemon = undefined;
     return `${this.name}: Return, ${pokemonName}!`;
@@ -53,7 +54,7 @@ class Trainer {
   async useTurn(gameObj, setGameObj) {
     const action = this.actionQueue.shift();
     let msg = action.message;
-    msg += action.script(gameObj);
+    msg += await action.script(gameObj) || "";
     gameObj.currentMessage = msg;
     setGameObj({...gameObj});
     // 1 second delay before continuing
