@@ -21,6 +21,7 @@ class Pokemon {
     };
     this._baseStats = pokemonObj.stats;
     this._stats = this.calculateCurrentStats();
+    this._statusEffect = "";
     getMoves(this, pokemonObj);
   }
 
@@ -32,6 +33,10 @@ class Pokemon {
     return (2 * this._baseHp * this._level) / 100 + this._level + 10;
   }
 
+  /**
+   * 
+   * @returns an object of the correct stat multiplier values based on this._adjustedStats
+   */
   calculateStatMultipliers() {
     const multipliers = {};
     Object.keys(this._adjustedStats).forEach((key) => {
@@ -147,6 +152,14 @@ class Pokemon {
 
   get types() {
     return this._types;
+  }
+
+  get statusEffect() {
+    return this._statusEffect;
+  }
+
+  set statusEffect(status) {
+    this._statusEffect = status;
   }
 }
 

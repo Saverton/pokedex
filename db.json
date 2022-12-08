@@ -7653,7 +7653,7 @@
         "power": 20,
         "accuracy": 100,
         "pp": 25,
-        "effect": "Use recovers half the HP inflicted on opponent."
+        "effect": "User recovers half the HP inflicted on opponent."
       }
     },
     {
