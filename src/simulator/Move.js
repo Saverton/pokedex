@@ -370,6 +370,7 @@ class Move {
 
   runMove(attacker, defender, dmg) {
     const { damage, effective, crit } = dmg || this.finalDamage(attacker, defender);
+    defender.recentDamage.enqueue(damage);
     console.log({ damage, effective, crit });
     defender.currentHp = defender.currentHp - damage;
     this.decrementPP();

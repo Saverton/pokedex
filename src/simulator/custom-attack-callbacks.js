@@ -12,32 +12,32 @@ const customCallbacks = {
   },
   ["Fly"]: (move, atk, def) => {
     return [
-      immuneTurn(`${atk.name} flew high in the sky!`),
-      move.getMoveSteps(atk, def)
+      immuneTurn(`${atk.name} flew high in the sky!`, atk),
+      new Action(move.getMoveSteps(atk, def), move.name, 'move') 
     ];
   },
   ["Dig"]: (move, atk, def) => {
     return [
-      immuneTurn(`${atk.name} dug deep into the ground!`),
-      move.getMoveSteps(atk, def)
+      immuneTurn(`${atk.name} dug deep into the ground!`, atk),
+      new Action(move.getMoveSteps(atk, def), move.name, 'move') 
     ];
   },
   ["Skull Bash"]: (move, atk, def) => {
     return [
       waitTurn(`${atk.name} lowered its head...`),
-      move.getMoveSteps(atk, def)
+      new Action(move.getMoveSteps(atk, def), move.name, 'move') 
     ]
   },
   ['Sky Attack']: (move, atk, def) => {
     return [
       waitTurn(`${atk.name} is glowing...`),
-      move.getMoveSteps(atk, def)
+      new Action(move.getMoveSteps(atk, def), move.name, 'move') 
     ]
   },
   ['Solar Beam']: (move, atk, def) => {
     return [
       waitTurn(`${atk.name} has taken in sunlight...`),
-      move.getMoveSteps(atk, def)
+      new Action(move.getMoveSteps(atk, def), move.name, 'move') 
     ]
   },
 }
@@ -63,15 +63,15 @@ function immuneTurn(msg, pkmn) {
 function bideAttack(move, atk, def, bideTime) {
   return new Action([
     {
-      msg: `${atk} strikes back!`,
+      msg: `${atk.name} strikes back!`,
       callback: () => {
-        const dmg = 0;
+        let dmg = 0;
         for (let i = 0; i < bideTime; i++) {
-          dmg += atk.recentDamage[4 - i];
+          dmg += atk.recentDamage.damage[atk.recentDamage.damage.length - 1 - i] || 0;
         }
         const effective = (def.types.includes(move.completelyIneffectiveAgainst()[0]) ? 'immune' : 'normal');
         move.runMove(atk, def, {
-          damage: dmg,
+          damage: dmg * 2,
           effective: effective
         });
       }
