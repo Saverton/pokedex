@@ -230,6 +230,18 @@ class Pokemon {
     this.canAttack = true;
     this.immune = false;
   }
+
+  isOutOfMoves() {
+    for (let i = 0; i < this.moveSet.length; i++) {
+      const move = this.moveSet[i];
+      if (move.currentPP > 0) {
+        console.log('move has pp left')
+        return false;
+      }
+    }
+
+    return true;
+  }
 }
 
 export default Pokemon;

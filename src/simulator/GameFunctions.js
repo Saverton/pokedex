@@ -5,6 +5,9 @@ import GameObject from "./GameObject";
 import { getActionFromPokemonSwitch } from './Action';
 import Move from "./Move";
 
+let struggle = {}
+getMoveById(135, (res) => struggle = new Move(res));
+
 function getRandomPokemonTeam(size) {
   const team = [];
 
@@ -179,12 +182,26 @@ function playerFight(gameObj, setGameObj) {
       runTrainerActions(gameObj, setGameObj);
       return gameObj;
     },
+    disabled: (move.currentPP <= 0)
   }));
 
   options.push({
     name: "back",
     callback: () => playerActionMenu(gameObj, setGameObj),
   });
+
+  if (gameObj.player.currentPokemon.isOutOfMoves()) {
+    options.push({
+      name: <>{struggle.name} <br/> {"PP: " + struggle.currentPP} <br/>  {struggle.type}</>,
+      callback: (setGameObj) => {
+        player.actionQueue = [
+          ...struggle.getMoveActions(player.currentPokemon, gameObj.opponent.currentPokemon)
+        ];
+        runTrainerActions(gameObj, setGameObj);
+        return gameObj;
+      }
+    })
+  }
 
   gameObj.menuOptions = options;
   return gameObj;
@@ -371,7 +388,18 @@ async function getMoves(pokemonObj, dbObj) {
   for (let i = 0; i < 4; i++) {
     const moveIndex = Math.floor(Math.random() * movePool.length);
     const [ moveId ] = movePool.splice(moveIndex, 1);
-    await getMoveById(moveId, (move) => moves.push(new Move(move)));
+    let moveObj; 
+    await getMoveById(moveId, (move) => {
+      console.log(move);
+      moveObj = move;
+    });
+    console.log(moveObj);
+    if (moveObj.dontUse) {
+      i--;
+      console.log("skipping ", moveObj.name);
+    } else {
+      moves.push(new Move(moveObj));
+    }
     if (movePool.length === 0) {
       break;
     }
