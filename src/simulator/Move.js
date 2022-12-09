@@ -7,8 +7,12 @@ class Move {
     this._name = moveObj.name;
     this._type = moveObj.type;
     this._category = moveObj.stats.category;
-    this._power = parseInt(moveObj.stats.power);
-    this._accuracy = parseInt(moveObj.stats.accuracy);
+    this._power =
+      moveObj.stats.power === "" ? 0 : parseInt(moveObj.stats.power);
+    this._accuracy =
+      moveObj.stats.accuracy === ""
+        ? 256
+        : (parseInt(moveObj.stats.accuracy) / 100) * 256;
     this._pp = parseInt(moveObj.stats.pp);
     this._currentPP = parseInt(moveObj.stats.pp);
     this._effect = parseInt(moveObj.stats.effect);
@@ -125,8 +129,19 @@ class Move {
     return 0;
   }
 
+  chanceToHit(pkmnAccuracy, opponentEvasiveness) {
+    return this._accuracy * pkmnAccuracy * opponentEvasiveness;
+  }
+
+  attackHits(chance) {
+    const rand = Math.floor(Math.random() * 256) + 1;
+    if (rand <= chance) return true;
+
+    return false;
+  }
+
   hasFixedDamage() {
-    if (this._power === "") return true;
+    if (this._power === 0) return true;
 
     return false;
   }
@@ -136,7 +151,12 @@ class Move {
     if (this._name === "Dragon Rage") return 40;
     if (this._name === "Night Shade" || this._name === "Seismic Toss")
       return level;
-    if(this._name === "Horn Drill" || this._name === "Fissure" || this._name === "Guillotine") return Number.MAX_VALUE;
+    if (
+      this._name === "Horn Drill" ||
+      this._name === "Fissure" ||
+      this._name === "Guillotine"
+    )
+      return Number.MAX_VALUE;
 
     let baseDamage = Math.floor(
       Math.floor(
@@ -171,7 +191,7 @@ class Move {
 
     defenderTypes.forEach((type) => {
       if (this.completelyIneffectiveAgainst().includes(type)) {
-        damageObj.effective.push('immune');
+        damageObj.effective.push("immune");
         damageObj.damage = 0;
         return damageObj;
       }
@@ -191,8 +211,8 @@ class Move {
 
     if (
       damageObj.effective.length === 0 ||
-      ( damageObj.effective.includes("super effective") &&
-      damageObj.effective.includes("not very effective") )
+      (damageObj.effective.includes("super effective") &&
+        damageObj.effective.includes("not very effective"))
     ) {
       damageObj.effective = ["normal"];
     }
@@ -201,8 +221,7 @@ class Move {
 
   randomFactor(modifiedDamage) {
     if (!this.hasFixedDamage()) {
-      if (modifiedDamage.damage === 1)
-        return modifiedDamage;
+      if (modifiedDamage.damage === 1) return modifiedDamage;
       else {
         return {
           ...modifiedDamage,
@@ -210,7 +229,7 @@ class Move {
             (modifiedDamage.damage *
               (Math.floor(Math.random() * (255 - 217)) + 217)) /
               255
-          )
+          ),
         };
       }
     }
@@ -219,8 +238,19 @@ class Move {
 
   finalDamage(userPkmn, opponentPkmn) {
     if (this.isAttack()) {
+      const chance = this.chanceToHit(
+        userPkmn.stats.accuracy,
+        opponentPkmn.stats.evasiveness
+      );
+
+      //do an accuracy check
+      if (!this.attackHits(chance)) {
+        return {
+          damage: 0,
+          effective: "missed",
+        };
+      }
       let base = {};
-      console.log(userPkmn, userPkmn.stats);
       let level = userPkmn.level;
       if (this.isCriticalHit(userPkmn)) {
         level *= 2;
@@ -234,7 +264,7 @@ class Move {
             level,
             userPkmn.stats.attack,
             opponentPkmn.stats.defense
-          )
+          ),
         };
       } else {
         base = {
@@ -243,27 +273,23 @@ class Move {
             level,
             userPkmn.stats.spAttack,
             opponentPkmn.stats.spDefense
-          )
+          ),
         };
       }
-      console.log(base);
 
       const modified = this.modifiedDamage(
         base,
         userPkmn.types,
         opponentPkmn.types
       );
-      
-      console.log(modified);
 
       return this.randomFactor(modified);
     } else {
       return {
         damage: 0,
-        effective: 'status move',
-      }
+        effective: "status move",
+      };
     }
-    
   }
 
   moveLength() {
@@ -282,7 +308,14 @@ class Move {
 
   isCriticalHit(userPkmn) {
     const random = Math.floor(Math.random() * 256);
-    const threshold = Math.min(Math.floor(this.critRatio * Math.floor(userPkmn.stats.speed / 2) * userPkmn.stats.critRatio), 255);
+    const threshold = Math.min(
+      Math.floor(
+        this.critRatio *
+          Math.floor(userPkmn.stats.speed / 2) *
+          userPkmn.stats.critRatio
+      ),
+      255
+    );
     return random < threshold;
   }
 
@@ -323,18 +356,19 @@ class Move {
   }
 
   get hits() {
-    return Math.floor(Math.random() * (this._hits[1] - this._hits[0])) + this._hits[0];
+    return (
+      Math.floor(Math.random() * (this._hits[1] - this._hits[0])) +
+      this._hits[0]
+    );
   }
 
   getMoveActions(attacker, defender) {
-    console.log("MOVE NAME => ", this.name);
-
     const moveLength = this.moveLength();
     const actions = [];
 
     if (moveLength === 1) {
       return [
-        new Action(this.getMoveSteps(attacker, defender), this.name, 'move')
+        new Action(this.getMoveSteps(attacker, defender), this.name, "move"),
       ];
     }
 
@@ -345,24 +379,28 @@ class Move {
   getMoveSteps(attacker, defender) {
     const steps = [];
     const hits = this.hits;
-    console.log({ hits });
 
     for (let i = 1; i <= hits; i++) {
       steps.push({
-        msg: (i === 1) ? `${attacker.name} used ${this.name}!` : `${attacker.name} hits again! (x${i})`,
-        callback: () => this.runMove(attacker, defender)
-      })
+        msg:
+          i === 1
+            ? `${attacker.name} used ${this.name}!`
+            : `${attacker.name} hits again! (x${i})`,
+        callback: () => this.runMove(attacker, defender),
+      });
     }
 
-    if (this.sideEffects) /* has side effects */ {
-      this.sideEffects.forEach(
-        sideEffect => {
-          if (Math.random() < sideEffect.chance) {
-            const sideEffectStep = generateSideEffectObject(sideEffect, attacker, defender);
-            steps.push(sideEffectStep);
-          }
+    if (this.sideEffects) {
+      /* has side effects */ this.sideEffects.forEach((sideEffect) => {
+        if (Math.random() < sideEffect.chance) {
+          const sideEffectStep = generateSideEffectObject(
+            sideEffect,
+            attacker,
+            defender
+          );
+          steps.push(sideEffectStep);
         }
-      )
+      });
     }
 
     return steps;
@@ -380,20 +418,20 @@ class Move {
     if (crit) {
       extraSteps.push({
         msg: "Critical Hit!",
-      })
+      });
     }
     if (effective) {
       if (effective.includes("super effective")) {
         extraSteps.push({
-          msg: "It was super effective!", 
+          msg: "It was super effective!",
         });
       } else if (effective.includes("not very effective")) {
         extraSteps.push({
-          msg: "It was not very effective..."
+          msg: "It was not very effective...",
         });
       } else if (effective.includes("immune")) {
         extraSteps.push({
-          msg: "The attack missed!"
+          msg: "The attack missed!",
         });
       }
     }

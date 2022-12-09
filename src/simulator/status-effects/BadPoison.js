@@ -1,16 +1,17 @@
 import StatusEffect from "./StatusEffect";
 
 class BadPoison extends StatusEffect {
-  static messages = {
-    apply: (pkmn) => `${pkmn.name} was badly poisoned!`,
-    duration: (_pkmn) => "",
-    onAttack: (_pkmn) => "",
-    onAfterTurn: (pkmn) => `${pkmn.name} was hurt by poison!`,
-    expire: (_pkmn) => "",
-  }
+  static applyMessage = (pkmn) => `${pkmn.name} was badly poisoned!`;
+  
   constructor(type, pkmn) {
     super(type, pkmn);
     this._duration = Number.MAX_VALUE;
+    this._messages = {
+      duration: (_pkmn) => "",
+      onAttack: (_pkmn) => "",
+      onAfterTurn: (pkmn) => `${pkmn.name} was hurt by poison!`,
+      expire: (_pkmn) => "",
+    };
   }
 
   get duration() {

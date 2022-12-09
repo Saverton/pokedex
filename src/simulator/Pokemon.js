@@ -23,13 +23,21 @@ class Pokemon {
       evasiveness: 0,
       critRatio: 1,
     };
-    this._baseStats = pokemonObj.stats;
+    this._baseStats = this.padBaseStats(pokemonObj.stats);
     this._stats = this.calculateCurrentStats();
     this._statusEffect = {};
     this._canAttack = true;
     this._immune = false;
     this._recentDamage = new DamageQueue();
     getMoves(this, pokemonObj);
+  }
+
+  padBaseStats(stats) {
+    let baseStats = { ...stats };
+    baseStats["accuracy"] = 1;
+    baseStats["evasiveness"] = 1;
+
+    return baseStats;
   }
 
   isFainted() {
@@ -102,11 +110,14 @@ class Pokemon {
     let currentStats = {};
 
     Object.keys(this._baseStats).forEach((key) => {
-      currentStats[key] = this._baseStats[key] * multipliers[key];
-      currentStats[key] += (currentStats[key] * this._level) / 50;
+      if (key === "accuracy" || key === "evasiveness") {
+        currentStats[key] = this._baseStats[key] * multipliers[key];
+      } else {
+        currentStats[key] = this._baseStats[key] * multipliers[key];
+        currentStats[key] += (currentStats[key] * this._level) / 50;
+      }
     });
 
-    console.log(this.name, currentStats);
     return currentStats;
   }
 
@@ -183,7 +194,6 @@ class Pokemon {
   }
 
   get statusEffect() {
-    console.log('get status effect');
     if (Object.keys(this._statusEffect).length === 0) {
       return false;
     } else {
