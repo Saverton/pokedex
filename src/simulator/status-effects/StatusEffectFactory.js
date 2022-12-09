@@ -5,6 +5,7 @@ import Poison from "./Poison";
 import BadPoison from "./BadPoison";
 import Sleep from "./Sleep"
 import Frozen from "./Frozen";
+import Confusion from "./Confusion";
 
 function createStatusEffect(type, pkmn) {
   switch (type) {
@@ -20,6 +21,8 @@ function createStatusEffect(type, pkmn) {
       return new Sleep(type, pkmn);
     case "frz":
       return new Frozen(type, pkmn);
+    case "cnf":
+      return new Confusion(type, pkmn);
   }
 }
 
