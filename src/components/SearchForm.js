@@ -21,8 +21,8 @@ function SearchForm({ searchFilters, setSearchFilters }) {
 
   return (
     <SearchBar>
-      <div className="search text">
-        <label htmlFor="search">Search :</label>
+      <div className="searchText">
+        <label htmlFor="search"> 🔍 </label>
         <input 
           type="text"
           id="search"
@@ -32,10 +32,10 @@ function SearchForm({ searchFilters, setSearchFilters }) {
           placeholder="Search for Pokemon by name here."
         />
       </div>
-      <div className="search dropdown">
-        <label htmlFor="type-filter">Filter by Pokemon type : </label>
+      <div className="searchDropdown">
+        <label htmlFor="type-filter">Filter by Type: </label>
         <select id="type-filter" name="typeFilter" value={searchFilters.typeFilter} onChange={handleFilterChange}>
-          <option value="all">All</option>
+          <option value="all">All</option>/
           {typeFilterOptions}
         </select>
       </div>
