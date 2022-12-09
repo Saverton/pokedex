@@ -135,7 +135,6 @@ class Move {
 
   attackHits(chance) {
     const rand = Math.floor(Math.random() * 256) + 1;
-    console.log("random number: ", rand)
     if (rand <= chance) return true;
 
     return false;

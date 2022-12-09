@@ -110,14 +110,13 @@ class Pokemon {
 
     Object.keys(this._baseStats).forEach((key) => {
       if (key === "accuracy" || key === "evasiveness") {
-        currentStats[key] = this._baseStats[key] * multipliers[key]
+        currentStats[key] = this._baseStats[key] * multipliers[key];
       } else {
         currentStats[key] = this._baseStats[key] * multipliers[key];
         currentStats[key] += (currentStats[key] * this._level) / 50;
       }
     });
 
-    console.log(this.name, currentStats);
     return currentStats;
   }
 

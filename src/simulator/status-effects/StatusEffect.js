@@ -17,6 +17,10 @@ class StatusEffect {
     };
   }
 
+  get messages() {
+    return this._messages;
+  }
+
   get duration() {
     return this._duration;
   }
