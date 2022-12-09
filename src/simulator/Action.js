@@ -26,7 +26,7 @@ class Action {
   }
 }
 
-function getActionFromPokemonSwitch(callback, gameObj, setGameObj, idx) {
+function getActionFromPokemonSwitch(callback) {
   return new Action([
     {
       msg: "Player has switched pokemon!",

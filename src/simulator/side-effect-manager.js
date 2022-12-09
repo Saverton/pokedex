@@ -17,6 +17,12 @@ const SIDE_EFFECT_CALLBACKS = {
     speed: generateAdjustedStatChangeCallback('speed'),
     accuracy: generateAdjustedStatChangeCallback('accuracy'),
     evasiveness: generateAdjustedStatChangeCallback('evasiveness'),
+    critRatio: (pkmn, val) => {
+      return {
+        msg: `${pkmn.name}'s critical hit ratio increased!`,
+        callback: () => { pkmn.stats.critRatio = val}
+      }
+    }
   }
 }
 
@@ -41,7 +47,7 @@ function generateSideEffectObject(sideEffect, attacker, defender) {
 
   const applyTo = effectSteps[0] === 'self' ? attacker : defender;
 
-  return SIDE_EFFECT_CALLBACKS[effectSteps[1]][effectSteps[2]](applyTo, value);
+  return SIDE_EFFECT_CALLBACKS[effectSteps[1]][effectSteps[2]](applyTo, parseInt(value));
 }
 
 // path => <self/other>/<eff/stat>/<name>

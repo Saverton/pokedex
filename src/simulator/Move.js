@@ -13,7 +13,7 @@ class Move {
     this._effect = parseInt(moveObj.stats.effect);
     this._sideEffects = moveObj.sideEffects;
     this._hits = moveObj.hits || [1, 1];
-    this._critRatio = moveObj.critRatio || 1;
+    this._critRatio = moveObj.stats.critRatio || 1;
   }
 
   strongAgainst() {
@@ -348,7 +348,7 @@ class Move {
 
     for (let i = 1; i <= hits; i++) {
       steps.push({
-        msg: (i === 1) ? `${attacker.name} used ${this.name}!` : `${attacker.name} hits again!`,
+        msg: (i === 1) ? `${attacker.name} used ${this.name}!` : `${attacker.name} hits again! (x${i})`,
         callback: () => this.runMove(attacker, defender)
       })
     }
