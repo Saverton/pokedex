@@ -304,7 +304,8 @@ async function runTrainerActions(gameObj, setGameObj) {
   gameObj.playerControl = false;
   const playerPokemon = gameObj.player.currentPokemon;
   const opponentPokemon = gameObj.opponent.currentPokemon;
-  if (playerPokemon.statusEffect !== {}) {
+  console.log(playerPokemon.statusEffect);
+  if (playerPokemon.statusEffect) {
     const effect = playerPokemon.statusEffect;
     if (effect.turn >= effect.duration) {
       await effectExpire(playerPokemon, gameObj, setGameObj);
@@ -312,7 +313,7 @@ async function runTrainerActions(gameObj, setGameObj) {
       effect.onBeforeTurn();
     }
   }
-  if (opponentPokemon.statusEffect !== {}) {
+  if (opponentPokemon.statusEffect) {
     const effect = opponentPokemon.statusEffect;
     if (effect.turn >= effect.duration) {
       await effectExpire(opponentPokemon, gameObj, setGameObj);
@@ -334,13 +335,13 @@ async function runTrainerActions(gameObj, setGameObj) {
     }
   }
 
-  if (gameObj.player.currentPokemon && playerPokemon.statusEffect !== {}) {
+  if (gameObj.player.currentPokemon && playerPokemon.statusEffect) {
     gameObj.currentMessage = playerPokemon.statusEffect.messages.duration(playerPokemon);
     playerPokemon.statusEffect.onAfterTurn();
     setGameObj({...gameObj});
     await wait(1.5);
   }
-  if (gameObj.opponent.currentPokemon && opponentPokemon.statusEffect !== {}) {
+  if (gameObj.opponent.currentPokemon && opponentPokemon.statusEffect) {
     gameObj.currentMessage = opponentPokemon.statusEffect.messages.duration(opponentPokemon);
     opponentPokemon.statusEffect.onAfterTurn();
     setGameObj({...gameObj});

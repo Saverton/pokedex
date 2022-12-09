@@ -11,27 +11,27 @@ const SIDE_EFFECT_CALLBACKS = {
   eff: {
     brn: (pkmn) => ({
       msg: Burn.messages.apply(pkmn),
-      callback: createStatusEffect('brn', pkmn)
+      callback: () => createStatusEffect('brn', pkmn)
     }),
     prz: (pkmn) => ({
       msg: Paralyze.messages.apply(pkmn),
-      callback: createStatusEffect('prz', pkmn)
+      callback: () => createStatusEffect('prz', pkmn)
     }),
     psn: (pkmn) => ({
       msg: Poison.messages.apply(pkmn),
-      callback: createStatusEffect('psn', pkmn)
+      callback: () => createStatusEffect('psn', pkmn)
     }),
     badpsn: (pkmn) => ({
       msg: BadPoison.messages.apply(pkmn),
-      callback: createStatusEffect('badpsn', pkmn)
+      callback: () => createStatusEffect('badpsn', pkmn)
     }),
     slp: (pkmn) => ({
       msg: Sleep.messages.apply(pkmn),
-      callback: createStatusEffect('slp', pkmn)
+      callback: () => createStatusEffect('slp', pkmn)
     }),
     frz: (pkmn) => ({
       msg: Frozen.messages.apply(pkmn),
-      callback: createStatusEffect('frz', pkmn)
+      callback: () => createStatusEffect('frz', pkmn)
     }),
     cnf: (pkmn) => ({
       msg: `${pkmn} became confused, but then got even more confused because confusion hasn't been coded yet! Confuception => cancels out!`,
