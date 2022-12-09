@@ -324,7 +324,10 @@ async function runTrainerActions(gameObj, setGameObj) {
     if (effect.turn >= effect.duration) {
       await effectExpire(playerPokemon, gameObj, setGameObj);
     } else {
+      gameObj.currentMessage = playerPokemon.statusEffect.messages.duration(playerPokemon);
       effect.onBeforeTurn();
+      setGameObj({...gameObj});
+      if (gameObj.currentMessage.length > 0) await wait(1.5);
     }
   }
   if (opponentPokemon.statusEffect) {
@@ -332,7 +335,11 @@ async function runTrainerActions(gameObj, setGameObj) {
     if (effect.turn >= effect.duration) {
       await effectExpire(opponentPokemon, gameObj, setGameObj);
     } else {
+      gameObj.currentMessage = opponentPokemon.statusEffect.messages.duration(opponentPokemon);
       effect.onBeforeTurn();
+      setGameObj({...gameObj});
+      // console.log('in effect before')
+      if (gameObj.currentMessage.length > 0) await wait(1.5);
     }
   }
   setGameObj({ ...gameObj });
@@ -350,16 +357,16 @@ async function runTrainerActions(gameObj, setGameObj) {
   }
 
   if (gameObj.player.currentPokemon && playerPokemon.statusEffect) {
-    gameObj.currentMessage = playerPokemon.statusEffect.messages.duration(playerPokemon);
+    gameObj.currentMessage = playerPokemon.statusEffect.messages.onAfterTurn(playerPokemon);
     playerPokemon.statusEffect.onAfterTurn();
     setGameObj({...gameObj});
-    await wait(1.5);
+    if (gameObj.currentMessage.length > 0) await wait(1.5);
   }
   if (gameObj.opponent.currentPokemon && opponentPokemon.statusEffect) {
-    gameObj.currentMessage = opponentPokemon.statusEffect.messages.duration(opponentPokemon);
+    gameObj.currentMessage = opponentPokemon.statusEffect.messages.onAfterTurn(opponentPokemon);
     opponentPokemon.statusEffect.onAfterTurn();
     setGameObj({...gameObj});
-    await wait(1.5);
+    if (gameObj.currentMessage.length > 0) await wait(1.5);
   }
 
   const winState = checkWinner(gameObj);
@@ -390,13 +397,13 @@ async function getMoves(pokemonObj, dbObj) {
     const [ moveId ] = movePool.splice(moveIndex, 1);
     let moveObj; 
     await getMoveById(moveId, (move) => {
-      console.log(move);
+      // console.log(move);
       moveObj = move;
     });
-    console.log(moveObj);
+    // console.log(moveObj);
     if (moveObj.dontUse) {
       i--;
-      console.log("skipping ", moveObj.name);
+      // console.log("skipping ", moveObj.name);
     } else {
       moves.push(new Move(moveObj));
     }

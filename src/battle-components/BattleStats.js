@@ -4,7 +4,15 @@ import BattleHpBar from "./BattleHpBar";
 const POKEBALL_SPRITE = "https://grid-paint.com/images/png/4909218658254848.png";
 const GRAY_POKEBALL_SPRITE = "./gray-pokeball-sprite.png"
 
-function BattleStats({ pokemon, team }) {
+function BattleStats({ pokemon }) {
+  let pokemonTypes = '';
+  if (pokemon) {
+    pokemonTypes = pokemon.types.reduce(
+      (str, type, idx) => str + (idx > 0 ? ', ' : '') + type,
+      ''
+    );
+  }
+
   const numberPokemon = () => {
     return team.map(pkmn => {
       if(pkmn.isFainted()) {
@@ -14,13 +22,12 @@ function BattleStats({ pokemon, team }) {
       }
     })
   }
+  
   if (pokemon) {
     const { name, maxHp, currentHp } = pokemon;
     return (
       <div className="battle-stats">
-        <p>
-          <span>{name}</span> | lvl<span>50</span>
-        </p>
+        <p><span>{name}</span> | lvl<span>50</span> | {pokemonTypes}{pokemon.statusEffect ? ` | ${pokemon.statusEffect.icon}` : ''}</p>
         <BattleHpBar maxHp={maxHp} currentHp={currentHp} />
         <p>{`${currentHp} / ${maxHp}`}</p>
       </div>

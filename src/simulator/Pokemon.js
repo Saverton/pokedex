@@ -235,7 +235,7 @@ class Pokemon {
     for (let i = 0; i < this.moveSet.length; i++) {
       const move = this.moveSet[i];
       if (move.currentPP > 0) {
-        console.log('move has pp left')
+        // console.log('move has pp left')
         return false;
       }
     }

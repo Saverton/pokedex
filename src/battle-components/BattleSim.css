@@ -22,6 +22,7 @@ code {
   margin: 0 auto;
   width: 800px;
   height: 600px;
+  overflow-y: auto;
   background: rgb(255, 255, 255);
 }
 
@@ -36,6 +37,15 @@ div.pokemon {
   display: flex;
   justify-content: space-between;
   min-height: 40%;
+  margin-bottom: 0.5em;
+}
+
+div.pokemon:first-child {
+  align-items: start;
+}
+
+div.pokemon:last-of-type {
+  align-items: end;
 }
 
 .player {
@@ -59,7 +69,7 @@ img.pokemon {
   width: 100%;
 }
 
-img.pokeball {
+img.pokeball-battle {
   width: 25%;
   display: block;
 }
@@ -87,7 +97,7 @@ img.pokeball {
 .battle-stats {
   border: 2px black solid;
   width: 50%;
-  height: 90%;
+  height: fit-content;
   padding: 0.5em;
 }
 
@@ -113,6 +123,7 @@ img.pokeball {
 .battle-ui {
   display: flex;
   flex-direction: row;
+  margin-bottom: 1px;
 }
 
 .textbox {
@@ -121,13 +132,15 @@ img.pokeball {
   border: 2px solid black;
   padding: 1em;
   font-size: 1.25em;
+  background-color: white;
 }
 
 .controls {
   display: grid;
-  
-  width: 35%;
   height: 100%;
+  width: 35%;
+  /* height: 100%; */
   border: 2px solid black;
   padding: 1em;
+  background-color: white;
 }
