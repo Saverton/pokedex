@@ -15,12 +15,14 @@ code {
 .battle-sim {
   display: flex;
   flex-direction: column;
+  /* justify-content: space-between; */
   border: 2px solid black;
   padding: 0.5em;
   margin: 0 auto;
   width: 800px;
   height: 600px;
   background: white;
+  overflow-y: auto;
 }
 
 .battle-scene {
@@ -34,6 +36,15 @@ div.pokemon {
   display: flex;
   justify-content: space-between;
   min-height: 40%;
+  margin-bottom: 0.5em;
+}
+
+div.pokemon:first-child {
+  align-items: start;
+}
+
+div.pokemon:last-of-type {
+  align-items: end;
 }
 
 .player {
@@ -65,7 +76,7 @@ img.pokeball-battle {
 .battle-stats {
   border: 2px black solid;
   width: 50%;
-  height: 90%;
+  height: fit-content;
   padding: 0.5em;
 }
 
@@ -91,6 +102,7 @@ img.pokeball-battle {
 .battle-ui {
   display: flex;
   flex-direction: row;
+  margin-bottom: 1px;
 }
 
 .textbox {
@@ -99,13 +111,15 @@ img.pokeball-battle {
   border: 2px solid black;
   padding: 1em;
   font-size: 1.25em;
+  background-color: white;
 }
 
 .controls {
   display: grid;
-  
-  width: 35%;
   height: 100%;
+  width: 35%;
+  /* height: 100%; */
   border: 2px solid black;
   padding: 1em;
+  background-color: white;
 }
