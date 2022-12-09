@@ -1,3 +1,6 @@
+import { generateSideEffectObject } from "./side-effect-manager";
+import Action from "./Action";
+
 class Move {
   constructor(moveObj) {
     this._name = moveObj.name;
@@ -7,7 +10,10 @@ class Move {
     this._accuracy = parseInt(moveObj.stats.accuracy);
     this._pp = parseInt(moveObj.stats.pp);
     this._currentPP = parseInt(moveObj.stats.pp);
-    this._effect = moveObj.stats.effect;
+    this._effect = parseInt(moveObj.stats.effect);
+    this._sideEffects = moveObj.sideEffects;
+    this._hits = moveObj.hits || [1, 1];
+    this._critRatio = moveObj.stats.critRatio || 1;
   }
 
   strongAgainst() {
@@ -152,24 +158,22 @@ class Move {
       };
     }
 
-    let modifiedDamage = baseDamage;
-
     const damageObj = {
-      damage: modifiedDamage,
+      ...baseDamage,
       effective: [],
     };
 
     userTypes.forEach((type) => {
       if (type === this._type && !this.hasFixedDamage())
-        damageObj.damage += Math.floor(baseDamage / 2);
+        damageObj.damage += Math.floor(baseDamage.damage / 2);
     });
 
     defenderTypes.forEach((type) => {
-      if (this.completelyIneffectiveAgainst().includes(type))
-        return {
-          damage: 0,
-          effective: ["immune"],
-        };
+      if (this.completelyIneffectiveAgainst().includes(type)) {
+        damageObj.effective.push('immune');
+        damageObj.damage = 0;
+        return damageObj;
+      }
 
       if (!this.hasFixedDamage()) {
         if (this.strongAgainst().includes(type)) {
@@ -184,10 +188,10 @@ class Move {
       }
     });
 
-    if (damageObj.effective.length === 0) damageObj.effective.push("normal");
     if (
-      damageObj.effective.includes("super effective") &&
-      damageObj.effective.includes("not very effective")
+      damageObj.effective.length === 0 ||
+      ( damageObj.effective.includes("super effective") &&
+      damageObj.effective.includes("not very effective") )
     ) {
       damageObj.effective = ["normal"];
     }
@@ -195,20 +199,17 @@ class Move {
   }
 
   randomFactor(modifiedDamage) {
-    if (!this.isAttack() || !this.hasFixedDamage()) {
+    if (!this.hasFixedDamage()) {
       if (modifiedDamage.damage === 1)
-        return {
-          damage: 1,
-          effective: modifiedDamage.effective,
-        };
+        return modifiedDamage;
       else {
         return {
+          ...modifiedDamage,
           damage: Math.floor(
             (modifiedDamage.damage *
               (Math.floor(Math.random() * (255 - 217)) + 217)) /
               255
-          ),
-          effective: modifiedDamage.effective,
+          )
         };
       }
     }
@@ -216,29 +217,52 @@ class Move {
   }
 
   finalDamage(userPkmn, opponentPkmn) {
-    let base;
+    if (this.isAttack()) {
+      let base = {};
+      console.log(userPkmn, userPkmn.stats);
+      let level = userPkmn.level;
+      if (this.isCriticalHit(userPkmn)) {
+        level *= 2;
+        base.crit = true;
+      }
+      // use physical attack/defense if physical move, else use special attack/defense
+      if (this._category === "physical") {
+        base = {
+          ...base,
+          damage: this.baseDamage(
+            level,
+            userPkmn.stats.attack,
+            opponentPkmn.stats.defense
+          )
+        };
+      } else {
+        base = {
+          ...base,
+          damage: this.baseDamage(
+            level,
+            userPkmn.stats.spAttack,
+            opponentPkmn.stats.spDefense
+          )
+        };
+      }
+      console.log(base);
 
-    // use physical attack/defense if physical move, else use special attack/defense
-    if (this._category === "physical") {
-      base = this.baseDamage(
-        userPkmn.level,
-        userPkmn.stats.attack,
-        opponentPkmn.stats.defense
+      const modified = this.modifiedDamage(
+        base,
+        userPkmn.types,
+        opponentPkmn.types
       );
+      
+      console.log(modified);
+
+      return this.randomFactor(modified);
     } else {
-      base = this.baseDamage(
-        userPkmn.level,
-        userPkmn.stats.spAttack,
-        opponentPkmn.stats.spDefense
-      );
+      return {
+        damage: 0,
+        effective: 'status move',
+      }
     }
-    const modified = this.modifiedDamage(
-      base,
-      userPkmn.types,
-      opponentPkmn.types
-    );
-
-    return this.randomFactor(modified);
+    
   }
 
   moveLength() {
@@ -255,7 +279,11 @@ class Move {
     else return 1;
   }
 
-  useMove() {}
+  isCriticalHit(userPkmn) {
+    const random = Math.floor(Math.random() * 256);
+    const threshold = Math.min(Math.floor(this.critRatio * Math.floor(userPkmn.stats.speed / 2) * userPkmn.stats.critRatio), 255);
+    return random < threshold;
+  }
 
   get name() {
     return this._name;
@@ -287,6 +315,88 @@ class Move {
 
   get effect() {
     return this._effect;
+  }
+
+  get sideEffects() {
+    return this._sideEffects;
+  }
+
+  get hits() {
+    return Math.floor(Math.random() * (this._hits[1] - this._hits[0])) + this._hits[0];
+  }
+
+  getMoveActions(attacker, defender) {
+    console.log("MOVE NAME => ", this.name);
+
+    const moveLength = this.moveLength();
+    const actions = [];
+
+    if (moveLength === 1) {
+      return [
+        new Action(this.getMoveSteps(attacker, defender), this.name, 'move')
+      ];
+    }
+
+    // OTHERWISE, NEED TO RUN CUSTOM CALLBACK
+    return [];
+  }
+
+  getMoveSteps(attacker, defender) {
+    const steps = [];
+    const hits = this.hits;
+    console.log({ hits });
+
+    for (let i = 1; i <= hits; i++) {
+      steps.push({
+        msg: (i === 1) ? `${attacker.name} used ${this.name}!` : `${attacker.name} hits again! (x${i})`,
+        callback: () => this.runMove(attacker, defender)
+      })
+    }
+
+    if (this.sideEffects) /* has side effects */ {
+      this.sideEffects.forEach(
+        sideEffect => {
+          if (Math.random() < sideEffect.chance) {
+            const sideEffectStep = generateSideEffectObject(sideEffect, attacker, defender);
+            steps.push(sideEffectStep);
+          }
+        }
+      )
+    }
+
+    return steps;
+  }
+
+  runMove(attacker, defender) {
+    const { damage, effective, crit } = this.finalDamage(attacker, defender);
+    console.log({ damage, effective, crit });
+    defender.currentHp = defender.currentHp - damage;
+    this.decrementPP();
+
+    const extraSteps = [];
+
+    if (crit) {
+      extraSteps.push({
+        msg: "Critical Hit!",
+      })
+    }
+    if (effective) {
+      if (effective.includes("super effective")) {
+        extraSteps.push({
+          msg: "It was super effective!", 
+        });
+      } else if (effective.includes("not very effective")) {
+        extraSteps.push({
+          msg: "It was not very effective..."
+        });
+      } else if (effective.includes("immune")) {
+        extraSteps.push({
+          msg: "The attack missed!"
+        });
+      }
+    }
+
+    return extraSteps;
   }
 }
 

@@ -1,10 +1,11 @@
 import { ThemeConsumer } from "styled-components";
 import { getMoves } from "./GameFunctions";
+import DamageQueue from "./DamageQueue";
 
 class Pokemon {
   constructor(pokemonObj) {
     this.name = pokemonObj.name;
-    this._level = 100;
+    this._level = 50;
     this._types = pokemonObj.types;
     this._baseHp = pokemonObj.maxHp;
     // HP formula is ((2 times baseHP times level) divide by 100) plus level plus 10
@@ -18,10 +19,15 @@ class Pokemon {
       spAttack: 0,
       spDefense: 0,
       speed: 0,
+      accuracy: 0,
+      evasiveness: 0,
+      critRatio: 1,
     };
     this._baseStats = pokemonObj.stats;
     this._stats = this.calculateCurrentStats();
-    this._statusEffect = "";
+    this._statusEffect = {};
+    this._canAttack = true;
+    this._recentDamage = new DamageQueue();
     getMoves(this, pokemonObj);
   }
 
@@ -34,7 +40,7 @@ class Pokemon {
   }
 
   /**
-   * 
+   *
    * @returns an object of the correct stat multiplier values based on this._adjustedStats
    */
   calculateStatMultipliers() {
@@ -114,12 +120,29 @@ class Pokemon {
     this._adjustedStats.speed += speed;
   }
 
-  getSpeed(action) {
-    const priorityActions = ['switch', 'item']
-    if (priorityActions.includes(action.type) || action.name === 'Quick Attack') {
-      return 1000;
+  /**
+   * Sets a specific adjusted stat, prevents stat from passing max/min val and returns boolean on success.
+   * @param {string} name
+   * @param {number} value
+   * @returns boolean (success?)
+   */
+  setAdjustedStat(name, value) {
+    if (Math.abs(this._adjustedStats[name]) === 6) {
+      return false;
+    } else {
+      this._adjustedStats[name] = value;
+      return true;
     }
-    else {
+  }
+
+  getSpeed(action) {
+    const priorityActions = ["switch", "item"];
+    if (
+      priorityActions.includes(action.type) ||
+      action.name === "Quick Attack"
+    ) {
+      return 1000;
+    } else {
       return this.stats.speed;
     }
   }
@@ -150,6 +173,10 @@ class Pokemon {
     return this._stats;
   }
 
+  set stats(newStats) {
+    this._stats = newStats;
+  }
+
   get types() {
     return this._types;
   }
@@ -160,6 +187,18 @@ class Pokemon {
 
   set statusEffect(status) {
     this._statusEffect = status;
+  }
+
+  get canAttack() {
+    return this._canAttack;
+  }
+
+  set canAttack(value) {
+    this._canAttack = value;
+  }
+
+  get recentDamage() {
+    return this._recentDamage;
   }
 }
 

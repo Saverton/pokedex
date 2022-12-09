@@ -535,6 +535,32 @@
   ],
   "pokemon": [
     {
+      "id": 0,
+      "name": "testasaur",
+      "height": 7,
+      "weight": 69,
+      "sprites": {
+        "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+        "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png"
+      },
+      "types": [
+        "grass",
+        "poison"
+      ],
+      "maxHp": 45,
+      "stats": {
+        "attack": 49,
+        "defense": 49,
+        "spAttack": 65,
+        "spDefense": 65,
+        "speed": 100
+      },
+      "possibleMoves": [
+        49,
+        50
+      ]
+    },
+    {
       "id": 1,
       "name": "bulbasaur",
       "height": 7,
@@ -8047,7 +8073,14 @@
         "pp": "30",
         "effect": "May lower opponent's Special Defense."
       },
-      "id": 2
+      "id": 2,
+      "sideEffects": [
+        {
+          "chance": "0.1",
+          "effect": "other-stat-spDefense",
+          "value": "-1"
+        }
+      ]
     },
     {
       "name": "Acid Armor",
@@ -8059,7 +8092,14 @@
         "pp": "30",
         "effect": "Sharply raises user's Defense."
       },
-      "id": 3
+      "id": 3,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-defense",
+          "value": "2"
+        }
+      ]
     },
     {
       "name": "Agility",
@@ -8071,7 +8111,14 @@
         "pp": "30",
         "effect": "Sharply raises user's Speed."
       },
-      "id": 4
+      "id": 4,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-speed",
+          "value": "2"
+        }
+      ]
     },
     {
       "name": "Amnesia",
@@ -8083,7 +8130,14 @@
         "pp": "20",
         "effect": "Sharply raises user's Special Defense."
       },
-      "id": 5
+      "id": 5,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-spDefense",
+          "value": "2"
+        }
+      ]
     },
     {
       "name": "Aurora Beam",
@@ -8095,7 +8149,14 @@
         "pp": "20",
         "effect": "May lower opponent's Attack."
       },
-      "id": 6
+      "id": 6,
+      "sideEffects": [
+        {
+          "chance": "0.1",
+          "effect": "other-stat-attack",
+          "value": "-1"
+        }
+      ]
     },
     {
       "name": "Barrage",
@@ -8107,6 +8168,10 @@
         "pp": "20",
         "effect": "Hits 2-5 times in one turn."
       },
+      "hits": [
+        2,
+        5
+      ],
       "id": 7
     },
     {
@@ -8119,7 +8184,14 @@
         "pp": "20",
         "effect": "Sharply raises user's Defense."
       },
-      "id": 8
+      "id": 8,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-defense",
+          "value": "2"
+        }
+      ]
     },
     {
       "name": "Bide",
@@ -8167,7 +8239,14 @@
         "pp": "5",
         "effect": "May freeze opponent."
       },
-      "id": 12
+      "id": 12,
+      "sideEffects": [
+        {
+          "chance": "0.1",
+          "effect": "other-eff-frz",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Body Slam",
@@ -8179,7 +8258,14 @@
         "pp": "15",
         "effect": "May paralyze opponent."
       },
-      "id": 13
+      "id": 13,
+      "sideEffects": [
+        {
+          "chance": "0.3",
+          "effect": "other-eff-prz",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Bone Club",
@@ -8203,6 +8289,10 @@
         "pp": "10",
         "effect": "Hits twice in one turn."
       },
+      "hits": [
+        2,
+        2
+      ],
       "id": 15
     },
     {
@@ -8215,7 +8305,14 @@
         "pp": "30",
         "effect": "May lower opponent's Speed."
       },
-      "id": 16
+      "id": 16,
+      "sideEffects": [
+        {
+          "chance": "0.1",
+          "effect": "other-stat-speed",
+          "value": "-1"
+        }
+      ]
     },
     {
       "name": "Bubble Beam",
@@ -8227,7 +8324,14 @@
         "pp": "20",
         "effect": "May lower opponent's Speed."
       },
-      "id": 17
+      "id": 17,
+      "sideEffects": [
+        {
+          "chance": "0.1",
+          "effect": "other-stat-speed",
+          "value": "-1"
+        }
+      ]
     },
     {
       "name": "Clamp",
@@ -8251,6 +8355,10 @@
         "pp": "15",
         "effect": "Hits 2-5 times in one turn."
       },
+      "hits": [
+        2,
+        5
+      ],
       "id": 19
     },
     {
@@ -8263,7 +8371,14 @@
         "pp": "10",
         "effect": "Confuses opponent."
       },
-      "id": 20
+      "id": 20,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-eff-cnf",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Confusion",
@@ -8275,7 +8390,14 @@
         "pp": "25",
         "effect": "May confuse opponent."
       },
-      "id": 21
+      "id": 21,
+      "sideEffects": [
+        {
+          "chance": "0.1",
+          "effect": "other-eff-cnf",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Constrict",
@@ -8287,7 +8409,14 @@
         "pp": "35",
         "effect": "May lower opponent's Speed by one stage."
       },
-      "id": 22
+      "id": 22,
+      "sideEffects": [
+        {
+          "chance": "0.1",
+          "effect": "other-stat-speed",
+          "value": "-1"
+        }
+      ]
     },
     {
       "name": "Conversion",
@@ -8321,7 +8450,8 @@
         "power": "100",
         "accuracy": "90",
         "pp": "10",
-        "effect": "High critical hit ratio."
+        "effect": "High critical hit ratio.",
+        "critRatio": 8
       },
       "id": 25
     },
@@ -8347,7 +8477,14 @@
         "pp": "40",
         "effect": "Raises user's Defense."
       },
-      "id": 27
+      "id": 27,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-defense",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Dig",
@@ -8357,7 +8494,7 @@
         "power": "80",
         "accuracy": "100",
         "pp": "10",
-        "effect": "\tDigs underground on first turn, attacks on second. Can also escape from caves."
+        "effect": "Digs underground on first turn, attacks on second. Can also escape from caves."
       },
       "id": 28
     },
@@ -8383,7 +8520,14 @@
         "pp": "10",
         "effect": "May confuse opponent."
       },
-      "id": 30
+      "id": 30,
+      "sideEffects": [
+        {
+          "chance": "0.2",
+          "effect": "other-eff-cnf",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Double Kick",
@@ -8395,6 +8539,10 @@
         "pp": "30",
         "effect": "Hits twice in one turn."
       },
+      "hits": [
+        2,
+        2
+      ],
       "id": 31
     },
     {
@@ -8407,6 +8555,10 @@
         "pp": "10",
         "effect": "Hits 2-5 times in one turn."
       },
+      "hits": [
+        2,
+        5
+      ],
       "id": 32
     },
     {
@@ -8419,7 +8571,14 @@
         "pp": "15",
         "effect": "Raises user's Evasiveness."
       },
-      "id": 33
+      "id": 33,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-evasiveness",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Double-Edge",
@@ -8503,7 +8662,14 @@
         "pp": "25",
         "effect": "May burn opponent."
       },
-      "id": 40
+      "id": 40,
+      "sideEffects": [
+        {
+          "chance": "0.1",
+          "effect": "other-eff-brn",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Explosion",
@@ -8515,7 +8681,14 @@
         "pp": "5",
         "effect": "User faints."
       },
-      "id": 41
+      "id": 41,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-hp",
+          "value": "-500"
+        }
+      ]
     },
     {
       "name": "Fire Blast",
@@ -8527,7 +8700,14 @@
         "pp": "5",
         "effect": "May burn opponent."
       },
-      "id": 42
+      "id": 42,
+      "sideEffects": [
+        {
+          "chance": "0.1",
+          "effect": "other-eff-brn",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Fire Punch",
@@ -8539,7 +8719,14 @@
         "pp": "15",
         "effect": "May burn opponent."
       },
-      "id": 43
+      "id": 43,
+      "sideEffects": [
+        {
+          "chance": "0.1",
+          "effect": "other-eff-brn",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Fire Spin",
@@ -8563,7 +8750,8 @@
         "pp": "5",
         "effect": "One-Hit-KO, if it hits."
       },
-      "id": 45
+      "id": 45,
+      "sideEffects": []
     },
     {
       "name": "Flamethrower",
@@ -8575,7 +8763,14 @@
         "pp": "15",
         "effect": "May burn opponent."
       },
-      "id": 46
+      "id": 46,
+      "sideEffects": [
+        {
+          "chance": "0.1",
+          "effect": "other-eff-brn",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Flash",
@@ -8587,7 +8782,14 @@
         "pp": "20",
         "effect": "Lowers opponent's Accuracy."
       },
-      "id": 47
+      "id": 47,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-stat-accuracy",
+          "value": "-1"
+        }
+      ]
     },
     {
       "name": "Fly",
@@ -8611,7 +8813,14 @@
         "pp": "30",
         "effect": "Increases critical hit ratio."
       },
-      "id": 49
+      "id": 49,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-critRatio",
+          "value": "2"
+        }
+      ]
     },
     {
       "name": "Fury Attack",
@@ -8623,6 +8832,10 @@
         "pp": "20",
         "effect": "Hits 2-5 times in one turn."
       },
+      "hits": [
+        2,
+        5
+      ],
       "id": 50
     },
     {
@@ -8635,6 +8848,10 @@
         "pp": "15",
         "effect": "Hits 2-5 times in one turn."
       },
+      "hits": [
+        2,
+        5
+      ],
       "id": 51
     },
     {
@@ -8647,7 +8864,14 @@
         "pp": "30",
         "effect": "Paralyzes opponent."
       },
-      "id": 52
+      "id": 52,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-eff-prz",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Growl",
@@ -8659,7 +8883,14 @@
         "pp": "40",
         "effect": "Lowers opponent's Attack."
       },
-      "id": 53
+      "id": 53,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-stat-attack",
+          "value": "-1"
+        }
+      ]
     },
     {
       "name": "Growth",
@@ -8671,7 +8902,19 @@
         "pp": "20",
         "effect": "Raises user's Attack and Special Attack."
       },
-      "id": 54
+      "id": 54,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-attack",
+          "value": "1"
+        },
+        {
+          "chance": "1",
+          "effect": "self-stat-spAttack",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Guillotine",
@@ -8707,7 +8950,14 @@
         "pp": "30",
         "effect": "Raises user's Defense."
       },
-      "id": 57
+      "id": 57,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-defense",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Haze",
@@ -8815,7 +9065,14 @@
         "pp": "20",
         "effect": "Puts opponent to sleep."
       },
-      "id": 66
+      "id": 66,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-eff-slp",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Ice Beam",
@@ -8827,7 +9084,14 @@
         "pp": "10",
         "effect": "May freeze opponent."
       },
-      "id": 67
+      "id": 67,
+      "sideEffects": [
+        {
+          "chance": "0.1",
+          "effect": "other-eff-frz",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Ice Punch",
@@ -8839,7 +9103,14 @@
         "pp": "15",
         "effect": "May freeze opponent."
       },
-      "id": 68
+      "id": 68,
+      "sideEffects": [
+        {
+          "chance": "0.1",
+          "effect": "other-eff-frz",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Jump Kick",
@@ -8861,7 +9132,8 @@
         "power": "50",
         "accuracy": "100",
         "pp": "25",
-        "effect": "High critical hit ratio."
+        "effect": "High critical hit ratio.",
+        "critRatio": 8
       },
       "id": 70
     },
@@ -8875,7 +9147,14 @@
         "pp": "15",
         "effect": "Lowers opponent's Accuracy."
       },
-      "id": 71
+      "id": 71,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-stat-accuracy",
+          "value": "-1"
+        }
+      ]
     },
     {
       "name": "Leech Life",
@@ -8911,7 +9190,14 @@
         "pp": "30",
         "effect": "Lowers opponent's Defense."
       },
-      "id": 74
+      "id": 74,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-stat-defense",
+          "value": "-1"
+        }
+      ]
     },
     {
       "name": "Lick",
@@ -8923,7 +9209,14 @@
         "pp": "30",
         "effect": "May paralyze opponent."
       },
-      "id": 75
+      "id": 75,
+      "sideEffects": [
+        {
+          "chance": "0.3",
+          "effect": "other-eff-prz",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Light Screen",
@@ -8947,7 +9240,14 @@
         "pp": "10",
         "effect": "Puts opponent to sleep."
       },
-      "id": 77
+      "id": 77,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-eff-slp",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Low Kick",
@@ -8971,7 +9271,14 @@
         "pp": "40",
         "effect": "Raises user's Attack."
       },
-      "id": 79
+      "id": 79,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-attack",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Mega Drain",
@@ -9043,7 +9350,14 @@
         "pp": "10",
         "effect": "Sharply raises user's Evasiveness."
       },
-      "id": 85
+      "id": 85,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-evasiveness",
+          "value": "2"
+        }
+      ]
     },
     {
       "name": "Mirror Move",
@@ -9115,7 +9429,18 @@
         "pp": "10",
         "effect": "User attacks for 2-3 turns but then becomes confused."
       },
-      "id": 91
+      "hits": [
+        2,
+        3
+      ],
+      "id": 91,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "user-eff-cnf",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Pin Missile",
@@ -9127,6 +9452,10 @@
         "pp": "20",
         "effect": "Hits 2-5 times in one turn."
       },
+      "hits": [
+        2,
+        5
+      ],
       "id": 92
     },
     {
@@ -9139,7 +9468,14 @@
         "pp": "40",
         "effect": "Poisons opponent."
       },
-      "id": 93
+      "id": 93,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-eff-psn",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Poison Powder",
@@ -9151,7 +9487,14 @@
         "pp": "35",
         "effect": "Poisons opponent."
       },
-      "id": 94
+      "id": 94,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-eff-psn",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Poison Sting",
@@ -9163,7 +9506,14 @@
         "pp": "35",
         "effect": "May poison the opponent."
       },
-      "id": 95
+      "id": 95,
+      "sideEffects": [
+        {
+          "chance": "0.3",
+          "effect": "other-eff-psn",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Pound",
@@ -9187,7 +9537,14 @@
         "pp": "20",
         "effect": "May confuse opponent."
       },
-      "id": 97
+      "id": 97,
+      "sideEffects": [
+        {
+          "chance": "0.1",
+          "effect": "other-eff-cnf",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Psychic",
@@ -9199,7 +9556,14 @@
         "pp": "10",
         "effect": "May lower opponent's Special Defense."
       },
-      "id": 98
+      "id": 98,
+      "sideEffects": [
+        {
+          "chance": "0.1",
+          "effect": "other-stat-spDefense",
+          "value": "-1"
+        }
+      ]
     },
     {
       "name": "Psywave",
@@ -9245,7 +9609,8 @@
         "power": "55",
         "accuracy": "95",
         "pp": "25",
-        "effect": "High critical hit ratio."
+        "effect": "High critical hit ratio.",
+        "critRatio": 8
       },
       "id": 102
     },
@@ -9355,7 +9720,14 @@
         "pp": "15",
         "effect": "Lowers opponent's Accuracy."
       },
-      "id": 111
+      "id": 111,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-stat-accuracy",
+          "value": "-1"
+        }
+      ]
     },
     {
       "name": "Scratch",
@@ -9379,7 +9751,14 @@
         "pp": "40",
         "effect": "Sharply lowers opponent's Defense."
       },
-      "id": 113
+      "id": 113,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-stat-defense",
+          "value": "-2"
+        }
+      ]
     },
     {
       "name": "Seismic Toss",
@@ -9403,7 +9782,14 @@
         "pp": "5",
         "effect": "User faints."
       },
-      "id": 115
+      "id": 115,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-hp",
+          "value": "-500"
+        }
+      ]
     },
     {
       "name": "Sharpen",
@@ -9415,7 +9801,14 @@
         "pp": "30",
         "effect": "Raises user's Attack."
       },
-      "id": 116
+      "id": 116,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-attack",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Sing",
@@ -9427,7 +9820,14 @@
         "pp": "15",
         "effect": "Puts opponent to sleep."
       },
-      "id": 117
+      "id": 117,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-eff-slp",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Skull Bash",
@@ -9473,7 +9873,8 @@
         "power": "70",
         "accuracy": "100",
         "pp": "20",
-        "effect": "High critical hit ratio."
+        "effect": "High critical hit ratio.",
+        "critRatio": 8
       },
       "id": 121
     },
@@ -9487,7 +9888,14 @@
         "pp": "15",
         "effect": "Puts opponent to sleep."
       },
-      "id": 122
+      "id": 122,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-eff-slp",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Sludge",
@@ -9499,7 +9907,14 @@
         "pp": "20",
         "effect": "May poison opponent."
       },
-      "id": 123
+      "id": 123,
+      "sideEffects": [
+        {
+          "chance": "0.3",
+          "effect": "other-eff-psn",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Smog",
@@ -9511,7 +9926,14 @@
         "pp": "20",
         "effect": "May poison opponent."
       },
-      "id": 124
+      "id": 124,
+      "sideEffects": [
+        {
+          "chance": "0.4",
+          "effect": "other-eff-psn",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Smokescreen",
@@ -9523,7 +9945,14 @@
         "pp": "20",
         "effect": "Lowers opponent's Accuracy."
       },
-      "id": 125
+      "id": 125,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-stat-accuracy",
+          "value": "-1"
+        }
+      ]
     },
     {
       "name": "Soft-Boiled",
@@ -9571,6 +10000,10 @@
         "pp": "15",
         "effect": "Hits 2-5 times in one turn."
       },
+      "hits": [
+        2,
+        5
+      ],
       "id": 129
     },
     {
@@ -9595,7 +10028,14 @@
         "pp": "15",
         "effect": "Puts opponent to sleep."
       },
-      "id": 131
+      "id": 131,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-eff-slp",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Stomp",
@@ -9631,7 +10071,14 @@
         "pp": "40",
         "effect": "Sharply lowers opponent's Speed."
       },
-      "id": 134
+      "id": 134,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-stat-speed",
+          "value": "-2"
+        }
+      ]
     },
     {
       "name": "Struggle",
@@ -9655,7 +10102,14 @@
         "pp": "30",
         "effect": "Paralyzes opponent."
       },
-      "id": 136
+      "id": 136,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-eff-prz",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Submission",
@@ -9703,7 +10157,14 @@
         "pp": "20",
         "effect": "Confuses opponent."
       },
-      "id": 140
+      "id": 140,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-eff-cnf",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Surf",
@@ -9739,7 +10200,14 @@
         "pp": "20",
         "effect": "Sharply raises user's Attack."
       },
-      "id": 143
+      "id": 143,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-attack",
+          "value": "2"
+        }
+      ]
     },
     {
       "name": "Tackle",
@@ -9763,7 +10231,14 @@
         "pp": "30",
         "effect": "Lowers opponent's Defense."
       },
-      "id": 145
+      "id": 145,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-stat-defense",
+          "value": "-1"
+        }
+      ]
     },
     {
       "name": "Take Down",
@@ -9811,7 +10286,14 @@
         "pp": "10",
         "effect": "May paralyze opponent."
       },
-      "id": 149
+      "id": 149,
+      "sideEffects": [
+        {
+          "chance": "0.3",
+          "effect": "other-eff-prz",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Thunder Punch",
@@ -9823,7 +10305,14 @@
         "pp": "15",
         "effect": "May paralyze opponent."
       },
-      "id": 150
+      "id": 150,
+      "sideEffects": [
+        {
+          "chance": "0.1",
+          "effect": "other-eff-prz",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Thunder Shock",
@@ -9835,7 +10324,14 @@
         "pp": "30",
         "effect": "May paralyze opponent."
       },
-      "id": 151
+      "id": 151,
+      "sideEffects": [
+        {
+          "chance": "0.1",
+          "effect": "other-eff-prz",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Thunder Wave",
@@ -9847,7 +10343,14 @@
         "pp": "20",
         "effect": "Paralyzes opponent."
       },
-      "id": 152
+      "id": 152,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-eff-prz",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Thunderbolt",
@@ -9859,7 +10362,14 @@
         "pp": "15",
         "effect": "May paralyze opponent."
       },
-      "id": 153
+      "id": 153,
+      "sideEffects": [
+        {
+          "chance": "0.1",
+          "effect": "other-eff-prz",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Toxic",
@@ -9871,7 +10381,14 @@
         "pp": "10",
         "effect": "Badly poisons opponent."
       },
-      "id": 154
+      "id": 154,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "other-eff-badpsn",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Transform",
@@ -9895,7 +10412,24 @@
         "pp": "10",
         "effect": "May paralyze, burn or freeze opponent."
       },
-      "id": 156
+      "id": 156,
+      "sideEffects": [
+        {
+          "chance": "0.1",
+          "effect": "other-eff-prz",
+          "value": "1"
+        },
+        {
+          "chance": "0.1",
+          "effect": "other-eff-brn",
+          "value": "1"
+        },
+        {
+          "chance": "0.1",
+          "effect": "other-eff-frz",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Twineedle",
@@ -9907,7 +10441,18 @@
         "pp": "20",
         "effect": "\tHits twice in one turn. May poison opponent."
       },
-      "id": 157
+      "hits": [
+        2,
+        2
+      ],
+      "id": 157,
+      "sideEffects": [
+        {
+          "chance": "0.2",
+          "effect": "other-eff-psn",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Vine Whip",
@@ -9991,7 +10536,14 @@
         "pp": "40",
         "effect": "Raises user's Defense."
       },
-      "id": 164
+      "id": 164,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-defense",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Wrap",
