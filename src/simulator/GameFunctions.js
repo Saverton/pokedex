@@ -128,7 +128,7 @@ function runBattleConclusion(gameObj, setGameObj, winner) {
 }
 
 async function sendOutPokemon(gameObj, trainer, index, setGameObj) {
-  console.log('sending out pokemon!');
+  // console.log('sending out pokemon!');
   if (
     gameObj[trainer].currentPokemon &&
     gameObj[trainer].currentPokemon !== gameObj[trainer].pokemon[index]

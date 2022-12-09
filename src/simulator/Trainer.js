@@ -46,7 +46,7 @@ class Trainer {
   }
 
   recallPokemon() {
-    console.log('recalling pokemon')
+    // console.log('recalling pokemon')
     const pokemonName = this.currentPokemon.name;
     this.currentPokemon = undefined;
     return `${this.name}: Return, ${pokemonName}!`;

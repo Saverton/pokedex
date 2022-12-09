@@ -154,6 +154,32 @@
   ],
   "pokemon": [
     {
+      "id": 0,
+      "name": "testasaur",
+      "height": 7,
+      "weight": 69,
+      "sprites": {
+        "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+        "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png"
+      },
+      "types": [
+        "grass",
+        "poison"
+      ],
+      "maxHp": 45,
+      "stats": {
+        "attack": 49,
+        "defense": 49,
+        "spAttack": 65,
+        "spDefense": 65,
+        "speed": 100
+      },
+      "possibleMoves": [
+        49,
+        50
+      ]
+    },
+    {
       "id": 1,
       "name": "bulbasaur",
       "height": 7,
@@ -8043,7 +8069,8 @@
         "power": "100",
         "accuracy": "90",
         "pp": "10",
-        "effect": "High critical hit ratio."
+        "effect": "High critical hit ratio.",
+        "critRatio": 8
       },
       "id": 25
     },
@@ -8405,7 +8432,14 @@
         "pp": "30",
         "effect": "Increases critical hit ratio."
       },
-      "id": 49
+      "id": 49,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-critRatio",
+          "value": "2"
+        }
+      ]
     },
     {
       "name": "Fury Attack",
@@ -8717,7 +8751,8 @@
         "power": "50",
         "accuracy": "100",
         "pp": "25",
-        "effect": "High critical hit ratio."
+        "effect": "High critical hit ratio.",
+        "critRatio": 8
       },
       "id": 70
     },
@@ -9193,7 +9228,8 @@
         "power": "55",
         "accuracy": "95",
         "pp": "25",
-        "effect": "High critical hit ratio."
+        "effect": "High critical hit ratio.",
+        "critRatio": 8
       },
       "id": 102
     },
@@ -9456,7 +9492,8 @@
         "power": "70",
         "accuracy": "100",
         "pp": "20",
-        "effect": "High critical hit ratio."
+        "effect": "High critical hit ratio.",
+        "critRatio": 8
       },
       "id": 121
     },

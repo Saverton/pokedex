@@ -21,6 +21,7 @@ class Pokemon {
       speed: 0,
       accuracy: 0,
       evasiveness: 0,
+      critRatio: 1,
     };
     this._baseStats = pokemonObj.stats;
     this._stats = this.calculateCurrentStats();
