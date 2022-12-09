@@ -1,6 +1,13 @@
 import StatusEffect from "./StatusEffect";
 
 class Burn extends StatusEffect {
+  static messages = {
+    apply: (pkmn) => `${pkmn.name} got a burn!`,
+    duration: (_pkmn) => "",
+    onAttack: (_pkmn) => "",
+    onAfterTurn: (pkmn) => `${pkmn.name} was hurt by its burn!`,
+    expire: (_pkmn) => "",
+  }
   constructor(type, pkmn) {
     super(type, pkmn);
     this._duration = Number.MAX_VALUE;
