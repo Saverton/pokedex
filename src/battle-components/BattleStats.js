@@ -1,5 +1,8 @@
-import React from 'react';
-import BattleHpBar from './BattleHpBar';
+import React from "react";
+import BattleHpBar from "./BattleHpBar";
+
+const POKEBALL_SPRITE = "https://grid-paint.com/images/png/4909218658254848.png";
+const GRAY_POKEBALL_SPRITE = "./gray-pokeball-sprite.png"
 
 function BattleStats({ pokemon }) {
   let pokemonTypes = '';
@@ -10,6 +13,16 @@ function BattleStats({ pokemon }) {
     );
   }
 
+  const numberPokemon = () => {
+    return team.map(pkmn => {
+      if(pkmn.isFainted()) {
+        return <img key={`${pkmn.name}-ball #${Math.floor(Math.random() * 100)}`} className="pokeballs-remaining gray" src={GRAY_POKEBALL_SPRITE}></img>;
+      } else {
+        return <img key={`${pkmn.name}-ball #${Math.floor(Math.random() * 100)}`} className="pokeballs-remaining" src={POKEBALL_SPRITE}></img>;
+      }
+    })
+  }
+  
   if (pokemon) {
     const { name, maxHp, currentHp } = pokemon;
     return (
@@ -18,11 +31,12 @@ function BattleStats({ pokemon }) {
         <BattleHpBar maxHp={maxHp} currentHp={currentHp} />
         <p>{`${currentHp} / ${maxHp}`}</p>
       </div>
-    )
+    );
   } else {
     return (
       <div className="battle-stats">
-        <p>NUMBER OF POKEMON IN TEAM</p>
+        <div></div>
+        <div id="pokeballs-container">{numberPokemon()}</div>
       </div>
     );
   }

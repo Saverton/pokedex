@@ -12,17 +12,18 @@ code {
     monospace;
 }
 
+
+
 .battle-sim {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
-  border: 2px solid black;
+  border: 10px solid rgba(0, 0, 0, 0.976);
   padding: 0.5em;
   margin: 0 auto;
   width: 800px;
   height: 600px;
-  background: white;
   overflow-y: auto;
+  background: rgb(255, 255, 255);
 }
 
 .battle-scene {
@@ -71,6 +72,26 @@ img.pokemon {
 img.pokeball-battle {
   width: 25%;
   display: block;
+}
+
+#pokeballs-container {
+  display: flex;
+  width: 300px;
+  justify-content: flex-start;
+}
+
+.pokeballs-remaining {
+  width: 50px;
+  height: 50px;
+  align-self: center;
+}
+
+.pokeballs-remaining.gray{
+  width: 70px;
+  height: auto;
+  align-self: flex-start;
+  margin-left: -12px;
+  margin-right: -12px;
 }
 
 .battle-stats {

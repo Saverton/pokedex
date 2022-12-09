@@ -1,3 +1,9 @@
+/* Pokedex CSS */
+body {
+  background-image:
+  url("https://www.wallpaperflare.com/static/905/635/699/pok%C3%A9mon-video-games-retro-games-pokemon-wallpaper.jpg");
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 body {
@@ -14,206 +20,282 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
+/* Header */
 header{
   font-family: "Quicksand";
-  font-size: larger;
+  font-size: xx-large;
   color: #e17165;
-  
   text-align: center;
-  padding: 15px;
+  padding: 25px;
   display: grid;
   align-items:flex-end;
   max-width: 40rem;
   margin: auto;
-  border-bottom: 1px solid #f2f2f2;
+  margin-top: -20px;
+  border-bottom: 1px solid #000000;
 }
 
+.headerImg {
+  text-shadow: -5px 0 rgba(3, 0, 0, 0.921), 0 1.2px rgb(10, 3, 3), 1px 0 rgb(8, 2, 2), 0 -1.2px rgb(18, 5, 5);
+}
+/* End of Header */
+
+/* Top Links (Pokedex, My Teams, Battle */
 #navlinks {
   padding-left: 0;
 }
 .links a {
-  color: rgb(255, 255, 255);
+  text-shadow:-0.5px 0 rgba(54, 3, 3, 0.921), 0 0.2px rgb(210, 210, 210);
+  position: relative;
+  display: static;
+  background-color: #ede9e9ae;
+  color:#bb2615;
   font-size: large;
-  font-weight: 610;
-  margin-right: 16px;
-  padding: 6px;
+  font-weight: 600;
+  margin-right: 27px;
+  padding: 13.5px;
   text-decoration: none;
 }
-body {
-  background-image:
-  url("https://www.wallpaperflare.com/static/905/635/699/pok%C3%A9mon-video-games-retro-games-pokemon-wallpaper.jpg");
-}
-.pokeball {
-  position: relative;
+a:hover{
   width: 200px;
-  height: 200px;
-  background: #fff;
-  border: 10px solid #000;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: inset -10px 10px 0 10px #ccc;
-  animation: fall .25s ease-in-out,
-             shake 1.25s cubic-bezier(.36,.07,.19,.97) 3;
+  border: 3px solid #000000;
+  background: transparent;
+  color: #000000;
 }
-.pokeball::before,
-.pokeball::after {
-  content:"";
-  position: absolute;
-}
-.pokeball::before {
-  background: red;
-  width: 100%;
-  height: 50%;
-}
-.pokeball::after {
-  top: calc(50% - 10px);
-  width: 100%;
-  height: 20px;
-  background: #000;
-}
-.pokeball__button {
-  position: absolute;
-  top: calc(50% - 30px);
-  left: calc(50% - 30px);
-  width: 60px;
-  height: 60px;
-  background: red;
-  border: 10px solid #fff;
-  border-radius: 50%;
-  z-index: 10;
-  box-shadow: 0 0 0 10px black;
-  animation: blink .5s alternate 7;
-}
-  .pokeball__button {
-    color: rgb(194, 201, 201);
-    transition: color 0.4s;
-    text-decoration: none;
-  }
-  
-  .pokeball__button:hover::after{
-    color: transparent;
-  }
-  
-/* Animation */
+/* End of Nav Links */
 
-@keyframes blink {
-  from { background: #eee;}
-  to { background: #e0301c; }
-}
-@keyframes shake {
-  0 { transform: translate(0, 0) rotate(0); }
-  20% { transform: translate(-10px, 0) rotate(-20deg); }
-  30% { transform: translate(10px, 0) rotate(20deg); }
-  50% { transform: translate(-10px, 0) rotate(-10deg); }
-  60% { transform: translate(10px, 0) rotate(10deg); }
-  100% { transform: translate(0, 0) rotate(0); }
-}
-@keyframes fall {
-  0% { top: -200px }
-  60% { top: 0 }
-  80% { top: -20px }
-  100% { top: 0 }
-}
 
-ul{
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color: #d2cd46;
-  text-align: center;
-  /* display: flex; */
-  flex-direction: column;
-  justify-content: space-evenly;
-
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100 px;
-  height: 100%;
-  background-color: transparent;
-
-  }
-
-h3 {
-  text-align: center;
+/* Team Name  */
+label{
+  font-family:"Quicksand";
   font-size: large;
-  color: #e2dc3a;
+  font-weight: 700;
+  color: #110503;
+}
+.teamName {
+  position: grid;
+  padding: 9.5px;
+  width: 98%;
+  border: 2px solid #0a0907c8;
+  border-radius:17px;
+  text-align: center;
+  font-family: "Quicksand";
+  font-size: 15px;
+  background-color: #eeca38;  
 }
 
-.battle-sim {
-  color: #000;
+.teamName input#name {
+  background-color: rgba(215, 70, 54, 0.216);
+  font-family: "Quicksand";
+  font-weight: 500;
+  text-align: center;
+  position: static;
+  width: 30%;
+  font-size: 18px;
+  color: #080703;
+}
+/* End of Team Name  */
+
+.myPokeball {
+  padding-top: 5px;
 }
 
+/* Pokemon Team Spread */
+ul.d-flex{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: rgba(146, 140, 140, 0.813);
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-evenly;
+  right: 0;
+  width: 25 px;
+  background-color: rgba(240, 237, 237, 0.633);
+  overflow-x: auto;
+  max-height: 220px;
+  border-style: solid;
+  padding-bottom: 15px ;
+}
+/* End of Pokemon Team Spread */
 
-
-/* .addToTeamBtn{
-  position: relative;
-  width: 100px;
-  height: 100px;
-  background: #fff;
-  border: 5px solid #000;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: inset -10px 10px 0 10px #ccc;
-  animation: shake 1.25s cubic-bezier(.36,.07,.19,.97) infinite;
-  animation-play-state: paused;
-} */
-
-/* .addToTeamBtn {
-  overflow: visible | hidden | scroll | auto | inherit
+/* Save My Team Button */
+.saveMyTeamBtn{
+  background: #FF4742;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
 }
 
-.addToTeamBtn:hover{
-  animation-play-state: running;
+.saveMyTeamBtn:hover,
+.saveMyTeamBtn:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #FF4742;
+}
+
+.saveMyTeamBtn:active {
+  opacity: .5;
+}
+ /* End of Save My Team Button */
+
+ /* Generate Random Team Button */
+ .surpriseMe {
+  background: #063d46;
+  border: 1px solid #d8cfceba;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  width: 100%;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.surpriseMe:hover,
+.surpriseMe:active {
+  background-color: rgba(189, 182, 170, 0.56);
+  background-position: 0 0;
+  transition: 0.3s;
+  color: #063d46;
+ }
+/* End of Generate Random Team Button */
+
+ /* Pokemon Index Text */
+  #pokeListOnly{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-shadow: -1.3px 0 rgba(103, 86, 86, 0.916);
+    color: #96ace4ea;
+    font-size:xx-large;
+    text-align: center;
   }
-   */
-  /* @keyframes shake {
-  0 { transform: translate(0, 0) rotate(0); }
-  20% { transform: translate(-10px, 0) rotate(-20deg); }
-  30% { transform: translate(10px, 0) rotate(20deg); }
-  50% { transform: translate(-10px, 0) rotate(-10deg); }
-  60% { transform: translate(10px, 0) rotate(10deg); }
-  100% { transform: translate(0, 0) rotate(0); }
-  } */
-
-/* .addToTeamBtn::before,
-.pokeball::after {
-content:"";
-position: absolute;
-} */
-
-/* .addToTeamBtn::before {
-background: red;
-width: 100%;
-height: 50%;
-}
-
-.addToTeamBtn::after {
-top: calc(50% - 5px);
-width: 100%;
-height: 10px;
-background: #000;
-}
-
-.addToTeamBtn {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  border: 4px solid #7f8c8d;
-  border-radius: 50%;
-  top: calc(50% - 15px);
-  left: calc(50% - 15px);
-  box-shadow: 0 0 0 7px black;
-  background: #fff;
-  z-index: 10;
-  animation: blink .5s alternate infinite;
-  animation-play-state: paused;
+  /* Search Bar */
+  .searchText {
+    position:static;
+    padding: 9px;
+    width: 70%;
+    height: 30px;
+    background: none;
+    border: 2px solid #0a0907c8;
+    border-radius:17px;
+    text-align: center;
+    font-family: "Quicksand";
+    font-size: 10px;
+    background-color: #eeca38;  
+    padding-left: 0px;
+    padding-right: 0%;
   }
+  .searchText input{
+    padding-top: 0%;
+    padding-bottom: 0%;
+    height: 30px;
+    width: 300px;
+    background-color: #ffffff67;
+    border-radius: 10px;
+    
+  }
+  input#search input {
+    color: #000000ea;
+    position: static;
+    width: 100%;
+    font-size: 26px;
+    color: #ffd52d;
+  }
+  /* End of Search Bar */
   
-  .addToTeamBtn:hover .addToTeamBtn{
-  animation-play-state: running;
+  /* Scroll Command for the Pokemon List */
+  .pokeList {
+    max-height: 600px;
+    overflow-y: auto;
   }
-  
-  @keyframes blink {
-  from { background: #eee;}
-  to { background: #e74c3c; }
-  } */
+  /* End of Scroll Command for the Pokemon List */
+
+/* Filter Dropdown */
+.searchDropdown {
+  color: #d4c4c4;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bolder;
+  padding-left: 48px;
+  padding-bottom: 10px;
+}
+
+#type-filter {
+    position: grid;
+    padding: 9.5px;
+    width: 30%;
+    border: 2px solid #0a0907c8;
+    border-radius:17px;
+    text-align: center;
+    font-family: "Quicksand";
+    font-size: 15px;
+    background-color: #eeca38;  
+}
+/* End of Filter Dropdown */
+
+  h3 {
+    text-align: center;
+    font-size: larger;
+    color: #000000ea;
+  }
+  /* Pokedex CSS */
+
+
+ /* My Teams CSS */
+ .myTeamsLink {
+  text-align: center;
+  color: #eb2828;
+ }
+
+ .teamNames {
+  color: #4a0cc7;
+ }
+.myTeams{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: rgba(146, 140, 140, 0.813);
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-evenly;
+  right: 0;
+  width: 25 px;
+  background-color: rgba(240, 237, 237, 0.633);
+  overflow-x: auto;
+  max-height: 220px;
+  border-style: solid;
+  padding-bottom: 15px ;
+}
+ .myTeamsPokemon {
+  color: #0666e4;
+ }
+
