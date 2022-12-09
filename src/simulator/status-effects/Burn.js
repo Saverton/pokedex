@@ -1,16 +1,17 @@
 import StatusEffect from "./StatusEffect";
 
 class Burn extends StatusEffect {
-  static messages = {
-    apply: (pkmn) => `${pkmn.name} got a burn!`,
-    duration: (_pkmn) => "",
-    onAttack: (_pkmn) => "",
-    onAfterTurn: (pkmn) => `${pkmn.name} was hurt by its burn!`,
-    expire: (_pkmn) => "",
-  }
+  static applyMessage = (pkmn) => `${pkmn.name} got a burn!`;
+  
   constructor(type, pkmn) {
     super(type, pkmn);
     this._duration = Number.MAX_VALUE;
+    this._messages = {
+      duration: (_pkmn) => "",
+      onAttack: (_pkmn) => "",
+      onAfterTurn: (pkmn) => `${pkmn.name} was hurt by its burn!`,
+      expire: (_pkmn) => "",
+    };
   }
 
   get duration() {
@@ -18,7 +19,7 @@ class Burn extends StatusEffect {
   }
 
   onEffectApplication() {
-    let pkmnStats = {...this._pkmn.stats};
+    let pkmnStats = { ...this._pkmn.stats };
     pkmnStats.attack = pkmnStats.attack / 2;
     this._pkmn.stats = pkmnStats;
   }

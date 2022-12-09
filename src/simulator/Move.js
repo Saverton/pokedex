@@ -7,7 +7,7 @@ class Move {
     this._name = moveObj.name;
     this._type = moveObj.type;
     this._category = moveObj.stats.category;
-    this._power = parseInt(moveObj.stats.power);
+    this._power = moveObj.stats.power === "" ? 0 : parseInt(moveObj.stats.power);
     this._accuracy = parseInt(moveObj.stats.accuracy);
     this._pp = parseInt(moveObj.stats.pp);
     this._currentPP = parseInt(moveObj.stats.pp);
@@ -15,6 +15,7 @@ class Move {
     this._sideEffects = moveObj.sideEffects;
     this._hits = moveObj.hits || [1, 1];
     this._critRatio = moveObj.stats.critRatio || 1;
+    console.log(this._power)
   }
 
   strongAgainst() {
@@ -126,7 +127,7 @@ class Move {
   }
 
   hasFixedDamage() {
-    if (this._power === "") return true;
+    if (this._power === 0) return true;
 
     return false;
   }

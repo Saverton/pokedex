@@ -10,27 +10,27 @@ import { createStatusEffect } from "./status-effects/StatusEffectFactory"
 const SIDE_EFFECT_CALLBACKS = {
   eff: {
     brn: (pkmn) => ({
-      msg: Burn.messages.apply(pkmn),
+      msg: Burn.applyMessage(pkmn),
       callback: () => createStatusEffect('brn', pkmn)
     }),
     prz: (pkmn) => ({
-      msg: Paralyze.messages.apply(pkmn),
+      msg: Paralyze.applyMessage(pkmn),
       callback: () => createStatusEffect('prz', pkmn)
     }),
     psn: (pkmn) => ({
-      msg: Poison.messages.apply(pkmn),
+      msg: Poison.applyMessage(pkmn),
       callback: () => createStatusEffect('psn', pkmn)
     }),
     badpsn: (pkmn) => ({
-      msg: BadPoison.messages.apply(pkmn),
+      msg: BadPoison.applyMessage(pkmn),
       callback: () => createStatusEffect('badpsn', pkmn)
     }),
     slp: (pkmn) => ({
-      msg: Sleep.messages.apply(pkmn),
+      msg: Sleep.applyMessage(pkmn),
       callback: () => createStatusEffect('slp', pkmn)
     }),
     frz: (pkmn) => ({
-      msg: Frozen.messages.apply(pkmn),
+      msg: Frozen.applyMessage(pkmn),
       callback: () => createStatusEffect('frz', pkmn)
     }),
     cnf: (pkmn) => ({

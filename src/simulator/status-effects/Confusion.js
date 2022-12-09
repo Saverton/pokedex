@@ -1,24 +1,25 @@
 import StatusEffect from "./StatusEffect";
 
 class Confusion extends StatusEffect {
-  static messages = {
-    apply: (pkmn) => `${pkmn.name} became confused!`,
-    duration: (pkmn) => `${pkmn.name} is confused.`,
-    onAttack: (_pkmn) => "It hurt itself in its confusion!",
-    onAfterTurn: (_pkmn) => "",
-    expire: (pkmn) => `${pkmn.name} recovered from confusion`,
-  }
+  static applyMessage = (pkmn) => `${pkmn.name} became confused!`;
 
   constructor(type, pkmn) {
     super(type, pkmn);
     this._name = "";
-    this._duration = Math.floor(Math.random() * (5-2)) + 2;
+    this._duration = Math.floor(Math.random() * (5 - 2)) + 2;
+    this._messages = {
+      duration: (pkmn) => `${pkmn.name} is confused.`,
+      onAttack: (_pkmn) => "It hurt itself in its confusion!",
+      onAfterTurn: (_pkmn) => "",
+      expire: (pkmn) => `${pkmn.name} recovered from confusion`,
+    };
   }
 
   confusionDamage() {
     let baseDamage = Math.floor(
       Math.floor(
-        ((Math.floor((this._pkmn.level * 2) / 5) + 2) * (40 * this._pkmn.stats.attack)) /
+        ((Math.floor((this._pkmn.level * 2) / 5) + 2) *
+          (40 * this._pkmn.stats.attack)) /
           this._pkmn.stats.defense /
           50
       )
