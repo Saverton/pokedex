@@ -187,6 +187,7 @@ class Pokemon {
 
   set statusEffect(status) {
     this._statusEffect = status;
+    this._statusEffect.onEffectApplication();
   }
 
   get canAttack() {

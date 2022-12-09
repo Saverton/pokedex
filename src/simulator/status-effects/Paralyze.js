@@ -6,6 +6,10 @@ class Paralyze extends StatusEffect {
     this._duration = Number.MAX_VALUE;
   }
 
+  get duration() {
+    return this._duration;
+  }
+
   onEffectApplication() {
     let pkmnStats = {...this._pkmn.stats};
     pkmnStats.speed = Math.floor(pkmnStats.attack * .25);

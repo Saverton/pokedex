@@ -1,7 +1,14 @@
+import { createStatusEffect } from "./status-effects/StatusEffectFactory"
+
 
 const SIDE_EFFECT_CALLBACKS = {
   eff: {
-
+    brn: (pkmn) => createStatusEffect('brn', pkmn),
+    prz: (pkmn) => createStatusEffect('prz', pkmn),
+    psn: (pkmn) => createStatusEffect('psn', pkmn),
+    badpsn: (pkmn) => createStatusEffect('badpsn', pkmn),
+    slp: (pkmn) => createStatusEffect('slp', pkmn),
+    frz: (pkmn) => createStatusEffect('frz', pkmn),
   },
   stat: {
     hp: (pkmn, val) => {
