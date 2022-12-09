@@ -2,9 +2,11 @@ import { toBePartiallyChecked } from "@testing-library/jest-dom/dist/matchers";
 import { getPokemonById } from "../database-scripts/getPokemon";
 import { getMoveById } from "../database-scripts/getMove";
 import GameObject from "./GameObject";
-import Trainer from "./Trainer";
-import Action, { getActionFromPokemonSwitch } from './Action';
+import { getActionFromPokemonSwitch } from './Action';
 import Move from "./Move";
+
+let struggle = {}
+getMoveById(135, (res) => struggle = new Move(res));
 
 function getRandomPokemonTeam(size) {
   const team = [];
@@ -76,6 +78,7 @@ async function runBattleIntro(gameObj, setGameObj) {
 
 async function runBattleLoop(gameObj, setGameObj) {
   const { player, opponent } = gameObj;
+
   if (
     player.currentPokemon === undefined ||
     opponent.currentPokemon === undefined
@@ -88,7 +91,7 @@ async function runBattleLoop(gameObj, setGameObj) {
       await playerSwitchToNewPokemon(gameObj, setGameObj).then((idx) =>
         sendOutPokemon(gameObj, "player", idx, setGameObj)
       );
-      console.log("passed promise");
+
     } else {
       // ask if want to switch
       await showYesOrNoPrompt(
@@ -108,7 +111,7 @@ async function runBattleLoop(gameObj, setGameObj) {
   // opponent choose action
   if (gameObj.opponent.actionQueue.length === 0) {
     const opponentMove =
-      gameObj.opponent.currentPokemon.moveSet[Math.floor(Math.random() * 4)];
+      gameObj.opponent.currentPokemon.moveSet[Math.floor(Math.random() * gameObj.opponent.currentPokemon.moveSet.length)];
     gameObj.opponent.actionQueue = [
       ...opponentMove.getMoveActions(gameObj.opponent.currentPokemon, gameObj.player.currentPokemon)
     ];
@@ -128,7 +131,6 @@ function runBattleConclusion(gameObj, setGameObj, winner) {
 }
 
 async function sendOutPokemon(gameObj, trainer, index, setGameObj) {
-  // console.log('sending out pokemon!');
   if (
     gameObj[trainer].currentPokemon &&
     gameObj[trainer].currentPokemon !== gameObj[trainer].pokemon[index]
@@ -169,7 +171,6 @@ async function recallPokemon(gameObj, trainer, setGameObj) {
  */
 function playerFight(gameObj, setGameObj) {
   // test options before moves are implemented
-  // console.log("FIGHT CHOSEN")
   const player = gameObj.player;
 
   const options = player.currentPokemon.moveSet.map((move) => ({
@@ -181,12 +182,26 @@ function playerFight(gameObj, setGameObj) {
       runTrainerActions(gameObj, setGameObj);
       return gameObj;
     },
+    disabled: (move.currentPP <= 0)
   }));
 
   options.push({
     name: "back",
     callback: () => playerActionMenu(gameObj, setGameObj),
   });
+
+  if (gameObj.player.currentPokemon.isOutOfMoves()) {
+    options.push({
+      name: <>{struggle.name} <br/> {"PP: " + struggle.currentPP} <br/>  {struggle.type}</>,
+      callback: (setGameObj) => {
+        player.actionQueue = [
+          ...struggle.getMoveActions(player.currentPokemon, gameObj.opponent.currentPokemon)
+        ];
+        runTrainerActions(gameObj, setGameObj);
+        return gameObj;
+      }
+    })
+  }
 
   gameObj.menuOptions = options;
   return gameObj;
@@ -262,7 +277,6 @@ function playerActionMenu(gameObj, setGameObj) {
     {
       name: "FIGHT",
       callback: () => {
-        // console.log('FIGHT');
         return playerFight(gameObj, setGameObj);
       },
     },
@@ -301,6 +315,26 @@ function playerActionMenu(gameObj, setGameObj) {
 async function runTrainerActions(gameObj, setGameObj) {
   // stop input
   gameObj.playerControl = false;
+  const playerPokemon = gameObj.player.currentPokemon;
+  const opponentPokemon = gameObj.opponent.currentPokemon;
+  playerPokemon.resetTurnStats();
+  opponentPokemon.resetTurnStats();
+  if (playerPokemon.statusEffect) {
+    const effect = playerPokemon.statusEffect;
+    if (effect.turn >= effect.duration) {
+      await effectExpire(playerPokemon, gameObj, setGameObj);
+    } else {
+      effect.onBeforeTurn();
+    }
+  }
+  if (opponentPokemon.statusEffect) {
+    const effect = opponentPokemon.statusEffect;
+    if (effect.turn >= effect.duration) {
+      await effectExpire(opponentPokemon, gameObj, setGameObj);
+    } else {
+      effect.onBeforeTurn();
+    }
+  }
   setGameObj({ ...gameObj });
 
   // get move order array, i.e. ['player', 'opponent']
@@ -313,6 +347,19 @@ async function runTrainerActions(gameObj, setGameObj) {
     if (breakFromTurn) {
       break;
     }
+  }
+
+  if (gameObj.player.currentPokemon && playerPokemon.statusEffect) {
+    gameObj.currentMessage = playerPokemon.statusEffect.messages.duration(playerPokemon);
+    playerPokemon.statusEffect.onAfterTurn();
+    setGameObj({...gameObj});
+    await wait(1.5);
+  }
+  if (gameObj.opponent.currentPokemon && opponentPokemon.statusEffect) {
+    gameObj.currentMessage = opponentPokemon.statusEffect.messages.duration(opponentPokemon);
+    opponentPokemon.statusEffect.onAfterTurn();
+    setGameObj({...gameObj});
+    await wait(1.5);
   }
 
   const winState = checkWinner(gameObj);
@@ -341,7 +388,18 @@ async function getMoves(pokemonObj, dbObj) {
   for (let i = 0; i < 4; i++) {
     const moveIndex = Math.floor(Math.random() * movePool.length);
     const [ moveId ] = movePool.splice(moveIndex, 1);
-    await getMoveById(moveId, (move) => moves.push(new Move(move)));
+    let moveObj; 
+    await getMoveById(moveId, (move) => {
+      console.log(move);
+      moveObj = move;
+    });
+    console.log(moveObj);
+    if (moveObj.dontUse) {
+      i--;
+      console.log("skipping ", moveObj.name);
+    } else {
+      moves.push(new Move(moveObj));
+    }
     if (movePool.length === 0) {
       break;
     }
@@ -361,8 +419,6 @@ function executeMove(move, attacker, defender) {
 
   defender.currentHp = defender.currentHp - damage;
   move.decrementPP();
-
-  console.log(damage, effective, move.currentPP);
 
   let msg = "";
   if (effective) {
@@ -496,6 +552,20 @@ function checkForFaintedPokemon(gameObj) {
     (gameObj.player.currentPokemon && gameObj.player.currentPokemon.isFainted()) ||
     (gameObj.opponent.currentPokemon && gameObj.opponent.currentPokemon.isFainted())
   );
+}
+
+async function wait(time) {
+  await new Promise(resolve => {
+    setTimeout(() => resolve(1), time * 1000);
+  });
+}
+
+async function effectExpire(pkmn, gameObj, setGameObj) {
+  pkmn.statusEffect.onEffectExpiration();
+  gameObj.currentMessage = pkmn.statusEffect.messages.expire;
+  playerPokemon.statusEffect = {};
+  setGameObj({...gameObj});
+  await wait(1.5);
 }
 
 export { startNewSimulation, getMoves, checkForFaintedPokemon };

@@ -23,12 +23,21 @@ class Pokemon {
       evasiveness: 0,
       critRatio: 1,
     };
-    this._baseStats = pokemonObj.stats;
+    this._baseStats = this.padBaseStats(pokemonObj.stats);
     this._stats = this.calculateCurrentStats();
     this._statusEffect = {};
     this._canAttack = true;
+    this._immune = false;
     this._recentDamage = new DamageQueue();
     getMoves(this, pokemonObj);
+  }
+
+  padBaseStats(stats) {
+    let baseStats = { ...stats };
+    baseStats["accuracy"] = 1;
+    baseStats["evasiveness"] = 1;
+
+    return baseStats;
   }
 
   isFainted() {
@@ -101,11 +110,14 @@ class Pokemon {
     let currentStats = {};
 
     Object.keys(this._baseStats).forEach((key) => {
-      currentStats[key] = this._baseStats[key] * multipliers[key];
-      currentStats[key] += (currentStats[key] * this._level) / 50;
+      if (key === "accuracy" || key === "evasiveness") {
+        currentStats[key] = this._baseStats[key] * multipliers[key];
+      } else {
+        currentStats[key] = this._baseStats[key] * multipliers[key];
+        currentStats[key] += (currentStats[key] * this._level) / 50;
+      }
     });
 
-    console.log(this.name, currentStats);
     return currentStats;
   }
 
@@ -182,11 +194,16 @@ class Pokemon {
   }
 
   get statusEffect() {
-    return this._statusEffect;
+    if (Object.keys(this._statusEffect).length === 0) {
+      return false;
+    } else {
+      return this._statusEffect;
+    }
   }
 
   set statusEffect(status) {
     this._statusEffect = status;
+    this._statusEffect.onEffectApplication();
   }
 
   get canAttack() {
@@ -199,6 +216,31 @@ class Pokemon {
 
   get recentDamage() {
     return this._recentDamage;
+  }
+
+  get immune() {
+    return this._immune;
+  }
+
+  set immune(value) {
+    this._immune = value;
+  }
+
+  resetTurnStats() {
+    this.canAttack = true;
+    this.immune = false;
+  }
+
+  isOutOfMoves() {
+    for (let i = 0; i < this.moveSet.length; i++) {
+      const move = this.moveSet[i];
+      if (move.currentPP > 0) {
+        console.log('move has pp left')
+        return false;
+      }
+    }
+
+    return true;
   }
 }
 
