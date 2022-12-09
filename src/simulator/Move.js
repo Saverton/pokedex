@@ -1,5 +1,6 @@
 import { generateSideEffectObject } from "./side-effect-manager";
 import Action from "./Action";
+import customCallbacks from "./custom-attack-callbacks";
 
 class Move {
   constructor(moveObj) {
@@ -338,7 +339,7 @@ class Move {
     }
 
     // OTHERWISE, NEED TO RUN CUSTOM CALLBACK
-    return [];
+    return customCallbacks[this.name];
   }
 
   getMoveSteps(attacker, defender) {
