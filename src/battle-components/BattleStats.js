@@ -4,7 +4,7 @@ import BattleHpBar from "./BattleHpBar";
 const POKEBALL_SPRITE = "https://grid-paint.com/images/png/4909218658254848.png";
 const GRAY_POKEBALL_SPRITE = "./gray-pokeball-sprite.png"
 
-function BattleStats({ pokemon }) {
+function BattleStats({ pokemon, team }) {
   let pokemonTypes = '';
   if (pokemon) {
     pokemonTypes = pokemon.types.reduce(

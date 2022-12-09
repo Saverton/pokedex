@@ -68,8 +68,8 @@ async function startNewSimulation(playerTeam, opponentName, setGameObj) {
 }
 
 async function runBattleIntro(gameObj, setGameObj) {
-  sendOutPokemon(gameObj, "opponent", 0, setGameObj); // await these to get timed animations
-  sendOutPokemon(gameObj, "player", 0, setGameObj);
+  await sendOutPokemon(gameObj, "opponent", 0, setGameObj); // await these to get timed animations
+  await sendOutPokemon(gameObj, "player", 0, setGameObj);
 
   setTimeout(() => {
     runBattleLoop(gameObj, setGameObj);
