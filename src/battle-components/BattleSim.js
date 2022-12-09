@@ -17,10 +17,10 @@ function BattleSim({ gameObj, setGameObj }) {
       <div className="battle-sim">
         <div className="battle-scene">
           <div className="opponent pokemon">
-            <BattlePokemon pokemon={opponent.currentPokemon} side="front" />
+            <BattlePokemon pokemon={opponent.currentPokemon} team={gameObj.opponent.pokemon} side="front" />
           </div>
           <div className="player pokemon">
-            <BattlePokemon pokemon={player.currentPokemon} side="back" />
+            <BattlePokemon pokemon={player.currentPokemon} team={gameObj.player.pokemon} side="back" />
           </div>
         </div>
         <div className="battle-ui">
