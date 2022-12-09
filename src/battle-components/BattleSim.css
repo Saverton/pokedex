@@ -64,6 +64,26 @@ img.pokeball {
   display: block;
 }
 
+#pokeballs-container {
+  display: flex;
+  width: 300px;
+  justify-content: flex-start;
+}
+
+.pokeballs-remaining {
+  width: 50px;
+  height: 50px;
+  align-self: center;
+}
+
+.pokeballs-remaining.gray{
+  width: 70px;
+  height: auto;
+  align-self: flex-start;
+  margin-left: -12px;
+  margin-right: -12px;
+}
+
 .battle-stats {
   border: 2px black solid;
   width: 50%;

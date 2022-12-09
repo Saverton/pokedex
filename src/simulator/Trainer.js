@@ -5,7 +5,6 @@ class Trainer {
   constructor(trainerObj) {
     this.name = trainerObj.name;
     this.pokemon = trainerObj.pokemon.map((pokemon) => {
-      // console.log(pokemon);
       return new Pokemon(pokemon);
     });
     this._currentPokemon = undefined;
