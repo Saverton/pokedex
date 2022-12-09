@@ -182,7 +182,12 @@ class Pokemon {
   }
 
   get statusEffect() {
-    return this._statusEffect;
+    console.log('get status effect');
+    if (Object.keys(this._statusEffect).length === 0) {
+      return false;
+    } else {
+      return this._statusEffect;
+    }
   }
 
   set statusEffect(status) {

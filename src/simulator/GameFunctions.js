@@ -304,20 +304,19 @@ async function runTrainerActions(gameObj, setGameObj) {
   gameObj.playerControl = false;
   const playerPokemon = gameObj.player.currentPokemon;
   const opponentPokemon = gameObj.opponent.currentPokemon;
-  if (playerPokemon.statusEffect !== {}) {
+  console.log(playerPokemon.statusEffect);
+  if (playerPokemon.statusEffect) {
     const effect = playerPokemon.statusEffect;
     if (effect.turn >= effect.duration) {
-      effect.onEffectExpiration();
-      playerPokemon.statusEffect = {};
+      await effectExpire(playerPokemon, gameObj, setGameObj);
     } else {
       effect.onBeforeTurn();
     }
   }
-  if (opponentPokemon.statusEffect !== {}) {
+  if (opponentPokemon.statusEffect) {
     const effect = opponentPokemon.statusEffect;
     if (effect.turn >= effect.duration) {
-      effect.onEffectExpiration();
-      opponentPokemon.statusEffect = {};
+      await effectExpire(opponentPokemon, gameObj, setGameObj);
     } else {
       effect.onBeforeTurn();
     }
@@ -336,11 +335,17 @@ async function runTrainerActions(gameObj, setGameObj) {
     }
   }
 
-  if (gameObj.player.currentPokemon && playerPokemon.statusEffect !== {}) {
+  if (gameObj.player.currentPokemon && playerPokemon.statusEffect) {
+    gameObj.currentMessage = playerPokemon.statusEffect.messages.duration(playerPokemon);
     playerPokemon.statusEffect.onAfterTurn();
+    setGameObj({...gameObj});
+    await wait(1.5);
   }
-  if (gameObj.opponent.currentPokemon && opponentPokemon.statusEffect !== {}) {
+  if (gameObj.opponent.currentPokemon && opponentPokemon.statusEffect) {
+    gameObj.currentMessage = opponentPokemon.statusEffect.messages.duration(opponentPokemon);
     opponentPokemon.statusEffect.onAfterTurn();
+    setGameObj({...gameObj});
+    await wait(1.5);
   }
 
   const winState = checkWinner(gameObj);
@@ -524,6 +529,20 @@ function checkForFaintedPokemon(gameObj) {
     (gameObj.player.currentPokemon && gameObj.player.currentPokemon.isFainted()) ||
     (gameObj.opponent.currentPokemon && gameObj.opponent.currentPokemon.isFainted())
   );
+}
+
+async function wait(time) {
+  await new Promise(resolve => {
+    setTimeout(() => resolve(1), time * 1000);
+  });
+}
+
+async function effectExpire(pkmn, gameObj, setGameObj) {
+  pkmn.statusEffect.onEffectExpiration();
+  gameObj.currentMessage = pkmn.statusEffect.messages.expire;
+  playerPokemon.statusEffect = {};
+  setGameObj({...gameObj});
+  await wait(1.5);
 }
 
 export { startNewSimulation, getMoves, checkForFaintedPokemon };

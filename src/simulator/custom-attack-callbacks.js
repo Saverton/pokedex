@@ -12,6 +12,6 @@ const customCallbacks = {
 //   },
 }
 
-function bideWait()
+function bideWait() {}
 
 export default customCallbacks;
