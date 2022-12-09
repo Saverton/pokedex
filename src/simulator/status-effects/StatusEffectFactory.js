@@ -23,6 +23,8 @@ function createStatusEffect(type, pkmn) {
       return new Frozen(type, pkmn);
     case "cnf":
       return new Confusion(type, pkmn);
+    default:
+      return new StatusEffect(type, pkmn);
   }
 }
 
