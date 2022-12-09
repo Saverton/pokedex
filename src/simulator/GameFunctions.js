@@ -76,6 +76,7 @@ async function runBattleIntro(gameObj, setGameObj) {
 
 async function runBattleLoop(gameObj, setGameObj) {
   const { player, opponent } = gameObj;
+
   if (
     player.currentPokemon === undefined ||
     opponent.currentPokemon === undefined
@@ -301,6 +302,26 @@ function playerActionMenu(gameObj, setGameObj) {
 async function runTrainerActions(gameObj, setGameObj) {
   // stop input
   gameObj.playerControl = false;
+  const playerPokemon = gameObj.player.currentPokemon;
+  const opponentPokemon = gameObj.opponent.currentPokemon;
+  if (playerPokemon.statusEffect !== {}) {
+    const effect = playerPokemon.statusEffect;
+    if (effect.turn >= effect.duration) {
+      effect.onEffectExpiration();
+      playerPokemon.statusEffect = {};
+    } else {
+      effect.onBeforeTurn();
+    }
+  }
+  if (opponentPokemon.statusEffect !== {}) {
+    const effect = opponentPokemon.statusEffect;
+    if (effect.turn >= effect.duration) {
+      effect.onEffectExpiration();
+      opponentPokemon.statusEffect = {};
+    } else {
+      effect.onBeforeTurn();
+    }
+  }
   setGameObj({ ...gameObj });
 
   // get move order array, i.e. ['player', 'opponent']
@@ -313,6 +334,13 @@ async function runTrainerActions(gameObj, setGameObj) {
     if (breakFromTurn) {
       break;
     }
+  }
+
+  if (gameObj.player.currentPokemon && playerPokemon.statusEffect !== {}) {
+    playerPokemon.statusEffect.onAfterTurn();
+  }
+  if (gameObj.opponent.currentPokemon && opponentPokemon.statusEffect !== {}) {
+    opponentPokemon.statusEffect.onAfterTurn();
   }
 
   const winState = checkWinner(gameObj);

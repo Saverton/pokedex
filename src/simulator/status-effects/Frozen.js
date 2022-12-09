@@ -6,6 +6,10 @@ class Frozen extends StatusEffect {
     this._duration = Number.MAX_VALUE;
   }
 
+  get duration() {
+    return this._duration;
+  }
+
   onEffectApplication() {
     this.pkmn.canAttack = false;
   }
