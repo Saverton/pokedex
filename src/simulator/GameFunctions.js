@@ -304,6 +304,8 @@ async function runTrainerActions(gameObj, setGameObj) {
   gameObj.playerControl = false;
   const playerPokemon = gameObj.player.currentPokemon;
   const opponentPokemon = gameObj.opponent.currentPokemon;
+  playerPokemon.resetTurnStats();
+  opponentPokemon.resetTurnStats();
   console.log(playerPokemon.statusEffect);
   if (playerPokemon.statusEffect) {
     const effect = playerPokemon.statusEffect;
