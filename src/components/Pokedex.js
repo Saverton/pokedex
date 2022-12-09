@@ -8,6 +8,7 @@ const API_URL = "http://localhost:8000/pokemon"; // gets original 151 pokemon
 
 function Pokedex({ currentTeam, setCurrentTeam }) {
   const [ pokemon, setPokemon ] = useState([]);
+  const [showTeam, setShowTeam] = useState(false);
 
   useEffect(() => {
     fetch(API_URL)
@@ -35,31 +36,26 @@ function generateRandomTeam() {
     newArray.push(findPokemon)
   }
   setCurrentTeam(newArray)
+  setShowTeam(true)
 }
-
-// function getPokemonFromIds () {
-//   let newArray = 
-// }
 
   function removePokemonFromTeam(pokemonTeamIndex) {
     setCurrentTeam(currentTeam.filter((_, idx) => idx !== pokemonTeamIndex));
   }
 
   return (
-    <main
+  <main
     className="p-3"
-    style={{backgroundColor: `#1F121184`}}
-    >
-      <div className="center-on-page">
-  
-  <div className="pokeball">
-      <button className='pokeball__button' onClick={generateRandomTeam}>🔀</button>
+    style={{backgroundColor: `#1A07056B`}}>
+
+  <div className="teamDiv">
+      <TeamForm showTeam={showTeam} setShowTeam={setShowTeam} currentTeam={currentTeam} onRemove={removePokemonFromTeam} />
+  <div>
+      <button className="surpriseMe" onClick={generateRandomTeam}>Generate Random Team</button>
   </div>
-  
-</div>
-      <TeamForm currentTeam={currentTeam} onRemove={removePokemonFromTeam} />
-      <PokemonList pokemon={pokemon} onAddToTeam={addPokemonToTeam} />
-    </main>
+      <PokemonList pokemon={pokemon} onAddToTeam={addPokemonToTeam} /> 
+  </div>
+  </main>
   );
 }
 

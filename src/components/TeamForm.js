@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { postTeam } from "../database-scripts/postTeam";
 
-function TeamForm({ currentTeam, onRemove }) {
+function TeamForm({ currentTeam, onRemove, setShowTeam, showTeam }) {
   const [teamName, setTeamName] = useState("My Team");
 
   function handleTeamNameChange(e) {
@@ -42,7 +42,7 @@ function TeamForm({ currentTeam, onRemove }) {
         <img src={pokemon.sprites.front} alt={pokemon.name} />
       </div>
       <button
-        style={{ backgroundColor: `#BFB9BA` }}
+        style={{ backgroundColor: `#D6D0D1` }}
         className="p-2 btn border-secondary"
         onClick={() => handleRemoveClick(idx)}
       >
@@ -52,24 +52,29 @@ function TeamForm({ currentTeam, onRemove }) {
   ));
 
   return (
-    <div>
-      <h3>My Team : </h3>
-      <label htmlFor="name">Team Name : </label>
+    <div className="teamName">
+      <label className="teamNametext" htmlFor="name">Team Name: </label>
       <input
         type="text"
         name="name"
         id="name"
-        placeholder="My Team"
+        placeholder="The Flatiron Team"
         onChange={handleTeamNameChange}
         value={teamName}
       />
-      <ul className="d-flex">{teamCards}</ul>
+
+      <div className="myPokeball">
+      {/* <h3> click me! </h3> */}
+      <img onClick={()=>setShowTeam(prev =>!prev)} className="myPokeball" src="https://cdn3.emoji.gg/emojis/8839-pokeballsuccess.gif" width="64px" height="64px" alt="PokeballSuccess"/> 
+      </div>
+    
+      <ul className="d-flex">
+        {showTeam? teamCards : null}
+        </ul>
       <button
-        style={{ backgroundColor: `#BFB9BA`}}
-        className="btn border-secondary"
-        onClick={handleSave}
-      >
-        Save Team to Database!
+        className="saveMyTeamBtn"
+        onClick={handleSave}>
+        Save My Team
       </button>
     </div>
   );

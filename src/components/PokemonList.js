@@ -26,8 +26,9 @@ function PokemonList({ pokemon, onAddToTeam }) {
   ));
 
   return (
-    <div>
-      <h2>Pokemon List</h2>
+    <div className="pokeList">
+      <h2 id="pokeListOnly" >💾 Pokemon Index 💾</h2>
+      
       <SearchForm
         searchFilters={searchFilters}
         setSearchFilters={setSearchFilters}
