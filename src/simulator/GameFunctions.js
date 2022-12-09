@@ -109,7 +109,7 @@ async function runBattleLoop(gameObj, setGameObj) {
   // opponent choose action
   if (gameObj.opponent.actionQueue.length === 0) {
     const opponentMove =
-      gameObj.opponent.currentPokemon.moveSet[Math.floor(Math.random() * 4)];
+      gameObj.opponent.currentPokemon.moveSet[Math.floor(Math.random() * gameObj.opponent.currentPokemon.moveSet.length)];
     gameObj.opponent.actionQueue = [
       ...opponentMove.getMoveActions(gameObj.opponent.currentPokemon, gameObj.player.currentPokemon)
     ];
@@ -304,6 +304,8 @@ async function runTrainerActions(gameObj, setGameObj) {
   gameObj.playerControl = false;
   const playerPokemon = gameObj.player.currentPokemon;
   const opponentPokemon = gameObj.opponent.currentPokemon;
+  playerPokemon.resetTurnStats();
+  opponentPokemon.resetTurnStats();
   console.log(playerPokemon.statusEffect);
   if (playerPokemon.statusEffect) {
     const effect = playerPokemon.statusEffect;
