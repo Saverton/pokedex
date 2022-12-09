@@ -5,6 +5,7 @@ class BadPoison extends StatusEffect {
   
   constructor(type, pkmn) {
     super(type, pkmn);
+    this.icon = 'PSN';
     this._duration = Number.MAX_VALUE;
     this._messages = {
       duration: (_pkmn) => "",

@@ -4,6 +4,7 @@ class StatusEffect {
   static applyMessage = (pkmn) => `${pkmn.name} got an effect!`;
 
   constructor(type, pkmn) {
+    this.icon = type.toUpperCase();
     this._name = type;
     this._pkmn = pkmn;
     this._pkmn.statusEffect = this;
