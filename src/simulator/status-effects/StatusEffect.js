@@ -36,7 +36,7 @@ class StatusEffect {
   get pkmn() {
     return this._pkmn;
   }
-
+  
   set pkmn(value) {
     this._pkmn = value;
   }

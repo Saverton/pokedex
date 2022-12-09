@@ -27,6 +27,7 @@ class Pokemon {
     this._stats = this.calculateCurrentStats();
     this._statusEffect = {};
     this._canAttack = true;
+    this._immune = false;
     this._recentDamage = new DamageQueue();
     getMoves(this, pokemonObj);
   }
@@ -215,6 +216,19 @@ class Pokemon {
 
   get recentDamage() {
     return this._recentDamage;
+  }
+
+  get immune() {
+    return this._immune;
+  }
+
+  set immune(value) {
+    this._immune = value;
+  }
+
+  resetTurnStats() {
+    this.canAttack = true;
+    this.immune = false;
   }
 }
 

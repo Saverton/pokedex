@@ -299,8 +299,8 @@ class Move {
       this._name === "Dig" ||
       this._name === "Skull Bash" ||
       this._name === "Sky Attack" ||
-      this._name === "Solar Beam" ||
-      this._name === "Counter"
+      this._name === "Solar Beam" // ||
+      // this._name === "Counter"
     )
       return 2;
     else return 1;
@@ -373,7 +373,7 @@ class Move {
     }
 
     // OTHERWISE, NEED TO RUN CUSTOM CALLBACK
-    return customCallbacks[this.name];
+    return customCallbacks[this.name](this, attacker, defender);
   }
 
   getMoveSteps(attacker, defender) {
@@ -406,8 +406,10 @@ class Move {
     return steps;
   }
 
-  runMove(attacker, defender) {
-    const { damage, effective, crit } = this.finalDamage(attacker, defender);
+  runMove(attacker, defender, dmg) {
+    const { damage, effective, crit } = dmg || this.finalDamage(attacker, defender);
+    defender.recentDamage.enqueue(damage);
+    console.log({ damage, effective, crit });
     defender.currentHp = defender.currentHp - damage;
     this.decrementPP();
 
