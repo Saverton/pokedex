@@ -8,7 +8,7 @@ function MyTeams({ myTeams }) {
   
   return (
     <>
-      <h1>My Teams : </h1>
+      <h1 className='myTeamsLink'>My Teams : </h1>
       {teamCards}
     </>
   );

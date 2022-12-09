@@ -531,6 +531,150 @@
         }
       ],
       "id": 17
+    },
+    {
+      "name": "",
+      "pokemon": [
+        {
+          "name": "tangela",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/114.png",
+          "id": 114
+        },
+        {
+          "name": "charmeleon",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png",
+          "id": 5
+        },
+        {
+          "name": "machoke",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/67.png",
+          "id": 67
+        },
+        {
+          "name": "kabuto",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/140.png",
+          "id": 140
+        },
+        {
+          "name": "seadra",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/117.png",
+          "id": 117
+        },
+        {
+          "name": "venonat",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/48.png",
+          "id": 48
+        }
+      ],
+      "id": 18
+    },
+    {
+      "name": "My Team",
+      "pokemon": [
+        {
+          "name": "slowpoke",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/79.png",
+          "id": 79
+        },
+        {
+          "name": "nidoqueen",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/31.png",
+          "id": 31
+        },
+        {
+          "name": "primeape",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/57.png",
+          "id": 57
+        },
+        {
+          "name": "gengar",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png",
+          "id": 94
+        },
+        {
+          "name": "ekans",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/23.png",
+          "id": 23
+        },
+        {
+          "name": "lickitung",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/108.png",
+          "id": 108
+        }
+      ],
+      "id": 19
+    },
+    {
+      "name": "My Team",
+      "pokemon": [
+        {
+          "name": "weezing",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/110.png",
+          "id": 110
+        },
+        {
+          "name": "dragonite",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png",
+          "id": 149
+        },
+        {
+          "name": "seaking",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/119.png",
+          "id": 119
+        },
+        {
+          "name": "nidorino",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/33.png",
+          "id": 33
+        },
+        {
+          "name": "onix",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/95.png",
+          "id": 95
+        },
+        {
+          "name": "lickitung",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/108.png",
+          "id": 108
+        }
+      ],
+      "id": 20
+    },
+    {
+      "name": "hi",
+      "pokemon": [
+        {
+          "name": "tentacool",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/72.png",
+          "id": 72
+        },
+        {
+          "name": "arcanine",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/59.png",
+          "id": 59
+        },
+        {
+          "name": "cloyster",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/91.png",
+          "id": 91
+        },
+        {
+          "name": "drowzee",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/96.png",
+          "id": 96
+        },
+        {
+          "name": "meowth",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/52.png",
+          "id": 52
+        },
+        {
+          "name": "magnemite",
+          "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/81.png",
+          "id": 81
+        }
+      ],
+      "id": 21
     }
   ],
   "pokemon": [

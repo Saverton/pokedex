@@ -70,7 +70,7 @@ label{
   font-family:"Quicksand";
   font-size: large;
   font-weight: 700;
-  color: #280b08;
+  color: #110503;
 }
 .teamName {
   position: grid;
@@ -271,5 +271,31 @@ ul.d-flex{
   /* Pokedex CSS */
 
 
-  /* Battle CSS */
+ /* My Teams CSS */
+ .myTeamsLink {
+  text-align: center;
+  color: #eb2828;
+ }
+
+ .teamNames {
+  color: #4a0cc7;
+ }
+.myTeams{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: rgba(146, 140, 140, 0.813);
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-evenly;
+  right: 0;
+  width: 25 px;
+  background-color: rgba(240, 237, 237, 0.633);
+  overflow-x: auto;
+  max-height: 220px;
+  border-style: solid;
+  padding-bottom: 15px ;
+}
+ .myTeamsPokemon {
+  color: #0666e4;
+ }
 
