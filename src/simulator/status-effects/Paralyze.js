@@ -1,6 +1,13 @@
 import StatusEffect from "./StatusEffect";
 
 class Paralyze extends StatusEffect {
+  static messages = {
+    apply: (pkmn) => `${pkmn.name} became paralyzed!`,
+    duration: (pkmn) => `${pkmn.name} is paralyzed. It may be unable to attack.`,
+    onAttack: (pkmn) => `${pkmn.name} is paralyzed. It can't move!`,
+    onAfterTurn: (_pkmn) => "",
+    expire: (_pkmn) => "",
+  }
   constructor(type, pkmn) {
     super(type, pkmn);
     this._duration = Number.MAX_VALUE;
