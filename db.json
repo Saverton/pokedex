@@ -175,7 +175,9 @@
         "speed": 100
       },
       "possibleMoves": [
-        48, 9
+        48,
+        9,
+        20
       ]
     },
     {
@@ -7679,7 +7681,14 @@
         "accuracy": 100,
         "pp": 25,
         "effect": "User recovers half the HP inflicted on opponent."
-      }
+      },
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-hp",
+          "value": "10"
+        }
+      ]
     },
     {
       "name": "Acid",
@@ -8046,7 +8055,8 @@
         "pp": "30",
         "effect": "Changes user's type to that of its first move."
       },
-      "id": 23
+      "id": 23,
+      "dontUse": true
     },
     {
       "name": "Counter",
@@ -8058,7 +8068,8 @@
         "pp": "20",
         "effect": "When hit by a Physical Attack, user strikes back with 2x power."
       },
-      "id": 24
+      "id": 24,
+      "dontUse": true
     },
     {
       "name": "Crabhammer",
@@ -8126,7 +8137,8 @@
         "pp": "20",
         "effect": "Opponent can't use its last attack for a few turns."
       },
-      "id": 29
+      "id": 29,
+      "dontUse": true
     },
     {
       "name": "Dizzy Punch",
@@ -8208,7 +8220,14 @@
         "pp": "15",
         "effect": "User receives recoil damage."
       },
-      "id": 34
+      "id": 34,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-hp",
+          "value": "-10"
+        }
+      ]
     },
     {
       "name": "Dragon Rage",
@@ -8232,7 +8251,8 @@
         "pp": "15",
         "effect": "User recovers half the HP inflicted on a sleeping opponent."
       },
-      "id": 36
+      "id": 36,
+      "dontUse": true
     },
     {
       "name": "Drill Peck",
@@ -8587,7 +8607,8 @@
         "pp": "30",
         "effect": "Resets all stat changes."
       },
-      "id": 58
+      "id": 58,
+      "dontUse": true
     },
     {
       "name": "Headbutt",
@@ -8784,7 +8805,14 @@
         "pp": "10",
         "effect": "User recovers half the HP inflicted on opponent."
       },
-      "id": 72
+      "id": 72,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-hp",
+          "value": "15"
+        }
+      ]
     },
     {
       "name": "Leech Seed",
@@ -8796,7 +8824,8 @@
         "pp": "10",
         "effect": "Drains HP from opponent each turn."
       },
-      "id": 73
+      "id": 73,
+      "dontUse": true
     },
     {
       "name": "Leer",
@@ -8846,7 +8875,8 @@
         "pp": "30",
         "effect": "Halves damage from Special attacks for 5 turns."
       },
-      "id": 76
+      "id": 76,
+      "dontUse": true
     },
     {
       "name": "Lovely Kiss",
@@ -8944,7 +8974,8 @@
         "pp": "10",
         "effect": "User performs almost any move in the game at random."
       },
-      "id": 83
+      "id": 83,
+      "dontUse": true
     },
     {
       "name": "Mimic",
@@ -8956,7 +8987,8 @@
         "pp": "10",
         "effect": "Copies the opponent's last move."
       },
-      "id": 84
+      "id": 84,
+      "dontUse": true
     },
     {
       "name": "Minimize",
@@ -8987,7 +9019,8 @@
         "pp": "20",
         "effect": "User performs the opponent's last move."
       },
-      "id": 86
+      "id": 86,
+      "dontUse": true
     },
     {
       "name": "Mist",
@@ -8999,7 +9032,8 @@
         "pp": "30",
         "effect": "User's stats cannot be changed for a period of time."
       },
-      "id": 87
+      "id": 87,
+      "dontUse": true
     },
     {
       "name": "Night Shade",
@@ -9011,7 +9045,8 @@
         "pp": "15",
         "effect": "Inflicts damage equal to user's level."
       },
-      "id": 88
+      "id": 88,
+      "dontUse": true
     },
     {
       "name": "Pay Day",
@@ -9193,7 +9228,8 @@
         "pp": "15",
         "effect": "Inflicts damage 50-150% of user's level."
       },
-      "id": 99
+      "id": 99,
+      "dontUse": true
     },
     {
       "name": "Quick Attack",
@@ -9217,7 +9253,14 @@
         "pp": "20",
         "effect": "Raises user's Attack when hit."
       },
-      "id": 101
+      "id": 101,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-attack",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Razor Leaf",
@@ -9254,7 +9297,14 @@
         "pp": "5",
         "effect": "User recovers half its max HP."
       },
-      "id": 104
+      "id": 104,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-hp",
+          "value": "30"
+        }
+      ]
     },
     {
       "name": "Reflect",
@@ -9266,7 +9316,8 @@
         "pp": "20",
         "effect": "Halves damage from Physical attacks for 5 turns."
       },
-      "id": 105
+      "id": 105,
+      "dontUse": true
     },
     {
       "name": "Rest",
@@ -9278,7 +9329,19 @@
         "pp": "5",
         "effect": "User sleeps for 2 turns, but user is fully healed."
       },
-      "id": 106
+      "id": 106,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-hp",
+          "value": "500"
+        },
+        {
+          "chance": "1",
+          "effect": "self-eff-slp",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Roar",
@@ -9290,7 +9353,8 @@
         "pp": "20",
         "effect": "In battles, the opponent switches. In the wild, the Pokémon runs."
       },
-      "id": 107
+      "id": 107,
+      "dontUse": true
     },
     {
       "name": "Rock Slide",
@@ -9388,7 +9452,8 @@
         "pp": "20",
         "effect": "Inflicts damage equal to user's level."
       },
-      "id": 114
+      "id": 114,
+      "dontUse": true
     },
     {
       "name": "Self-Destruct",
@@ -9582,7 +9647,14 @@
         "pp": "5",
         "effect": "User recovers half its max HP."
       },
-      "id": 126
+      "id": 126,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-hp",
+          "value": "30"
+        }
+      ]
     },
     {
       "name": "Solar Beam",
@@ -9606,7 +9678,8 @@
         "pp": "20",
         "effect": "Always inflicts 20 HP."
       },
-      "id": 128
+      "id": 128,
+      "dontUse": true
     },
     {
       "name": "Spike Cannon",
@@ -9704,11 +9777,18 @@
       "stats": {
         "category": "physical",
         "power": "50",
-        "accuracy": "",
-        "pp": "",
+        "accuracy": "100",
+        "pp": "10",
         "effect": "Only usable when all PP are gone. Hurts the user."
       },
-      "id": 135
+      "id": 135,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-hp",
+          "value": "-10"
+        }
+      ]
     },
     {
       "name": "Stun Spore",
@@ -9739,7 +9819,14 @@
         "pp": "20",
         "effect": "User receives recoil damage."
       },
-      "id": 137
+      "id": 137,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-hp",
+          "value": "-15"
+        }
+      ]
     },
     {
       "name": "Substitute",
@@ -9751,7 +9838,8 @@
         "pp": "10",
         "effect": "Uses HP to creates a decoy that takes hits."
       },
-      "id": 138
+      "id": 138,
+      "dontUse": true
     },
     {
       "name": "Super Fang",
@@ -9763,7 +9851,8 @@
         "pp": "10",
         "effect": "Always takes off half of the opponent's HP."
       },
-      "id": 139
+      "id": 139,
+      "dontUse": true
     },
     {
       "name": "Supersonic",
@@ -9868,7 +9957,14 @@
         "pp": "20",
         "effect": "User receives recoil damage."
       },
-      "id": 146
+      "id": 146,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-stat-hp",
+          "value": "-15"
+        }
+      ]
     },
     {
       "name": "Teleport",
@@ -9880,7 +9976,15 @@
         "pp": "20",
         "effect": "Allows user to flee wild battles; also warps player to last PokéCenter."
       },
-      "id": 147
+      "id": 147,
+      "dontUse": true,
+      "sideEffects": [
+        {
+          "chance": "1",
+          "effect": "self-eff-cnf",
+          "value": "1"
+        }
+      ]
     },
     {
       "name": "Thrash",
@@ -9892,6 +9996,10 @@
         "pp": "10",
         "effect": "User attacks for 2-3 turns but then becomes confused."
       },
+      "hits": [
+        2,
+        3
+      ],
       "id": 148
     },
     {
@@ -10018,7 +10126,8 @@
         "pp": "10",
         "effect": "User takes on the form and attacks of the opponent."
       },
-      "id": 155
+      "id": 155,
+      "dontUse": true
     },
     {
       "name": "Tri Attack",
@@ -10130,7 +10239,8 @@
         "pp": "20",
         "effect": "In battles, the opponent switches. In the wild, the Pokémon runs."
       },
-      "id": 162
+      "id": 162,
+      "dontUse": true
     },
     {
       "name": "Wing Attack",
