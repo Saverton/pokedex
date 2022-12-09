@@ -2,8 +2,7 @@ import { toBePartiallyChecked } from "@testing-library/jest-dom/dist/matchers";
 import { getPokemonById } from "../database-scripts/getPokemon";
 import { getMoveById } from "../database-scripts/getMove";
 import GameObject from "./GameObject";
-import Trainer from "./Trainer";
-import Action, { getActionFromPokemonSwitch } from './Action';
+import { getActionFromPokemonSwitch } from './Action';
 import Move from "./Move";
 
 function getRandomPokemonTeam(size) {
@@ -89,7 +88,7 @@ async function runBattleLoop(gameObj, setGameObj) {
       await playerSwitchToNewPokemon(gameObj, setGameObj).then((idx) =>
         sendOutPokemon(gameObj, "player", idx, setGameObj)
       );
-      console.log("passed promise");
+
     } else {
       // ask if want to switch
       await showYesOrNoPrompt(
@@ -129,7 +128,6 @@ function runBattleConclusion(gameObj, setGameObj, winner) {
 }
 
 async function sendOutPokemon(gameObj, trainer, index, setGameObj) {
-  // console.log('sending out pokemon!');
   if (
     gameObj[trainer].currentPokemon &&
     gameObj[trainer].currentPokemon !== gameObj[trainer].pokemon[index]
@@ -170,7 +168,6 @@ async function recallPokemon(gameObj, trainer, setGameObj) {
  */
 function playerFight(gameObj, setGameObj) {
   // test options before moves are implemented
-  // console.log("FIGHT CHOSEN")
   const player = gameObj.player;
 
   const options = player.currentPokemon.moveSet.map((move) => ({
@@ -263,7 +260,6 @@ function playerActionMenu(gameObj, setGameObj) {
     {
       name: "FIGHT",
       callback: () => {
-        // console.log('FIGHT');
         return playerFight(gameObj, setGameObj);
       },
     },
@@ -304,7 +300,6 @@ async function runTrainerActions(gameObj, setGameObj) {
   gameObj.playerControl = false;
   const playerPokemon = gameObj.player.currentPokemon;
   const opponentPokemon = gameObj.opponent.currentPokemon;
-  console.log(playerPokemon.statusEffect);
   if (playerPokemon.statusEffect) {
     const effect = playerPokemon.statusEffect;
     if (effect.turn >= effect.duration) {
@@ -394,8 +389,6 @@ function executeMove(move, attacker, defender) {
 
   defender.currentHp = defender.currentHp - damage;
   move.decrementPP();
-
-  console.log(damage, effective, move.currentPP);
 
   let msg = "";
   if (effective) {
