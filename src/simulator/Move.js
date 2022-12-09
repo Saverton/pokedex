@@ -409,7 +409,7 @@ class Move {
   runMove(attacker, defender, dmg) {
     const { damage, effective, crit } = dmg || this.finalDamage(attacker, defender);
     defender.recentDamage.enqueue(damage);
-    console.log({ damage, effective, crit });
+    // console.log({ damage, effective, crit });
     defender.currentHp = defender.currentHp - damage;
     this.decrementPP();
 
@@ -429,7 +429,7 @@ class Move {
         extraSteps.push({
           msg: "It was not very effective...",
         });
-      } else if (effective.includes("immune")) {
+      } else if (effective.includes("immune") || effective.includes("missed")) {
         extraSteps.push({
           msg: "The attack missed!",
         });
