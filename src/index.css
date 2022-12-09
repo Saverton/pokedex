@@ -273,13 +273,16 @@ ul.d-flex{
 
  /* My Teams CSS */
  .myTeamsLink {
+  position:sticky;
+  padding: 9px;
+  border: 3px solid #f0efedc6;
   text-align: center;
-  color: #eb2828;
- }
+  font-family: "Quicksand";
+  font-size: 40px;
+  background-color: #546eff82;  
+}
 
- .teamNames {
-  color: #4a0cc7;
- }
+
 .myTeams{
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: rgba(146, 140, 140, 0.813);
@@ -289,13 +292,17 @@ ul.d-flex{
   justify-content:space-evenly;
   right: 0;
   width: 25 px;
-  background-color: rgba(240, 237, 237, 0.633);
-  overflow-x: auto;
-  max-height: 220px;
+  background-color: rgba(81, 69, 69, 0.804);
   border-style: solid;
-  padding-bottom: 15px ;
 }
- .myTeamsPokemon {
-  color: #0666e4;
- }
+.myTeamsPokemon {
+  color: #d5d8dc;
+}
 
+.teamNames {
+ font-family: "Quicksand";
+ font-weight: 600;
+ padding: 10px;
+ background-color: #bdd8dc;
+ color: #268263;
+}
