@@ -429,7 +429,7 @@ class Move {
         extraSteps.push({
           msg: "It was not very effective...",
         });
-      } else if (effective.includes("immune")) {
+      } else if (effective.includes("immune") || effective.includes("missed")) {
         extraSteps.push({
           msg: "The attack missed!",
         });
