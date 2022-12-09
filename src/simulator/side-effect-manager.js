@@ -1,14 +1,42 @@
+import Burn from "./status-effects/Burn";
+import Paralyze from "./status-effects/Paralyze";
+import Poison from "./status-effects/Poison";
+import BadPoison from "./status-effects/BadPoison";
+import Sleep from "./status-effects/Sleep";
+import Frozen from "./status-effects/Frozen";
 import { createStatusEffect } from "./status-effects/StatusEffectFactory"
 
 
 const SIDE_EFFECT_CALLBACKS = {
   eff: {
-    brn: (pkmn) => createStatusEffect('brn', pkmn),
-    prz: (pkmn) => createStatusEffect('prz', pkmn),
-    psn: (pkmn) => createStatusEffect('psn', pkmn),
-    badpsn: (pkmn) => createStatusEffect('badpsn', pkmn),
-    slp: (pkmn) => createStatusEffect('slp', pkmn),
-    frz: (pkmn) => createStatusEffect('frz', pkmn),
+    brn: (pkmn) => ({
+      msg: Burn.messages.apply(pkmn),
+      callback: createStatusEffect('brn', pkmn)
+    }),
+    prz: (pkmn) => ({
+      msg: Paralyze.messages.apply(pkmn),
+      callback: createStatusEffect('prz', pkmn)
+    }),
+    psn: (pkmn) => ({
+      msg: Poison.messages.apply(pkmn),
+      callback: createStatusEffect('psn', pkmn)
+    }),
+    badpsn: (pkmn) => ({
+      msg: BadPoison.messages.apply(pkmn),
+      callback: createStatusEffect('badpsn', pkmn)
+    }),
+    slp: (pkmn) => ({
+      msg: Sleep.messages.apply(pkmn),
+      callback: createStatusEffect('slp', pkmn)
+    }),
+    frz: (pkmn) => ({
+      msg: Frozen.messages.apply(pkmn),
+      callback: createStatusEffect('frz', pkmn)
+    }),
+    cnf: (pkmn) => ({
+      msg: `${pkmn} became confused, but then got even more confused because confusion hasn't been coded yet! Confuception => cancels out!`,
+      callback: () => console.log('confusion? what? Wait, I\'m confused...')
+    })
   },
   stat: {
     hp: (pkmn, val) => {
