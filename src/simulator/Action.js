@@ -11,13 +11,13 @@ class Action {
     let msg = step.msg;
     gameObj.currentMessage = msg;
     setGameObj({...gameObj});
-    let newStep = undefined;
+    let newSteps = [];
     if (step.callback) {
-      newStep = await step.callback();
+      newSteps = await step.callback();
     }
     // if there is a new step, add it on!
-    if (newStep) {
-      this.steps.unshift(newStep);
+    if (newSteps && newSteps.length > 0) {
+      this.steps.unshift(...newSteps);
     }
     // 1 second delay before continuing
     await new Promise(resolve => {

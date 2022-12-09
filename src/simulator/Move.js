@@ -13,6 +13,7 @@ class Move {
     this._effect = parseInt(moveObj.stats.effect);
     this._sideEffects = moveObj.sideEffects;
     this._hits = moveObj.hits || [1, 1];
+    this._critRatio = moveObj.critRatio || 1;
   }
 
   strongAgainst() {
@@ -157,24 +158,22 @@ class Move {
       };
     }
 
-    let modifiedDamage = baseDamage;
-
     const damageObj = {
-      damage: modifiedDamage,
+      ...baseDamage,
       effective: [],
     };
 
     userTypes.forEach((type) => {
       if (type === this._type && !this.hasFixedDamage())
-        damageObj.damage += Math.floor(baseDamage / 2);
+        damageObj.damage += Math.floor(baseDamage.damage / 2);
     });
 
     defenderTypes.forEach((type) => {
-      if (this.completelyIneffectiveAgainst().includes(type))
-        return {
-          damage: 0,
-          effective: ["immune"],
-        };
+      if (this.completelyIneffectiveAgainst().includes(type)) {
+        damageObj.effective.push('immune');
+        damageObj.damage = 0;
+        return damageObj;
+      }
 
       if (!this.hasFixedDamage()) {
         if (this.strongAgainst().includes(type)) {
@@ -189,10 +188,10 @@ class Move {
       }
     });
 
-    if (damageObj.effective.length === 0) damageObj.effective.push("normal");
     if (
-      damageObj.effective.includes("super effective") &&
-      damageObj.effective.includes("not very effective")
+      damageObj.effective.length === 0 ||
+      ( damageObj.effective.includes("super effective") &&
+      damageObj.effective.includes("not very effective") )
     ) {
       damageObj.effective = ["normal"];
     }
@@ -200,20 +199,17 @@ class Move {
   }
 
   randomFactor(modifiedDamage) {
-    if (!this.isAttack() || !this.hasFixedDamage()) {
+    if (!this.hasFixedDamage()) {
       if (modifiedDamage.damage === 1)
-        return {
-          damage: 1,
-          effective: modifiedDamage.effective,
-        };
+        return modifiedDamage;
       else {
         return {
+          ...modifiedDamage,
           damage: Math.floor(
             (modifiedDamage.damage *
               (Math.floor(Math.random() * (255 - 217)) + 217)) /
               255
-          ),
-          effective: modifiedDamage.effective,
+          )
         };
       }
     }
@@ -221,29 +217,52 @@ class Move {
   }
 
   finalDamage(userPkmn, opponentPkmn) {
-    let base;
-    console.log(userPkmn, userPkmn.stats);
-    // use physical attack/defense if physical move, else use special attack/defense
-    if (this._category === "physical") {
-      base = this.baseDamage(
-        userPkmn.level,
-        userPkmn.stats.attack,
-        opponentPkmn.stats.defense
-      );
-    } else {
-      base = this.baseDamage(
-        userPkmn.level,
-        userPkmn.stats.spAttack,
-        opponentPkmn.stats.spDefense
-      );
-    }
-    const modified = this.modifiedDamage(
-      base,
-      userPkmn.types,
-      opponentPkmn.types
-    );
+    if (this.isAttack()) {
+      let base = {};
+      console.log(userPkmn, userPkmn.stats);
+      let level = userPkmn.level;
+      if (this.isCriticalHit(userPkmn)) {
+        level *= 2;
+        base.crit = true;
+      }
+      // use physical attack/defense if physical move, else use special attack/defense
+      if (this._category === "physical") {
+        base = {
+          ...base,
+          damage: this.baseDamage(
+            level,
+            userPkmn.stats.attack,
+            opponentPkmn.stats.defense
+          )
+        };
+      } else {
+        base = {
+          ...base,
+          damage: this.baseDamage(
+            level,
+            userPkmn.stats.spAttack,
+            opponentPkmn.stats.spDefense
+          )
+        };
+      }
+      console.log(base);
 
-    return this.randomFactor(modified);
+      const modified = this.modifiedDamage(
+        base,
+        userPkmn.types,
+        opponentPkmn.types
+      );
+      
+      console.log(modified);
+
+      return this.randomFactor(modified);
+    } else {
+      return {
+        damage: 0,
+        effective: 'status move',
+      }
+    }
+    
   }
 
   moveLength() {
@@ -260,7 +279,11 @@ class Move {
     else return 1;
   }
 
-  useMove() {}
+  isCriticalHit(userPkmn) {
+    const random = Math.floor(Math.random() * 256);
+    const threshold = Math.min(Math.floor(this.critRatio * Math.floor(userPkmn.stats.speed / 2) * userPkmn.stats.critRatio), 255);
+    return random < threshold;
+  }
 
   get name() {
     return this._name;
@@ -299,10 +322,12 @@ class Move {
   }
 
   get hits() {
-    return Math.floor(Math.random() * (this._hits[1] - this._hits[0])) + 1;
+    return Math.floor(Math.random() * (this._hits[1] - this._hits[0])) + this._hits[0];
   }
 
   getMoveActions(attacker, defender) {
+    console.log("MOVE NAME => ", this.name);
+
     const moveLength = this.moveLength();
     const actions = [];
 
@@ -319,6 +344,7 @@ class Move {
   getMoveSteps(attacker, defender) {
     const steps = [];
     const hits = this.hits;
+    console.log({ hits });
 
     for (let i = 1; i <= hits; i++) {
       steps.push({
@@ -342,25 +368,35 @@ class Move {
   }
 
   runMove(attacker, defender) {
-    const { damage, effective } = this.finalDamage(attacker, defender);
+    const { damage, effective, crit } = this.finalDamage(attacker, defender);
+    console.log({ damage, effective, crit });
     defender.currentHp = defender.currentHp - damage;
     this.decrementPP();
 
+    const extraSteps = [];
+
+    if (crit) {
+      extraSteps.push({
+        msg: "Critical Hit!",
+      })
+    }
     if (effective) {
       if (effective.includes("super effective")) {
-        return {
+        extraSteps.push({
           msg: "It was super effective!", 
-        };
+        });
       } else if (effective.includes("not very effective")) {
-        return {
+        extraSteps.push({
           msg: "It was not very effective..."
-        };
+        });
       } else if (effective.includes("immune")) {
-        return {
+        extraSteps.push({
           msg: "The attack missed!"
-        };
+        });
       }
     }
+
+    return extraSteps;
   }
 }
 
